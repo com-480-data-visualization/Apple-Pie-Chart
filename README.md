@@ -31,7 +31,7 @@ This project is designed for users of all levels of musical literacy—from musi
 
 ## Exploratory Data Analysis
 
-The raw Wasabi dataset is provided in JSON format, which we converted to column-based formats (CSV and Parquet) more suitable for analysis. The raw converted files are hosted in a [HuggingFace repository](https://huggingface.co/datasets/thdai2000/wasabi_raw). We further selected relevant columns, merged necessary data (songs, albums, and artists), and prepared cleaned versions for downstream analysis.
+The raw Wasabi dataset is provided in JSON format, which we converted to column-based formats (CSV and Parquet) more suitable for analysis. The raw converted files are hosted in a [HuggingFace repository](https://huggingface.co/datasets/thdai2000/wasabi_raw). We further selected relevant columns, merged necessary data (songs, albums, and artists), and prepared cleaned versions for downstream analysis. These processed files are stored in the `/proc` fold of the HuggingFace repository.
 
 These curated files include:
 - `song.parquet`: song-level features including title, release date, genre, chord progression, BPM, gain, emotion labels, and topic distributions.
