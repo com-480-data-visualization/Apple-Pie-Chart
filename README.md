@@ -56,7 +56,7 @@ Most of the songs in our dataset fall under popular music styles and were releas
 
 This diversity across genres and decades provides a rich landscape for harmonic analysis.
 
-### Chord Usage Pattern Examples
+### Chord Frequency
 
 We examined the quality and distribution of chord data by comparing genres and time periods:
 
