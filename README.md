@@ -140,6 +140,7 @@ docker compose up
 ```
 
 #### Running Frontend Only
+cd website
 ```bash
 # Prerequisites: Install yarn if not present
 brew install yarn
