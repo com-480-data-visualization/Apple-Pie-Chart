@@ -130,6 +130,29 @@ Please, fill the following sections about your project.
 ## Milestone 2 (18th April, 5pm)
 
 **10% of the final grade**
+## How to Run
+
+### Frontend Application
+#### Running Full Stack (Frontend + Backend)
+```bash
+# Run everything with Docker from project root
+docker compose up
+```
+
+#### Running Frontend Only
+```bash
+# Prerequisites: Install yarn if not present
+brew install yarn
+
+# Verify yarn installation
+yarn --version
+
+# Start frontend development server
+cd frontend/app
+yarn install
+yarn run dev
+```
+Frontend will be accessible at: http://localhost:3000
 
 
 ## Milestone 3 (30th May, 5pm)
