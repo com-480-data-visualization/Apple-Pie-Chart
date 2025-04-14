@@ -34,12 +34,11 @@
 
 ### 3. Updating GitHub Pages (docs Folder)
 
-1. Move or copy the contents of “out” to the “docs” folder in the root of the “web” branch. For example:  
+1. Move or copy the contents of “docs” folder in the root of the “web” branch. For example:  
    ```bash
    rm -rf ../../../../docs/*
    cp -R out/* ../../../../docs/
    ```
-   (Adjust paths to match your structure.)
 
 2. Commit and push the updated “docs” folder to GitHub on the “web” branch:  
    ```bash
