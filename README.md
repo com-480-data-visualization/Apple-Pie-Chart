@@ -24,13 +24,13 @@
    ```bash
    yarn build
    ```
-   This will generate a static export (usually in the “out” folder if you have “output: 'export'” in next.config.mjs).
+   (“docs: 'export'” in next.config.mjs).
 
 2. (Optional) If the build doesn’t automatically export to “out,” manually run:  
    ```bash
    yarn export
    ```
-   You should see compiled static files in the “out” folder.
+   You should see compiled static files in the “docs” folder.
 
 ### 3. Updating GitHub Pages (docs Folder)
 
