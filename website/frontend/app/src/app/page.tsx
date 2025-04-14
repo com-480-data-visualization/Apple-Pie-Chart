@@ -5,7 +5,7 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.center}>
         <p>
-            <code className={styles.code}>Webpage for Yiwei's Semester Project!</code>
+            <code className={styles.code}>Applepiechart</code>
         </p>
       </div>
     </main>
