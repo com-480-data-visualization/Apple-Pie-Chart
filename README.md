@@ -120,7 +120,6 @@ Please, fill the following sections about your project.
 
 ### Related work
 
-
 > - What others have already done with the data?
 > - Why is your approach original?
 > - What source of inspiration do you take? Visualizations that you found on other websites or magazines (might be unrelated to your data).
@@ -130,8 +129,8 @@ Please, fill the following sections about your project.
 ## Milestone 2 (18th April, 5pm)
 
 The deliverables for milestone 2 can be found here:
-- website: https://com-480-data-visualization.github.io/Apple-Pie-Chart/
-- report: [Report Milestone 2](https://github.com/com-480-data-visualization/Apple-Pie-Chart/blob/master/Report%20M2.pdf)
+- [Website Prototype](https://com-480-data-visualization.github.io/Apple-Pie-Chart/)
+- [Report Milestone 2](https://github.com/com-480-data-visualization/Apple-Pie-Chart/blob/master/Report%20M2.pdf)
 
 
 ## Milestone 3 (30th May, 5pm)
