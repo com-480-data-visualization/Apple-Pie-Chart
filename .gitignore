@@ -9,7 +9,8 @@ Thumbs.db
 
 # Node modules and build files
 node_modules/
-.next/
+/_next/          # Ignore only the .next of the root of the repository
+!/docs/_next/    # docs/_next 必须上传
 out/
 build/
 dist/
