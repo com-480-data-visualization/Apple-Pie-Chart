@@ -131,7 +131,7 @@ Please, fill the following sections about your project.
 
 The deliverables for milestone 2 can be found here:
 - website: https://com-480-data-visualization.github.io/Apple-Pie-Chart/
-- report: 
+- report: [Report](Report M2.pdf)
 
 
 ## Milestone 3 (30th May, 5pm)
