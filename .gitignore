@@ -12,7 +12,6 @@ node_modules/
 /_next/          # Ignore only the .next of the root of the repository
 !/docs/_next/    # docs/_next 必须上传
 out/
-build/
 dist/
 
 # Environment files
@@ -31,4 +30,4 @@ yarn-error.log*
 .idea/
 .vscode/
 *.swp
-*.swo 
+*.swo .DS_Store

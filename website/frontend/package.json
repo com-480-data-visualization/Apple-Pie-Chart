@@ -1,0 +1,28 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && rm -rf ../../docs && cp -R out ../../docs",
+    "deploy": "NEXT_PUBLIC_BASE_PATH=/Apple-Pie-Chart NEXT_PUBLIC_GH_PAGES=true next build && rm -rf ../../docs && cp -R out ../../docs && find ../../docs/_next -name '.gitignore' -delete && touch ../../docs/.nojekyll",
+    "preview": "serve -s ../../docs -l 3000",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^15.3.1",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "cross-env": "^7.0.3",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
+    "serve": "^14.2.4",
+    "typescript": "^5"
+  }
+}
