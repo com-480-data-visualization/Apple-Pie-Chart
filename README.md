@@ -104,7 +104,7 @@ git commit -m "deploy: update docs"
 git push origin web
 ```
 ```
-https://<username>.github.io/Apple-Pie-Chart/
+https://com-480-data-visualization.github.io/Apple-Pie-Chart/
 ```
 
 ---
@@ -119,6 +119,7 @@ https://<username>.github.io/Apple-Pie-Chart/
 6. `git commit -m "deploy: …"`  
 7. `git push origin web`  
 8. Visit the URL above ‑ press *Ctrl/⌘ + Shift + R* if the browser cached old files.
+
 
 ---
 
