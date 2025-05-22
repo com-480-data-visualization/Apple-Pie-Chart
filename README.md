@@ -50,7 +50,7 @@ The site opens without **/Apple‑Pie‑Chart** prefix in URLs, because
 ---
 
 ## 2 – Preview the exported site locally (optional)
-
+<!-- in website/frontend -->
 ```bash
 # build in dev‑style (no basePath) and export
 yarn build

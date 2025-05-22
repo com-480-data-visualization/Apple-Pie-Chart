@@ -1,12 +1,4 @@
-/* .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
-} */
-
+/* Reset and base styles */
 .main {
   min-height: 100vh;
   padding: 2rem;
@@ -85,246 +77,233 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.imageContainer {
+/* Genre Explorer Styles */
+.genreExplorer {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.genreExplorerTitle {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* ---------- 1. Genre Explorer（泡泡）缩小一点高度 ---------- */
+.genreBubblesContainer{
+  position:relative;
+  width:100%;
+  height:400px;       /* 原来 550px，按需要再调 */
+  background:#aacfed80;
+  border-radius:25px;
+  padding:20px;
+  overflow:hidden;
+}
+
+/* 关键：让气泡位于容器之上确保可以点击 */
+.bubble {
+  position: absolute;
+  z-index: 10;     /* 再调高一点也行 */
+  background: linear-gradient(135deg, #ffffff, #c3cfe2);
+  pointer-events: auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
+}
+
+.bubble:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.genreName {
+  padding: 5px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.reggae { top: 5%; left: 5%; width: 120px; height: 120px; }
+.reggae .genreName { font-size: 0.9rem; }
+.pop { top: 15%; left: 20%; width: 200px; height: 200px; }
+.pop .genreName { font-size: 1.5rem; }
+.classical { top: 8%; left: 35%; width: 150px; height: 150px; }
+.classical .genreName { font-size: 1rem; }
+.electronic { top: 10%; right: 10%; width: 160px; height: 160px; }
+.electronic .genreName { font-size: 1rem; }
+.disco { top: 35%; right: 3%; width: 100px; height: 100px; }
+.disco .genreName { font-size: 0.9rem; }
+.rap { bottom: 22%; left: 15%; width: 110px; height: 110px; }
+.rap .genreName { font-size: 0.9rem; }
+.rock { bottom: 10%; left: 50%; transform: translateX(-50%); width: 180px; height: 180px; }
+.rock .genreName { font-size: 1.3rem; }
+.rnb { bottom: 8%; right: 8%; width: 140px; height: 140px; }
+.rnb .genreName { font-size: 1rem; }
+.jazz { bottom: 5%; left: 5%; width: 130px; height: 130px; }
+.jazz .genreName { font-size: 0.9rem; }
+
+/* Genre Detail Panel Styles */
+
+.genreDetailPanel {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #e6f0fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 4rem;
-  align-items: center;
-  width: 100%;
-  padding: 2rem 0;
+  gap: 20px;
+  opacity: 1; /* Ensure it's visible */
+  visibility: visible; /* Ensure it's not hidden */
 }
 
-.image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin: 1rem 0;
+/* ---------- 2. 和弦+Emoji 两列的比例 ---------- */
+.chordAndEmojiContainer{
+  display:flex;
+  gap:24px;
+  justify-content:space-between;
 }
 
-.firstImage {
-  max-width: 100%;
-  height: auto;
-  margin: 2rem 0;
+/* 和弦区域占 2 份，Emoji 区占 1 份 */
+.chordGraph{   flex:2;   min-width:0; }
+.emojiBoard{   flex:1;   min-width:0; }
+
+/* 让两侧卡片高度对齐（可选美化） */
+.chordGraph,
+.emojiBoard{
+  background:#fff;
+  padding:20px;
+  border:1px solid #d3d3d3;
+  border-radius:8px;
+  display:flex;
+  flex-direction:column;
+}
+/* ---------- 3. Emoji 项目整体更小巧 ---------- */
+.emojiContainer{ gap:8px; }
+.emojiItem .emoji{ font-size:22px; }
+.emojiItem .percentage{ font-size:14px; }
+
+/* ---------- 4. 和弦气泡排版稍微呼吸感 ---------- */
+.chordContainer{ gap:24px; }      /* 气泡间距 */
+.chordCircle{
+  width:56px;height:56px;         /* 略大一点视觉更平衡 */
+  font-size:14px;
 }
 
-.description {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
-  font-size: 0.85rem;
-  max-width: var(--max-width);
-  width: 100%;
-  z-index: 2;
-  font-family: var(--font-mono);
+/* ---------- 5. 整个 Detail Panel 边距 ---------- */
+.genreDetailPanel{
+  padding:28px;                   /* 原来 20px */
+  gap:28px;                       /* 与子区块间距 */
 }
 
-.description a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
+/* ---------- 6. SongSelector 使之横向铺满 ---------- */
+.songSelector{
+  padding:18px;
+}
+.songContainer{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
 }
 
-.description p {
-  position: relative;
-  margin: 0;
-  padding: 1rem;
-  background-color: rgba(var(--callout-rgb), 0.5);
-  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
-  border-radius: var(--border-radius);
+/* ---------- ★可选：标题字号微调 ---------- */
+.genreExplorerTitle{ font-size:1.6rem; }
+.panelSubTitle{      font-size:1.05rem; font-weight:600; }
+.detailPanelTitle{   font-size:1.3rem; }
+
+
+/* 列容器：水平排多列 */
+.chordColumnContainer{
+  display:flex;
+  gap:48px;                /* 列与列水平间距 */
+  padding:10px 0;
+  justify-content:center;
 }
 
-.code {
-  font-weight: 700;
-  font-family: var(--font-mono);
+/* 单列：纵向排泡泡 */
+.chordColumn{
+  display:flex;
+  flex-direction:column;
+  gap:24px;                /* 行间距 */
+  align-items:center;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
-  max-width: 100%;
-  width: var(--max-width);
+/* 泡泡尺寸 */
+.chordCircle{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#d3eafd,#a3cffa);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+  color:#1a365d;
 }
 
-.card {
-  padding: 1rem 1.2rem;
-  border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
-  border: 1px solid rgba(var(--card-border-rgb), 0);
-  transition: background 200ms, border 200ms;
+/* 被选中的和弦样式 */
+.chordActive{
+  border:4px solid #f6a76e;   /* 橘色描边 */
+  background:linear-gradient(135deg,#ffe8d6,#ffd0a6);
 }
 
-.card span {
-  display: inline-block;
-  transition: transform 200ms;
+/* ================= 联系方式区块 ================= */
+.contactSection{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top:48px;           /* 与上方内容留出距离 */
 }
 
-.card h2 {
-  font-weight: 600;
-  margin-bottom: 0.7rem;
+.contactTitle{
+  font-weight:600;
+  color:#1a365d;
+  opacity:.7;               /* 灰一点点的标题 */
+  margin-bottom:12px;
 }
 
-.card p {
-  margin: 0;
-  opacity: 0.6;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  max-width: 30ch;
-  text-wrap: balance;
+.contactBox{
+  max-width:650px;
+  width:90%;
+  background:#d6e7ff;       /* 浅蓝，与页面主色一致 */
+  border:2px solid #9abaff; /* 深一点的描边 */
+  border-radius:18px;
+  padding:28px 40px;
+  text-align:center;
+  box-shadow:0 3px 8px rgba(0,0,0,.08);
 }
 
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 4rem 0;
+.teamName{
+  font-weight:600;
+  margin-bottom:14px;
 }
 
-.center::before {
-  background: var(--secondary-glow);
-  border-radius: 50%;
-  width: 480px;
-  height: 360px;
-  margin-left: -400px;
+.memberList{
+  list-style:none;
+  padding:0;
+  margin:0;
 }
 
-.center::after {
-  background: var(--primary-glow);
-  width: 240px;
-  height: 180px;
-  z-index: -1;
+.memberList li{
+  margin:6px 0;
+  font-size:15px;
 }
 
-.center::before,
-.center::after {
-  content: "";
-  left: 50%;
-  position: absolute;
-  filter: blur(45px);
-  transform: translateZ(0);
+.memberList a{
+  color:#1a365d;
+  text-decoration:underline;
 }
 
-.logo {
-  position: relative;
-}
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  .card:hover {
-    background: rgba(var(--card-rgb), 0.1);
-    border: 1px solid rgba(var(--card-border-rgb), 0.15);
-  }
-
-  .card:hover span {
-    transform: translateX(4px);
-  }
-}
-
-@media (prefers-reduced-motion) {
-  .card:hover span {
-    transform: none;
-  }
-}
-
-/* Mobile */
-@media (max-width: 700px) {
-  .content {
-    padding: 4rem;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    margin-bottom: 120px;
-    max-width: 320px;
-    text-align: center;
-  }
-
-  .card {
-    padding: 1rem 2.5rem;
-  }
-
-  .card h2 {
-    margin-bottom: 0.5rem;
-  }
-
-  .center {
-    padding: 8rem 0 6rem;
-  }
-
-  .center::before {
-    transform: none;
-    height: 300px;
-  }
-
-  .description {
-    font-size: 0.8rem;
-  }
-
-  .description a {
-    padding: 1rem;
-  }
-
-  .description p,
-  .description div {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-  }
-
-  .description p {
-    align-items: center;
-    inset: 0 0 auto;
-    padding: 2rem 1rem 1.4rem;
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
-    background-clip: padding-box;
-    backdrop-filter: blur(24px);
-  }
-
-  .description div {
-    align-items: flex-end;
-    pointer-events: none;
-    inset: auto 0 0;
-    padding: 2rem;
-    height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
-    z-index: 1;
-  }
-}
-
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-  .grid {
-    grid-template-columns: repeat(2, 50%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
-
-  .logo {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
+.memberList a:hover{
+  color:#2c5282;
 }
