@@ -130,24 +130,59 @@
   font-size: 1rem;
 }
 
-.reggae { top: 5%; left: 5%; width: 120px; height: 120px; }
-.reggae .genreName { font-size: 0.9rem; }
-.pop { top: 15%; left: 20%; width: 200px; height: 200px; }
-.pop .genreName { font-size: 1.5rem; }
-.classical { top: 8%; left: 35%; width: 150px; height: 150px; }
-.classical .genreName { font-size: 1rem; }
-.electronic { top: 10%; right: 10%; width: 160px; height: 160px; }
-.electronic .genreName { font-size: 1rem; }
-.disco { top: 35%; right: 3%; width: 100px; height: 100px; }
-.disco .genreName { font-size: 0.9rem; }
-.rap { bottom: 22%; left: 15%; width: 110px; height: 110px; }
-.rap .genreName { font-size: 0.9rem; }
-.rock { bottom: 10%; left: 50%; transform: translateX(-50%); width: 180px; height: 180px; }
-.rock .genreName { font-size: 1.3rem; }
-.rnb { bottom: 8%; right: 8%; width: 140px; height: 140px; }
-.rnb .genreName { font-size: 1rem; }
-.jazz { bottom: 5%; left: 5%; width: 130px; height: 130px; }
-.jazz .genreName { font-size: 0.9rem; }
+/* Culture Bubble Styles */
+/* Row 1 */
+.usa-general { top: 5%; left: 5%; width: 110px; height: 110px; }
+.usa-general .genreName { font-size: 0.7rem; }
+
+.france { top: 5%; left: 25%; width: 100px; height: 100px; }
+.france .genreName { font-size: 0.8rem; }
+
+.usa-south { top: 5%; left: 45%; width: 100px; height: 100px; }
+.usa-south .genreName { font-size: 0.7rem; }
+
+.argentina-latin-america { top: 5%; left: 65%; width: 120px; height: 120px; }
+.argentina-latin-america .genreName { font-size: 0.65rem; }
+
+.caribbean { top: 5%; left: 85%; width: 100px; height: 100px; }
+.caribbean .genreName { font-size: 0.8rem; }
+
+/* Row 2 */
+.brazil { top: 30%; left: 5%; width: 100px; height: 100px; }
+.brazil .genreName { font-size: 0.8rem; }
+
+.uk-scotland-ireland { top: 30%; left: 25%; width: 120px; height: 120px; }
+.uk-scotland-ireland .genreName { font-size: 0.65rem; }
+
+.germany { top: 30%; left: 45%; width: 100px; height: 100px; }
+.germany .genreName { font-size: 0.8rem; }
+
+.uk-england { top: 30%; left: 65%; width: 100px; height: 100px; }
+.uk-england .genreName { font-size: 0.7rem; }
+
+.mexico { top: 30%; left: 85%; width: 100px; height: 100px; }
+.mexico .genreName { font-size: 0.8rem; }
+
+/* Row 3 */
+.spain { top: 55%; left: 5%; width: 100px; height: 100px; }
+.spain .genreName { font-size: 0.8rem; }
+
+.nordic { top: 55%; left: 25%; width: 100px; height: 100px; }
+.nordic .genreName { font-size: 0.8rem; }
+
+.portugal { top: 55%; left: 45%; width: 100px; height: 100px; }
+.portugal .genreName { font-size: 0.8rem; }
+
+.italy { top: 55%; left: 65%; width: 100px; height: 100px; }
+.italy .genreName { font-size: 0.8rem; }
+
+/* Row 4 */
+.japan { top: 75%; left: 5%; width: 100px; height: 100px; }
+.japan .genreName { font-size: 0.8rem; }
+
+.turkey { top: 75%; left: 25%; width: 100px; height: 100px; }
+.turkey .genreName { font-size: 0.8rem; }
+
 
 /* Genre Detail Panel Styles */
 
@@ -305,5 +340,132 @@
 }
 
 .memberList a:hover{
-  color:#2c5282;
+  color: #1e6ba3;
+  text-decoration:underline;
+}
+
+/* Button Styles */
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #e0e0e0;
+  color: #333;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  background-color: #d0d0d0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.activeButton {
+  background-color: #3498db;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.activeButton:hover {
+  background-color: #2980b9;
+}
+
+/* Mood to Harmony Layout Styles */
+.moodToHarmonyLayout {
+  display: flex;
+  gap: 1rem; /* Adjust gap as needed */
+}
+
+.leftBox {
+  flex: 1; /* Takes up half the space */
+  background-color: #e6f0fa; /* Updated placeholder color */
+  padding: 1rem;
+  border-radius: 8px;
+  min-height: 400px; /* Example height */
+}
+
+.rightColumn {
+  flex: 1; /* Takes up the other half */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Adjust gap as needed */
+}
+
+.rightTopBox {
+  flex: 1; /* Takes 1/5 of the right column's height */
+  background-color: transparent; /* Remove background */
+  padding: 0; /* Remove padding */
+  border-radius: 0; /* Remove border-radius */
+  /* Ensure no border is visible if one was implicitly there */
+  border: none;
+}
+
+.rightBottomBox {
+  flex: 4; /* Takes 4/5 of the right column's height */
+  background-color: #e6f0fa; /* Updated placeholder color */
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* Slider Styles */
+.sliderContainer {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column; /* Stack label on top of slider */
+  align-items: center; /* Center items horizontally */
+}
+
+.sliderLabel {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.25rem;
+}
+
+.slider {
+  width: 80%; /* Adjust width as needed */
+  cursor: pointer;
+}
+
+/* Optional: Add specific styling for WebKit (Chrome, Safari) and Mozilla (Firefox) browsers for better appearance */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #3498db;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #3498db;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none; /* Firefox adds a border by default */
+}
+
+.slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #ddd;
+  border-radius: 4px;
+}
+
+.slider::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #ddd;
+  border-radius: 4px;
 }
