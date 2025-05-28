@@ -67,7 +67,7 @@ const MoodWheelDiagram: React.FC<MoodWheelDiagramProps> = ({ onMoodChange }) => 
       .startAngle((d: SectorData) => d.startAngle)
       .endAngle((d: SectorData) => d.endAngle);
 
-    const sectorPaths = container.selectAll<'path', SectorData>('.sector')
+    const sectorPaths = container.selectAll<SVGPathElement, SectorData>('.sector')
       .data(sectorData)
       .enter()
       .append('path')
