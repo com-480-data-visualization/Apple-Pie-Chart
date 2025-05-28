@@ -2,9 +2,11 @@
 
 import Image from 'next/image';
 import styles from './page.module.css';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import ChordNetworkDiagram from './components/ChordNetworkDiagram';
 import MoodWheelDiagram   from './components/MoodWheelDiagram';
+import GainDistribution from './components/GainDistribution';
+import BPMDistribution from './components/BPMDistribution';
 
 const prefix = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
@@ -49,6 +51,28 @@ const pageSectorLabels = [
   'Anger', 'Sadness', 'Tired', 'Relaxed'
 ];
 
+// Define emotion data interface
+interface ClusterData {
+  gain: number[];
+  bpm: number[];
+}
+
+interface EmotionData {
+  [key: string]: ClusterData;
+}
+
+// Define 8 sectors mapping
+const sectors = [
+  { key: '0-45 deg (e.g., Energetic/Joyful)', angle: 22.5, label: 'Energetic/Joyful' },
+  { key: '45-90 deg (e.g., Excited/Surprised)', angle: 67.5, label: 'Excited/Surprised' },
+  { key: '90-135 deg (e.g., Tense/Aggressive)', angle: 112.5, label: 'Tense/Aggressive' },
+  { key: '135-180 deg (e.g., Angry/Frustrated)', angle: 157.5, label: 'Angry/Frustrated' },
+  { key: '180-225 deg (e.g., Sad/Depressed)', angle: 202.5, label: 'Sad/Depressed' },
+  { key: '225-270 deg (e.g., Bored/Tired)', angle: 247.5, label: 'Bored/Tired' },
+  { key: '270-315 deg (e.g., Calm/Peaceful)', angle: 292.5, label: 'Calm/Peaceful' },
+  { key: '315-360 deg (e.g., Content/Happy)', angle: 337.5, label: 'Content/Happy' }
+];
+
 /* ---------- Page Component ---------- */
 export default function Home() {
   const [activeView, setActiveView] = useState('cultureToChord');
@@ -59,16 +83,57 @@ export default function Home() {
   // New state for selected culture
   const [selectedCulture, setSelectedCulture] = useState(cultures[0]); // Default to first culture
 
-  const handleMoodUpdate = (moodData: { x: number; y: number; sector: number; angle: number }) => {
-    setCurrentMood({ x: moodData.x, y: moodData.y });
-    setCurrentSector(moodData.sector);
-    setCurrentAngle(moodData.angle);
-    console.log("Page - Current Mood Data:", moodData);
-  };
+  // New states for emotion data
+  const [emotionData, setEmotionData] = useState<EmotionData>({});
+  const [currentData, setCurrentData] = useState<ClusterData>({ gain: [], bpm: [] });
+  const [selectedSector, setSelectedSector] = useState<string>('0-45 deg (e.g., Energetic/Joyful)');
 
-  const handleCultureSelect = (culture: typeof cultures[0]) => {
+  // Load emotion data
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const response = await fetch('/data/cluster_data_emotion.json');
+        const data = await response.json();
+        setEmotionData(data);
+        
+        // Set initial data based on default sector (0)
+        const initialSectorKey = sectors[0]?.key;
+        if (initialSectorKey && data[initialSectorKey]) {
+          setSelectedSector(initialSectorKey);
+          setCurrentData(data[initialSectorKey]);
+          console.log('Initial data loaded for sector:', initialSectorKey, data[initialSectorKey]);
+        }
+      } catch (error) {
+        console.error('Error loading emotion data:', error);
+      }
+    };
+
+    loadData();
+  }, []); // 确保只运行一次
+
+  const handleMoodUpdate = useCallback((moodData: { x: number; y: number; sector: number; angle: number }) => {
+    // 始终更新位置和角度
+    setCurrentMood({ x: moodData.x, y: moodData.y });
+    setCurrentAngle(moodData.angle);
+    
+    // 只在sector实际改变时更新状态
+    if (moodData.sector !== currentSector) {
+      setCurrentSector(moodData.sector);
+      
+      // Update emotion data based on sector
+      const sectorKey = sectors[moodData.sector]?.key;
+      if (sectorKey && emotionData[sectorKey] && sectorKey !== selectedSector) {
+        setSelectedSector(sectorKey);
+        setCurrentData(emotionData[sectorKey]);
+      }
+    }
+    
+    console.log("Page - Current Mood Data:", moodData);
+  }, [currentSector, selectedSector, emotionData]); // 添加依赖项
+
+  const handleCultureSelect = useCallback((culture: typeof cultures[0]) => {
     setSelectedCulture(culture);
-  };
+  }, []);
 
   return (
     <main className={styles.main}>
@@ -180,50 +245,156 @@ export default function Home() {
 
       {activeView === 'moodToHarmony' && (
         <>
-          {/* Mood to Harmony Section */}
-          <section className={`${styles.gallery} ${styles.moodToHarmonyLayout}`}>
-            {/* Left Box for Mood Wheel */}
-            <div className={styles.leftBox}>
-              <MoodWheelDiagram onMoodChange={handleMoodUpdate} />
-            </div>
-            {/* Right Column for controls and info */}
-            <div className={styles.rightColumn}>
-              {/* Right Top Box for sliders */}
-              <div className={styles.rightTopBox}>
-                <div className={styles.sliderContainer}>
-                  <label htmlFor="bpmSlider" className={styles.sliderLabel}>BPM</label>
-                  <input type="range" id="bpmSlider" min="60" max="180" defaultValue="120" className={styles.slider} />
-                </div>
-                <div className={styles.sliderContainer}>
-                  <label htmlFor="gainSlider" className={styles.sliderLabel}>Gain</label>
-                  <input type="range" id="gainSlider" min="0" max="100" defaultValue="50" className={styles.slider} />
+          {/* Mood to Harmony Section - Redesigned */}
+          <section className={styles.gallery}>
+            <div className={styles.moodToHarmonyLayout}>
+              {/* Left Side - Mood Wheel and Info */}
+              <div className={styles.leftBox}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100%' }}>
+                  <div style={{ marginBottom: '2rem' }}>
+                    <MoodWheelDiagram onMoodChange={handleMoodUpdate} />
+                  </div>
+                  
+                  {/* Current mood info card */}
+                  <div style={{ 
+                    width: '100%', 
+                    maxWidth: '400px',
+                    padding: '20px', 
+                    backgroundColor: '#e6f0fa', 
+                    borderRadius: '10px',
+                    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+                  }}>
+                    <h3 style={{ 
+                      marginTop: '0', 
+                      marginBottom: '15px', 
+                      fontSize: '1.2rem',
+                      color: '#1a365d',
+                      textAlign: 'center'
+                    }}>
+                      Current Mood State
+                    </h3>
+                    {currentMood ? (
+                      <div style={{ fontSize: '14px', lineHeight: '1.6' }}>
+                        <div style={{ marginBottom: '8px' }}>
+                          <strong>Sector:</strong> {pageSectorLabels[currentSector]} (#{currentSector + 1})
+                        </div>
+                        <div style={{ marginBottom: '8px' }}>
+                          <strong>Angle:</strong> {currentAngle.toFixed(1)}°
+                        </div>
+                        <div style={{ marginBottom: '8px' }}>
+                          <strong>X:</strong> {currentMood.x.toFixed(3)} | <strong>Y:</strong> {currentMood.y.toFixed(3)}
+                        </div>
+                        
+                        <div style={{ 
+                          marginTop: '15px', 
+                          padding: '12px', 
+                          backgroundColor: 'rgba(255,255,255,0.7)', 
+                          borderRadius: '6px' 
+                        }}>
+                          <h4 style={{ margin: '0 0 8px 0', fontSize: '1rem' }}>Suggested Music Features:</h4>
+                          {currentSector === 0 && <p style={{ margin: '0' }}>🎵 Tender, warm melodies</p>} 
+                          {currentSector === 1 && <p style={{ margin: '0' }}>🎵 Bright, surprising elements</p>}
+                          {currentSector === 2 && <p style={{ margin: '0' }}>🎵 Fast-paced, high-energy music</p>}
+                          {currentSector === 3 && <p style={{ margin: '0' }}>🎵 Tense, suspenseful sounds</p>} 
+                          {currentSector === 4 && <p style={{ margin: '0' }}>🎵 Intense, fiery music</p>}      
+                          {currentSector === 5 && <p style={{ margin: '0' }}>🎵 Slow, emotionally rich music</p>} 
+                          {currentSector === 6 && <p style={{ margin: '0' }}>🎵 Low-energy, reflective tunes</p>} 
+                          {currentSector === 7 && <p style={{ margin: '0' }}>🎵 Soothing, relaxing rhythms</p>} 
+                        </div>
+                      </div>
+                    ) : (
+                      <p style={{ textAlign: 'center', color: '#666' }}>
+                        Please drag the button on the circle to select a mood state.
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
-              {/* Right Bottom Box for mood details */}
-              <div className={styles.rightBottomBox}>
-                <h3 style={{ marginTop: '0', marginBottom: '15px' }}>Current Mood State</h3>
-                {currentMood ? (
-                  <div style={{ fontSize: '14px', lineHeight: '1.8' }}>
-                    <div><strong>Sector:</strong> {pageSectorLabels[currentSector]} (#{currentSector + 1})</div>
-                    <div><strong>Angle:</strong> {currentAngle.toFixed(1)}°</div>
-                    <div><strong>X Coordinate:</strong> {currentMood.x.toFixed(3)}</div>
-                    <div><strong>Y Coordinate:</strong> {currentMood.y.toFixed(3)}</div>
-                    
-                    <div style={{ marginTop: '20px', padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px' }}>
-                      <h4>Suggested Music Features:</h4>
-                      {currentSector === 0 && <p>🎵 Tender, warm melodies</p>} 
-                      {currentSector === 1 && <p>🎵 Bright, surprising elements</p>}
-                      {currentSector === 2 && <p>🎵 Fast-paced, high-energy music</p>}
-                      {currentSector === 3 && <p>🎵 Tense, suspenseful sounds</p>} 
-                      {currentSector === 4 && <p>🎵 Intense, fiery music</p>}      
-                      {currentSector === 5 && <p>🎵 Slow, emotionally rich music</p>} 
-                      {currentSector === 6 && <p>🎵 Low-energy, reflective tunes</p>} 
-                      {currentSector === 7 && <p>🎵 Soothing, relaxing rhythms</p>} 
+              
+              {/* Right Side - Distribution Charts */}
+              <div className={styles.rightColumn}>
+                {/* Gain Distribution */}
+                <div className={styles.rightTopBox} style={{ 
+                  backgroundColor: '#e6f0fa', 
+                  padding: '20px', 
+                  borderRadius: '10px',
+                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
+                  marginBottom: '1.5rem',
+                  minHeight: '300px'
+                }}>
+                  <h3 style={{ 
+                    marginTop: '0', 
+                    marginBottom: '15px', 
+                    textAlign: 'center',
+                    fontSize: '1.2rem',
+                    color: '#1a365d'
+                  }}>
+                    Gain Distribution
+                  </h3>
+                  {currentData.gain.length > 0 ? (
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                      <GainDistribution 
+                        data={currentData.gain} 
+                        title={sectors[currentSector]?.label || 'Selected Emotion'}
+                        width={400}
+                        height={220}
+                      />
                     </div>
-                  </div>
-                ) : (
-                  <p>Please drag the button on the circle to select a mood state.</p>
-                )}
+                  ) : (
+                    <div style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      height: '200px',
+                      color: '#666',
+                      flexDirection: 'column'
+                    }}>
+                      <p>Loading gain data...</p>
+                      <small>Sector: {currentSector}, Data length: {currentData.gain.length}</small>
+                    </div>
+                  )}
+                </div>
+                
+                {/* BPM Distribution */}
+                <div className={styles.rightBottomBox} style={{ 
+                  backgroundColor: '#e6f0fa', 
+                  padding: '20px', 
+                  borderRadius: '10px',
+                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
+                  minHeight: '300px'
+                }}>
+                  <h3 style={{ 
+                    marginTop: '0', 
+                    marginBottom: '15px', 
+                    textAlign: 'center',
+                    fontSize: '1.2rem',
+                    color: '#1a365d'
+                  }}>
+                    BPM Distribution
+                  </h3>
+                  {currentData.bpm.length > 0 ? (
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                      <BPMDistribution 
+                        data={currentData.bpm} 
+                        title={sectors[currentSector]?.label || 'Selected Emotion'}
+                        width={400}
+                        height={220}
+                      />
+                    </div>
+                  ) : (
+                    <div style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      height: '200px',
+                      color: '#666',
+                      flexDirection: 'column'
+                    }}>
+                      <p>Loading BPM data...</p>
+                      <small>Sector: {currentSector}, Data length: {currentData.bpm.length}</small>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </section>
