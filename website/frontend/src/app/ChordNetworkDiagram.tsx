@@ -1,200 +1,363 @@
-import React, { useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import * as d3 from 'd3';
 
-interface NodePosition {
-  cx: number;
-  cy: number;
-}
-
-interface ChordNodeDefinition {
+interface ChordNode {
   id: string;
-  label: string;
-  r: number;
-  color: string;
-  percentage?: string;
-  position: NodePosition;
-  connectsTo: string[]; // IDs of nodes it can connect to
+  pagerank: number;
+  x?: number;
+  y?: number;
+  fx?: number | null;
+  fy?: number | null;
 }
 
-// Master data for all possible nodes and their predefined layout and connections
-const masterNodeData: Record<string, ChordNodeDefinition> = {
-  F_center: {
-    id: 'F_center', label: 'F', r: 30, color: '#a2d5ab',
-    position: { cx: 250, cy: 150 },
-    connectsTo: ['C_top', 'G_main', 'Dm_orange', 'Em_yellow', 'Am_purple']
-  },
-  C_top: {
-    id: 'C_top', label: 'C', r: 25, color: '#ffb3ba', percentage: '25%',
-    position: { cx: 250, cy: 50 },
-    connectsTo: ['F_center']
-  },
-  G_main: {
-    id: 'G_main', label: 'G', r: 35, color: '#a7c7e7', percentage: '55%',
-    position: { cx: 150, cy: 100 },
-    connectsTo: ['F_center', 'Am_purple'] // G can also connect to Am based on some theories
-  },
-  Dm_orange: {
-    id: 'Dm_orange', label: 'Dm', r: 18, color: '#ffdfba', percentage: '8%',
-    position: { cx: 350, cy: 70 },
-    connectsTo: ['F_center']
-  },
-  Em_yellow: {
-    id: 'Em_yellow', label: 'Em', r: 15, color: '#ffffba', percentage: '5%',
-    position: { cx: 400, cy: 130 },
-    connectsTo: ['F_center', 'G_main'] // Em can also connect to G
-  },
-  Am_purple: {
-    id: 'Am_purple', label: 'Am', r: 20, color: '#d1b3ff',
-    position: { cx: 220, cy: 230 },
-    connectsTo: ['F_center', 'C_bottom', 'G_main']
-  },
-  C_bottom: {
-    id: 'C_bottom', label: 'C', r: 20, color: '#ffb3ba',
-    position: { cx: 150, cy: 300 },
-    connectsTo: ['Am_purple']
-  },
-  D_initial: { // User requested initial D
-    id: 'D_initial', label: 'D', r: 25, color: '#FFD700', // Gold
-    position: { cx: 380, cy: 250 }, // Position it somewhat away initially
-    connectsTo: ['G_main', 'Em_yellow'] // Example connections for D
-  },
-};
-
-interface DisplayedNode extends ChordNodeDefinition { }
-
-interface DisplayedConnection {
-  fromId: string;
-  toId: string;
-  id: string; // Unique ID for the connection (e.g., "F_center-C_top")
+interface ChordLink {
+  source: string | ChordNode;
+  target: string | ChordNode;
+  prob: number;
 }
 
-const initialNodeIds = ['C_top', 'D_initial', 'F_center'];
+interface ChordData {
+  nodes: ChordNode[];
+  links: ChordLink[];
+}
 
-const ChordNetworkDiagram = () => {
-  const [displayedNodes, setDisplayedNodes] = useState<Record<string, DisplayedNode>>(() => {
-    const initialNodes: Record<string, DisplayedNode> = {};
-    initialNodeIds.forEach(id => {
-      if (masterNodeData[id]) {
-        initialNodes[id] = { ...masterNodeData[id] };
+interface ChordNetworkDiagramProps {
+  genreId?: string;
+  width?: number;
+  height?: number;
+}
+
+const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
+  genreId = 'pop',
+  width = 800,
+  height = 600
+}) => {
+  const svgRef = useRef<SVGSVGElement>(null);
+  const [data, setData] = useState<ChordData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Mock data for demonstration
+  const mockData: Record<string, ChordData> = {
+    pop: {
+      nodes: [
+        { id: "Cmaj", pagerank: 0.18 },
+        { id: "Gmaj", pagerank: 0.15 },
+        { id: "Amin", pagerank: 0.14 },
+        { id: "Fmaj", pagerank: 0.12 },
+        { id: "Dmin", pagerank: 0.10 },
+        { id: "Emin", pagerank: 0.09 },
+        { id: "Bmaj", pagerank: 0.08 },
+        { id: "Dmaj", pagerank: 0.07 },
+        { id: "Em7", pagerank: 0.04 },
+        { id: "Am7", pagerank: 0.03 }
+      ],
+      links: [
+        { source: "Cmaj", target: "Gmaj", prob: 0.42 },
+        { source: "Cmaj", target: "Amin", prob: 0.28 },
+        { source: "Cmaj", target: "Fmaj", prob: 0.30 },
+        { source: "Gmaj", target: "Amin", prob: 0.35 },
+        { source: "Gmaj", target: "Cmaj", prob: 0.25 },
+        { source: "Gmaj", target: "Dmin", prob: 0.40 },
+        { source: "Amin", target: "Fmaj", prob: 0.45 },
+        { source: "Amin", target: "Dmaj", prob: 0.30 },
+        { source: "Amin", target: "Cmaj", prob: 0.25 },
+        { source: "Fmaj", target: "Cmaj", prob: 0.40 },
+        { source: "Fmaj", target: "Gmaj", prob: 0.35 },
+        { source: "Fmaj", target: "Dmin", prob: 0.25 },
+        { source: "Dmin", target: "Gmaj", prob: 0.50 },
+        { source: "Dmin", target: "Amin", prob: 0.30 },
+        { source: "Dmin", target: "Bmaj", prob: 0.20 },
+        { source: "Emin", target: "Amin", prob: 0.40 },
+        { source: "Emin", target: "Cmaj", prob: 0.35 },
+        { source: "Emin", target: "Dmaj", prob: 0.25 },
+        { source: "Bmaj", target: "Emin", prob: 0.45 },
+        { source: "Bmaj", target: "Fmaj", prob: 0.30 },
+        { source: "Bmaj", target: "Gmaj", prob: 0.25 },
+        { source: "Dmaj", target: "Gmaj", prob: 0.40 },
+        { source: "Dmaj", target: "Amin", prob: 0.35 },
+        { source: "Dmaj", target: "Bmaj", prob: 0.25 },
+        { source: "Em7", target: "Am7", prob: 0.60 },
+        { source: "Em7", target: "Cmaj", prob: 0.40 },
+        { source: "Am7", target: "Dmaj", prob: 0.70 },
+        { source: "Am7", target: "Fmaj", prob: 0.30 }
+      ]
+    },
+    rock: {
+      nodes: [
+        { id: "Em", pagerank: 0.20 },
+        { id: "G", pagerank: 0.18 },
+        { id: "D", pagerank: 0.16 },
+        { id: "C", pagerank: 0.15 },
+        { id: "Am", pagerank: 0.12 },
+        { id: "F", pagerank: 0.10 },
+        { id: "Bm", pagerank: 0.09 }
+      ],
+      links: [
+        { source: "Em", target: "G", prob: 0.40 },
+        { source: "Em", target: "D", prob: 0.35 },
+        { source: "Em", target: "C", prob: 0.25 },
+        { source: "G", target: "D", prob: 0.45 },
+        { source: "G", target: "Em", prob: 0.30 },
+        { source: "G", target: "C", prob: 0.25 },
+        { source: "D", target: "G", prob: 0.40 },
+        { source: "D", target: "Em", prob: 0.35 },
+        { source: "D", target: "Am", prob: 0.25 },
+        { source: "C", target: "G", prob: 0.50 },
+        { source: "C", target: "Am", prob: 0.30 },
+        { source: "C", target: "F", prob: 0.20 },
+        { source: "Am", target: "F", prob: 0.45 },
+        { source: "Am", target: "C", prob: 0.35 },
+        { source: "Am", target: "G", prob: 0.20 },
+        { source: "F", target: "C", prob: 0.60 },
+        { source: "F", target: "G", prob: 0.40 },
+        { source: "Bm", target: "Em", prob: 0.70 },
+        { source: "Bm", target: "D", prob: 0.30 }
+      ]
+    }
+  };
+
+  // Load data function
+  const loadData = async (genre: string) => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+      // First try to load real data
+      const response = await fetch(`/data/${genre}.json`);
+      if (response.ok) {
+        const jsonData = await response.json();
+        setData(jsonData);
+      } else {
+        // Fallback to mock data
+        if (mockData[genre]) {
+          setData(mockData[genre]);
+        } else {
+          throw new Error(`No data available for genre: ${genre}`);
+        }
       }
-    });
-    return initialNodes;
-  });
+    } catch (err) {
+      // Use mock data as fallback
+      if (mockData[genre]) {
+        setData(mockData[genre]);
+      } else {
+        setError(`Failed to load data for genre: ${genre}`);
+        setData(mockData.pop); // Default fallback
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  const [displayedConnections, setDisplayedConnections] = useState<Record<string, DisplayedConnection>>({});
+  // Load data when genreId changes
+  useEffect(() => {
+    loadData(genreId);
+  }, [genreId]);
 
-  const handleNodeClick = useCallback((nodeId: string) => {
-    const clickedNodeDef = masterNodeData[nodeId];
-    if (!clickedNodeDef) return;
+  // D3 visualization effect
+  useEffect(() => {
+    if (!data || loading) return;
 
-    setDisplayedNodes(prevNodes => {
-      const newNodes = { ...prevNodes };
-      clickedNodeDef.connectsTo.forEach(connectedNodeId => {
-        if (masterNodeData[connectedNodeId] && !newNodes[connectedNodeId]) {
-          newNodes[connectedNodeId] = { ...masterNodeData[connectedNodeId] };
+    const svg = d3.select(svgRef.current);
+    svg.selectAll("*").remove(); // Clean up previous render
+
+    // Set up scales
+    const radiusScale = d3.scaleLinear()
+      .domain(d3.extent(data.nodes, d => d.pagerank) as [number, number])
+      .range([5, 20]);
+
+    const widthScale = d3.scaleLinear()
+      .domain(d3.extent(data.links, d => d.prob) as [number, number])
+      .range([1, 5]);
+
+    // Create copies of data for D3
+    const nodes: ChordNode[] = data.nodes.map(d => ({ ...d }));
+    const links: ChordLink[] = data.links.map(d => ({ ...d }));
+
+    // Set up force simulation
+    const simulation = d3.forceSimulation(nodes)
+      .force("link", d3.forceLink(links).id((d: any) => d.id).distance(80))
+      .force("charge", d3.forceManyBody().strength(-300))
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .force("collision", d3.forceCollide().radius(d => radiusScale(d.pagerank) + 5));
+
+    // Create tooltip
+    const tooltip = d3.select("body").append("div")
+      .attr("class", "chord-tooltip")
+      .style("position", "absolute")
+      .style("visibility", "hidden")
+      .style("background", "rgba(0, 0, 0, 0.8)")
+      .style("color", "white")
+      .style("padding", "8px")
+      .style("border-radius", "4px")
+      .style("font-size", "12px")
+      .style("pointer-events", "none")
+      .style("z-index", "1000");
+
+    // Create arrow markers for directed edges
+    svg.append("defs").selectAll("marker")
+      .data(["arrow"])
+      .enter().append("marker")
+      .attr("id", "arrow")
+      .attr("viewBox", "0 -5 10 10")
+      .attr("refX", 15)
+      .attr("refY", 0)
+      .attr("markerWidth", 6)
+      .attr("markerHeight", 6)
+      .attr("orient", "auto")
+      .append("path")
+      .attr("d", "M0,-5L10,0L0,5")
+      .attr("fill", "#666");
+
+    // Create links
+    const link = svg.append("g")
+      .attr("class", "links")
+      .selectAll("line")
+      .data(links)
+      .enter().append("line")
+      .attr("stroke", "#666")
+      .attr("stroke-opacity", 0.6)
+      .attr("stroke-width", d => widthScale(d.prob))
+      .attr("marker-end", "url(#arrow)");
+
+    // Create nodes
+    const node = svg.append("g")
+      .attr("class", "nodes")
+      .selectAll("circle")
+      .data(nodes)
+      .enter().append("circle")
+      .attr("r", d => radiusScale(d.pagerank))
+      .attr("fill", "#69b3a2")
+      .attr("stroke", "#fff")
+      .attr("stroke-width", 2)
+      .style("cursor", "pointer")
+      .call(d3.drag<SVGCircleElement, ChordNode>()
+        .on("start", (event, d) => {
+          if (!event.active) simulation.alphaTarget(0.3).restart();
+          d.fx = d.x;
+          d.fy = d.y;
+        })
+        .on("drag", (event, d) => {
+          d.fx = event.x;
+          d.fy = event.y;
+        })
+        .on("end", (event, d) => {
+          if (!event.active) simulation.alphaTarget(0);
+          d.fx = null;
+          d.fy = null;
+        })
+      );
+
+    // Add labels
+    const label = svg.append("g")
+      .attr("class", "labels")
+      .selectAll("text")
+      .data(nodes)
+      .enter().append("text")
+      .text(d => d.id)
+      .attr("font-size", 12)
+      .attr("font-family", "Arial, sans-serif")
+      .attr("text-anchor", "middle")
+      .attr("dy", ".35em")
+      .attr("fill", "#333")
+      .style("pointer-events", "none");
+
+    // Add hover effects
+    node
+      .on("mouseover", (event, d) => {
+        // Get outgoing probabilities
+        const outgoing = links.filter(l => 
+          (typeof l.source === 'object' ? l.source.id : l.source) === d.id
+        );
+        
+        let tooltipContent = `<strong>${d.id}</strong><br/>`;
+        tooltipContent += `PageRank: ${d.pagerank.toFixed(3)}<br/>`;
+        
+        if (outgoing.length > 0) {
+          tooltipContent += `<br/><strong>Transitions:</strong><br/>`;
+          outgoing.forEach(link => {
+            const targetId = typeof link.target === 'object' ? link.target.id : link.target;
+            tooltipContent += `→ ${targetId}: ${(link.prob * 100).toFixed(1)}%<br/>`;
+          });
         }
+
+        tooltip.style("visibility", "visible").html(tooltipContent);
+        
+        // Highlight connected nodes and links
+        node.style("opacity", n => n === d || outgoing.some(l => 
+          (typeof l.target === 'object' ? l.target.id : l.target) === n.id
+        ) ? 1 : 0.3);
+        
+        link.style("opacity", l => 
+          (typeof l.source === 'object' ? l.source.id : l.source) === d.id ? 1 : 0.1
+        );
+        
+        label.style("opacity", n => n === d || outgoing.some(l => 
+          (typeof l.target === 'object' ? l.target.id : l.target) === n.id
+        ) ? 1 : 0.3);
+      })
+      .on("mousemove", (event) => {
+        tooltip
+          .style("top", (event.pageY - 10) + "px")
+          .style("left", (event.pageX + 10) + "px");
+      })
+      .on("mouseout", () => {
+        tooltip.style("visibility", "hidden");
+        node.style("opacity", 1);
+        link.style("opacity", 0.6);
+        label.style("opacity", 1);
       });
-      return newNodes;
+
+    // Update positions on simulation tick
+    simulation.on("tick", () => {
+      link
+        .attr("x1", d => (d.source as ChordNode).x!)
+        .attr("y1", d => (d.source as ChordNode).y!)
+        .attr("x2", d => (d.target as ChordNode).x!)
+        .attr("y2", d => (d.target as ChordNode).y!);
+
+      node
+        .attr("cx", d => d.x!)
+        .attr("cy", d => d.y!);
+
+      label
+        .attr("x", d => d.x!)
+        .attr("y", d => d.y!);
     });
 
-    setDisplayedConnections(prevConns => {
-      const newConns = { ...prevConns };
-      clickedNodeDef.connectsTo.forEach(connectedNodeId => {
-        if (masterNodeData[connectedNodeId]) { // Ensure target node is valid
-          const connId1 = `${nodeId}-${connectedNodeId}`;
-          // const connId2 = `${connectedNodeId}-${nodeId}`; // For undirected graphs or if connections are always two-way in master data
-          if (!newConns[connId1]) { // Add connection if it doesn't exist
-            newConns[connId1] = { fromId: nodeId, toId: connectedNodeId, id: connId1 };
-          }
-        }
-      });
-      return newConns;
-    });
-  }, []);
+    // Cleanup function
+    return () => {
+      simulation.stop();
+      tooltip.remove();
+    };
+  }, [data, width, height, loading]);
 
-  const arrowId = "arrowhead";
+  if (loading) {
+    return (
+      <div style={{ width, height, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div>Loading chord network for {genreId}...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div style={{ width, height, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ color: 'red' }}>Error: {error}</div>
+      </div>
+    );
+  }
 
   return (
-    <svg width="500" height="400" style={{ fontFamily: 'Arial, sans-serif' }}> {/* Increased height slightly */}
-      <defs>
-        <marker
-          id={arrowId}
-          markerWidth="10"
-          markerHeight="7"
-          refX="8" // Adjusted refX so arrow tip is at the line end
-          refY="3.5"
-          orient="auto"
-        >
-          <polygon points="0 0, 10 3.5, 0 7" fill="#555" />
-        </marker>
-      </defs>
-
-      {/* Connections / Lines */}
-      {Object.values(displayedConnections).map(conn => {
-        const fromNode = displayedNodes[conn.fromId];
-        const toNode = displayedNodes[conn.toId];
-
-        if (!fromNode || !toNode) return null; // Skip if nodes aren't visible
-
-        const angle = Math.atan2(toNode.position.cy - fromNode.position.cy, toNode.position.cx - fromNode.position.cx);
-        
-        // Adjust for arrowhead not to overlap circle
-        const sourceX = fromNode.position.cx + fromNode.r * Math.cos(angle);
-        const sourceY = fromNode.position.cy + fromNode.r * Math.sin(angle);
-        const targetX = toNode.position.cx - (toNode.r + 7) * Math.cos(angle); // +7 for arrowhead length
-        const targetY = toNode.position.cy - (toNode.r + 7) * Math.sin(angle);
-
-        return (
-          <line
-            key={conn.id}
-            x1={sourceX}
-            y1={sourceY}
-            x2={targetX}
-            y2={targetY}
-            stroke="#888"
-            strokeWidth="1.5"
-            markerEnd={`url(#${arrowId})`}
-          />
-        );
-      })}
-
-      {/* Nodes / Circles */}
-      {Object.values(displayedNodes).map((node) => (
-        <g 
-          key={node.id} 
-          transform={`translate(${node.position.cx}, ${node.position.cy})`} 
-          onClick={() => handleNodeClick(node.id)}
-          style={{ cursor: 'pointer' }}
-        >
-          <circle
-            r={node.r}
-            fill={node.color}
-            stroke="#777"
-            strokeWidth="1"
-          />
-          <text
-            textAnchor="middle"
-            y={node.percentage ? -(node.r / 2 + 10) : 5} 
-            fontSize="14px"
-            fill="#333" 
-            pointerEvents="none" // Make text non-interactive for click
-          >
-            {node.label}
-          </text>
-          {node.percentage && (
-            <text
-              textAnchor="middle"
-              y={node.r / 2 + 5} 
-              fontSize="11px"
-              fill="#555" 
-              pointerEvents="none" // Make text non-interactive for click
-            >
-              {node.percentage}
-            </text>
-          )}
-        </g>
-      ))}
-    </svg>
+    <div style={{ width, height }}>
+      <svg
+        ref={svgRef}
+        width={width}
+        height={height}
+        style={{ border: '1px solid #ddd' }}
+      />
+    </div>
   );
 };
 
-export default ChordNetworkDiagram; 
+export default ChordNetworkDiagram;
