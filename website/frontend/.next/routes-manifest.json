@@ -2,8 +2,16 @@
   "version": 3,
   "pages404": true,
   "caseSensitive": false,
-  "basePath": "",
+  "basePath": "/Apple-Pie-Chart",
   "redirects": [
+    {
+      "source": "/Apple-Pie-Chart/",
+      "destination": "/Apple-Pie-Chart",
+      "basePath": false,
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^/Apple-Pie-Chart/$"
+    },
     {
       "source": "/:path+/",
       "destination": "/:path+",
@@ -51,5 +59,15 @@
     "pathHeader": "x-nextjs-rewritten-path",
     "queryHeader": "x-nextjs-rewritten-query"
   },
-  "rewrites": []
+  "rewrites": {
+    "beforeFiles": [
+      {
+        "source": "/Apple-Pie-Chart//_next/:path+",
+        "destination": "/Apple-Pie-Chart/_next/:path+",
+        "regex": "^/Apple-Pie-Chart//_next(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))(?:/)?$"
+      }
+    ],
+    "afterFiles": [],
+    "fallback": []
+  }
 }
