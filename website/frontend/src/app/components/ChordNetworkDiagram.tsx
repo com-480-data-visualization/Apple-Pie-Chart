@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import * as Tone from 'tone';
 
+// Local type definitions for chord data structure
 interface ChordNode {
   id: string;
   pagerank: number;
@@ -9,12 +10,18 @@ interface ChordNode {
   y?: number;
   fx?: number | null;
   fy?: number | null;
+  // D3 simulation properties, will be added by D3
+  index?: number;
+  vx?: number;
+  vy?: number;
 }
 
 interface ChordLink {
-  source: string | ChordNode;
-  target: string | ChordNode;
+  source: string | ChordNode; // Can be string ID initially, D3 resolves to ChordNode object
+  target: string | ChordNode; // Can be string ID initially, D3 resolves to ChordNode object
   prob: number;
+  // D3 simulation properties, will be added by D3
+  index?: number;
 }
 
 interface ChordData {
@@ -39,6 +46,8 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [audioReady, setAudioReady] = useState(false);
   const synthRef = useRef<Tone.PolySynth | null>(null);
+
+  const prefix = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
   // Initialize audio
   useEffect(() => {
@@ -161,30 +170,25 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
     setError(null);
     
     try {
-      const response = await fetch(`/data/${culture}.json`);
+      const response = await fetch(`${prefix}/data/${culture}.json`);
       if (response.ok) {
-        const jsonData = await response.json();
+        const jsonData: ChordData = await response.json();
         setData(jsonData);
       } else {
-        throw new Error(`Failed to load data for culture: ${culture}`);
+        console.error(`Failed to load data for culture: ${culture}, status: ${response.status}`);
+        setError(`Failed to load data for ${culture}. Status: ${response.status}`);
+        // Fallback to a minimal default if specific culture data fails
+        setData({ 
+          nodes: [{ id: "N/A", pagerank: 0.1 }], 
+          links: [] 
+        });
       }
     } catch (err) {
-      console.error('Error loading data:', err);
-      setError(`Failed to load data for culture: ${culture}`);
-      // Create fallback data
+      console.error('Error fetching or parsing data:', err);
+      setError(`Error loading data for ${culture}.`);
       setData({
-        nodes: [
-          { id: "C", pagerank: 0.20 },
-          { id: "G", pagerank: 0.18 },
-          { id: "Am", pagerank: 0.15 },
-          { id: "F", pagerank: 0.12 }
-        ],
-        links: [
-          { source: "C", target: "G", prob: 0.40 },
-          { source: "G", target: "Am", prob: 0.35 },
-          { source: "Am", target: "F", prob: 0.45 },
-          { source: "F", target: "C", prob: 0.50 }
-        ]
+        nodes: [{ id: "Error", pagerank: 0.1 }],
+        links: []
       });
     } finally {
       setLoading(false);
@@ -205,23 +209,30 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
 
     // Set up scales
     const radiusScale = d3.scaleLinear()
-      .domain(d3.extent(data.nodes, d => d.pagerank) as [number, number])
+      .domain(d3.extent(data.nodes, (d: ChordNode) => d.pagerank) as [number, number] || [0,1]) // Added fallback for domain
       .range([8, 25]);
 
     const widthScale = d3.scaleLinear()
-      .domain(d3.extent(data.links, d => d.prob) as [number, number])
+      .domain(d3.extent(data.links, (d: ChordLink) => d.prob) as [number, number] || [0,1]) // Added fallback for domain
       .range([1, 4]);
 
-    // Create copies of data for D3
+    // Create copies of data for D3, ensuring D3 gets the types it expects
     const nodes: ChordNode[] = data.nodes.map(d => ({ ...d }));
-    const links: ChordLink[] = data.links.map(d => ({ ...d }));
+    const links: d3.SimulationLinkDatum<ChordNode>[] = data.links.map(d => ({ 
+        source: d.source, // D3 will resolve this by ID if string
+        target: d.target, // D3 will resolve this by ID if string
+        prob: d.prob 
+    }));
 
     // Set up force simulation
-    const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id((d: any) => d.id).distance(60))
-      .force("charge", d3.forceManyBody().strength(-400))
+    const simulation = d3.forceSimulation<ChordNode, d3.SimulationLinkDatum<ChordNode>>(nodes)
+      .force("link", d3.forceLink<ChordNode, d3.SimulationLinkDatum<ChordNode>>(links)
+        .id((d: ChordNode) => d.id)
+        .strength(0.1)
+        .distance(80))
+      .force("charge", d3.forceManyBody().strength(-350))
       .force("center", d3.forceCenter(width / 2, height / 2))
-      .force("collision", d3.forceCollide().radius(d => radiusScale(d.pagerank) + 8));
+      .force("collision", d3.forceCollide().radius((d) => radiusScale((d as ChordNode).pagerank) + 6));
 
     // Create tooltip
     const tooltip = d3.select("body").append("div")
@@ -253,38 +264,38 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
       .attr("fill", "#888");
 
     // Create links
-    const link = svg.append("g")
+    const linkElements = svg.append("g")
       .attr("class", "links")
       .selectAll("line")
       .data(links)
       .enter().append("line")
       .attr("stroke", "#888")
       .attr("stroke-opacity", 0.6)
-      .attr("stroke-width", d => widthScale(d.prob))
+      .attr("stroke-width", d => widthScale((d as ChordLink).prob)) // type assertion
       .attr("marker-end", "url(#arrow)");
 
     // Create nodes
-    const node = svg.append("g")
+    const nodeElements = svg.append("g")
       .attr("class", "nodes")
       .selectAll("circle")
       .data(nodes)
       .enter().append("circle")
-      .attr("r", d => radiusScale(d.pagerank))
+      .attr("r", (d: ChordNode) => radiusScale(d.pagerank))
       .attr("fill", "#4A90E2")
       .attr("stroke", "#fff")
       .attr("stroke-width", 2)
       .style("cursor", "pointer")
       .call(d3.drag<SVGCircleElement, ChordNode>()
-        .on("start", (event, d) => {
+        .on("start", (event, d: ChordNode) => {
           if (!event.active) simulation.alphaTarget(0.3).restart();
           d.fx = d.x;
           d.fy = d.y;
         })
-        .on("drag", (event, d) => {
+        .on("drag", (event, d: ChordNode) => {
           d.fx = event.x;
           d.fy = event.y;
         })
-        .on("end", (event, d) => {
+        .on("end", (event, d: ChordNode) => {
           if (!event.active) simulation.alphaTarget(0);
           d.fx = null;
           d.fy = null;
@@ -292,12 +303,12 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
       );
 
     // Add labels
-    const label = svg.append("g")
+    const labelElements = svg.append("g")
       .attr("class", "labels")
       .selectAll("text")
       .data(nodes)
       .enter().append("text")
-      .text(d => d.id)
+      .text((d: ChordNode) => d.id)
       .attr("font-size", 11)
       .attr("font-family", "Arial, sans-serif")
       .attr("font-weight", "bold")
@@ -307,8 +318,8 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
       .style("pointer-events", "none");
 
     // Add hover effects and click handlers
-    node
-      .on("click", async (event, d) => {
+    nodeElements
+      .on("click", async (event, d: ChordNode) => {
         event.stopPropagation();
         await playChord(d.id);
         
@@ -323,10 +334,10 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
           .attr("r", radiusScale(d.pagerank))
           .attr("fill", "#4A90E2");
       })
-      .on("mouseover", (event, d) => {
+      .on("mouseover", (event, d: ChordNode) => {
         // Get outgoing probabilities
         const outgoing = links.filter(l => 
-          (typeof l.source === 'object' ? l.source.id : l.source) === d.id
+          (typeof l.source === 'object' ? (l.source as ChordNode).id : l.source) === d.id
         );
         
         let tooltipContent = `<strong>${d.id}</strong><br/>`;
@@ -335,8 +346,9 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
         if (outgoing.length > 0) {
           tooltipContent += `<br/><strong>Common progressions:</strong><br/>`;
           outgoing.forEach(link => {
-            const targetId = typeof link.target === 'object' ? link.target.id : link.target;
-            tooltipContent += `${d.id} → ${targetId}: ${(link.prob * 100).toFixed(0)}%<br/>`;
+            const targetNode = link.target as ChordNode;
+            const sourceNode = link.source as ChordNode;
+            tooltipContent += `${sourceNode.id} → ${targetNode.id}: ${((link as any).prob * 100).toFixed(0)}%<br/>`; // Access prob via any if not on SimulationLinkDatum
           });
         }
         tooltipContent += `<br/><em>Click to play chord!</em>`;
@@ -344,43 +356,43 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
         tooltip.style("visibility", "visible").html(tooltipContent);
         
         // Highlight connected nodes and links
-        node.style("opacity", n => n === d || outgoing.some(l => 
-          (typeof l.target === 'object' ? l.target.id : l.target) === n.id
+        nodeElements.style("opacity", (n: ChordNode) => n === d || outgoing.some(l => 
+          (l.target as ChordNode).id === n.id
         ) ? 1 : 0.3);
         
-        link.style("opacity", l => 
-          (typeof l.source === 'object' ? l.source.id : l.source) === d.id ? 1 : 0.1
+        linkElements.style("opacity", (l: d3.SimulationLinkDatum<ChordNode>) => 
+          (l.source as ChordNode).id === d.id ? 1 : 0.1
         );
         
-        label.style("opacity", n => n === d || outgoing.some(l => 
-          (typeof l.target === 'object' ? l.target.id : l.target) === n.id
+        labelElements.style("opacity", (n: ChordNode) => n === d || outgoing.some(l => 
+          (l.target as ChordNode).id === n.id
         ) ? 1 : 0.3);
       })
-      .on("mousemove", (event) => {
+      .on("mousemove", (event: MouseEvent) => {
         tooltip
           .style("top", (event.pageY - 10) + "px")
           .style("left", (event.pageX + 10) + "px");
       })
       .on("mouseout", () => {
         tooltip.style("visibility", "hidden");
-        node.style("opacity", 1);
-        link.style("opacity", 0.6);
-        label.style("opacity", 1);
+        nodeElements.style("opacity", 1);
+        linkElements.style("opacity", 0.6);
+        labelElements.style("opacity", 1);
       });
 
     // Update positions on simulation tick
     simulation.on("tick", () => {
-      link
+      linkElements
         .attr("x1", d => (d.source as ChordNode).x!)
         .attr("y1", d => (d.source as ChordNode).y!)
         .attr("x2", d => (d.target as ChordNode).x!)
         .attr("y2", d => (d.target as ChordNode).y!);
 
-      node
+      nodeElements
         .attr("cx", d => d.x!)
         .attr("cy", d => d.y!);
 
-      label
+      labelElements
         .attr("x", d => d.x!)
         .attr("y", d => d.y!);
     });

@@ -3,14 +3,14 @@
 import Image from 'next/image';
 import styles from './page.module.css';
 import { useState } from 'react';
-import ChordNetworkDiagram from './ChordNetworkDiagram';
-import MoodWheelDiagram from './MoodWheelDiagram';
+import ChordNetworkDiagram from './components/ChordNetworkDiagram';
+import MoodWheelDiagram   from './components/MoodWheelDiagram';
 
 const prefix = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 /* ---------- Static Data ---------- */
 const cultures = [
-  { id: 'usa-general', name: 'USA (General)' },
+  // { id: 'usa-general', name: 'USA (General)' },
   { id: 'france', name: 'France' },
   { id: 'usa-south', name: 'USA (South)' },
   { id: 'argentina-latin-america', name: 'Argentina/Latin America' },
@@ -25,7 +25,7 @@ const cultures = [
   { id: 'portugal', name: 'Portugal' },
   { id: 'italy', name: 'Italy' },
   { id: 'japan', name: 'Japan' },
-  { id: 'turkey', name: 'Turkey' },
+  // { id: 'turkey', name: 'Turkey' },
 ];
 
 const moodData = [
