@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
+import * as Tone from 'tone';
 
 interface ChordNode {
   id: string;
@@ -22,137 +23,178 @@ interface ChordData {
 }
 
 interface ChordNetworkDiagramProps {
-  genreId?: string;
+  cultureId?: string;
   width?: number;
   height?: number;
 }
 
 const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
-  genreId = 'pop',
-  width = 800,
-  height = 600
+  cultureId = 'usa-general',
+  width = 400,
+  height = 300
 }) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const [data, setData] = useState<ChordData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [audioReady, setAudioReady] = useState(false);
+  const synthRef = useRef<Tone.PolySynth | null>(null);
 
-  // Mock data for demonstration
-  const mockData: Record<string, ChordData> = {
-    pop: {
-      nodes: [
-        { id: "Cmaj", pagerank: 0.18 },
-        { id: "Gmaj", pagerank: 0.15 },
-        { id: "Amin", pagerank: 0.14 },
-        { id: "Fmaj", pagerank: 0.12 },
-        { id: "Dmin", pagerank: 0.10 },
-        { id: "Emin", pagerank: 0.09 },
-        { id: "Bmaj", pagerank: 0.08 },
-        { id: "Dmaj", pagerank: 0.07 },
-        { id: "Em7", pagerank: 0.04 },
-        { id: "Am7", pagerank: 0.03 }
-      ],
-      links: [
-        { source: "Cmaj", target: "Gmaj", prob: 0.42 },
-        { source: "Cmaj", target: "Amin", prob: 0.28 },
-        { source: "Cmaj", target: "Fmaj", prob: 0.30 },
-        { source: "Gmaj", target: "Amin", prob: 0.35 },
-        { source: "Gmaj", target: "Cmaj", prob: 0.25 },
-        { source: "Gmaj", target: "Dmin", prob: 0.40 },
-        { source: "Amin", target: "Fmaj", prob: 0.45 },
-        { source: "Amin", target: "Dmaj", prob: 0.30 },
-        { source: "Amin", target: "Cmaj", prob: 0.25 },
-        { source: "Fmaj", target: "Cmaj", prob: 0.40 },
-        { source: "Fmaj", target: "Gmaj", prob: 0.35 },
-        { source: "Fmaj", target: "Dmin", prob: 0.25 },
-        { source: "Dmin", target: "Gmaj", prob: 0.50 },
-        { source: "Dmin", target: "Amin", prob: 0.30 },
-        { source: "Dmin", target: "Bmaj", prob: 0.20 },
-        { source: "Emin", target: "Amin", prob: 0.40 },
-        { source: "Emin", target: "Cmaj", prob: 0.35 },
-        { source: "Emin", target: "Dmaj", prob: 0.25 },
-        { source: "Bmaj", target: "Emin", prob: 0.45 },
-        { source: "Bmaj", target: "Fmaj", prob: 0.30 },
-        { source: "Bmaj", target: "Gmaj", prob: 0.25 },
-        { source: "Dmaj", target: "Gmaj", prob: 0.40 },
-        { source: "Dmaj", target: "Amin", prob: 0.35 },
-        { source: "Dmaj", target: "Bmaj", prob: 0.25 },
-        { source: "Em7", target: "Am7", prob: 0.60 },
-        { source: "Em7", target: "Cmaj", prob: 0.40 },
-        { source: "Am7", target: "Dmaj", prob: 0.70 },
-        { source: "Am7", target: "Fmaj", prob: 0.30 }
-      ]
-    },
-    rock: {
-      nodes: [
-        { id: "Em", pagerank: 0.20 },
-        { id: "G", pagerank: 0.18 },
-        { id: "D", pagerank: 0.16 },
-        { id: "C", pagerank: 0.15 },
-        { id: "Am", pagerank: 0.12 },
-        { id: "F", pagerank: 0.10 },
-        { id: "Bm", pagerank: 0.09 }
-      ],
-      links: [
-        { source: "Em", target: "G", prob: 0.40 },
-        { source: "Em", target: "D", prob: 0.35 },
-        { source: "Em", target: "C", prob: 0.25 },
-        { source: "G", target: "D", prob: 0.45 },
-        { source: "G", target: "Em", prob: 0.30 },
-        { source: "G", target: "C", prob: 0.25 },
-        { source: "D", target: "G", prob: 0.40 },
-        { source: "D", target: "Em", prob: 0.35 },
-        { source: "D", target: "Am", prob: 0.25 },
-        { source: "C", target: "G", prob: 0.50 },
-        { source: "C", target: "Am", prob: 0.30 },
-        { source: "C", target: "F", prob: 0.20 },
-        { source: "Am", target: "F", prob: 0.45 },
-        { source: "Am", target: "C", prob: 0.35 },
-        { source: "Am", target: "G", prob: 0.20 },
-        { source: "F", target: "C", prob: 0.60 },
-        { source: "F", target: "G", prob: 0.40 },
-        { source: "Bm", target: "Em", prob: 0.70 },
-        { source: "Bm", target: "D", prob: 0.30 }
-      ]
+  // Initialize audio
+  useEffect(() => {
+    const initAudio = async () => {
+      try {
+        // Create a polyphonic piano synth
+        synthRef.current = new Tone.PolySynth(Tone.Synth, {
+          oscillator: {
+            type: "sine"
+          },
+          envelope: {
+            attack: 0.02,
+            decay: 0.2,
+            sustain: 0.3,
+            release: 1
+          }
+        }).toDestination();
+
+        // Add some reverb for a more piano-like sound
+        const reverb = new Tone.Reverb({
+          decay: 1.5,
+          wet: 0.3
+        }).toDestination();
+        
+        synthRef.current.connect(reverb);
+        setAudioReady(true);
+      } catch (err) {
+        console.warn('Audio initialization failed:', err);
+      }
+    };
+
+    initAudio();
+
+    return () => {
+      if (synthRef.current) {
+        synthRef.current.dispose();
+      }
+    };
+  }, []);
+
+  // Chord to notes mapping
+  const getChordNotes = (chordName: string): string[] => {
+    // Clean up chord name - remove common suffixes/prefixes
+    const cleanChord = chordName.replace(/maj|major/i, '').replace(/min|minor/i, 'm').trim();
+    
+    const chordMap: Record<string, string[]> = {
+      // Major chords
+      'C': ['C4', 'E4', 'G4'],
+      'D': ['D4', 'F#4', 'A4'],
+      'E': ['E4', 'G#4', 'B4'],
+      'F': ['F4', 'A4', 'C5'],
+      'G': ['G4', 'B4', 'D5'],
+      'A': ['A4', 'C#5', 'E5'],
+      'B': ['B4', 'D#5', 'F#5'],
+      
+      // Minor chords
+      'Am': ['A4', 'C5', 'E5'],
+      'Bm': ['B4', 'D5', 'F#5'],
+      'Cm': ['C4', 'Eb4', 'G4'],
+      'Dm': ['D4', 'F4', 'A4'],
+      'Em': ['E4', 'G4', 'B4'],
+      'Fm': ['F4', 'Ab4', 'C5'],
+      'Gm': ['G4', 'Bb4', 'D5'],
+      
+      // 7th chords
+      'Am7': ['A4', 'C5', 'E5', 'G5'],
+      'Em7': ['E4', 'G4', 'B4', 'D5'],
+      'Cmaj7': ['C4', 'E4', 'G4', 'B4'],
+      'Dmaj7': ['D4', 'F#4', 'A4', 'C#5'],
+      'Fmaj7': ['F4', 'A4', 'C5', 'E5'],
+      'Gmaj7': ['G4', 'B4', 'D5', 'F#5'],
+      
+      // Extended and altered chords
+      'C7': ['C4', 'E4', 'G4', 'Bb4'],
+      'D7': ['D4', 'F#4', 'A4', 'C5'],
+      'E7': ['E4', 'G#4', 'B4', 'D5'],
+      'F7': ['F4', 'A4', 'C5', 'Eb5'],
+      'G7': ['G4', 'B4', 'D5', 'F5'],
+      'A7': ['A4', 'C#5', 'E5', 'G5'],
+      'B7': ['B4', 'D#5', 'F#5', 'A5']
+    };
+
+    // Try exact match first, then fuzzy matching
+    if (chordMap[cleanChord]) {
+      return chordMap[cleanChord];
+    }
+    
+    // Fuzzy matching for different notation styles
+    const baseNote = cleanChord.charAt(0).toUpperCase();
+    const isMinor = cleanChord.toLowerCase().includes('m') && !cleanChord.toLowerCase().includes('maj');
+    
+    if (isMinor) {
+      return chordMap[baseNote + 'm'] || chordMap[baseNote] || ['C4', 'E4', 'G4'];
+    } else {
+      return chordMap[baseNote] || ['C4', 'E4', 'G4'];
+    }
+  };
+
+  // Play chord function
+  const playChord = async (chordName: string) => {
+    if (!audioReady || !synthRef.current) {
+      try {
+        await Tone.start();
+        setAudioReady(true);
+      } catch (err) {
+        console.warn('Could not start audio:', err);
+        return;
+      }
+    }
+
+    if (synthRef.current) {
+      const notes = getChordNotes(chordName);
+      synthRef.current.triggerAttackRelease(notes, '1n');
     }
   };
 
   // Load data function
-  const loadData = async (genre: string) => {
+  const loadData = async (culture: string) => {
     setLoading(true);
     setError(null);
     
     try {
-      // First try to load real data
-      const response = await fetch(`/data/${genre}.json`);
+      const response = await fetch(`/data/${culture}.json`);
       if (response.ok) {
         const jsonData = await response.json();
         setData(jsonData);
       } else {
-        // Fallback to mock data
-        if (mockData[genre]) {
-          setData(mockData[genre]);
-        } else {
-          throw new Error(`No data available for genre: ${genre}`);
-        }
+        throw new Error(`Failed to load data for culture: ${culture}`);
       }
     } catch (err) {
-      // Use mock data as fallback
-      if (mockData[genre]) {
-        setData(mockData[genre]);
-      } else {
-        setError(`Failed to load data for genre: ${genre}`);
-        setData(mockData.pop); // Default fallback
-      }
+      console.error('Error loading data:', err);
+      setError(`Failed to load data for culture: ${culture}`);
+      // Create fallback data
+      setData({
+        nodes: [
+          { id: "C", pagerank: 0.20 },
+          { id: "G", pagerank: 0.18 },
+          { id: "Am", pagerank: 0.15 },
+          { id: "F", pagerank: 0.12 }
+        ],
+        links: [
+          { source: "C", target: "G", prob: 0.40 },
+          { source: "G", target: "Am", prob: 0.35 },
+          { source: "Am", target: "F", prob: 0.45 },
+          { source: "F", target: "C", prob: 0.50 }
+        ]
+      });
     } finally {
       setLoading(false);
     }
   };
 
-  // Load data when genreId changes
+  // Load data when cultureId changes
   useEffect(() => {
-    loadData(genreId);
-  }, [genreId]);
+    loadData(cultureId);
+  }, [cultureId]);
 
   // D3 visualization effect
   useEffect(() => {
@@ -164,11 +206,11 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
     // Set up scales
     const radiusScale = d3.scaleLinear()
       .domain(d3.extent(data.nodes, d => d.pagerank) as [number, number])
-      .range([5, 20]);
+      .range([8, 25]);
 
     const widthScale = d3.scaleLinear()
       .domain(d3.extent(data.links, d => d.prob) as [number, number])
-      .range([1, 5]);
+      .range([1, 4]);
 
     // Create copies of data for D3
     const nodes: ChordNode[] = data.nodes.map(d => ({ ...d }));
@@ -176,23 +218,24 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
 
     // Set up force simulation
     const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id((d: any) => d.id).distance(80))
-      .force("charge", d3.forceManyBody().strength(-300))
+      .force("link", d3.forceLink(links).id((d: any) => d.id).distance(60))
+      .force("charge", d3.forceManyBody().strength(-400))
       .force("center", d3.forceCenter(width / 2, height / 2))
-      .force("collision", d3.forceCollide().radius(d => radiusScale(d.pagerank) + 5));
+      .force("collision", d3.forceCollide().radius(d => radiusScale(d.pagerank) + 8));
 
     // Create tooltip
     const tooltip = d3.select("body").append("div")
       .attr("class", "chord-tooltip")
       .style("position", "absolute")
       .style("visibility", "hidden")
-      .style("background", "rgba(0, 0, 0, 0.8)")
+      .style("background", "rgba(0, 0, 0, 0.9)")
       .style("color", "white")
-      .style("padding", "8px")
-      .style("border-radius", "4px")
+      .style("padding", "10px")
+      .style("border-radius", "6px")
       .style("font-size", "12px")
       .style("pointer-events", "none")
-      .style("z-index", "1000");
+      .style("z-index", "1000")
+      .style("box-shadow", "0 4px 12px rgba(0,0,0,0.3)");
 
     // Create arrow markers for directed edges
     svg.append("defs").selectAll("marker")
@@ -200,14 +243,14 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
       .enter().append("marker")
       .attr("id", "arrow")
       .attr("viewBox", "0 -5 10 10")
-      .attr("refX", 15)
+      .attr("refX", 20)
       .attr("refY", 0)
       .attr("markerWidth", 6)
       .attr("markerHeight", 6)
       .attr("orient", "auto")
       .append("path")
       .attr("d", "M0,-5L10,0L0,5")
-      .attr("fill", "#666");
+      .attr("fill", "#888");
 
     // Create links
     const link = svg.append("g")
@@ -215,7 +258,7 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
       .selectAll("line")
       .data(links)
       .enter().append("line")
-      .attr("stroke", "#666")
+      .attr("stroke", "#888")
       .attr("stroke-opacity", 0.6)
       .attr("stroke-width", d => widthScale(d.prob))
       .attr("marker-end", "url(#arrow)");
@@ -227,7 +270,7 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
       .data(nodes)
       .enter().append("circle")
       .attr("r", d => radiusScale(d.pagerank))
-      .attr("fill", "#69b3a2")
+      .attr("fill", "#4A90E2")
       .attr("stroke", "#fff")
       .attr("stroke-width", 2)
       .style("cursor", "pointer")
@@ -255,15 +298,31 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
       .data(nodes)
       .enter().append("text")
       .text(d => d.id)
-      .attr("font-size", 12)
+      .attr("font-size", 11)
       .attr("font-family", "Arial, sans-serif")
+      .attr("font-weight", "bold")
       .attr("text-anchor", "middle")
       .attr("dy", ".35em")
       .attr("fill", "#333")
       .style("pointer-events", "none");
 
-    // Add hover effects
+    // Add hover effects and click handlers
     node
+      .on("click", async (event, d) => {
+        event.stopPropagation();
+        await playChord(d.id);
+        
+        // Visual feedback on click
+        d3.select(event.currentTarget)
+          .transition()
+          .duration(100)
+          .attr("r", radiusScale(d.pagerank) * 1.4)
+          .attr("fill", "#FF6B6B")
+          .transition()
+          .duration(300)
+          .attr("r", radiusScale(d.pagerank))
+          .attr("fill", "#4A90E2");
+      })
       .on("mouseover", (event, d) => {
         // Get outgoing probabilities
         const outgoing = links.filter(l => 
@@ -271,15 +330,16 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
         );
         
         let tooltipContent = `<strong>${d.id}</strong><br/>`;
-        tooltipContent += `PageRank: ${d.pagerank.toFixed(3)}<br/>`;
+        tooltipContent += `Importance: ${(d.pagerank * 100).toFixed(1)}%<br/>`;
         
         if (outgoing.length > 0) {
-          tooltipContent += `<br/><strong>Transitions:</strong><br/>`;
+          tooltipContent += `<br/><strong>Common progressions:</strong><br/>`;
           outgoing.forEach(link => {
             const targetId = typeof link.target === 'object' ? link.target.id : link.target;
-            tooltipContent += `→ ${targetId}: ${(link.prob * 100).toFixed(1)}%<br/>`;
+            tooltipContent += `${d.id} → ${targetId}: ${(link.prob * 100).toFixed(0)}%<br/>`;
           });
         }
+        tooltipContent += `<br/><em>Click to play chord!</em>`;
 
         tooltip.style("visibility", "visible").html(tooltipContent);
         
@@ -334,28 +394,69 @@ const ChordNetworkDiagram: React.FC<ChordNetworkDiagramProps> = ({
 
   if (loading) {
     return (
-      <div style={{ width, height, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div>Loading chord network for {genreId}...</div>
+      <div style={{ 
+        width, 
+        height, 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        background: '#f8f9fa',
+        borderRadius: '8px',
+        border: '1px solid #dee2e6'
+      }}>
+        <div style={{ textAlign: 'center', color: '#6c757d' }}>
+          <div style={{ marginBottom: '8px' }}>🎵</div>
+          <div>Loading chords...</div>
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div style={{ width, height, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ color: 'red' }}>Error: {error}</div>
+      <div style={{ 
+        width, 
+        height, 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        background: '#f8d7da',
+        borderRadius: '8px',
+        border: '1px solid #f5c6cb'
+      }}>
+        <div style={{ color: '#721c24', textAlign: 'center', fontSize: '14px' }}>
+          <div>⚠️ Could not load chord data</div>
+          <div style={{ fontSize: '12px', marginTop: '4px' }}>Using fallback data</div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div style={{ width, height }}>
+    <div style={{ width, height, position: 'relative' }}>
       <svg
         ref={svgRef}
         width={width}
         height={height}
-        style={{ border: '1px solid #ddd' }}
+        style={{ 
+          background: '#fafafa',
+          borderRadius: '8px',
+          border: '1px solid #e9ecef'
+        }}
       />
+      <div style={{ 
+        position: 'absolute', 
+        top: 8, 
+        right: 8, 
+        background: 'rgba(74, 144, 226, 0.9)', 
+        color: 'white',
+        padding: '4px 8px', 
+        borderRadius: '4px',
+        fontSize: '11px',
+        fontWeight: 'bold'
+      }}>
+        🎹 Click chords to play
+      </div>
     </div>
   );
 };

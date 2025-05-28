@@ -1,0 +1,8016 @@
+{
+  "nodes": [
+    {
+      "id": "Dmaj",
+      "pagerank": 0.026759187912047296
+    },
+    {
+      "id": "Gbmaj",
+      "pagerank": 0.01549880180002411
+    },
+    {
+      "id": "Fmaj7",
+      "pagerank": 0.01781728125077202
+    },
+    {
+      "id": "Gb7",
+      "pagerank": 0.011743853029679115
+    },
+    {
+      "id": "Bmin7",
+      "pagerank": 0.020953538641958126
+    },
+    {
+      "id": "Bmaj",
+      "pagerank": 0.019523281424624762
+    },
+    {
+      "id": "Fmin7",
+      "pagerank": 0.02172047799517226
+    },
+    {
+      "id": "Ebmin",
+      "pagerank": 0.006771084008296051
+    },
+    {
+      "id": "Amaj7",
+      "pagerank": 0.010844710657171837
+    },
+    {
+      "id": "Dbmin",
+      "pagerank": 0.012636876121599649
+    },
+    {
+      "id": "Eb7",
+      "pagerank": 0.013117699362813047
+    },
+    {
+      "id": "F7",
+      "pagerank": 0.01401919409671482
+    },
+    {
+      "id": "Cmin7",
+      "pagerank": 0.0187891165661535
+    },
+    {
+      "id": "Amaj",
+      "pagerank": 0.022798727706178516
+    },
+    {
+      "id": "Bbmin7",
+      "pagerank": 0.018261218798347155
+    },
+    {
+      "id": "Ebmin7",
+      "pagerank": 0.013370981672212052
+    },
+    {
+      "id": "Emaj",
+      "pagerank": 0.023699997508113295
+    },
+    {
+      "id": "Fmin",
+      "pagerank": 0.0160388696060458
+    },
+    {
+      "id": "C7",
+      "pagerank": 0.017972836348112378
+    },
+    {
+      "id": "Ebmaj",
+      "pagerank": 0.020525855176545947
+    },
+    {
+      "id": "Dmaj7",
+      "pagerank": 0.01479816034388642
+    },
+    {
+      "id": "Amin",
+      "pagerank": 0.01846648027503387
+    },
+    {
+      "id": "Dbmaj",
+      "pagerank": 0.014982534849406209
+    },
+    {
+      "id": "Abmin7",
+      "pagerank": 0.014022025668170372
+    },
+    {
+      "id": "Bmin",
+      "pagerank": 0.016980619547951693
+    },
+    {
+      "id": "G7",
+      "pagerank": 0.02156926617624383
+    },
+    {
+      "id": "Abmin",
+      "pagerank": 0.00730870431411866
+    },
+    {
+      "id": "Bb7",
+      "pagerank": 0.012228639767732018
+    },
+    {
+      "id": "Emaj7",
+      "pagerank": 0.010609332655209993
+    },
+    {
+      "id": "Amin7",
+      "pagerank": 0.022361383284061828
+    },
+    {
+      "id": "Dmin",
+      "pagerank": 0.017164260488173697
+    },
+    {
+      "id": "Dbmin7",
+      "pagerank": 0.017324847581382224
+    },
+    {
+      "id": "Gmaj7",
+      "pagerank": 0.013970945887473404
+    },
+    {
+      "id": "Gbmaj7",
+      "pagerank": 0.0062229912365446794
+    },
+    {
+      "id": "Abmaj7",
+      "pagerank": 0.01120454395575524
+    },
+    {
+      "id": "Abmaj",
+      "pagerank": 0.01801038872380812
+    },
+    {
+      "id": "A7",
+      "pagerank": 0.01972131108844072
+    },
+    {
+      "id": "Gbmin7",
+      "pagerank": 0.020168309737776675
+    },
+    {
+      "id": "Gmaj",
+      "pagerank": 0.025894425220764426
+    },
+    {
+      "id": "Dmin7",
+      "pagerank": 0.022976796242258103
+    },
+    {
+      "id": "E7",
+      "pagerank": 0.016098192983566427
+    },
+    {
+      "id": "Emin",
+      "pagerank": 0.019544337738385882
+    },
+    {
+      "id": "Fmaj",
+      "pagerank": 0.024726907512222014
+    },
+    {
+      "id": "Gmin",
+      "pagerank": 0.01602205583987043
+    },
+    {
+      "id": "Gbmin",
+      "pagerank": 0.013297522338660153
+    },
+    {
+      "id": "Bbmin",
+      "pagerank": 0.010230274071710113
+    },
+    {
+      "id": "Gmin7",
+      "pagerank": 0.0196664809554761
+    },
+    {
+      "id": "D7",
+      "pagerank": 0.02131459726218709
+    },
+    {
+      "id": "Cmaj7",
+      "pagerank": 0.015472644222529022
+    },
+    {
+      "id": "Bmaj7",
+      "pagerank": 0.007560591664222891
+    },
+    {
+      "id": "Cmin",
+      "pagerank": 0.016392075779073992
+    },
+    {
+      "id": "Db7",
+      "pagerank": 0.010723639550491512
+    },
+    {
+      "id": "Cmaj",
+      "pagerank": 0.0249909136843059
+    },
+    {
+      "id": "Emin7",
+      "pagerank": 0.02492233585717602
+    },
+    {
+      "id": "B7",
+      "pagerank": 0.01777250777967309
+    },
+    {
+      "id": "Bbmaj",
+      "pagerank": 0.0213781168853946
+    },
+    {
+      "id": "Ab7",
+      "pagerank": 0.01354660043501696
+    },
+    {
+      "id": "Bbmaj7",
+      "pagerank": 0.013950189515643172
+    },
+    {
+      "id": "Dbmaj7",
+      "pagerank": 0.010245028176507529
+    },
+    {
+      "id": "Ebmaj7",
+      "pagerank": 0.01329543102111296
+    }
+  ],
+  "links": [
+    {
+      "source": "Bbmaj",
+      "target": "Ebmaj",
+      "prob": 0.17779444861215304
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Bbmaj",
+      "prob": 0.14705882352941177
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Fmaj",
+      "prob": 0.18304576144036008
+    },
+    {
+      "source": "Fmaj",
+      "target": "Bbmaj",
+      "prob": 0.20538302277432713
+    },
+    {
+      "source": "Fmaj",
+      "target": "Dmaj",
+      "prob": 0.005797101449275362
+    },
+    {
+      "source": "Dmaj",
+      "target": "Ebmaj",
+      "prob": 0.0016346546791990192
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Abmaj",
+      "prob": 0.19053708439897699
+    },
+    {
+      "source": "Abmaj",
+      "target": "Fmaj",
+      "prob": 0.03339882121807466
+    },
+    {
+      "source": "Bbmaj",
+      "target": "D7",
+      "prob": 0.005251312828207052
+    },
+    {
+      "source": "D7",
+      "target": "Cmin7",
+      "prob": 0.004106776180698152
+    },
+    {
+      "source": "Cmin7",
+      "target": "Fmaj",
+      "prob": 0.30128205128205127
+    },
+    {
+      "source": "Fmaj",
+      "target": "Cmin7",
+      "prob": 0.016563146997929608
+    },
+    {
+      "source": "Cmin7",
+      "target": "Bbmaj",
+      "prob": 0.20192307692307693
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Gmin",
+      "prob": 0.00639386189258312
+    },
+    {
+      "source": "Gmin",
+      "target": "Ebmaj",
+      "prob": 0.0859375
+    },
+    {
+      "source": "Fmaj",
+      "target": "Ebmaj",
+      "prob": 0.03643892339544513
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Fmaj",
+      "prob": 0.19437340153452684
+    },
+    {
+      "source": "Fmaj",
+      "target": "Gmin",
+      "prob": 0.008695652173913044
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Gmaj",
+      "prob": 0.018754688672168042
+    },
+    {
+      "source": "Gmaj",
+      "target": "Ebmaj",
+      "prob": 0.00030184123151222455
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Cmin",
+      "prob": 0.005115089514066497
+    },
+    {
+      "source": "Cmin",
+      "target": "Fmaj",
+      "prob": 0.06779661016949153
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Bb7",
+      "prob": 0.002250562640660165
+    },
+    {
+      "source": "Bb7",
+      "target": "Ebmaj",
+      "prob": 0.48936170212765956
+    },
+    {
+      "source": "Gmaj",
+      "target": "Cmin7",
+      "prob": 0.005433142167220043
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Cmin7",
+      "prob": 0.07801950487621906
+    },
+    {
+      "source": "Ebmaj",
+      "target": "F7",
+      "prob": 0.07544757033248081
+    },
+    {
+      "source": "F7",
+      "target": "Gmin7",
+      "prob": 0.059027777777777776
+    },
+    {
+      "source": "Gmin7",
+      "target": "Dmin7",
+      "prob": 0.03556485355648536
+    },
+    {
+      "source": "Dmaj",
+      "target": "Amin7",
+      "prob": 0.014303228442991417
+    },
+    {
+      "source": "Amin7",
+      "target": "Gmaj",
+      "prob": 0.1361963190184049
+    },
+    {
+      "source": "Gmaj",
+      "target": "Amaj",
+      "prob": 0.05493510413522487
+    },
+    {
+      "source": "Amaj",
+      "target": "Dmaj",
+      "prob": 0.2786697247706422
+    },
+    {
+      "source": "Dmaj",
+      "target": "Amaj",
+      "prob": 0.2006538618716796
+    },
+    {
+      "source": "Amaj",
+      "target": "Emin7",
+      "prob": 0.03784403669724771
+    },
+    {
+      "source": "Emin7",
+      "target": "A7",
+      "prob": 0.1533406352683461
+    },
+    {
+      "source": "A7",
+      "target": "Dmaj",
+      "prob": 0.5360824742268041
+    },
+    {
+      "source": "Amaj",
+      "target": "Gmaj",
+      "prob": 0.08944954128440367
+    },
+    {
+      "source": "Dmaj",
+      "target": "A7",
+      "prob": 0.05557825909276665
+    },
+    {
+      "source": "Dmaj",
+      "target": "Gmaj",
+      "prob": 0.2341642827952595
+    },
+    {
+      "source": "Gmaj",
+      "target": "A7",
+      "prob": 0.03471174162390583
+    },
+    {
+      "source": "Dmaj",
+      "target": "Emin7",
+      "prob": 0.07928075194115243
+    },
+    {
+      "source": "Emin7",
+      "target": "Amaj",
+      "prob": 0.2552026286966046
+    },
+    {
+      "source": "Dmaj",
+      "target": "Emin",
+      "prob": 0.023702492848385777
+    },
+    {
+      "source": "Emin",
+      "target": "Gmaj",
+      "prob": 0.039938556067588324
+    },
+    {
+      "source": "Emin7",
+      "target": "Gmaj",
+      "prob": 0.029572836801752465
+    },
+    {
+      "source": "B7",
+      "target": "Emin",
+      "prob": 0.1220159151193634
+    },
+    {
+      "source": "Emin",
+      "target": "Bmaj",
+      "prob": 0.026113671274961597
+    },
+    {
+      "source": "Bmaj",
+      "target": "Emin",
+      "prob": 0.05405405405405406
+    },
+    {
+      "source": "Emin",
+      "target": "Cmaj",
+      "prob": 0.043010752688172046
+    },
+    {
+      "source": "Cmaj",
+      "target": "Dmaj",
+      "prob": 0.061696658097686374
+    },
+    {
+      "source": "Gmaj",
+      "target": "Cmaj",
+      "prob": 0.2873528523996378
+    },
+    {
+      "source": "Cmaj",
+      "target": "D7",
+      "prob": 0.029379360998898273
+    },
+    {
+      "source": "D7",
+      "target": "Gmaj",
+      "prob": 0.5749486652977412
+    },
+    {
+      "source": "Dmaj",
+      "target": "Cmaj",
+      "prob": 0.06702084184715978
+    },
+    {
+      "source": "Gmaj",
+      "target": "Bmaj",
+      "prob": 0.0027165710836100213
+    },
+    {
+      "source": "Gmaj",
+      "target": "Emin",
+      "prob": 0.03018412315122246
+    },
+    {
+      "source": "Emin",
+      "target": "Dmaj",
+      "prob": 0.13978494623655913
+    },
+    {
+      "source": "Gmaj",
+      "target": "B7",
+      "prob": 0.006640507093268941
+    },
+    {
+      "source": "Cmaj",
+      "target": "Fmaj",
+      "prob": 0.21483657730444364
+    },
+    {
+      "source": "Fmaj",
+      "target": "G7",
+      "prob": 0.06128364389233954
+    },
+    {
+      "source": "G7",
+      "target": "Cmaj",
+      "prob": 0.5289367429340511
+    },
+    {
+      "source": "Cmaj",
+      "target": "Gmaj",
+      "prob": 0.1821520381931693
+    },
+    {
+      "source": "Gmaj",
+      "target": "Fmaj",
+      "prob": 0.06308481738605494
+    },
+    {
+      "source": "Fmaj",
+      "target": "Gmaj",
+      "prob": 0.1474120082815735
+    },
+    {
+      "source": "Gmaj",
+      "target": "G7",
+      "prob": 0.0012073649260488982
+    },
+    {
+      "source": "Fmaj",
+      "target": "Cmaj",
+      "prob": 0.16770186335403728
+    },
+    {
+      "source": "Gmaj",
+      "target": "Dmin7",
+      "prob": 0.05131300935707818
+    },
+    {
+      "source": "Dmin7",
+      "target": "Cmaj",
+      "prob": 0.13560666137985725
+    },
+    {
+      "source": "Abmaj",
+      "target": "Fmin",
+      "prob": 0.003929273084479371
+    },
+    {
+      "source": "Fmin",
+      "target": "Dbmaj",
+      "prob": 0.024844720496894408
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Ebmaj",
+      "prob": 0.08558558558558559
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Fmin",
+      "prob": 0.021739130434782608
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Dbmaj",
+      "prob": 0.00639386189258312
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Bbmin7",
+      "prob": 0.05855855855855856
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Ebmaj",
+      "prob": 0.33695652173913043
+    },
+    {
+      "source": "Abmaj",
+      "target": "Ebmaj",
+      "prob": 0.16699410609037327
+    },
+    {
+      "source": "Abmaj",
+      "target": "Dbmaj",
+      "prob": 0.09823182711198428
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Bbmin7",
+      "prob": 0.015345268542199489
+    },
+    {
+      "source": "Abmaj",
+      "target": "Cmin7",
+      "prob": 0.029469548133595286
+    },
+    {
+      "source": "Cmin7",
+      "target": "Dbmaj",
+      "prob": 0.016025641025641024
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Eb7",
+      "prob": 0.3641304347826087
+    },
+    {
+      "source": "Eb7",
+      "target": "Abmaj",
+      "prob": 0.5751633986928104
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Eb7",
+      "prob": 0.04504504504504504
+    },
+    {
+      "source": "Gmaj",
+      "target": "Dmaj",
+      "prob": 0.12979172955025656
+    },
+    {
+      "source": "Cmaj",
+      "target": "Amin7",
+      "prob": 0.031215571061329415
+    },
+    {
+      "source": "Amin7",
+      "target": "Dmaj",
+      "prob": 0.09693251533742331
+    },
+    {
+      "source": "Gmaj",
+      "target": "Bmin7",
+      "prob": 0.022638092363416844
+    },
+    {
+      "source": "Bmin7",
+      "target": "Cmaj",
+      "prob": 0.027878787878787878
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Dmin",
+      "prob": 0.011252813203300824
+    },
+    {
+      "source": "Dmin",
+      "target": "Ebmaj",
+      "prob": 0.020754716981132074
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Fmin7",
+      "prob": 0.10997442455242967
+    },
+    {
+      "source": "Fmin7",
+      "target": "Fmaj",
+      "prob": 0.02027027027027027
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Bbmaj7",
+      "prob": 0.0037509377344336083
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Ebmaj",
+      "prob": 0.10619469026548672
+    },
+    {
+      "source": "Fmaj",
+      "target": "Ebmaj7",
+      "prob": 0.0037267080745341614
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Dmin7",
+      "prob": 0.1076923076923077
+    },
+    {
+      "source": "A7",
+      "target": "Gmaj",
+      "prob": 0.060382916053019146
+    },
+    {
+      "source": "A7",
+      "target": "Emin7",
+      "prob": 0.048600883652430045
+    },
+    {
+      "source": "Bbmaj",
+      "target": "C7",
+      "prob": 0.08027006751687922
+    },
+    {
+      "source": "C7",
+      "target": "Fmaj",
+      "prob": 0.676595744680851
+    },
+    {
+      "source": "Fmaj",
+      "target": "Dmin",
+      "prob": 0.02857142857142857
+    },
+    {
+      "source": "Dmin",
+      "target": "Amin",
+      "prob": 0.035849056603773584
+    },
+    {
+      "source": "Amin",
+      "target": "Dmin",
+      "prob": 0.06506364922206506
+    },
+    {
+      "source": "Dmin",
+      "target": "Bbmaj",
+      "prob": 0.05660377358490566
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Cmaj",
+      "prob": 0.08777194298574643
+    },
+    {
+      "source": "Cmaj",
+      "target": "A7",
+      "prob": 0.01836210062431142
+    },
+    {
+      "source": "A7",
+      "target": "Dmin",
+      "prob": 0.10751104565537556
+    },
+    {
+      "source": "Cmaj",
+      "target": "Amaj",
+      "prob": 0.0058758721997796545
+    },
+    {
+      "source": "Amaj",
+      "target": "Dmin",
+      "prob": 0.02790519877675841
+    },
+    {
+      "source": "Fmaj",
+      "target": "Amaj",
+      "prob": 0.007039337474120083
+    },
+    {
+      "source": "Amaj",
+      "target": "Dmin7",
+      "prob": 0.011467889908256881
+    },
+    {
+      "source": "Abmin7",
+      "target": "Bmaj",
+      "prob": 0.024242424242424242
+    },
+    {
+      "source": "Bmaj",
+      "target": "Db7",
+      "prob": 0.016891891891891893
+    },
+    {
+      "source": "Db7",
+      "target": "Gbmaj",
+      "prob": 0.13385826771653545
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Ebmin7",
+      "prob": 0.027607361963190184
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Db7",
+      "prob": 0.027777777777777776
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Db7",
+      "prob": 0.018404907975460124
+    },
+    {
+      "source": "Db7",
+      "target": "Bmaj",
+      "prob": 0.015748031496062992
+    },
+    {
+      "source": "Bmaj",
+      "target": "Dbmaj",
+      "prob": 0.015765765765765764
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Gbmaj",
+      "prob": 0.25225225225225223
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Bmaj",
+      "prob": 0.37423312883435583
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Dbmaj",
+      "prob": 0.11349693251533742
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Gb7",
+      "prob": 0.02702702702702703
+    },
+    {
+      "source": "Gb7",
+      "target": "Bmaj",
+      "prob": 0.375
+    },
+    {
+      "source": "Bmaj",
+      "target": "Gbmaj",
+      "prob": 0.13851351351351351
+    },
+    {
+      "source": "Db7",
+      "target": "Gb7",
+      "prob": 0.007874015748031496
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Abmin7",
+      "prob": 0.06134969325153374
+    },
+    {
+      "source": "Amin",
+      "target": "Gmaj",
+      "prob": 0.14002828854314003
+    },
+    {
+      "source": "Gmaj",
+      "target": "Amin",
+      "prob": 0.028071234530636886
+    },
+    {
+      "source": "Cmaj",
+      "target": "Emaj",
+      "prob": 0.013587954461990452
+    },
+    {
+      "source": "Emaj",
+      "target": "Amin",
+      "prob": 0.06725755995828989
+    },
+    {
+      "source": "Gmaj",
+      "target": "Amin7",
+      "prob": 0.06036824630244492
+    },
+    {
+      "source": "Cmaj",
+      "target": "Amin",
+      "prob": 0.05802423797282409
+    },
+    {
+      "source": "Dmin7",
+      "target": "E7",
+      "prob": 0.02141157811260904
+    },
+    {
+      "source": "E7",
+      "target": "Amin",
+      "prob": 0.15949820788530467
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Db7",
+      "prob": 0.009009009009009009
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Abmaj",
+      "prob": 0.13513513513513514
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Fmin7",
+      "prob": 0.018018018018018018
+    },
+    {
+      "source": "Fmin7",
+      "target": "Dbmaj",
+      "prob": 0.02927927927927928
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Dbmaj7",
+      "prob": 0.003067484662576687
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Abmaj",
+      "prob": 0.037037037037037035
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Ab7",
+      "prob": 0.013513513513513514
+    },
+    {
+      "source": "Ab7",
+      "target": "Dbmaj",
+      "prob": 0.12612612612612611
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Ab7",
+      "prob": 0.046012269938650305
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Ebmin7",
+      "prob": 0.07657657657657657
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Gbmaj",
+      "prob": 0.027777777777777776
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Abmaj",
+      "prob": 0.1388888888888889
+    },
+    {
+      "source": "Abmaj",
+      "target": "Bbmin7",
+      "prob": 0.060903732809430254
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Dbmaj",
+      "prob": 0.016304347826086956
+    },
+    {
+      "source": "A7",
+      "target": "Bmin7",
+      "prob": 0.036818851251840944
+    },
+    {
+      "source": "Bmin7",
+      "target": "Gmaj",
+      "prob": 0.1296969696969697
+    },
+    {
+      "source": "Bmin7",
+      "target": "E7",
+      "prob": 0.10787878787878788
+    },
+    {
+      "source": "E7",
+      "target": "Dmaj",
+      "prob": 0.02867383512544803
+    },
+    {
+      "source": "Amaj",
+      "target": "Gbmin7",
+      "prob": 0.02217125382262997
+    },
+    {
+      "source": "Gbmin7",
+      "target": "E7",
+      "prob": 0.012482662968099861
+    },
+    {
+      "source": "E7",
+      "target": "Amaj",
+      "prob": 0.517921146953405
+    },
+    {
+      "source": "Amaj",
+      "target": "Bmin7",
+      "prob": 0.07607033639143732
+    },
+    {
+      "source": "Bmin7",
+      "target": "Amaj",
+      "prob": 0.17575757575757575
+    },
+    {
+      "source": "Amaj",
+      "target": "Cmaj7",
+      "prob": 0.0007645259938837921
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Amaj",
+      "prob": 0.014492753623188406
+    },
+    {
+      "source": "Amaj",
+      "target": "E7",
+      "prob": 0.039755351681957186
+    },
+    {
+      "source": "Dmaj",
+      "target": "Emaj",
+      "prob": 0.06702084184715978
+    },
+    {
+      "source": "Emaj",
+      "target": "Amaj",
+      "prob": 0.32116788321167883
+    },
+    {
+      "source": "Bmin7",
+      "target": "Emin",
+      "prob": 0.025454545454545455
+    },
+    {
+      "source": "Emin",
+      "target": "Bmin7",
+      "prob": 0.018433179723502304
+    },
+    {
+      "source": "Bmin7",
+      "target": "Emaj",
+      "prob": 0.18787878787878787
+    },
+    {
+      "source": "E7",
+      "target": "Bmin7",
+      "prob": 0.05197132616487455
+    },
+    {
+      "source": "Amaj",
+      "target": "Bmaj",
+      "prob": 0.06345565749235474
+    },
+    {
+      "source": "Bmaj",
+      "target": "Emaj",
+      "prob": 0.3963963963963964
+    },
+    {
+      "source": "Amaj",
+      "target": "B7",
+      "prob": 0.0581039755351682
+    },
+    {
+      "source": "B7",
+      "target": "Emaj",
+      "prob": 0.5039787798408488
+    },
+    {
+      "source": "Emaj",
+      "target": "B7",
+      "prob": 0.08967674661105318
+    },
+    {
+      "source": "B7",
+      "target": "Amaj",
+      "prob": 0.09549071618037135
+    },
+    {
+      "source": "Amaj",
+      "target": "Emaj",
+      "prob": 0.14755351681957188
+    },
+    {
+      "source": "Dmaj",
+      "target": "E7",
+      "prob": 0.045361667347772784
+    },
+    {
+      "source": "Emaj",
+      "target": "Bmaj",
+      "prob": 0.145985401459854
+    },
+    {
+      "source": "F7",
+      "target": "Bbmaj",
+      "prob": 0.5902777777777778
+    },
+    {
+      "source": "Fmaj",
+      "target": "C7",
+      "prob": 0.06542443064182195
+    },
+    {
+      "source": "C7",
+      "target": "Bbmaj",
+      "prob": 0.059574468085106386
+    },
+    {
+      "source": "Cmaj",
+      "target": "Bbmaj",
+      "prob": 0.014322438486962909
+    },
+    {
+      "source": "C7",
+      "target": "Dmin7",
+      "prob": 0.023404255319148935
+    },
+    {
+      "source": "Dmin7",
+      "target": "Fmaj",
+      "prob": 0.041237113402061855
+    },
+    {
+      "source": "Abmin7",
+      "target": "Emaj",
+      "prob": 0.09090909090909091
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Dbmin7",
+      "prob": 0.03680981595092025
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Gbmaj",
+      "prob": 0.050970873786407765
+    },
+    {
+      "source": "Emaj",
+      "target": "Gb7",
+      "prob": 0.013555787278415016
+    },
+    {
+      "source": "Bmaj",
+      "target": "Dbmin7",
+      "prob": 0.08558558558558559
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Gb7",
+      "prob": 0.02669902912621359
+    },
+    {
+      "source": "Bmaj",
+      "target": "Gb7",
+      "prob": 0.013513513513513514
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Bbmin7",
+      "prob": 0.006134969325153374
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Emaj",
+      "prob": 0.005434782608695652
+    },
+    {
+      "source": "Amin7",
+      "target": "Cmaj",
+      "prob": 0.020858895705521473
+    },
+    {
+      "source": "Cmaj",
+      "target": "Gmin7",
+      "prob": 0.03158281307381564
+    },
+    {
+      "source": "Gmin7",
+      "target": "Fmaj",
+      "prob": 0.16108786610878661
+    },
+    {
+      "source": "Fmaj",
+      "target": "Emin",
+      "prob": 0.005797101449275362
+    },
+    {
+      "source": "Emin",
+      "target": "Fmin",
+      "prob": 0.004608294930875576
+    },
+    {
+      "source": "Fmin",
+      "target": "Gmaj",
+      "prob": 0.09316770186335403
+    },
+    {
+      "source": "Gmaj",
+      "target": "Gmin",
+      "prob": 0.005734983398732267
+    },
+    {
+      "source": "Gmin",
+      "target": "Cmaj",
+      "prob": 0.1953125
+    },
+    {
+      "source": "Fmaj",
+      "target": "A7",
+      "prob": 0.007453416149068323
+    },
+    {
+      "source": "A7",
+      "target": "Dmin7",
+      "prob": 0.061855670103092786
+    },
+    {
+      "source": "Dmin7",
+      "target": "Gmaj",
+      "prob": 0.34258524980174465
+    },
+    {
+      "source": "Cmaj",
+      "target": "Fmaj7",
+      "prob": 0.016893132574366507
+    },
+    {
+      "source": "Gmaj",
+      "target": "Fmin",
+      "prob": 0.005734983398732267
+    },
+    {
+      "source": "Fmin",
+      "target": "A7",
+      "prob": 0.006211180124223602
+    },
+    {
+      "source": "A7",
+      "target": "Cmaj",
+      "prob": 0.004418262150220913
+    },
+    {
+      "source": "Cmaj",
+      "target": "Dmin7",
+      "prob": 0.10356224752111641
+    },
+    {
+      "source": "Fmaj",
+      "target": "Fmin",
+      "prob": 0.008281573498964804
+    },
+    {
+      "source": "Fmin",
+      "target": "Cmaj",
+      "prob": 0.14285714285714285
+    },
+    {
+      "source": "Gmaj",
+      "target": "Fmaj7",
+      "prob": 0.009357078176878962
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Cmaj",
+      "prob": 0.21890547263681592
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Bb7",
+      "prob": 0.04219948849104859
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Fmin7",
+      "prob": 0.03675918979744936
+    },
+    {
+      "source": "Fmin7",
+      "target": "Bbmaj",
+      "prob": 0.2635135135135135
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Fmaj7",
+      "prob": 0.0025575447570332483
+    },
+    {
+      "source": "A7",
+      "target": "Gmaj7",
+      "prob": 0.007363770250368188
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Dmaj",
+      "prob": 0.16778523489932887
+    },
+    {
+      "source": "Bmin7",
+      "target": "Cmaj7",
+      "prob": 0.009696969696969697
+    },
+    {
+      "source": "Emin",
+      "target": "Amaj",
+      "prob": 0.12749615975422426
+    },
+    {
+      "source": "Bmin7",
+      "target": "A7",
+      "prob": 0.01575757575757576
+    },
+    {
+      "source": "Bmin7",
+      "target": "Dmaj",
+      "prob": 0.03151515151515152
+    },
+    {
+      "source": "Amaj",
+      "target": "Gmaj7",
+      "prob": 0.005351681957186544
+    },
+    {
+      "source": "Emin7",
+      "target": "Dmaj",
+      "prob": 0.12267250821467689
+    },
+    {
+      "source": "Amin",
+      "target": "Amaj",
+      "prob": 0.028288543140028287
+    },
+    {
+      "source": "Bmin7",
+      "target": "Emin7",
+      "prob": 0.07515151515151515
+    },
+    {
+      "source": "Cmin",
+      "target": "Bbmaj",
+      "prob": 0.11186440677966102
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Abmaj",
+      "prob": 0.03825956489122281
+    },
+    {
+      "source": "Abmaj",
+      "target": "Gmaj",
+      "prob": 0.07072691552062868
+    },
+    {
+      "source": "Gmaj",
+      "target": "Cmin",
+      "prob": 0.02444913975249019
+    },
+    {
+      "source": "Cmin7",
+      "target": "Gmaj",
+      "prob": 0.02564102564102564
+    },
+    {
+      "source": "Cmin",
+      "target": "Fmin7",
+      "prob": 0.21016949152542372
+    },
+    {
+      "source": "Fmin7",
+      "target": "Gmaj",
+      "prob": 0.08333333333333333
+    },
+    {
+      "source": "Dmin7",
+      "target": "Fmin7",
+      "prob": 0.007930214115781126
+    },
+    {
+      "source": "Fmin7",
+      "target": "Dmin7",
+      "prob": 0.013513513513513514
+    },
+    {
+      "source": "Gmaj",
+      "target": "Bbmaj",
+      "prob": 0.002112888620585572
+    },
+    {
+      "source": "Fmin",
+      "target": "G7",
+      "prob": 0.18012422360248448
+    },
+    {
+      "source": "G7",
+      "target": "Cmaj7",
+      "prob": 0.03633916554508748
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Gmaj",
+      "prob": 0.12681159420289856
+    },
+    {
+      "source": "Cmaj",
+      "target": "Fmin",
+      "prob": 0.00918105031215571
+    },
+    {
+      "source": "Fmin",
+      "target": "Bb7",
+      "prob": 0.09316770186335403
+    },
+    {
+      "source": "Gmaj",
+      "target": "C7",
+      "prob": 0.0024147298520977964
+    },
+    {
+      "source": "C7",
+      "target": "Gmaj",
+      "prob": 0.006382978723404255
+    },
+    {
+      "source": "Cmin",
+      "target": "Gmaj",
+      "prob": 0.10847457627118644
+    },
+    {
+      "source": "Bmaj",
+      "target": "Amaj",
+      "prob": 0.11936936936936937
+    },
+    {
+      "source": "Emaj",
+      "target": "Emin",
+      "prob": 0.005735140771637122
+    },
+    {
+      "source": "Bmaj",
+      "target": "Bmin7",
+      "prob": 0.01126126126126126
+    },
+    {
+      "source": "Bmaj",
+      "target": "Gbmin",
+      "prob": 0.012387387387387387
+    },
+    {
+      "source": "Gbmin",
+      "target": "Bmaj",
+      "prob": 0.11794871794871795
+    },
+    {
+      "source": "Bmaj",
+      "target": "Gbmin7",
+      "prob": 0.04842342342342342
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Bmaj",
+      "prob": 0.07628294036061026
+    },
+    {
+      "source": "Bmaj",
+      "target": "Gmaj",
+      "prob": 0.0022522522522522522
+    },
+    {
+      "source": "Gmaj",
+      "target": "Db7",
+      "prob": 0.0006036824630244491
+    },
+    {
+      "source": "Db7",
+      "target": "Emaj",
+      "prob": 0.007874015748031496
+    },
+    {
+      "source": "Emaj",
+      "target": "Emin7",
+      "prob": 0.0010427528675703858
+    },
+    {
+      "source": "Dmaj",
+      "target": "Gb7",
+      "prob": 0.0016346546791990192
+    },
+    {
+      "source": "Gb7",
+      "target": "Bmin",
+      "prob": 0.140625
+    },
+    {
+      "source": "Bmin",
+      "target": "Emaj",
+      "prob": 0.1864406779661017
+    },
+    {
+      "source": "Emin7",
+      "target": "Emaj",
+      "prob": 0.004381161007667032
+    },
+    {
+      "source": "Emaj",
+      "target": "Bmin",
+      "prob": 0.01981230448383733
+    },
+    {
+      "source": "Bmin",
+      "target": "E7",
+      "prob": 0.09887005649717515
+    },
+    {
+      "source": "Amaj",
+      "target": "Bmin",
+      "prob": 0.027140672782874617
+    },
+    {
+      "source": "Dmaj",
+      "target": "Gbmaj",
+      "prob": 0.004086636697997548
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Bmin",
+      "prob": 0.05828220858895705
+    },
+    {
+      "source": "Dmaj",
+      "target": "Gbmin7",
+      "prob": 0.029423784225582346
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Bmin",
+      "prob": 0.04160887656033287
+    },
+    {
+      "source": "Bmin",
+      "target": "Amaj",
+      "prob": 0.13559322033898305
+    },
+    {
+      "source": "Cmin",
+      "target": "G7",
+      "prob": 0.05423728813559322
+    },
+    {
+      "source": "G7",
+      "target": "Cmin",
+      "prob": 0.09286675639300135
+    },
+    {
+      "source": "Cmin",
+      "target": "Cmaj",
+      "prob": 0.013559322033898305
+    },
+    {
+      "source": "Fmin",
+      "target": "Cmin",
+      "prob": 0.09316770186335403
+    },
+    {
+      "source": "Cmin",
+      "target": "C7",
+      "prob": 0.010169491525423728
+    },
+    {
+      "source": "C7",
+      "target": "Fmin",
+      "prob": 0.029787234042553193
+    },
+    {
+      "source": "Cmin",
+      "target": "Bb7",
+      "prob": 0.003389830508474576
+    },
+    {
+      "source": "Ebmaj",
+      "target": "G7",
+      "prob": 0.0025575447570332483
+    },
+    {
+      "source": "Cmin",
+      "target": "Fmin",
+      "prob": 0.061016949152542375
+    },
+    {
+      "source": "Cmin",
+      "target": "D7",
+      "prob": 0.05423728813559322
+    },
+    {
+      "source": "Amin7",
+      "target": "Dmin7",
+      "prob": 0.13374233128834356
+    },
+    {
+      "source": "Dmin7",
+      "target": "G7",
+      "prob": 0.1958762886597938
+    },
+    {
+      "source": "Gmaj",
+      "target": "Dmin",
+      "prob": 0.017204950196196802
+    },
+    {
+      "source": "Dmin",
+      "target": "Gmaj",
+      "prob": 0.2622641509433962
+    },
+    {
+      "source": "Gmin7",
+      "target": "C7",
+      "prob": 0.17154811715481172
+    },
+    {
+      "source": "Cmaj",
+      "target": "Cmin",
+      "prob": 0.004039662137348513
+    },
+    {
+      "source": "G7",
+      "target": "Bb7",
+      "prob": 0.0026917900403768506
+    },
+    {
+      "source": "Bb7",
+      "target": "Cmin",
+      "prob": 0.0070921985815602835
+    },
+    {
+      "source": "Gmaj",
+      "target": "Bbmaj7",
+      "prob": 0.00030184123151222455
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Gmaj",
+      "prob": 0.02654867256637168
+    },
+    {
+      "source": "G7",
+      "target": "Bbmaj",
+      "prob": 0.0013458950201884253
+    },
+    {
+      "source": "Cmaj",
+      "target": "Gmin",
+      "prob": 0.007712082262210797
+    },
+    {
+      "source": "Gmin",
+      "target": "C7",
+      "prob": 0.04296875
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Ebmin",
+      "prob": 0.009009009009009009
+    },
+    {
+      "source": "Ebmin",
+      "target": "Abmaj",
+      "prob": 0.16666666666666666
+    },
+    {
+      "source": "Abmaj",
+      "target": "Ebmin",
+      "prob": 0.003929273084479371
+    },
+    {
+      "source": "Ebmin",
+      "target": "Ab7",
+      "prob": 0.16666666666666666
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Abmaj",
+      "prob": 0.024539877300613498
+    },
+    {
+      "source": "Abmaj",
+      "target": "Gbmaj",
+      "prob": 0.011787819253438114
+    },
+    {
+      "source": "Ab7",
+      "target": "Ebmin",
+      "prob": 0.018018018018018018
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Ab7",
+      "prob": 0.046296296296296294
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Fmaj7",
+      "prob": 0.009009009009009009
+    },
+    {
+      "source": "Abmaj",
+      "target": "Eb7",
+      "prob": 0.05893909626719057
+    },
+    {
+      "source": "Abmaj",
+      "target": "Fmaj7",
+      "prob": 0.015717092337917484
+    },
+    {
+      "source": "Ebmin",
+      "target": "Fmin7",
+      "prob": 0.05555555555555555
+    },
+    {
+      "source": "Fmin7",
+      "target": "Bb7",
+      "prob": 0.11036036036036036
+    },
+    {
+      "source": "Bb7",
+      "target": "Ebmin",
+      "prob": 0.028368794326241134
+    },
+    {
+      "source": "Ebmin",
+      "target": "Abmin",
+      "prob": 0.2222222222222222
+    },
+    {
+      "source": "Abmin",
+      "target": "Ebmin",
+      "prob": 0.06666666666666667
+    },
+    {
+      "source": "Ebmin",
+      "target": "Abmin7",
+      "prob": 0.05555555555555555
+    },
+    {
+      "source": "Abmin7",
+      "target": "Bb7",
+      "prob": 0.01818181818181818
+    },
+    {
+      "source": "Abmin",
+      "target": "Bb7",
+      "prob": 0.044444444444444446
+    },
+    {
+      "source": "Ebmin",
+      "target": "Bmaj",
+      "prob": 0.1111111111111111
+    },
+    {
+      "source": "Bmaj",
+      "target": "Fmin7",
+      "prob": 0.0011261261261261261
+    },
+    {
+      "source": "Bb7",
+      "target": "Ebmin7",
+      "prob": 0.0070921985815602835
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Ebmaj",
+      "prob": 0.009259259259259259
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Abmin",
+      "prob": 0.0012787723785166241
+    },
+    {
+      "source": "Bmaj",
+      "target": "Bb7",
+      "prob": 0.0011261261261261261
+    },
+    {
+      "source": "Bb7",
+      "target": "Cmin7",
+      "prob": 0.0070921985815602835
+    },
+    {
+      "source": "Cmin7",
+      "target": "Fmin7",
+      "prob": 0.09935897435897435
+    },
+    {
+      "source": "Ebmaj",
+      "target": "A7",
+      "prob": 0.0038363171355498722
+    },
+    {
+      "source": "A7",
+      "target": "Fmin",
+      "prob": 0.0014727540500736377
+    },
+    {
+      "source": "Bb7",
+      "target": "Fmin7",
+      "prob": 0.14893617021276595
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Eb7",
+      "prob": 0.0038363171355498722
+    },
+    {
+      "source": "Eb7",
+      "target": "Fmin7",
+      "prob": 0.1111111111111111
+    },
+    {
+      "source": "Ebmaj",
+      "target": "C7",
+      "prob": 0.030690537084398978
+    },
+    {
+      "source": "C7",
+      "target": "Fmin7",
+      "prob": 0.014893617021276596
+    },
+    {
+      "source": "Bb7",
+      "target": "Fmin",
+      "prob": 0.0070921985815602835
+    },
+    {
+      "source": "Bb7",
+      "target": "Bbmin7",
+      "prob": 0.014184397163120567
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Cmaj",
+      "prob": 0.00639386189258312
+    },
+    {
+      "source": "Cmaj",
+      "target": "Fmin7",
+      "prob": 0.002570694087403599
+    },
+    {
+      "source": "Bb7",
+      "target": "Eb7",
+      "prob": 0.02127659574468085
+    },
+    {
+      "source": "A7",
+      "target": "Fmin7",
+      "prob": 0.0014727540500736377
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Gbmaj",
+      "prob": 0.0012787723785166241
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Bmaj7",
+      "prob": 0.018404907975460124
+    },
+    {
+      "source": "Bmaj7",
+      "target": "Bbmaj",
+      "prob": 0.041666666666666664
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Cmin7",
+      "prob": 0.016624040920716114
+    },
+    {
+      "source": "Cmin7",
+      "target": "Bmin7",
+      "prob": 0.00641025641025641
+    },
+    {
+      "source": "Cmaj",
+      "target": "G7",
+      "prob": 0.03048108703635696
+    },
+    {
+      "source": "G7",
+      "target": "Fmaj",
+      "prob": 0.06056527590847914
+    },
+    {
+      "source": "G7",
+      "target": "Dmin",
+      "prob": 0.02557200538358008
+    },
+    {
+      "source": "Dmin",
+      "target": "G7",
+      "prob": 0.15283018867924528
+    },
+    {
+      "source": "Cmaj",
+      "target": "Dmin",
+      "prob": 0.01872934263679765
+    },
+    {
+      "source": "Dmin",
+      "target": "Gmin7",
+      "prob": 0.035849056603773584
+    },
+    {
+      "source": "Gmin7",
+      "target": "G7",
+      "prob": 0.0020920502092050207
+    },
+    {
+      "source": "Fmaj",
+      "target": "Dmin7",
+      "prob": 0.03354037267080745
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Gmin",
+      "prob": 0.004975124378109453
+    },
+    {
+      "source": "Gmin",
+      "target": "Fmaj",
+      "prob": 0.125
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Dmaj",
+      "prob": 0.01278772378516624
+    },
+    {
+      "source": "Dmaj",
+      "target": "Gmin",
+      "prob": 0.014711892112791173
+    },
+    {
+      "source": "Ebmaj",
+      "target": "D7",
+      "prob": 0.008951406649616368
+    },
+    {
+      "source": "D7",
+      "target": "Gmin",
+      "prob": 0.06981519507186858
+    },
+    {
+      "source": "Gmin",
+      "target": "G7",
+      "prob": 0.01171875
+    },
+    {
+      "source": "Cmin",
+      "target": "Dmaj",
+      "prob": 0.010169491525423728
+    },
+    {
+      "source": "Gmin",
+      "target": "Dmaj",
+      "prob": 0.0625
+    },
+    {
+      "source": "Gmin",
+      "target": "Gmaj",
+      "prob": 0.06640625
+    },
+    {
+      "source": "Amin7",
+      "target": "D7",
+      "prob": 0.09202453987730061
+    },
+    {
+      "source": "Gmin",
+      "target": "Cmin",
+      "prob": 0.05859375
+    },
+    {
+      "source": "Cmin",
+      "target": "Gmin",
+      "prob": 0.006779661016949152
+    },
+    {
+      "source": "Gmin",
+      "target": "A7",
+      "prob": 0.03125
+    },
+    {
+      "source": "A7",
+      "target": "D7",
+      "prob": 0.007363770250368188
+    },
+    {
+      "source": "Emin",
+      "target": "Amin7",
+      "prob": 0.10138248847926268
+    },
+    {
+      "source": "Gmaj",
+      "target": "E7",
+      "prob": 0.004527618472683369
+    },
+    {
+      "source": "E7",
+      "target": "Amin7",
+      "prob": 0.05197132616487455
+    },
+    {
+      "source": "D7",
+      "target": "Amin7",
+      "prob": 0.018480492813141684
+    },
+    {
+      "source": "Cmin",
+      "target": "Emin7",
+      "prob": 0.010169491525423728
+    },
+    {
+      "source": "Dmaj",
+      "target": "G7",
+      "prob": 0.0016346546791990192
+    },
+    {
+      "source": "G7",
+      "target": "Amin7",
+      "prob": 0.03768506056527591
+    },
+    {
+      "source": "Dmin7",
+      "target": "Amaj",
+      "prob": 0.008723235527359239
+    },
+    {
+      "source": "Dmin",
+      "target": "Cmin",
+      "prob": 0.0018867924528301887
+    },
+    {
+      "source": "Cmin",
+      "target": "F7",
+      "prob": 0.06440677966101695
+    },
+    {
+      "source": "F7",
+      "target": "Amin7",
+      "prob": 0.003472222222222222
+    },
+    {
+      "source": "Amin7",
+      "target": "Bbmaj",
+      "prob": 0.023312883435582823
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Amaj",
+      "prob": 0.007501875468867217
+    },
+    {
+      "source": "Amaj",
+      "target": "F7",
+      "prob": 0.00038226299694189603
+    },
+    {
+      "source": "Fmaj",
+      "target": "Cmin",
+      "prob": 0.0037267080745341614
+    },
+    {
+      "source": "Amin7",
+      "target": "Ebmaj",
+      "prob": 0.001226993865030675
+    },
+    {
+      "source": "Fmin7",
+      "target": "Ebmaj",
+      "prob": 0.07657657657657657
+    },
+    {
+      "source": "Abmaj",
+      "target": "Bb7",
+      "prob": 0.04518664047151277
+    },
+    {
+      "source": "Emaj",
+      "target": "Amaj7",
+      "prob": 0.010948905109489052
+    },
+    {
+      "source": "Amaj7",
+      "target": "B7",
+      "prob": 0.07954545454545454
+    },
+    {
+      "source": "Emaj",
+      "target": "Fmaj7",
+      "prob": 0.005213764337851929
+    },
+    {
+      "source": "Amaj7",
+      "target": "Emaj",
+      "prob": 0.1590909090909091
+    },
+    {
+      "source": "Emaj",
+      "target": "Gbmaj",
+      "prob": 0.01981230448383733
+    },
+    {
+      "source": "Abmin7",
+      "target": "Gbmaj",
+      "prob": 0.030303030303030304
+    },
+    {
+      "source": "Abmin7",
+      "target": "Db7",
+      "prob": 0.13333333333333333
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Abmin",
+      "prob": 0.0045045045045045045
+    },
+    {
+      "source": "Abmin",
+      "target": "Db7",
+      "prob": 0.022222222222222223
+    },
+    {
+      "source": "Bmaj",
+      "target": "Bmin",
+      "prob": 0.00563063063063063
+    },
+    {
+      "source": "Bmin",
+      "target": "Gbmaj",
+      "prob": 0.005649717514124294
+    },
+    {
+      "source": "Gmin7",
+      "target": "Cmaj",
+      "prob": 0.2112970711297071
+    },
+    {
+      "source": "Dmaj",
+      "target": "Bmin",
+      "prob": 0.03064977523498161
+    },
+    {
+      "source": "Cmaj",
+      "target": "Bmaj",
+      "prob": 0.005508630187293426
+    },
+    {
+      "source": "Gmaj",
+      "target": "D7",
+      "prob": 0.028674916993661335
+    },
+    {
+      "source": "Amaj7",
+      "target": "Ab7",
+      "prob": 0.011363636363636364
+    },
+    {
+      "source": "Ab7",
+      "target": "Dbmin",
+      "prob": 0.3333333333333333
+    },
+    {
+      "source": "Dbmin",
+      "target": "Gbmin7",
+      "prob": 0.17964071856287425
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Emaj",
+      "prob": 0.09431345353675451
+    },
+    {
+      "source": "Emaj",
+      "target": "Ab7",
+      "prob": 0.0046923879040667365
+    },
+    {
+      "source": "Dbmin",
+      "target": "Ab7",
+      "prob": 0.1497005988023952
+    },
+    {
+      "source": "Ab7",
+      "target": "Bmaj",
+      "prob": 0.018018018018018018
+    },
+    {
+      "source": "Bmaj",
+      "target": "Dbmin",
+      "prob": 0.0045045045045045045
+    },
+    {
+      "source": "Ab7",
+      "target": "B7",
+      "prob": 0.02702702702702703
+    },
+    {
+      "source": "B7",
+      "target": "Dbmin",
+      "prob": 0.003978779840848806
+    },
+    {
+      "source": "Dbmin",
+      "target": "Gbmin",
+      "prob": 0.07784431137724551
+    },
+    {
+      "source": "Gbmin",
+      "target": "Dbmin",
+      "prob": 0.05128205128205128
+    },
+    {
+      "source": "Gbmin",
+      "target": "Amaj7",
+      "prob": 0.010256410256410256
+    },
+    {
+      "source": "Amaj7",
+      "target": "Abmaj",
+      "prob": 0.022727272727272728
+    },
+    {
+      "source": "Abmaj",
+      "target": "Dbmin",
+      "prob": 0.068762278978389
+    },
+    {
+      "source": "Dbmin",
+      "target": "B7",
+      "prob": 0.041916167664670656
+    },
+    {
+      "source": "Dbmin",
+      "target": "Bmaj",
+      "prob": 0.10778443113772455
+    },
+    {
+      "source": "Ab7",
+      "target": "Dbmin7",
+      "prob": 0.2072072072072072
+    },
+    {
+      "source": "Dbmin7",
+      "target": "B7",
+      "prob": 0.03398058252427184
+    },
+    {
+      "source": "Emaj",
+      "target": "Abmaj",
+      "prob": 0.010427528675703858
+    },
+    {
+      "source": "Gbmin",
+      "target": "Emaj",
+      "prob": 0.046153846153846156
+    },
+    {
+      "source": "Dmaj",
+      "target": "Dbmin7",
+      "prob": 0.008990600735594606
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Dmaj",
+      "prob": 0.10194174757281553
+    },
+    {
+      "source": "Amaj",
+      "target": "Emin",
+      "prob": 0.011085626911314985
+    },
+    {
+      "source": "Emin",
+      "target": "A7",
+      "prob": 0.12903225806451613
+    },
+    {
+      "source": "A7",
+      "target": "Emin",
+      "prob": 0.026509572901325478
+    },
+    {
+      "source": "Gmaj",
+      "target": "Emin7",
+      "prob": 0.022939933594929067
+    },
+    {
+      "source": "Dmaj",
+      "target": "B7",
+      "prob": 0.0028606456885982836
+    },
+    {
+      "source": "A7",
+      "target": "Gbmin7",
+      "prob": 0.027982326951399118
+    },
+    {
+      "source": "Gbmin7",
+      "target": "B7",
+      "prob": 0.2302357836338419
+    },
+    {
+      "source": "Bmin7",
+      "target": "Bmaj",
+      "prob": 0.0036363636363636364
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Emaj",
+      "prob": 0.09815950920245399
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Abmin",
+      "prob": 0.012269938650306749
+    },
+    {
+      "source": "Abmin",
+      "target": "Gbmaj",
+      "prob": 0.08888888888888889
+    },
+    {
+      "source": "Bb7",
+      "target": "Abmaj",
+      "prob": 0.07801418439716312
+    },
+    {
+      "source": "Abmaj",
+      "target": "Bbmaj",
+      "prob": 0.04911591355599214
+    },
+    {
+      "source": "Bb7",
+      "target": "Gmin7",
+      "prob": 0.014184397163120567
+    },
+    {
+      "source": "Gmin7",
+      "target": "Cmin7",
+      "prob": 0.056485355648535567
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Amin7",
+      "prob": 0.00639386189258312
+    },
+    {
+      "source": "Amaj",
+      "target": "Amin",
+      "prob": 0.0022935779816513763
+    },
+    {
+      "source": "Amin",
+      "target": "Dmin7",
+      "prob": 0.19377652050919378
+    },
+    {
+      "source": "Amin7",
+      "target": "Fmaj",
+      "prob": 0.17668711656441718
+    },
+    {
+      "source": "Dmin7",
+      "target": "Emaj",
+      "prob": 0.007137192704203013
+    },
+    {
+      "source": "Dmin",
+      "target": "Emaj",
+      "prob": 0.0509433962264151
+    },
+    {
+      "source": "Emaj",
+      "target": "Fmaj",
+      "prob": 0.0046923879040667365
+    },
+    {
+      "source": "Dmin",
+      "target": "Fmaj7",
+      "prob": 0.009433962264150943
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Emaj",
+      "prob": 0.024875621890547265
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Dmin7",
+      "prob": 0.06965174129353234
+    },
+    {
+      "source": "Emaj",
+      "target": "Dmaj",
+      "prob": 0.051094890510948905
+    },
+    {
+      "source": "Emaj",
+      "target": "Bmin7",
+      "prob": 0.030761209593326382
+    },
+    {
+      "source": "Dmin",
+      "target": "E7",
+      "prob": 0.04150943396226415
+    },
+    {
+      "source": "Amin",
+      "target": "D7",
+      "prob": 0.036775106082036775
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Amaj7",
+      "prob": 0.0048543689320388345
+    },
+    {
+      "source": "Amaj7",
+      "target": "Gmaj7",
+      "prob": 0.011363636363636364
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Dmaj7",
+      "prob": 0.040268456375838924
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Emaj",
+      "prob": 0.15053763440860216
+    },
+    {
+      "source": "Amaj",
+      "target": "Dbmin7",
+      "prob": 0.02102446483180428
+    },
+    {
+      "source": "Emaj",
+      "target": "Gbmin7",
+      "prob": 0.06256517205422316
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Amaj7",
+      "prob": 0.006934812760055479
+    },
+    {
+      "source": "Amaj7",
+      "target": "Dmaj",
+      "prob": 0.125
+    },
+    {
+      "source": "Emaj",
+      "target": "Dbmin7",
+      "prob": 0.02137643378519291
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Amaj",
+      "prob": 0.17718446601941748
+    },
+    {
+      "source": "Emaj",
+      "target": "Dbmin",
+      "prob": 0.006777893639207508
+    },
+    {
+      "source": "Dbmin",
+      "target": "Dmaj",
+      "prob": 0.08982035928143713
+    },
+    {
+      "source": "Dmaj",
+      "target": "Amin",
+      "prob": 0.0032693093583980384
+    },
+    {
+      "source": "Dbmin",
+      "target": "Amaj",
+      "prob": 0.05389221556886228
+    },
+    {
+      "source": "B7",
+      "target": "Dbmin7",
+      "prob": 0.03183023872679045
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Gbmin7",
+      "prob": 0.21844660194174756
+    },
+    {
+      "source": "Gmin7",
+      "target": "Bbmaj",
+      "prob": 0.03347280334728033
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Fmaj7",
+      "prob": 0.01800450112528132
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Dbmaj7",
+      "prob": 0.009950248756218905
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Amin7",
+      "prob": 0.07407407407407407
+    },
+    {
+      "source": "Dmin7",
+      "target": "Bbmaj7",
+      "prob": 0.0055511498810467885
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Amin7",
+      "prob": 0.035398230088495575
+    },
+    {
+      "source": "Amin7",
+      "target": "Gmin7",
+      "prob": 0.011042944785276074
+    },
+    {
+      "source": "Fmaj",
+      "target": "Gmin7",
+      "prob": 0.03602484472049689
+    },
+    {
+      "source": "Fmaj",
+      "target": "Bbmaj7",
+      "prob": 0.014078674948240166
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "E7",
+      "prob": 0.008849557522123894
+    },
+    {
+      "source": "Dmin7",
+      "target": "Gmin7",
+      "prob": 0.041237113402061855
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Gmin7",
+      "prob": 0.02250562640660165
+    },
+    {
+      "source": "C7",
+      "target": "Amaj",
+      "prob": 0.006382978723404255
+    },
+    {
+      "source": "Dmin7",
+      "target": "Bbmaj",
+      "prob": 0.040444091990483745
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Amin7",
+      "prob": 0.012753188297074268
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Gmin",
+      "prob": 0.01350337584396099
+    },
+    {
+      "source": "C7",
+      "target": "Cmin",
+      "prob": 0.002127659574468085
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Amin",
+      "prob": 0.0037509377344336083
+    },
+    {
+      "source": "Amin",
+      "target": "Gmin7",
+      "prob": 0.002828854314002829
+    },
+    {
+      "source": "C7",
+      "target": "A7",
+      "prob": 0.04680851063829787
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Gmin7",
+      "prob": 0.03482587064676617
+    },
+    {
+      "source": "Dmaj",
+      "target": "Gmaj7",
+      "prob": 0.013077237433592154
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Gmaj7",
+      "prob": 0.021505376344086023
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Gbmin7",
+      "prob": 0.11409395973154363
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Emin7",
+      "prob": 0.06934812760055478
+    },
+    {
+      "source": "Amaj",
+      "target": "Dmaj7",
+      "prob": 0.015672782874617736
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Bmin",
+      "prob": 0.010752688172043012
+    },
+    {
+      "source": "Bmin",
+      "target": "Gmaj",
+      "prob": 0.05367231638418079
+    },
+    {
+      "source": "Amin7",
+      "target": "Dbmaj7",
+      "prob": 0.001226993865030675
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Ebmin7",
+      "prob": 0.037037037037037035
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Abmin7",
+      "prob": 0.07407407407407407
+    },
+    {
+      "source": "Abmin7",
+      "target": "Ebmin7",
+      "prob": 0.15757575757575756
+    },
+    {
+      "source": "Ab7",
+      "target": "Ebmin7",
+      "prob": 0.009009009009009009
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Dmaj7",
+      "prob": 0.009259259259259259
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Abmin7",
+      "prob": 0.005376344086021506
+    },
+    {
+      "source": "Abmin7",
+      "target": "Dmaj7",
+      "prob": 0.006060606060606061
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Amaj",
+      "prob": 0.13440860215053763
+    },
+    {
+      "source": "Emaj",
+      "target": "Ebmaj",
+      "prob": 0.0015641293013555788
+    },
+    {
+      "source": "Dmaj",
+      "target": "Abmin7",
+      "prob": 0.0008173273395995096
+    },
+    {
+      "source": "Abmin7",
+      "target": "Amaj",
+      "prob": 0.06666666666666667
+    },
+    {
+      "source": "E7",
+      "target": "Gbmin7",
+      "prob": 0.02867383512544803
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Bmin7",
+      "prob": 0.13314840499306518
+    },
+    {
+      "source": "Emaj",
+      "target": "Dmaj7",
+      "prob": 0.0026068821689259644
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Dbmin7",
+      "prob": 0.053763440860215055
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Gmaj7",
+      "prob": 0.006934812760055479
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Bmaj",
+      "prob": 0.013422818791946308
+    },
+    {
+      "source": "Gbmin",
+      "target": "Dbmin7",
+      "prob": 0.06153846153846154
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Bmaj7",
+      "prob": 0.0024271844660194173
+    },
+    {
+      "source": "Bmaj7",
+      "target": "Abmin7",
+      "prob": 0.08333333333333333
+    },
+    {
+      "source": "Dmaj",
+      "target": "Amaj7",
+      "prob": 0.004086636697997548
+    },
+    {
+      "source": "Dmaj",
+      "target": "Ebmin7",
+      "prob": 0.0004086636697997548
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Fmin7",
+      "prob": 0.018518518518518517
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Dmin7",
+      "prob": 0.04801200300075019
+    },
+    {
+      "source": "Dmin7",
+      "target": "Gmin",
+      "prob": 0.0190325138778747
+    },
+    {
+      "source": "Dmin7",
+      "target": "Ebmaj7",
+      "prob": 0.003965107057890563
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Fmaj",
+      "prob": 0.13076923076923078
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Cmin7",
+      "prob": 0.046153846153846156
+    },
+    {
+      "source": "Gmin",
+      "target": "Bbmaj",
+      "prob": 0.02734375
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Ebmaj7",
+      "prob": 0.035258814703675916
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Bbmaj",
+      "prob": 0.09230769230769231
+    },
+    {
+      "source": "Gmin",
+      "target": "Ebmaj7",
+      "prob": 0.01171875
+    },
+    {
+      "source": "Dmaj7",
+      "target": "E7",
+      "prob": 0.16666666666666666
+    },
+    {
+      "source": "E7",
+      "target": "Gbmin",
+      "prob": 0.0017921146953405018
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Dmaj",
+      "prob": 0.07628294036061026
+    },
+    {
+      "source": "Emaj",
+      "target": "Gbmin",
+      "prob": 0.016684045881126174
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Dmaj7",
+      "prob": 0.021844660194174758
+    },
+    {
+      "source": "E7",
+      "target": "Dbmin7",
+      "prob": 0.021505376344086023
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Dbmin7",
+      "prob": 0.05131761442441054
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Gbmin",
+      "prob": 0.021844660194174758
+    },
+    {
+      "source": "Gbmin",
+      "target": "Bmin7",
+      "prob": 0.13846153846153847
+    },
+    {
+      "source": "Bmin7",
+      "target": "Dbmin7",
+      "prob": 0.014545454545454545
+    },
+    {
+      "source": "B7",
+      "target": "Gbmin7",
+      "prob": 0.0649867374005305
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Bmaj",
+      "prob": 0.055825242718446605
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Dmin",
+      "prob": 0.08955223880597014
+    },
+    {
+      "source": "Amin",
+      "target": "Fmaj7",
+      "prob": 0.015558698727015558
+    },
+    {
+      "source": "Gmaj",
+      "target": "Gmaj7",
+      "prob": 0.0009055236945366737
+    },
+    {
+      "source": "Gmaj7",
+      "target": "D7",
+      "prob": 0.040268456375838924
+    },
+    {
+      "source": "D7",
+      "target": "Cmaj",
+      "prob": 0.06570841889117043
+    },
+    {
+      "source": "Gmaj",
+      "target": "Bmin",
+      "prob": 0.009055236945366738
+    },
+    {
+      "source": "Bmin",
+      "target": "D7",
+      "prob": 0.00847457627118644
+    },
+    {
+      "source": "Dmaj",
+      "target": "Cmaj7",
+      "prob": 0.004495300367797303
+    },
+    {
+      "source": "Cmaj7",
+      "target": "D7",
+      "prob": 0.04710144927536232
+    },
+    {
+      "source": "D7",
+      "target": "Bmin7",
+      "prob": 0.030800821355236138
+    },
+    {
+      "source": "D7",
+      "target": "Emin",
+      "prob": 0.008213552361396304
+    },
+    {
+      "source": "Dmaj",
+      "target": "Bmaj",
+      "prob": 0.0053126277073968125
+    },
+    {
+      "source": "Bmin",
+      "target": "Cmaj",
+      "prob": 0.02824858757062147
+    },
+    {
+      "source": "Amin",
+      "target": "Dmaj",
+      "prob": 0.06223479490806223
+    },
+    {
+      "source": "Cmaj",
+      "target": "Gmaj7",
+      "prob": 0.00697759823723834
+    },
+    {
+      "source": "Amaj",
+      "target": "Cmaj",
+      "prob": 0.0030581039755351682
+    },
+    {
+      "source": "Emin7",
+      "target": "Bb7",
+      "prob": 0.001095290251916758
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Emin7",
+      "prob": 0.0012787723785166241
+    },
+    {
+      "source": "Emin7",
+      "target": "Dmin7",
+      "prob": 0.05147864184008762
+    },
+    {
+      "source": "Dmin7",
+      "target": "Cmin",
+      "prob": 0.0055511498810467885
+    },
+    {
+      "source": "Cmin",
+      "target": "Dmin7",
+      "prob": 0.01694915254237288
+    },
+    {
+      "source": "Dmin7",
+      "target": "Ebmaj",
+      "prob": 0.011102299762093577
+    },
+    {
+      "source": "Cmin7",
+      "target": "F7",
+      "prob": 0.09935897435897435
+    },
+    {
+      "source": "Gmaj",
+      "target": "Fmin7",
+      "prob": 0.012073649260488983
+    },
+    {
+      "source": "Gmin7",
+      "target": "Ebmaj",
+      "prob": 0.04184100418410042
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Abmaj7",
+      "prob": 0.010230179028132993
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Dmin7",
+      "prob": 0.046875
+    },
+    {
+      "source": "Gmin7",
+      "target": "Ebmaj7",
+      "prob": 0.03138075313807531
+    },
+    {
+      "source": "Fmin7",
+      "target": "Dmin",
+      "prob": 0.02027027027027027
+    },
+    {
+      "source": "Fmin7",
+      "target": "Ebmaj7",
+      "prob": 0.01126126126126126
+    },
+    {
+      "source": "F7",
+      "target": "Dmin7",
+      "prob": 0.04513888888888889
+    },
+    {
+      "source": "Gmaj",
+      "target": "Ebmaj7",
+      "prob": 0.0009055236945366737
+    },
+    {
+      "source": "G7",
+      "target": "F7",
+      "prob": 0.006729475100942127
+    },
+    {
+      "source": "F7",
+      "target": "Cmin7",
+      "prob": 0.04861111111111111
+    },
+    {
+      "source": "Gmin7",
+      "target": "Dmin",
+      "prob": 0.008368200836820083
+    },
+    {
+      "source": "Dmin",
+      "target": "Cmin7",
+      "prob": 0.007547169811320755
+    },
+    {
+      "source": "Gmaj",
+      "target": "Gmin7",
+      "prob": 0.0018110473890733474
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Ebmin7",
+      "prob": 0.0038363171355498722
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Bbmaj",
+      "prob": 0.027777777777777776
+    },
+    {
+      "source": "Amin",
+      "target": "Bmin7",
+      "prob": 0.016973125884016973
+    },
+    {
+      "source": "Bmin",
+      "target": "Emin7",
+      "prob": 0.09322033898305085
+    },
+    {
+      "source": "Db7",
+      "target": "Bmin7",
+      "prob": 0.14960629921259844
+    },
+    {
+      "source": "Bmin",
+      "target": "B7",
+      "prob": 0.00847457627118644
+    },
+    {
+      "source": "B7",
+      "target": "Emin7",
+      "prob": 0.021220159151193633
+    },
+    {
+      "source": "Amin7",
+      "target": "Amaj",
+      "prob": 0.007361963190184049
+    },
+    {
+      "source": "Dmaj",
+      "target": "Bmin7",
+      "prob": 0.031875766244380876
+    },
+    {
+      "source": "Bmin7",
+      "target": "Abmin7",
+      "prob": 0.006060606060606061
+    },
+    {
+      "source": "Abmin7",
+      "target": "Gmaj",
+      "prob": 0.01818181818181818
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Gmaj",
+      "prob": 0.14925373134328357
+    },
+    {
+      "source": "Amin7",
+      "target": "Ebmin7",
+      "prob": 0.0036809815950920245
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Gmaj",
+      "prob": 0.027777777777777776
+    },
+    {
+      "source": "Bmin",
+      "target": "Cmaj7",
+      "prob": 0.01977401129943503
+    },
+    {
+      "source": "D7",
+      "target": "Fmaj",
+      "prob": 0.008213552361396304
+    },
+    {
+      "source": "Fmaj",
+      "target": "Ab7",
+      "prob": 0.004140786749482402
+    },
+    {
+      "source": "Ab7",
+      "target": "Emin",
+      "prob": 0.02702702702702703
+    },
+    {
+      "source": "Emin",
+      "target": "Emin7",
+      "prob": 0.004608294930875576
+    },
+    {
+      "source": "Emin7",
+      "target": "Amin",
+      "prob": 0.02628696604600219
+    },
+    {
+      "source": "Dmaj",
+      "target": "Dmin7",
+      "prob": 0.006129955046996322
+    },
+    {
+      "source": "Dmin7",
+      "target": "Ebmin7",
+      "prob": 0.0023790642347343376
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Emin",
+      "prob": 0.05555555555555555
+    },
+    {
+      "source": "Emin",
+      "target": "Gmaj7",
+      "prob": 0.004608294930875576
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Amin",
+      "prob": 0.026845637583892617
+    },
+    {
+      "source": "Emin7",
+      "target": "Cmaj7",
+      "prob": 0.014238773274917854
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Dmaj",
+      "prob": 0.04710144927536232
+    },
+    {
+      "source": "Emin7",
+      "target": "Cmaj",
+      "prob": 0.07228915662650602
+    },
+    {
+      "source": "D7",
+      "target": "Emaj",
+      "prob": 0.012320328542094456
+    },
+    {
+      "source": "Amaj",
+      "target": "Dbmin",
+      "prob": 0.009174311926605505
+    },
+    {
+      "source": "Amaj",
+      "target": "Amaj7",
+      "prob": 0.002675840978593272
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Bbmaj",
+      "prob": 0.06467661691542288
+    },
+    {
+      "source": "Cmin7",
+      "target": "Gmin",
+      "prob": 0.03205128205128205
+    },
+    {
+      "source": "Cmaj",
+      "target": "F7",
+      "prob": 0.0029379360998898272
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Cmin",
+      "prob": 0.012003000750187547
+    },
+    {
+      "source": "Fmaj",
+      "target": "Fmin7",
+      "prob": 0.008695652173913044
+    },
+    {
+      "source": "Gmin",
+      "target": "Cmin7",
+      "prob": 0.04296875
+    },
+    {
+      "source": "Cmin7",
+      "target": "Gmin7",
+      "prob": 0.03205128205128205
+    },
+    {
+      "source": "Gmin7",
+      "target": "F7",
+      "prob": 0.014644351464435146
+    },
+    {
+      "source": "Bbmaj",
+      "target": "F7",
+      "prob": 0.05776444111027757
+    },
+    {
+      "source": "Gmin7",
+      "target": "Cmin",
+      "prob": 0.027196652719665274
+    },
+    {
+      "source": "Dmaj",
+      "target": "Gbmin",
+      "prob": 0.010625255414793625
+    },
+    {
+      "source": "Gbmin",
+      "target": "Emin7",
+      "prob": 0.041025641025641026
+    },
+    {
+      "source": "Gbmin",
+      "target": "Dmaj",
+      "prob": 0.03076923076923077
+    },
+    {
+      "source": "Gbmin",
+      "target": "Ebmin7",
+      "prob": 0.015384615384615385
+    },
+    {
+      "source": "Bmin7",
+      "target": "Gbmin",
+      "prob": 0.006060606060606061
+    },
+    {
+      "source": "Dmaj",
+      "target": "Bbmaj7",
+      "prob": 0.0012259910093992644
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "A7",
+      "prob": 0.04424778761061947
+    },
+    {
+      "source": "Gmaj",
+      "target": "Amaj7",
+      "prob": 0.0009055236945366737
+    },
+    {
+      "source": "Gmaj",
+      "target": "Dmaj7",
+      "prob": 0.006338665861756716
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Amin",
+      "prob": 0.014925373134328358
+    },
+    {
+      "source": "Emaj",
+      "target": "Amin7",
+      "prob": 0.016684045881126174
+    },
+    {
+      "source": "Amin7",
+      "target": "Emaj",
+      "prob": 0.006134969325153374
+    },
+    {
+      "source": "Gmaj",
+      "target": "Cmaj7",
+      "prob": 0.02565650467853909
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Amin",
+      "prob": 0.08695652173913043
+    },
+    {
+      "source": "Amin",
+      "target": "Dbmin7",
+      "prob": 0.004243281471004243
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Dmin7",
+      "prob": 0.007281553398058253
+    },
+    {
+      "source": "Cmaj",
+      "target": "B7",
+      "prob": 0.016158648549394052
+    },
+    {
+      "source": "B7",
+      "target": "Amin",
+      "prob": 0.022546419098143235
+    },
+    {
+      "source": "Dmin",
+      "target": "Dmaj",
+      "prob": 0.026415094339622643
+    },
+    {
+      "source": "Bmin7",
+      "target": "Amin",
+      "prob": 0.020606060606060607
+    },
+    {
+      "source": "Amin",
+      "target": "Emaj7",
+      "prob": 0.004243281471004243
+    },
+    {
+      "source": "Emaj7",
+      "target": "Amaj",
+      "prob": 0.296875
+    },
+    {
+      "source": "Emaj",
+      "target": "Dmin",
+      "prob": 0.0031282586027111575
+    },
+    {
+      "source": "Emaj",
+      "target": "Emaj7",
+      "prob": 0.0015641293013555788
+    },
+    {
+      "source": "Fmin",
+      "target": "Bbmaj",
+      "prob": 0.13664596273291926
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Emin7",
+      "prob": 0.00450112528132033
+    },
+    {
+      "source": "Emin7",
+      "target": "Ab7",
+      "prob": 0.0032858707557502738
+    },
+    {
+      "source": "Ab7",
+      "target": "Bbmaj",
+      "prob": 0.02702702702702703
+    },
+    {
+      "source": "Dmin7",
+      "target": "F7",
+      "prob": 0.0031720856463124504
+    },
+    {
+      "source": "A7",
+      "target": "Bbmaj",
+      "prob": 0.008836524300441826
+    },
+    {
+      "source": "Emin7",
+      "target": "F7",
+      "prob": 0.012048192771084338
+    },
+    {
+      "source": "F7",
+      "target": "Ebmaj",
+      "prob": 0.10069444444444445
+    },
+    {
+      "source": "Gmaj",
+      "target": "Gbmin7",
+      "prob": 0.016601267733172352
+    },
+    {
+      "source": "Bmin",
+      "target": "Emin",
+      "prob": 0.08757062146892655
+    },
+    {
+      "source": "E7",
+      "target": "Bmin",
+      "prob": 0.02867383512544803
+    },
+    {
+      "source": "Emin",
+      "target": "Gbmaj",
+      "prob": 0.009216589861751152
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Dmaj",
+      "prob": 0.018404907975460124
+    },
+    {
+      "source": "Amaj",
+      "target": "Gb7",
+      "prob": 0.011085626911314985
+    },
+    {
+      "source": "Emin7",
+      "target": "Gbmin7",
+      "prob": 0.01642935377875137
+    },
+    {
+      "source": "Emin7",
+      "target": "Bmin",
+      "prob": 0.0065717415115005475
+    },
+    {
+      "source": "Emin",
+      "target": "Gbmin",
+      "prob": 0.007680491551459293
+    },
+    {
+      "source": "Bmin7",
+      "target": "Gmaj7",
+      "prob": 0.03272727272727273
+    },
+    {
+      "source": "Dmaj",
+      "target": "Dmaj7",
+      "prob": 0.002451982018798529
+    },
+    {
+      "source": "Amaj",
+      "target": "A7",
+      "prob": 0.0030581039755351682
+    },
+    {
+      "source": "Fmaj",
+      "target": "Amin7",
+      "prob": 0.031055900621118012
+    },
+    {
+      "source": "Cmaj",
+      "target": "Emin7",
+      "prob": 0.04113110539845758
+    },
+    {
+      "source": "Emin7",
+      "target": "Bbmaj",
+      "prob": 0.0065717415115005475
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Fmaj",
+      "prob": 0.01990049751243781
+    },
+    {
+      "source": "Fmaj",
+      "target": "Bmin7",
+      "prob": 0.0033126293995859213
+    },
+    {
+      "source": "Cmaj",
+      "target": "C7",
+      "prob": 0.0029379360998898272
+    },
+    {
+      "source": "Fmaj",
+      "target": "Bbmin",
+      "prob": 0.009523809523809525
+    },
+    {
+      "source": "Bbmin",
+      "target": "Bbmaj",
+      "prob": 0.06521739130434782
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Fmaj",
+      "prob": 0.13405797101449277
+    },
+    {
+      "source": "Bbmin",
+      "target": "Cmin",
+      "prob": 0.08695652173913043
+    },
+    {
+      "source": "Cmin",
+      "target": "Gmin7",
+      "prob": 0.09830508474576272
+    },
+    {
+      "source": "Fmaj",
+      "target": "Cmaj7",
+      "prob": 0.005797101449275362
+    },
+    {
+      "source": "Amin7",
+      "target": "Ebmaj7",
+      "prob": 0.0036809815950920245
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "C7",
+      "prob": 0.023076923076923078
+    },
+    {
+      "source": "C7",
+      "target": "Cmaj",
+      "prob": 0.014893617021276596
+    },
+    {
+      "source": "Fmaj",
+      "target": "F7",
+      "prob": 0.007039337474120083
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Gmaj",
+      "prob": 0.027739251040221916
+    },
+    {
+      "source": "Bmin",
+      "target": "Amin7",
+      "prob": 0.022598870056497175
+    },
+    {
+      "source": "Cmaj7",
+      "target": "A7",
+      "prob": 0.018115942028985508
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Amin7",
+      "prob": 0.09395973154362416
+    },
+    {
+      "source": "Amin7",
+      "target": "Emin7",
+      "prob": 0.06134969325153374
+    },
+    {
+      "source": "Fmaj",
+      "target": "Fmaj7",
+      "prob": 0.0037267080745341614
+    },
+    {
+      "source": "Fmaj",
+      "target": "Amin",
+      "prob": 0.011594202898550725
+    },
+    {
+      "source": "Amin",
+      "target": "Bbmaj",
+      "prob": 0.016973125884016973
+    },
+    {
+      "source": "Bbmaj",
+      "target": "G7",
+      "prob": 0.005251312828207052
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Fmaj7",
+      "prob": 0.043478260869565216
+    },
+    {
+      "source": "Amin",
+      "target": "Bbmaj7",
+      "prob": 0.008486562942008486
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Fmaj7",
+      "prob": 0.02654867256637168
+    },
+    {
+      "source": "Gmin7",
+      "target": "Gmaj",
+      "prob": 0.02092050209205021
+    },
+    {
+      "source": "Gmin7",
+      "target": "Amin7",
+      "prob": 0.016736401673640166
+    },
+    {
+      "source": "Amin7",
+      "target": "Dmin",
+      "prob": 0.03190184049079755
+    },
+    {
+      "source": "Amin7",
+      "target": "Bbmaj7",
+      "prob": 0.007361963190184049
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Cmaj",
+      "prob": 0.08849557522123894
+    },
+    {
+      "source": "Amin7",
+      "target": "G7",
+      "prob": 0.0196319018404908
+    },
+    {
+      "source": "Fmin7",
+      "target": "Bbmin7",
+      "prob": 0.11261261261261261
+    },
+    {
+      "source": "Fmin7",
+      "target": "Abmaj",
+      "prob": 0.038288288288288286
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Emin",
+      "prob": 0.0076726342710997444
+    },
+    {
+      "source": "Fmin",
+      "target": "Ebmaj",
+      "prob": 0.06832298136645963
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Cmaj7",
+      "prob": 0.0025575447570332483
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Fmin",
+      "prob": 0.014492753623188406
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Abmaj",
+      "prob": 0.07065217391304347
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Fmin7",
+      "prob": 0.016304347826086956
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Bmaj",
+      "prob": 0.0025575447570332483
+    },
+    {
+      "source": "Bmaj",
+      "target": "Amin7",
+      "prob": 0.0045045045045045045
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Dbmaj7",
+      "prob": 0.0025575447570332483
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Ebmaj",
+      "prob": 0.14814814814814814
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Ab7",
+      "prob": 0.0025575447570332483
+    },
+    {
+      "source": "Ab7",
+      "target": "Fmin7",
+      "prob": 0.018018018018018018
+    },
+    {
+      "source": "G7",
+      "target": "Dmin7",
+      "prob": 0.10228802153432032
+    },
+    {
+      "source": "Amin7",
+      "target": "Abmaj",
+      "prob": 0.0049079754601227
+    },
+    {
+      "source": "Gmin7",
+      "target": "Abmaj",
+      "prob": 0.02092050209205021
+    },
+    {
+      "source": "Cmin7",
+      "target": "Ebmaj7",
+      "prob": 0.016025641025641024
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Abmaj",
+      "prob": 0.1076923076923077
+    },
+    {
+      "source": "Abmaj",
+      "target": "Gmin",
+      "prob": 0.043222003929273084
+    },
+    {
+      "source": "Gmin",
+      "target": "Dmin7",
+      "prob": 0.0625
+    },
+    {
+      "source": "Gmin",
+      "target": "Fmin7",
+      "prob": 0.015625
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Dmin7",
+      "prob": 0.09782608695652174
+    },
+    {
+      "source": "Amin",
+      "target": "Emaj",
+      "prob": 0.01272984441301273
+    },
+    {
+      "source": "Emaj",
+      "target": "Cmaj",
+      "prob": 0.0031282586027111575
+    },
+    {
+      "source": "Cmaj",
+      "target": "Emin",
+      "prob": 0.026441424899008446
+    },
+    {
+      "source": "Dmin7",
+      "target": "Amin7",
+      "prob": 0.02458366375892149
+    },
+    {
+      "source": "Amin7",
+      "target": "Emin",
+      "prob": 0.0343558282208589
+    },
+    {
+      "source": "Dmin7",
+      "target": "Amin",
+      "prob": 0.016653449643140365
+    },
+    {
+      "source": "Amin",
+      "target": "Cmaj",
+      "prob": 0.031117397454031116
+    },
+    {
+      "source": "Emin7",
+      "target": "Amin7",
+      "prob": 0.07338444687842278
+    },
+    {
+      "source": "Cmaj",
+      "target": "Eb7",
+      "prob": 0.0003672420124862284
+    },
+    {
+      "source": "Eb7",
+      "target": "Cmin",
+      "prob": 0.013071895424836602
+    },
+    {
+      "source": "Cmin",
+      "target": "Dbmaj7",
+      "prob": 0.003389830508474576
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Gmaj",
+      "prob": 0.037037037037037035
+    },
+    {
+      "source": "Fmin",
+      "target": "Cmaj7",
+      "prob": 0.024844720496894408
+    },
+    {
+      "source": "Cmaj7",
+      "target": "G7",
+      "prob": 0.025362318840579712
+    },
+    {
+      "source": "G7",
+      "target": "Eb7",
+      "prob": 0.0013458950201884253
+    },
+    {
+      "source": "Eb7",
+      "target": "Cmaj",
+      "prob": 0.006535947712418301
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Cmaj",
+      "prob": 0.014492753623188406
+    },
+    {
+      "source": "Cmin7",
+      "target": "Dmin7",
+      "prob": 0.022435897435897436
+    },
+    {
+      "source": "Amin",
+      "target": "Fmaj",
+      "prob": 0.18387553041018387
+    },
+    {
+      "source": "D7",
+      "target": "G7",
+      "prob": 0.012320328542094456
+    },
+    {
+      "source": "Emin",
+      "target": "Emaj",
+      "prob": 0.04608294930875576
+    },
+    {
+      "source": "Fmaj",
+      "target": "Emaj",
+      "prob": 0.006625258799171843
+    },
+    {
+      "source": "Emaj",
+      "target": "G7",
+      "prob": 0.0010427528675703858
+    },
+    {
+      "source": "G7",
+      "target": "Amin",
+      "prob": 0.008075370121130552
+    },
+    {
+      "source": "Emin",
+      "target": "Fmaj",
+      "prob": 0.11367127496159754
+    },
+    {
+      "source": "Cmaj",
+      "target": "E7",
+      "prob": 0.013587954461990452
+    },
+    {
+      "source": "Amaj",
+      "target": "Fmaj",
+      "prob": 0.006880733944954129
+    },
+    {
+      "source": "Amin",
+      "target": "Emin7",
+      "prob": 0.018387553041018388
+    },
+    {
+      "source": "Emin7",
+      "target": "Fmaj",
+      "prob": 0.03723986856516977
+    },
+    {
+      "source": "G7",
+      "target": "Emaj",
+      "prob": 0.006729475100942127
+    },
+    {
+      "source": "Emaj",
+      "target": "Dmin7",
+      "prob": 0.0010427528675703858
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Cmaj",
+      "prob": 0.06040268456375839
+    },
+    {
+      "source": "C7",
+      "target": "Bbmaj7",
+      "prob": 0.031914893617021274
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Fmaj",
+      "prob": 0.168141592920354
+    },
+    {
+      "source": "Fmaj7",
+      "target": "G7",
+      "prob": 0.05970149253731343
+    },
+    {
+      "source": "Dmin7",
+      "target": "Emin7",
+      "prob": 0.01823949246629659
+    },
+    {
+      "source": "Emin7",
+      "target": "Fmaj7",
+      "prob": 0.01533406352683461
+    },
+    {
+      "source": "Emin7",
+      "target": "Gmin7",
+      "prob": 0.007667031763417305
+    },
+    {
+      "source": "Gmin",
+      "target": "Amin7",
+      "prob": 0.015625
+    },
+    {
+      "source": "Amin",
+      "target": "Emin",
+      "prob": 0.03818953323903819
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Emin",
+      "prob": 0.043010752688172046
+    },
+    {
+      "source": "Emin",
+      "target": "E7",
+      "prob": 0.0015360983102918587
+    },
+    {
+      "source": "Emin7",
+      "target": "Dmaj7",
+      "prob": 0.007667031763417305
+    },
+    {
+      "source": "Dmaj7",
+      "target": "A7",
+      "prob": 0.016129032258064516
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Gmaj",
+      "prob": 0.0048543689320388345
+    },
+    {
+      "source": "Bmin",
+      "target": "Gmaj7",
+      "prob": 0.011299435028248588
+    },
+    {
+      "source": "Gmaj7",
+      "target": "E7",
+      "prob": 0.006711409395973154
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Emin7",
+      "prob": 0.10067114093959731
+    },
+    {
+      "source": "Amin7",
+      "target": "Bbmin7",
+      "prob": 0.00245398773006135
+    },
+    {
+      "source": "Abmaj",
+      "target": "Fmin7",
+      "prob": 0.04911591355599214
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Bmaj7",
+      "prob": 0.0025575447570332483
+    },
+    {
+      "source": "Bmaj7",
+      "target": "Fmin7",
+      "prob": 0.08333333333333333
+    },
+    {
+      "source": "Fmin7",
+      "target": "Ebmin",
+      "prob": 0.0045045045045045045
+    },
+    {
+      "source": "Ebmin",
+      "target": "Cmin7",
+      "prob": 0.1111111111111111
+    },
+    {
+      "source": "Abmaj",
+      "target": "Ebmaj7",
+      "prob": 0.011787819253438114
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Gmin7",
+      "prob": 0.015384615384615385
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Bbmin",
+      "prob": 0.010502625656414103
+    },
+    {
+      "source": "Bbmin",
+      "target": "Abmaj",
+      "prob": 0.043478260869565216
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Fmin",
+      "prob": 0.003000750187546887
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Cmin",
+      "prob": 0.06153846153846154
+    },
+    {
+      "source": "E7",
+      "target": "Bbmaj",
+      "prob": 0.0035842293906810036
+    },
+    {
+      "source": "Amin",
+      "target": "Gmin",
+      "prob": 0.005657708628005658
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Cmin",
+      "prob": 0.017699115044247787
+    },
+    {
+      "source": "Dmaj",
+      "target": "Gmin7",
+      "prob": 0.004903964037597058
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Bbmaj",
+      "prob": 0.02654867256637168
+    },
+    {
+      "source": "Cmaj",
+      "target": "Gbmin7",
+      "prob": 0.0014689680499449136
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Emin",
+      "prob": 0.03467406380027739
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Dmin7",
+      "prob": 0.02654867256637168
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "C7",
+      "prob": 0.10619469026548672
+    },
+    {
+      "source": "C7",
+      "target": "Ebmin7",
+      "prob": 0.00425531914893617
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Fmaj",
+      "prob": 0.018518518518518517
+    },
+    {
+      "source": "Amin",
+      "target": "Amin7",
+      "prob": 0.007072135785007072
+    },
+    {
+      "source": "Emin",
+      "target": "Amin",
+      "prob": 0.04608294930875576
+    },
+    {
+      "source": "Emin",
+      "target": "Dmin",
+      "prob": 0.009216589861751152
+    },
+    {
+      "source": "Amin7",
+      "target": "A7",
+      "prob": 0.006134969325153374
+    },
+    {
+      "source": "A7",
+      "target": "Bbmaj7",
+      "prob": 0.007363770250368188
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Amaj",
+      "prob": 0.07079646017699115
+    },
+    {
+      "source": "Dmin7",
+      "target": "Dmaj",
+      "prob": 0.0023790642347343376
+    },
+    {
+      "source": "A7",
+      "target": "Amin7",
+      "prob": 0.004418262150220913
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Cmaj7",
+      "prob": 0.026845637583892617
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Emin7",
+      "prob": 0.014492753623188406
+    },
+    {
+      "source": "B7",
+      "target": "Gbmin",
+      "prob": 0.006631299734748011
+    },
+    {
+      "source": "Gbmin",
+      "target": "B7",
+      "prob": 0.2153846153846154
+    },
+    {
+      "source": "Gb7",
+      "target": "Emaj",
+      "prob": 0.03125
+    },
+    {
+      "source": "Bmaj",
+      "target": "Ebmin7",
+      "prob": 0.016891891891891893
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Emaj",
+      "prob": 0.17592592592592593
+    },
+    {
+      "source": "Fmin",
+      "target": "C7",
+      "prob": 0.037267080745341616
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Dmin7",
+      "prob": 0.04697986577181208
+    },
+    {
+      "source": "G7",
+      "target": "D7",
+      "prob": 0.0013458950201884253
+    },
+    {
+      "source": "D7",
+      "target": "Dmin7",
+      "prob": 0.018480492813141684
+    },
+    {
+      "source": "Dmin7",
+      "target": "Bmin",
+      "prob": 0.0007930214115781126
+    },
+    {
+      "source": "Bmin",
+      "target": "Gmin7",
+      "prob": 0.002824858757062147
+    },
+    {
+      "source": "Gmin7",
+      "target": "Gmaj7",
+      "prob": 0.0020920502092050207
+    },
+    {
+      "source": "D7",
+      "target": "Emin7",
+      "prob": 0.024640657084188913
+    },
+    {
+      "source": "Emin7",
+      "target": "Fmin",
+      "prob": 0.002190580503833516
+    },
+    {
+      "source": "Dmin7",
+      "target": "Gmaj7",
+      "prob": 0.0023790642347343376
+    },
+    {
+      "source": "D7",
+      "target": "E7",
+      "prob": 0.006160164271047228
+    },
+    {
+      "source": "E7",
+      "target": "Bb7",
+      "prob": 0.0017921146953405018
+    },
+    {
+      "source": "Bb7",
+      "target": "Bmin",
+      "prob": 0.014184397163120567
+    },
+    {
+      "source": "Bmin",
+      "target": "Bb7",
+      "prob": 0.002824858757062147
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Gbmaj",
+      "prob": 0.010869565217391304
+    },
+    {
+      "source": "Abmaj",
+      "target": "F7",
+      "prob": 0.03143418467583497
+    },
+    {
+      "source": "F7",
+      "target": "Bbmin",
+      "prob": 0.052083333333333336
+    },
+    {
+      "source": "Bbmin",
+      "target": "Gbmaj",
+      "prob": 0.07608695652173914
+    },
+    {
+      "source": "Dbmaj",
+      "target": "F7",
+      "prob": 0.018018018018018018
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Ebmin7",
+      "prob": 0.06521739130434782
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Bbmin",
+      "prob": 0.0045045045045045045
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Gbmaj",
+      "prob": 0.0007501875468867217
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Amaj7",
+      "prob": 0.013513513513513514
+    },
+    {
+      "source": "Amin7",
+      "target": "C7",
+      "prob": 0.001226993865030675
+    },
+    {
+      "source": "Bbmaj",
+      "target": "B7",
+      "prob": 0.0007501875468867217
+    },
+    {
+      "source": "B7",
+      "target": "C7",
+      "prob": 0.001326259946949602
+    },
+    {
+      "source": "C7",
+      "target": "Gmin7",
+      "prob": 0.029787234042553193
+    },
+    {
+      "source": "F7",
+      "target": "Ebmaj7",
+      "prob": 0.010416666666666666
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Bbmaj7",
+      "prob": 0.007692307692307693
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Gmin",
+      "prob": 0.02654867256637168
+    },
+    {
+      "source": "Amin",
+      "target": "C7",
+      "prob": 0.0014144271570014145
+    },
+    {
+      "source": "Bmin7",
+      "target": "C7",
+      "prob": 0.0012121212121212121
+    },
+    {
+      "source": "Bbmin",
+      "target": "C7",
+      "prob": 0.09782608695652174
+    },
+    {
+      "source": "Fmaj",
+      "target": "D7",
+      "prob": 0.01987577639751553
+    },
+    {
+      "source": "D7",
+      "target": "Gmin7",
+      "prob": 0.07802874743326489
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Eb7",
+      "prob": 0.0037509377344336083
+    },
+    {
+      "source": "Eb7",
+      "target": "C7",
+      "prob": 0.026143790849673203
+    },
+    {
+      "source": "Bbmin",
+      "target": "Eb7",
+      "prob": 0.13043478260869565
+    },
+    {
+      "source": "Eb7",
+      "target": "Emaj",
+      "prob": 0.013071895424836602
+    },
+    {
+      "source": "Dmin",
+      "target": "Cmaj",
+      "prob": 0.03018867924528302
+    },
+    {
+      "source": "Bbmin",
+      "target": "Ebmaj",
+      "prob": 0.30434782608695654
+    },
+    {
+      "source": "Fmin7",
+      "target": "Bbmin",
+      "prob": 0.038288288288288286
+    },
+    {
+      "source": "Fmin",
+      "target": "Bbmin7",
+      "prob": 0.012422360248447204
+    },
+    {
+      "source": "Fmin7",
+      "target": "G7",
+      "prob": 0.06306306306306306
+    },
+    {
+      "source": "G7",
+      "target": "Bbmin",
+      "prob": 0.0026917900403768506
+    },
+    {
+      "source": "Fmin",
+      "target": "Gmin7",
+      "prob": 0.037267080745341616
+    },
+    {
+      "source": "Gmin7",
+      "target": "Bbmin7",
+      "prob": 0.012552301255230125
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Gmaj",
+      "prob": 0.03125
+    },
+    {
+      "source": "Gmaj",
+      "target": "Bbmin7",
+      "prob": 0.0006036824630244491
+    },
+    {
+      "source": "Abmaj",
+      "target": "Gmin7",
+      "prob": 0.003929273084479371
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Dbmin7",
+      "prob": 0.02702702702702703
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Ebmaj",
+      "prob": 0.0048543689320388345
+    },
+    {
+      "source": "Fmaj",
+      "target": "Bbmin7",
+      "prob": 0.0033126293995859213
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Dbmaj",
+      "prob": 0.03125
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Eb7",
+      "prob": 0.007281553398058253
+    },
+    {
+      "source": "Bbmin",
+      "target": "Dbmaj7",
+      "prob": 0.021739130434782608
+    },
+    {
+      "source": "Fmin",
+      "target": "Fmaj7",
+      "prob": 0.012422360248447204
+    },
+    {
+      "source": "Gmin",
+      "target": "F7",
+      "prob": 0.01171875
+    },
+    {
+      "source": "Amin",
+      "target": "A7",
+      "prob": 0.021216407355021217
+    },
+    {
+      "source": "Dmin",
+      "target": "Fmaj",
+      "prob": 0.05660377358490566
+    },
+    {
+      "source": "Cmaj",
+      "target": "Cmaj7",
+      "prob": 0.004774146162320969
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Amin7",
+      "prob": 0.18115942028985507
+    },
+    {
+      "source": "Dmin",
+      "target": "Dmin7",
+      "prob": 0.011320754716981131
+    },
+    {
+      "source": "Abmaj",
+      "target": "Cmin",
+      "prob": 0.0137524557956778
+    },
+    {
+      "source": "Cmin",
+      "target": "Ab7",
+      "prob": 0.013559322033898305
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Bbmin7",
+      "prob": 0.03125
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Abmaj7",
+      "prob": 0.005434782608695652
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Abmin",
+      "prob": 0.015625
+    },
+    {
+      "source": "Abmin",
+      "target": "Bbmin7",
+      "prob": 0.022222222222222223
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Cmin",
+      "prob": 0.005434782608695652
+    },
+    {
+      "source": "Cmin",
+      "target": "Bmaj",
+      "prob": 0.003389830508474576
+    },
+    {
+      "source": "Bmaj",
+      "target": "Bbmin",
+      "prob": 0.0011261261261261261
+    },
+    {
+      "source": "Bbmin",
+      "target": "Cmin7",
+      "prob": 0.010869565217391304
+    },
+    {
+      "source": "Cmin7",
+      "target": "Abmaj",
+      "prob": 0.02564102564102564
+    },
+    {
+      "source": "Cmin7",
+      "target": "G7",
+      "prob": 0.00641025641025641
+    },
+    {
+      "source": "G7",
+      "target": "Bbmin7",
+      "prob": 0.0013458950201884253
+    },
+    {
+      "source": "Fmin7",
+      "target": "Emin7",
+      "prob": 0.0022522522522522522
+    },
+    {
+      "source": "Emin7",
+      "target": "Bbmin",
+      "prob": 0.001095290251916758
+    },
+    {
+      "source": "Cmin",
+      "target": "Bmin",
+      "prob": 0.003389830508474576
+    },
+    {
+      "source": "Bmin",
+      "target": "Bbmin",
+      "prob": 0.002824858757062147
+    },
+    {
+      "source": "Bmaj",
+      "target": "G7",
+      "prob": 0.0011261261261261261
+    },
+    {
+      "source": "F7",
+      "target": "Cmaj",
+      "prob": 0.003472222222222222
+    },
+    {
+      "source": "B7",
+      "target": "Cmin7",
+      "prob": 0.001326259946949602
+    },
+    {
+      "source": "Bbmin",
+      "target": "Fmaj",
+      "prob": 0.07608695652173914
+    },
+    {
+      "source": "Gmin7",
+      "target": "Fmaj7",
+      "prob": 0.027196652719665274
+    },
+    {
+      "source": "Fmaj7",
+      "target": "D7",
+      "prob": 0.014925373134328358
+    },
+    {
+      "source": "Bbmin",
+      "target": "Dmin7",
+      "prob": 0.010869565217391304
+    },
+    {
+      "source": "Amin7",
+      "target": "F7",
+      "prob": 0.0036809815950920245
+    },
+    {
+      "source": "F7",
+      "target": "Gmin",
+      "prob": 0.003472222222222222
+    },
+    {
+      "source": "Gmin7",
+      "target": "Fmin7",
+      "prob": 0.008368200836820083
+    },
+    {
+      "source": "Gmaj",
+      "target": "Gb7",
+      "prob": 0.0027165710836100213
+    },
+    {
+      "source": "Gb7",
+      "target": "Fmaj",
+      "prob": 0.0078125
+    },
+    {
+      "source": "C7",
+      "target": "Cmin7",
+      "prob": 0.00425531914893617
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Amin",
+      "prob": 0.008849557522123894
+    },
+    {
+      "source": "Amaj",
+      "target": "Gmin",
+      "prob": 0.0011467889908256881
+    },
+    {
+      "source": "Db7",
+      "target": "Cmaj",
+      "prob": 0.007874015748031496
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Dmaj",
+      "prob": 0.014925373134328358
+    },
+    {
+      "source": "Gmin",
+      "target": "D7",
+      "prob": 0.0078125
+    },
+    {
+      "source": "D7",
+      "target": "C7",
+      "prob": 0.002053388090349076
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Abmin7",
+      "prob": 0.037037037037037035
+    },
+    {
+      "source": "Abmin7",
+      "target": "Cmin",
+      "prob": 0.006060606060606061
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Dbmin7",
+      "prob": 0.0007501875468867217
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Abmin7",
+      "prob": 0.050970873786407765
+    },
+    {
+      "source": "Abmin7",
+      "target": "Amin7",
+      "prob": 0.006060606060606061
+    },
+    {
+      "source": "Dmin7",
+      "target": "Cmaj7",
+      "prob": 0.020618556701030927
+    },
+    {
+      "source": "Emin",
+      "target": "Dmin7",
+      "prob": 0.026113671274961597
+    },
+    {
+      "source": "G7",
+      "target": "Emin7",
+      "prob": 0.009421265141318977
+    },
+    {
+      "source": "Amin7",
+      "target": "Amin",
+      "prob": 0.001226993865030675
+    },
+    {
+      "source": "Amin",
+      "target": "G7",
+      "prob": 0.008486562942008486
+    },
+    {
+      "source": "Amin7",
+      "target": "Gbmin7",
+      "prob": 0.0036809815950920245
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Fmaj",
+      "prob": 0.0013869625520110957
+    },
+    {
+      "source": "Gmaj",
+      "target": "Gbmaj",
+      "prob": 0.002112888620585572
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Fmaj",
+      "prob": 0.003067484662576687
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Bmin7",
+      "prob": 0.021739130434782608
+    },
+    {
+      "source": "Emin7",
+      "target": "Ebmaj7",
+      "prob": 0.0032858707557502738
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Cmaj",
+      "prob": 0.015384615384615385
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Bbmaj",
+      "prob": 0.0036231884057971015
+    },
+    {
+      "source": "Emin",
+      "target": "G7",
+      "prob": 0.006144393241167435
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Dmin",
+      "prob": 0.010869565217391304
+    },
+    {
+      "source": "Emin7",
+      "target": "Dmin",
+      "prob": 0.008762322015334063
+    },
+    {
+      "source": "Dmin",
+      "target": "Cmaj7",
+      "prob": 0.009433962264150943
+    },
+    {
+      "source": "A7",
+      "target": "Gbmaj",
+      "prob": 0.005891016200294551
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Bmin7",
+      "prob": 0.03067484662576687
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Emin7",
+      "prob": 0.10215053763440861
+    },
+    {
+      "source": "A7",
+      "target": "Bmin",
+      "prob": 0.005891016200294551
+    },
+    {
+      "source": "Bmin",
+      "target": "Dmaj7",
+      "prob": 0.01977401129943503
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Gmaj",
+      "prob": 0.05913978494623656
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Gbmaj",
+      "prob": 0.020134228187919462
+    },
+    {
+      "source": "Bmin",
+      "target": "Db7",
+      "prob": 0.025423728813559324
+    },
+    {
+      "source": "Db7",
+      "target": "Dmaj",
+      "prob": 0.007874015748031496
+    },
+    {
+      "source": "Amaj",
+      "target": "Gbmaj",
+      "prob": 0.0015290519877675841
+    },
+    {
+      "source": "Gmaj",
+      "target": "Gbmin",
+      "prob": 0.0012073649260488982
+    },
+    {
+      "source": "Gbmin",
+      "target": "Gmaj",
+      "prob": 0.14358974358974358
+    },
+    {
+      "source": "Amaj",
+      "target": "Gbmin",
+      "prob": 0.004969418960244648
+    },
+    {
+      "source": "Gbmin",
+      "target": "Emin",
+      "prob": 0.015384615384615385
+    },
+    {
+      "source": "Gbmin",
+      "target": "Bmin",
+      "prob": 0.03076923076923077
+    },
+    {
+      "source": "Gmaj",
+      "target": "Emaj",
+      "prob": 0.009658919408391186
+    },
+    {
+      "source": "Gmaj",
+      "target": "Gbmaj7",
+      "prob": 0.00030184123151222455
+    },
+    {
+      "source": "Gbmaj7",
+      "target": "Emin7",
+      "prob": 0.14285714285714285
+    },
+    {
+      "source": "Emin7",
+      "target": "Bmin7",
+      "prob": 0.03066812705366922
+    },
+    {
+      "source": "Bmin7",
+      "target": "Bbmaj",
+      "prob": 0.0012121212121212121
+    },
+    {
+      "source": "Dmin7",
+      "target": "C7",
+      "prob": 0.006344171292624901
+    },
+    {
+      "source": "Fmaj",
+      "target": "Emin7",
+      "prob": 0.011180124223602485
+    },
+    {
+      "source": "Emin7",
+      "target": "C7",
+      "prob": 0.0032858707557502738
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Bbmaj7",
+      "prob": 0.004975124378109453
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Cmaj7",
+      "prob": 0.002250562640660165
+    },
+    {
+      "source": "Gmaj7",
+      "target": "A7",
+      "prob": 0.053691275167785234
+    },
+    {
+      "source": "Emin",
+      "target": "Gbmin7",
+      "prob": 0.0015360983102918587
+    },
+    {
+      "source": "Bmin7",
+      "target": "Gbmin7",
+      "prob": 0.04606060606060606
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Amaj",
+      "prob": 0.06040268456375839
+    },
+    {
+      "source": "Cmaj",
+      "target": "Bmin",
+      "prob": 0.0029379360998898272
+    },
+    {
+      "source": "Bmin",
+      "target": "Amin",
+      "prob": 0.011299435028248588
+    },
+    {
+      "source": "Cmaj",
+      "target": "Bmin7",
+      "prob": 0.011017260374586852
+    },
+    {
+      "source": "Dmin7",
+      "target": "A7",
+      "prob": 0.0007930214115781126
+    },
+    {
+      "source": "Fmin7",
+      "target": "Ab7",
+      "prob": 0.0045045045045045045
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Fmin7",
+      "prob": 0.015384615384615385
+    },
+    {
+      "source": "Fmin7",
+      "target": "Eb7",
+      "prob": 0.006756756756756757
+    },
+    {
+      "source": "Ab7",
+      "target": "Bbmin7",
+      "prob": 0.018018018018018018
+    },
+    {
+      "source": "Fmin7",
+      "target": "Ebmin7",
+      "prob": 0.0022522522522522522
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Bbmin7",
+      "prob": 0.009259259259259259
+    },
+    {
+      "source": "Abmaj",
+      "target": "Amaj7",
+      "prob": 0.003929273084479371
+    },
+    {
+      "source": "Dmaj",
+      "target": "Bbmaj",
+      "prob": 0.0008173273395995096
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Bmin7",
+      "prob": 0.0015003750937734434
+    },
+    {
+      "source": "Bmin7",
+      "target": "D7",
+      "prob": 0.0048484848484848485
+    },
+    {
+      "source": "Bmin",
+      "target": "Gbmin",
+      "prob": 0.07344632768361582
+    },
+    {
+      "source": "B7",
+      "target": "Gmaj",
+      "prob": 0.001326259946949602
+    },
+    {
+      "source": "Cmin",
+      "target": "Fmaj7",
+      "prob": 0.013559322033898305
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Cmaj7",
+      "prob": 0.01990049751243781
+    },
+    {
+      "source": "Cmaj",
+      "target": "Cmin7",
+      "prob": 0.0014689680499449136
+    },
+    {
+      "source": "Abmaj",
+      "target": "Bbmin",
+      "prob": 0.0137524557956778
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Bbmin7",
+      "prob": 0.0015003750937734434
+    },
+    {
+      "source": "Abmaj",
+      "target": "Dbmaj7",
+      "prob": 0.011787819253438114
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Fmin7",
+      "prob": 0.07407407407407407
+    },
+    {
+      "source": "Fmin7",
+      "target": "Cmin7",
+      "prob": 0.03153153153153153
+    },
+    {
+      "source": "Bbmin",
+      "target": "Bmin",
+      "prob": 0.010869565217391304
+    },
+    {
+      "source": "Bmin",
+      "target": "Cmin7",
+      "prob": 0.002824858757062147
+    },
+    {
+      "source": "Bbmin",
+      "target": "Bmaj7",
+      "prob": 0.010869565217391304
+    },
+    {
+      "source": "Bmaj7",
+      "target": "Cmin",
+      "prob": 0.041666666666666664
+    },
+    {
+      "source": "Cmin",
+      "target": "Ebmaj",
+      "prob": 0.003389830508474576
+    },
+    {
+      "source": "Cmin7",
+      "target": "Bbmin7",
+      "prob": 0.02564102564102564
+    },
+    {
+      "source": "Cmin",
+      "target": "Bbmin7",
+      "prob": 0.010169491525423728
+    },
+    {
+      "source": "Eb7",
+      "target": "Abmaj7",
+      "prob": 0.0457516339869281
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Ebmaj",
+      "prob": 0.0625
+    },
+    {
+      "source": "Bb7",
+      "target": "Abmaj7",
+      "prob": 0.04964539007092199
+    },
+    {
+      "source": "Emaj",
+      "target": "E7",
+      "prob": 0.004171011470281543
+    },
+    {
+      "source": "E7",
+      "target": "Amaj7",
+      "prob": 0.026881720430107527
+    },
+    {
+      "source": "Amaj",
+      "target": "Bmaj7",
+      "prob": 0.0015290519877675841
+    },
+    {
+      "source": "Bmaj7",
+      "target": "Emaj",
+      "prob": 0.125
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Bmin7",
+      "prob": 0.050970873786407765
+    },
+    {
+      "source": "Bmin7",
+      "target": "Amaj7",
+      "prob": 0.008484848484848486
+    },
+    {
+      "source": "Amaj7",
+      "target": "Bmin7",
+      "prob": 0.10227272727272728
+    },
+    {
+      "source": "A7",
+      "target": "Dbmin7",
+      "prob": 0.0014727540500736377
+    },
+    {
+      "source": "Emin7",
+      "target": "Gmaj7",
+      "prob": 0.008762322015334063
+    },
+    {
+      "source": "Dmaj",
+      "target": "D7",
+      "prob": 0.005721291377196567
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Dmaj",
+      "prob": 0.005376344086021506
+    },
+    {
+      "source": "Bmin7",
+      "target": "Dmaj7",
+      "prob": 0.013333333333333334
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Gbmin7",
+      "prob": 0.010752688172043012
+    },
+    {
+      "source": "Bmin7",
+      "target": "Amin7",
+      "prob": 0.01818181818181818
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Dbmaj7",
+      "prob": 0.010869565217391304
+    },
+    {
+      "source": "Eb7",
+      "target": "Ebmaj",
+      "prob": 0.013071895424836602
+    },
+    {
+      "source": "Eb7",
+      "target": "G7",
+      "prob": 0.006535947712418301
+    },
+    {
+      "source": "G7",
+      "target": "Fmin7",
+      "prob": 0.004037685060565276
+    },
+    {
+      "source": "Eb7",
+      "target": "Dbmaj",
+      "prob": 0.006535947712418301
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Bbmin7",
+      "prob": 0.1111111111111111
+    },
+    {
+      "source": "Abmaj",
+      "target": "Ebmin7",
+      "prob": 0.011787819253438114
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Dbmaj",
+      "prob": 0.1388888888888889
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Abmaj7",
+      "prob": 0.0045045045045045045
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Eb7",
+      "prob": 0.015625
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Cmin7",
+      "prob": 0.0045045045045045045
+    },
+    {
+      "source": "Amaj7",
+      "target": "Emin7",
+      "prob": 0.011363636363636364
+    },
+    {
+      "source": "B7",
+      "target": "Eb7",
+      "prob": 0.001326259946949602
+    },
+    {
+      "source": "Eb7",
+      "target": "B7",
+      "prob": 0.006535947712418301
+    },
+    {
+      "source": "B7",
+      "target": "Bmin7",
+      "prob": 0.011936339522546418
+    },
+    {
+      "source": "Amaj",
+      "target": "Amin7",
+      "prob": 0.0022935779816513763
+    },
+    {
+      "source": "B7",
+      "target": "Ebmaj",
+      "prob": 0.001326259946949602
+    },
+    {
+      "source": "Emin",
+      "target": "Bmin",
+      "prob": 0.006144393241167435
+    },
+    {
+      "source": "Gb7",
+      "target": "Emin",
+      "prob": 0.0078125
+    },
+    {
+      "source": "Amin",
+      "target": "Gmaj7",
+      "prob": 0.0014144271570014145
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Emin",
+      "prob": 0.040268456375838924
+    },
+    {
+      "source": "Cmaj",
+      "target": "Dbmin7",
+      "prob": 0.0003672420124862284
+    },
+    {
+      "source": "Gb7",
+      "target": "Emin7",
+      "prob": 0.0078125
+    },
+    {
+      "source": "E7",
+      "target": "Gmaj",
+      "prob": 0.0017921146953405018
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Ab7",
+      "prob": 0.0027739251040221915
+    },
+    {
+      "source": "Ab7",
+      "target": "Gmaj",
+      "prob": 0.009009009009009009
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Amin",
+      "prob": 0.005547850208044383
+    },
+    {
+      "source": "Amin7",
+      "target": "Bmin7",
+      "prob": 0.012269938650306749
+    },
+    {
+      "source": "Dmaj",
+      "target": "Fmin7",
+      "prob": 0.0004086636697997548
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Abmin7",
+      "prob": 0.020804438280166437
+    },
+    {
+      "source": "Abmin7",
+      "target": "Amin",
+      "prob": 0.006060606060606061
+    },
+    {
+      "source": "D7",
+      "target": "Cmaj7",
+      "prob": 0.004106776180698152
+    },
+    {
+      "source": "Dmaj",
+      "target": "Emaj7",
+      "prob": 0.0004086636697997548
+    },
+    {
+      "source": "Emaj7",
+      "target": "Gmaj7",
+      "prob": 0.015625
+    },
+    {
+      "source": "Dmin7",
+      "target": "Fmaj7",
+      "prob": 0.0055511498810467885
+    },
+    {
+      "source": "Gb7",
+      "target": "Bmin7",
+      "prob": 0.234375
+    },
+    {
+      "source": "Bmin7",
+      "target": "Gmin",
+      "prob": 0.006060606060606061
+    },
+    {
+      "source": "Gmin",
+      "target": "Gbmin",
+      "prob": 0.01171875
+    },
+    {
+      "source": "Gmin",
+      "target": "Gbmin7",
+      "prob": 0.0078125
+    },
+    {
+      "source": "Gmin",
+      "target": "Dmaj7",
+      "prob": 0.00390625
+    },
+    {
+      "source": "Emin7",
+      "target": "Gmin",
+      "prob": 0.002190580503833516
+    },
+    {
+      "source": "A7",
+      "target": "G7",
+      "prob": 0.0029455081001472753
+    },
+    {
+      "source": "Dmin",
+      "target": "Amin7",
+      "prob": 0.03962264150943396
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Emin7",
+      "prob": 0.008849557522123894
+    },
+    {
+      "source": "Dmin",
+      "target": "Emin7",
+      "prob": 0.01509433962264151
+    },
+    {
+      "source": "Emaj7",
+      "target": "G7",
+      "prob": 0.015625
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Gmaj",
+      "prob": 0.013422818791946308
+    },
+    {
+      "source": "Bmin7",
+      "target": "G7",
+      "prob": 0.0012121212121212121
+    },
+    {
+      "source": "Amin7",
+      "target": "Gmaj7",
+      "prob": 0.0049079754601227
+    },
+    {
+      "source": "Fmaj",
+      "target": "Gmaj7",
+      "prob": 0.0008281573498964803
+    },
+    {
+      "source": "Amin7",
+      "target": "Fmaj7",
+      "prob": 0.012269938650306749
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Fmaj",
+      "prob": 0.010752688172043012
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Amin7",
+      "prob": 0.005376344086021506
+    },
+    {
+      "source": "Bmaj",
+      "target": "Gmaj7",
+      "prob": 0.0011261261261261261
+    },
+    {
+      "source": "Amin7",
+      "target": "B7",
+      "prob": 0.04294478527607362
+    },
+    {
+      "source": "Bmin",
+      "target": "Dmaj",
+      "prob": 0.03389830508474576
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Cmaj",
+      "prob": 0.0013869625520110957
+    },
+    {
+      "source": "Bmin",
+      "target": "Gbmin7",
+      "prob": 0.03389830508474576
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Emin7",
+      "prob": 0.0024271844660194173
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Bmin7",
+      "prob": 0.06989247311827956
+    },
+    {
+      "source": "Fmaj",
+      "target": "Dmaj7",
+      "prob": 0.00041407867494824016
+    },
+    {
+      "source": "G7",
+      "target": "E7",
+      "prob": 0.016150740242261104
+    },
+    {
+      "source": "Emin",
+      "target": "Fmin7",
+      "prob": 0.004608294930875576
+    },
+    {
+      "source": "Gmin",
+      "target": "Abmaj",
+      "prob": 0.00390625
+    },
+    {
+      "source": "Eb7",
+      "target": "Bb7",
+      "prob": 0.006535947712418301
+    },
+    {
+      "source": "F7",
+      "target": "C7",
+      "prob": 0.003472222222222222
+    },
+    {
+      "source": "C7",
+      "target": "Gmin",
+      "prob": 0.006382978723404255
+    },
+    {
+      "source": "Gmin",
+      "target": "Dmin",
+      "prob": 0.015625
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Bbmaj7",
+      "prob": 0.0012787723785166241
+    },
+    {
+      "source": "Ab7",
+      "target": "Emaj",
+      "prob": 0.009009009009009009
+    },
+    {
+      "source": "Gbmin",
+      "target": "E7",
+      "prob": 0.005128205128205128
+    },
+    {
+      "source": "D7",
+      "target": "Bmin",
+      "prob": 0.006160164271047228
+    },
+    {
+      "source": "Dmaj",
+      "target": "Fmaj",
+      "prob": 0.0008173273395995096
+    },
+    {
+      "source": "Emaj",
+      "target": "D7",
+      "prob": 0.0005213764337851929
+    },
+    {
+      "source": "Dmin7",
+      "target": "D7",
+      "prob": 0.0007930214115781126
+    },
+    {
+      "source": "D7",
+      "target": "Gmaj7",
+      "prob": 0.022587268993839837
+    },
+    {
+      "source": "Bmin",
+      "target": "A7",
+      "prob": 0.005649717514124294
+    },
+    {
+      "source": "A7",
+      "target": "Gbmin",
+      "prob": 0.0029455081001472753
+    },
+    {
+      "source": "Dmaj",
+      "target": "Gbmaj7",
+      "prob": 0.0004086636697997548
+    },
+    {
+      "source": "Gbmaj7",
+      "target": "Bmin",
+      "prob": 0.14285714285714285
+    },
+    {
+      "source": "Amaj7",
+      "target": "Bmin",
+      "prob": 0.011363636363636364
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Emin",
+      "prob": 0.007281553398058253
+    },
+    {
+      "source": "Emin",
+      "target": "Gbmaj7",
+      "prob": 0.0015360983102918587
+    },
+    {
+      "source": "Gbmaj7",
+      "target": "Dmaj",
+      "prob": 0.14285714285714285
+    },
+    {
+      "source": "Emin",
+      "target": "Ebmaj7",
+      "prob": 0.0015360983102918587
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Dmaj",
+      "prob": 0.09230769230769231
+    },
+    {
+      "source": "A7",
+      "target": "Amaj",
+      "prob": 0.0014727540500736377
+    },
+    {
+      "source": "E7",
+      "target": "Dbmin",
+      "prob": 0.0017921146953405018
+    },
+    {
+      "source": "Ab7",
+      "target": "Bmin7",
+      "prob": 0.018018018018018018
+    },
+    {
+      "source": "Dmaj",
+      "target": "Db7",
+      "prob": 0.006129955046996322
+    },
+    {
+      "source": "Db7",
+      "target": "Gbmin7",
+      "prob": 0.2992125984251969
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Dmaj7",
+      "prob": 0.03467406380027739
+    },
+    {
+      "source": "Amaj",
+      "target": "Fmaj7",
+      "prob": 0.0011467889908256881
+    },
+    {
+      "source": "Amin",
+      "target": "Cmaj7",
+      "prob": 0.02545968882602546
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Gmaj7",
+      "prob": 0.0036231884057971015
+    },
+    {
+      "source": "Emaj",
+      "target": "Gmaj",
+      "prob": 0.0015641293013555788
+    },
+    {
+      "source": "Dmaj",
+      "target": "Dmin",
+      "prob": 0.008173273395995096
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Emin7",
+      "prob": 0.07462686567164178
+    },
+    {
+      "source": "Abmin7",
+      "target": "Bmin7",
+      "prob": 0.01818181818181818
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Ebmaj7",
+      "prob": 0.035398230088495575
+    },
+    {
+      "source": "F7",
+      "target": "Bbmaj7",
+      "prob": 0.010416666666666666
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "F7",
+      "prob": 0.06153846153846154
+    },
+    {
+      "source": "Dmin",
+      "target": "Gmin",
+      "prob": 0.0037735849056603774
+    },
+    {
+      "source": "Cmin",
+      "target": "Bbmaj7",
+      "prob": 0.003389830508474576
+    },
+    {
+      "source": "F7",
+      "target": "D7",
+      "prob": 0.020833333333333332
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Ebmaj",
+      "prob": 0.007692307692307693
+    },
+    {
+      "source": "Cmin7",
+      "target": "Dmin",
+      "prob": 0.003205128205128205
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Dbmaj7",
+      "prob": 0.0007501875468867217
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Cmin7",
+      "prob": 0.037037037037037035
+    },
+    {
+      "source": "G7",
+      "target": "Cmin7",
+      "prob": 0.0026917900403768506
+    },
+    {
+      "source": "Fmin7",
+      "target": "F7",
+      "prob": 0.0045045045045045045
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "D7",
+      "prob": 0.02654867256637168
+    },
+    {
+      "source": "Gmin",
+      "target": "Bmin7",
+      "prob": 0.00390625
+    },
+    {
+      "source": "Emin",
+      "target": "Emaj7",
+      "prob": 0.0015360983102918587
+    },
+    {
+      "source": "Emaj7",
+      "target": "Fmaj",
+      "prob": 0.015625
+    },
+    {
+      "source": "Fmaj",
+      "target": "Bmaj7",
+      "prob": 0.00041407867494824016
+    },
+    {
+      "source": "Bmaj7",
+      "target": "Cmaj7",
+      "prob": 0.041666666666666664
+    },
+    {
+      "source": "Cmaj7",
+      "target": "E7",
+      "prob": 0.014492753623188406
+    },
+    {
+      "source": "E7",
+      "target": "Dmin7",
+      "prob": 0.0017921146953405018
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Emin",
+      "prob": 0.03980099502487562
+    },
+    {
+      "source": "Fmaj",
+      "target": "Bmaj",
+      "prob": 0.00041407867494824016
+    },
+    {
+      "source": "Bmaj",
+      "target": "Cmin",
+      "prob": 0.0011261261261261261
+    },
+    {
+      "source": "Cmin",
+      "target": "Amin",
+      "prob": 0.003389830508474576
+    },
+    {
+      "source": "E7",
+      "target": "Fmaj7",
+      "prob": 0.0017921146953405018
+    },
+    {
+      "source": "Emin",
+      "target": "Fmaj7",
+      "prob": 0.016897081413210446
+    },
+    {
+      "source": "Fmaj",
+      "target": "Abmaj7",
+      "prob": 0.00041407867494824016
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Amin",
+      "prob": 0.015625
+    },
+    {
+      "source": "Cmin",
+      "target": "Ebmaj7",
+      "prob": 0.003389830508474576
+    },
+    {
+      "source": "Cmin7",
+      "target": "Ebmaj",
+      "prob": 0.016025641025641024
+    },
+    {
+      "source": "Amin7",
+      "target": "Gmin",
+      "prob": 0.0049079754601227
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Dmin7",
+      "prob": 0.01918158567774936
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Gmin7",
+      "prob": 0.0076726342710997444
+    },
+    {
+      "source": "Dmaj",
+      "target": "Ab7",
+      "prob": 0.0008173273395995096
+    },
+    {
+      "source": "Ab7",
+      "target": "Gmin",
+      "prob": 0.018018018018018018
+    },
+    {
+      "source": "Gmin",
+      "target": "Amin",
+      "prob": 0.01171875
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Cmin7",
+      "prob": 0.017699115044247787
+    },
+    {
+      "source": "Dmin7",
+      "target": "Cmin7",
+      "prob": 0.0007930214115781126
+    },
+    {
+      "source": "Bmin",
+      "target": "Dbmin7",
+      "prob": 0.005649717514124294
+    },
+    {
+      "source": "Bmin7",
+      "target": "Dbmin",
+      "prob": 0.0012121212121212121
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Emaj",
+      "prob": 0.0012787723785166241
+    },
+    {
+      "source": "Gmin7",
+      "target": "A7",
+      "prob": 0.008368200836820083
+    },
+    {
+      "source": "Dmin",
+      "target": "Amaj",
+      "prob": 0.07547169811320754
+    },
+    {
+      "source": "Amaj",
+      "target": "Gmin7",
+      "prob": 0.0015290519877675841
+    },
+    {
+      "source": "Gmin7",
+      "target": "Bbmaj7",
+      "prob": 0.0020920502092050207
+    },
+    {
+      "source": "Dmin",
+      "target": "A7",
+      "prob": 0.020754716981132074
+    },
+    {
+      "source": "A7",
+      "target": "Gmin7",
+      "prob": 0.005891016200294551
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Bmaj7",
+      "prob": 0.0007501875468867217
+    },
+    {
+      "source": "Bmaj7",
+      "target": "Cmaj",
+      "prob": 0.041666666666666664
+    },
+    {
+      "source": "Cmaj",
+      "target": "Bbmaj7",
+      "prob": 0.0022034520749173708
+    },
+    {
+      "source": "E7",
+      "target": "Dmaj7",
+      "prob": 0.007168458781362007
+    },
+    {
+      "source": "Db7",
+      "target": "B7",
+      "prob": 0.015748031496062992
+    },
+    {
+      "source": "B7",
+      "target": "Dmaj7",
+      "prob": 0.005305039787798408
+    },
+    {
+      "source": "Emin7",
+      "target": "Gbmin",
+      "prob": 0.001095290251916758
+    },
+    {
+      "source": "Gmaj7",
+      "target": "Bmin7",
+      "prob": 0.06711409395973154
+    },
+    {
+      "source": "Bmaj",
+      "target": "Emin7",
+      "prob": 0.0022522522522522522
+    },
+    {
+      "source": "Gbmin7",
+      "target": "A7",
+      "prob": 0.004160887656033287
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Gbmaj",
+      "prob": 0.005376344086021506
+    },
+    {
+      "source": "A7",
+      "target": "Dmaj7",
+      "prob": 0.016200294550810016
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Amaj",
+      "prob": 0.006934812760055479
+    },
+    {
+      "source": "Amin7",
+      "target": "Cmaj7",
+      "prob": 0.008588957055214725
+    },
+    {
+      "source": "Fmaj7",
+      "target": "E7",
+      "prob": 0.024875621890547265
+    },
+    {
+      "source": "E7",
+      "target": "Fmaj",
+      "prob": 0.008960573476702509
+    },
+    {
+      "source": "Fmaj",
+      "target": "E7",
+      "prob": 0.006625258799171843
+    },
+    {
+      "source": "G7",
+      "target": "Dmaj",
+      "prob": 0.0026917900403768506
+    },
+    {
+      "source": "Bb7",
+      "target": "Amin",
+      "prob": 0.0070921985815602835
+    },
+    {
+      "source": "Gmin",
+      "target": "Amaj",
+      "prob": 0.01171875
+    },
+    {
+      "source": "Db7",
+      "target": "Bbmin7",
+      "prob": 0.007874015748031496
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Gbmin7",
+      "prob": 0.005434782608695652
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Dbmaj",
+      "prob": 0.0013869625520110957
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Gbmin",
+      "prob": 0.005434782608695652
+    },
+    {
+      "source": "Gbmin",
+      "target": "Dbmaj",
+      "prob": 0.03076923076923077
+    },
+    {
+      "source": "Fmin7",
+      "target": "Gbmin7",
+      "prob": 0.0022522522522522522
+    },
+    {
+      "source": "Ab7",
+      "target": "Abmaj",
+      "prob": 0.009009009009009009
+    },
+    {
+      "source": "Abmaj",
+      "target": "Abmin7",
+      "prob": 0.003929273084479371
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Amaj",
+      "prob": 0.003067484662576687
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Gbmin",
+      "prob": 0.04504504504504504
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Gbmaj7",
+      "prob": 0.005434782608695652
+    },
+    {
+      "source": "Gbmaj7",
+      "target": "Ebmin7",
+      "prob": 0.2857142857142857
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Gbmaj7",
+      "prob": 0.0045045045045045045
+    },
+    {
+      "source": "Abmin7",
+      "target": "Bbmin7",
+      "prob": 0.012121212121212121
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Amaj",
+      "prob": 0.021739130434782608
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Abmin7",
+      "prob": 0.04054054054054054
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Emaj",
+      "prob": 0.03155339805825243
+    },
+    {
+      "source": "Dbmin",
+      "target": "Gb7",
+      "prob": 0.005988023952095809
+    },
+    {
+      "source": "Emin",
+      "target": "Dmaj7",
+      "prob": 0.0030721966205837174
+    },
+    {
+      "source": "Dmin7",
+      "target": "Abmaj",
+      "prob": 0.0007930214115781126
+    },
+    {
+      "source": "E7",
+      "target": "Ebmaj",
+      "prob": 0.0017921146953405018
+    },
+    {
+      "source": "Dmin7",
+      "target": "Bb7",
+      "prob": 0.0007930214115781126
+    },
+    {
+      "source": "Cmin7",
+      "target": "Bbmaj7",
+      "prob": 0.016025641025641024
+    },
+    {
+      "source": "Dmin7",
+      "target": "Bmaj",
+      "prob": 0.0007930214115781126
+    },
+    {
+      "source": "Emaj",
+      "target": "Abmin7",
+      "prob": 0.01929092805005214
+    },
+    {
+      "source": "Bmaj",
+      "target": "Abmin7",
+      "prob": 0.010135135135135136
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Bmaj",
+      "prob": 0.1111111111111111
+    },
+    {
+      "source": "Abmin7",
+      "target": "Gb7",
+      "prob": 0.012121212121212121
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Dbmaj",
+      "prob": 0.02669902912621359
+    },
+    {
+      "source": "Bmaj",
+      "target": "Emaj7",
+      "prob": 0.006756756756756757
+    },
+    {
+      "source": "Emaj7",
+      "target": "Gbmaj",
+      "prob": 0.03125
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Gbmin7",
+      "prob": 0.009202453987730062
+    },
+    {
+      "source": "Abmaj",
+      "target": "Dbmin7",
+      "prob": 0.019646365422396856
+    },
+    {
+      "source": "Emin7",
+      "target": "G7",
+      "prob": 0.001095290251916758
+    },
+    {
+      "source": "D7",
+      "target": "Amaj",
+      "prob": 0.002053388090349076
+    },
+    {
+      "source": "Amaj",
+      "target": "D7",
+      "prob": 0.00191131498470948
+    },
+    {
+      "source": "Bmin",
+      "target": "Gbmaj7",
+      "prob": 0.002824858757062147
+    },
+    {
+      "source": "Gbmaj7",
+      "target": "Dmin7",
+      "prob": 0.14285714285714285
+    },
+    {
+      "source": "G7",
+      "target": "Amaj",
+      "prob": 0.013458950201884253
+    },
+    {
+      "source": "Cmaj",
+      "target": "Ebmaj",
+      "prob": 0.0003672420124862284
+    },
+    {
+      "source": "Emin7",
+      "target": "D7",
+      "prob": 0.008762322015334063
+    },
+    {
+      "source": "Amaj",
+      "target": "Abmin",
+      "prob": 0.00038226299694189603
+    },
+    {
+      "source": "Abmin",
+      "target": "E7",
+      "prob": 0.022222222222222223
+    },
+    {
+      "source": "E7",
+      "target": "Abmaj",
+      "prob": 0.0017921146953405018
+    },
+    {
+      "source": "Abmaj",
+      "target": "Dmaj",
+      "prob": 0.0019646365422396855
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Gb7",
+      "prob": 0.005376344086021506
+    },
+    {
+      "source": "Dmin",
+      "target": "Emin",
+      "prob": 0.0037735849056603774
+    },
+    {
+      "source": "G7",
+      "target": "Fmaj7",
+      "prob": 0.012113055181695828
+    },
+    {
+      "source": "Bmin",
+      "target": "Fmaj7",
+      "prob": 0.002824858757062147
+    },
+    {
+      "source": "Bmaj7",
+      "target": "Gbmaj",
+      "prob": 0.08333333333333333
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Bmaj",
+      "prob": 0.04504504504504504
+    },
+    {
+      "source": "Abmin7",
+      "target": "Dbmaj",
+      "prob": 0.07272727272727272
+    },
+    {
+      "source": "Bmaj",
+      "target": "Abmaj",
+      "prob": 0.0045045045045045045
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Eb7",
+      "prob": 0.07407407407407407
+    },
+    {
+      "source": "Abmaj",
+      "target": "Bmin7",
+      "prob": 0.0019646365422396855
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "F7",
+      "prob": 0.04424778761061947
+    },
+    {
+      "source": "A7",
+      "target": "Fmaj",
+      "prob": 0.005891016200294551
+    },
+    {
+      "source": "Fmaj",
+      "target": "B7",
+      "prob": 0.0016563146997929607
+    },
+    {
+      "source": "B7",
+      "target": "Dmaj",
+      "prob": 0.002652519893899204
+    },
+    {
+      "source": "Amin",
+      "target": "Bmaj",
+      "prob": 0.005657708628005658
+    },
+    {
+      "source": "Bbmin7",
+      "target": "C7",
+      "prob": 0.03260869565217391
+    },
+    {
+      "source": "Fmin",
+      "target": "Fmaj",
+      "prob": 0.012422360248447204
+    },
+    {
+      "source": "Eb7",
+      "target": "Bbmin7",
+      "prob": 0.05228758169934641
+    },
+    {
+      "source": "Fmin",
+      "target": "Bbmin",
+      "prob": 0.012422360248447204
+    },
+    {
+      "source": "Bbmin",
+      "target": "Fmin",
+      "prob": 0.021739130434782608
+    },
+    {
+      "source": "C7",
+      "target": "Amin7",
+      "prob": 0.00851063829787234
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Dbmin7",
+      "prob": 0.007246376811594203
+    },
+    {
+      "source": "D7",
+      "target": "Ebmaj7",
+      "prob": 0.002053388090349076
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Dmaj",
+      "prob": 0.002250562640660165
+    },
+    {
+      "source": "Dmaj",
+      "target": "Ebmin",
+      "prob": 0.0004086636697997548
+    },
+    {
+      "source": "Ebmin",
+      "target": "Gmin",
+      "prob": 0.05555555555555555
+    },
+    {
+      "source": "Gmin",
+      "target": "Eb7",
+      "prob": 0.00390625
+    },
+    {
+      "source": "Eb7",
+      "target": "Dmaj",
+      "prob": 0.006535947712418301
+    },
+    {
+      "source": "Dmaj",
+      "target": "Ebmaj7",
+      "prob": 0.0016346546791990192
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Ebmin",
+      "prob": 0.0007501875468867217
+    },
+    {
+      "source": "Ebmin",
+      "target": "Dmaj",
+      "prob": 0.05555555555555555
+    },
+    {
+      "source": "Cmin7",
+      "target": "D7",
+      "prob": 0.022435897435897436
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Ebmin7",
+      "prob": 0.0007501875468867217
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Dmaj",
+      "prob": 0.009259259259259259
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Gmaj",
+      "prob": 0.1
+    },
+    {
+      "source": "E7",
+      "target": "Dmin",
+      "prob": 0.0035842293906810036
+    },
+    {
+      "source": "E7",
+      "target": "G7",
+      "prob": 0.007168458781362007
+    },
+    {
+      "source": "Dmin",
+      "target": "Bmaj",
+      "prob": 0.007547169811320755
+    },
+    {
+      "source": "Bmaj",
+      "target": "Dmin7",
+      "prob": 0.0033783783783783786
+    },
+    {
+      "source": "Amin",
+      "target": "E7",
+      "prob": 0.01272984441301273
+    },
+    {
+      "source": "Bmaj",
+      "target": "Fmaj",
+      "prob": 0.0022522522522522522
+    },
+    {
+      "source": "E7",
+      "target": "Cmaj",
+      "prob": 0.0035842293906810036
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Abmin",
+      "prob": 0.043689320388349516
+    },
+    {
+      "source": "Abmin",
+      "target": "Amaj",
+      "prob": 0.4
+    },
+    {
+      "source": "Abmaj",
+      "target": "B7",
+      "prob": 0.011787819253438114
+    },
+    {
+      "source": "Abmin7",
+      "target": "Amaj7",
+      "prob": 0.03636363636363636
+    },
+    {
+      "source": "Amaj7",
+      "target": "Bmaj",
+      "prob": 0.13636363636363635
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Emaj7",
+      "prob": 0.02912621359223301
+    },
+    {
+      "source": "Emaj7",
+      "target": "Bmaj",
+      "prob": 0.140625
+    },
+    {
+      "source": "Abmin7",
+      "target": "Ab7",
+      "prob": 0.03636363636363636
+    },
+    {
+      "source": "Bmaj",
+      "target": "Ab7",
+      "prob": 0.009009009009009009
+    },
+    {
+      "source": "Emaj",
+      "target": "Abmin",
+      "prob": 0.006777893639207508
+    },
+    {
+      "source": "Abmin",
+      "target": "Dbmin",
+      "prob": 0.26666666666666666
+    },
+    {
+      "source": "Dbmin",
+      "target": "Emaj",
+      "prob": 0.09580838323353294
+    },
+    {
+      "source": "Abmin7",
+      "target": "Dbmin7",
+      "prob": 0.11515151515151516
+    },
+    {
+      "source": "Fmaj7",
+      "target": "C7",
+      "prob": 0.014925373134328358
+    },
+    {
+      "source": "Emaj",
+      "target": "Abmaj7",
+      "prob": 0.0020855057351407717
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Amin7",
+      "prob": 0.0625
+    },
+    {
+      "source": "Bmin7",
+      "target": "Db7",
+      "prob": 0.019393939393939394
+    },
+    {
+      "source": "Db7",
+      "target": "Emin7",
+      "prob": 0.08661417322834646
+    },
+    {
+      "source": "E7",
+      "target": "D7",
+      "prob": 0.007168458781362007
+    },
+    {
+      "source": "C7",
+      "target": "Amin",
+      "prob": 0.00425531914893617
+    },
+    {
+      "source": "C7",
+      "target": "Dbmin",
+      "prob": 0.002127659574468085
+    },
+    {
+      "source": "Dbmin",
+      "target": "Fmaj",
+      "prob": 0.005988023952095809
+    },
+    {
+      "source": "Emin",
+      "target": "B7",
+      "prob": 0.02457757296466974
+    },
+    {
+      "source": "Amin",
+      "target": "B7",
+      "prob": 0.028288543140028287
+    },
+    {
+      "source": "B7",
+      "target": "Cmaj7",
+      "prob": 0.01989389920424403
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Emin",
+      "prob": 0.028985507246376812
+    },
+    {
+      "source": "Fmin7",
+      "target": "Cmin",
+      "prob": 0.024774774774774775
+    },
+    {
+      "source": "Cmin",
+      "target": "Abmaj7",
+      "prob": 0.010169491525423728
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Fmin",
+      "prob": 0.046875
+    },
+    {
+      "source": "Gmin7",
+      "target": "Abmaj7",
+      "prob": 0.02301255230125523
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Gmin",
+      "prob": 0.140625
+    },
+    {
+      "source": "Gmin",
+      "target": "Fmin",
+      "prob": 0.03515625
+    },
+    {
+      "source": "Amin7",
+      "target": "Bmaj",
+      "prob": 0.018404907975460124
+    },
+    {
+      "source": "Cmaj7",
+      "target": "Emaj",
+      "prob": 0.03260869565217391
+    },
+    {
+      "source": "B7",
+      "target": "Bmin",
+      "prob": 0.005305039787798408
+    },
+    {
+      "source": "B7",
+      "target": "Abmin7",
+      "prob": 0.011936339522546418
+    },
+    {
+      "source": "Emaj",
+      "target": "Db7",
+      "prob": 0.0072992700729927005
+    },
+    {
+      "source": "Db7",
+      "target": "Gbmin",
+      "prob": 0.1889763779527559
+    },
+    {
+      "source": "Gbmaj",
+      "target": "B7",
+      "prob": 0.018404907975460124
+    },
+    {
+      "source": "B7",
+      "target": "Amin7",
+      "prob": 0.014588859416445624
+    },
+    {
+      "source": "Dmin7",
+      "target": "Emin",
+      "prob": 0.0031720856463124504
+    },
+    {
+      "source": "G7",
+      "target": "Abmaj7",
+      "prob": 0.005383580080753701
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Fmin7",
+      "prob": 0.234375
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Gmaj",
+      "prob": 0.020460358056265986
+    },
+    {
+      "source": "Gmaj",
+      "target": "Abmaj",
+      "prob": 0.004829459704195593
+    },
+    {
+      "source": "Gmaj",
+      "target": "Abmaj7",
+      "prob": 0.0012073649260488982
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "G7",
+      "prob": 0.03076923076923077
+    },
+    {
+      "source": "Fmin7",
+      "target": "Gmin7",
+      "prob": 0.013513513513513514
+    },
+    {
+      "source": "Abmaj",
+      "target": "G7",
+      "prob": 0.007858546168958742
+    },
+    {
+      "source": "Cmin",
+      "target": "Amin7",
+      "prob": 0.01694915254237288
+    },
+    {
+      "source": "Bb7",
+      "target": "Ebmaj7",
+      "prob": 0.0851063829787234
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Dmin7",
+      "prob": 0.006934812760055479
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Dmin",
+      "prob": 0.03763440860215054
+    },
+    {
+      "source": "Ab7",
+      "target": "Cmaj7",
+      "prob": 0.04504504504504504
+    },
+    {
+      "source": "Emaj7",
+      "target": "Dbmin7",
+      "prob": 0.125
+    },
+    {
+      "source": "Gb7",
+      "target": "Gbmin7",
+      "prob": 0.015625
+    },
+    {
+      "source": "Ebmaj",
+      "target": "Abmin7",
+      "prob": 0.0025575447570332483
+    },
+    {
+      "source": "Bmaj",
+      "target": "Amaj7",
+      "prob": 0.00563063063063063
+    },
+    {
+      "source": "G7",
+      "target": "Gmin7",
+      "prob": 0.006729475100942127
+    },
+    {
+      "source": "Amaj",
+      "target": "Bbmaj",
+      "prob": 0.0022935779816513763
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Dmaj7",
+      "prob": 0.0015003750937734434
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Bbmaj7",
+      "prob": 0.010752688172043012
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Dmin",
+      "prob": 0.017699115044247787
+    },
+    {
+      "source": "Gmin7",
+      "target": "Dbmaj7",
+      "prob": 0.0041841004184100415
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Emin",
+      "prob": 0.07407407407407407
+    },
+    {
+      "source": "C7",
+      "target": "Dbmaj7",
+      "prob": 0.00425531914893617
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Fmaj",
+      "prob": 0.07407407407407407
+    },
+    {
+      "source": "Gmin7",
+      "target": "Fmin",
+      "prob": 0.008368200836820083
+    },
+    {
+      "source": "Gmin7",
+      "target": "Amaj",
+      "prob": 0.02301255230125523
+    },
+    {
+      "source": "Dmin",
+      "target": "D7",
+      "prob": 0.0037735849056603774
+    },
+    {
+      "source": "Dmaj",
+      "target": "Cmin7",
+      "prob": 0.0008173273395995096
+    },
+    {
+      "source": "Cmin7",
+      "target": "Dmaj",
+      "prob": 0.00641025641025641
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Gmin7",
+      "prob": 0.017699115044247787
+    },
+    {
+      "source": "Amaj",
+      "target": "Ebmaj7",
+      "prob": 0.0007645259938837921
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "A7",
+      "prob": 0.015384615384615385
+    },
+    {
+      "source": "Amaj",
+      "target": "Bbmaj7",
+      "prob": 0.0007645259938837921
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Bbmin",
+      "prob": 0.017699115044247787
+    },
+    {
+      "source": "Bbmin",
+      "target": "F7",
+      "prob": 0.021739130434782608
+    },
+    {
+      "source": "G7",
+      "target": "Bmin7",
+      "prob": 0.0013458950201884253
+    },
+    {
+      "source": "B7",
+      "target": "Emaj7",
+      "prob": 0.013262599469496022
+    },
+    {
+      "source": "Emaj7",
+      "target": "Db7",
+      "prob": 0.09375
+    },
+    {
+      "source": "E7",
+      "target": "Db7",
+      "prob": 0.0035842293906810036
+    },
+    {
+      "source": "B7",
+      "target": "Dbmaj",
+      "prob": 0.002652519893899204
+    },
+    {
+      "source": "B7",
+      "target": "Db7",
+      "prob": 0.010610079575596816
+    },
+    {
+      "source": "Db7",
+      "target": "Dbmin",
+      "prob": 0.031496062992125984
+    },
+    {
+      "source": "Db7",
+      "target": "Dbmin7",
+      "prob": 0.031496062992125984
+    },
+    {
+      "source": "Emaj",
+      "target": "A7",
+      "prob": 0.004171011470281543
+    },
+    {
+      "source": "Gb7",
+      "target": "B7",
+      "prob": 0.0546875
+    },
+    {
+      "source": "D7",
+      "target": "Fmin",
+      "prob": 0.002053388090349076
+    },
+    {
+      "source": "Fmin",
+      "target": "Emin",
+      "prob": 0.006211180124223602
+    },
+    {
+      "source": "C7",
+      "target": "Fmaj7",
+      "prob": 0.006382978723404255
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Fmin",
+      "prob": 0.004975124378109453
+    },
+    {
+      "source": "Fmin",
+      "target": "Emin7",
+      "prob": 0.006211180124223602
+    },
+    {
+      "source": "Bmin7",
+      "target": "Dmin7",
+      "prob": 0.0036363636363636364
+    },
+    {
+      "source": "B7",
+      "target": "Dmin7",
+      "prob": 0.003978779840848806
+    },
+    {
+      "source": "D7",
+      "target": "Bbmin7",
+      "prob": 0.006160164271047228
+    },
+    {
+      "source": "E7",
+      "target": "C7",
+      "prob": 0.0017921146953405018
+    },
+    {
+      "source": "G7",
+      "target": "C7",
+      "prob": 0.0026917900403768506
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Bmin",
+      "prob": 0.014563106796116505
+    },
+    {
+      "source": "Dmaj7",
+      "target": "G7",
+      "prob": 0.016129032258064516
+    },
+    {
+      "source": "G7",
+      "target": "Dbmin7",
+      "prob": 0.0026917900403768506
+    },
+    {
+      "source": "Amaj",
+      "target": "Abmin7",
+      "prob": 0.0030581039755351682
+    },
+    {
+      "source": "Gbmin",
+      "target": "Dmin",
+      "prob": 0.010256410256410256
+    },
+    {
+      "source": "Dmin",
+      "target": "Dbmin7",
+      "prob": 0.0037735849056603774
+    },
+    {
+      "source": "Emaj",
+      "target": "Dbmaj",
+      "prob": 0.009906152241918665
+    },
+    {
+      "source": "Amaj7",
+      "target": "Dbmaj",
+      "prob": 0.022727272727272728
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Gbmin7",
+      "prob": 0.02252252252252252
+    },
+    {
+      "source": "Abmin7",
+      "target": "B7",
+      "prob": 0.012121212121212121
+    },
+    {
+      "source": "Emaj",
+      "target": "Fmin",
+      "prob": 0.0015641293013555788
+    },
+    {
+      "source": "Abmaj",
+      "target": "D7",
+      "prob": 0.029469548133595286
+    },
+    {
+      "source": "Ab7",
+      "target": "Cmaj",
+      "prob": 0.018018018018018018
+    },
+    {
+      "source": "Emin",
+      "target": "Ebmaj",
+      "prob": 0.0030721966205837174
+    },
+    {
+      "source": "Dmin",
+      "target": "Bmin7",
+      "prob": 0.0037735849056603774
+    },
+    {
+      "source": "Emin",
+      "target": "D7",
+      "prob": 0.007680491551459293
+    },
+    {
+      "source": "Cmaj",
+      "target": "Abmaj",
+      "prob": 0.0014689680499449136
+    },
+    {
+      "source": "Abmaj",
+      "target": "Cmaj",
+      "prob": 0.003929273084479371
+    },
+    {
+      "source": "D7",
+      "target": "A7",
+      "prob": 0.002053388090349076
+    },
+    {
+      "source": "E7",
+      "target": "Emin",
+      "prob": 0.010752688172043012
+    },
+    {
+      "source": "D7",
+      "target": "Bbmaj",
+      "prob": 0.004106776180698152
+    },
+    {
+      "source": "Bmin",
+      "target": "G7",
+      "prob": 0.011299435028248588
+    },
+    {
+      "source": "Dmaj7",
+      "target": "B7",
+      "prob": 0.021505376344086023
+    },
+    {
+      "source": "B7",
+      "target": "E7",
+      "prob": 0.010610079575596816
+    },
+    {
+      "source": "E7",
+      "target": "Emaj",
+      "prob": 0.007168458781362007
+    },
+    {
+      "source": "Emaj",
+      "target": "Bmaj7",
+      "prob": 0.0020855057351407717
+    },
+    {
+      "source": "Bmaj7",
+      "target": "Dmaj7",
+      "prob": 0.16666666666666666
+    },
+    {
+      "source": "C7",
+      "target": "Dmin",
+      "prob": 0.00425531914893617
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Ab7",
+      "prob": 0.019417475728155338
+    },
+    {
+      "source": "Dbmin",
+      "target": "Abmaj",
+      "prob": 0.11976047904191617
+    },
+    {
+      "source": "Gb7",
+      "target": "Dbmin",
+      "prob": 0.015625
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Dbmin",
+      "prob": 0.019417475728155338
+    },
+    {
+      "source": "Dbmin",
+      "target": "Abmin7",
+      "prob": 0.023952095808383235
+    },
+    {
+      "source": "Amaj",
+      "target": "Abmaj",
+      "prob": 0.0030581039755351682
+    },
+    {
+      "source": "Abmaj",
+      "target": "Amaj",
+      "prob": 0.007858546168958742
+    },
+    {
+      "source": "Dmin",
+      "target": "Bbmin",
+      "prob": 0.0037735849056603774
+    },
+    {
+      "source": "Bbmin",
+      "target": "Fmaj7",
+      "prob": 0.010869565217391304
+    },
+    {
+      "source": "Amin7",
+      "target": "Fmin",
+      "prob": 0.001226993865030675
+    },
+    {
+      "source": "Dmaj",
+      "target": "Fmaj7",
+      "prob": 0.0008173273395995096
+    },
+    {
+      "source": "F7",
+      "target": "Emin7",
+      "prob": 0.010416666666666666
+    },
+    {
+      "source": "D7",
+      "target": "B7",
+      "prob": 0.004106776180698152
+    },
+    {
+      "source": "Emin7",
+      "target": "Gb7",
+      "prob": 0.007667031763417305
+    },
+    {
+      "source": "Bmin7",
+      "target": "Dmin",
+      "prob": 0.0012121212121212121
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Amaj7",
+      "prob": 0.010752688172043012
+    },
+    {
+      "source": "Fmaj7",
+      "target": "A7",
+      "prob": 0.004975124378109453
+    },
+    {
+      "source": "D7",
+      "target": "Amin",
+      "prob": 0.004106776180698152
+    },
+    {
+      "source": "Cmaj",
+      "target": "Ebmaj7",
+      "prob": 0.0003672420124862284
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "D7",
+      "prob": 0.023076923076923078
+    },
+    {
+      "source": "Emin",
+      "target": "Cmaj7",
+      "prob": 0.004608294930875576
+    },
+    {
+      "source": "Cmaj7",
+      "target": "B7",
+      "prob": 0.010869565217391304
+    },
+    {
+      "source": "B7",
+      "target": "D7",
+      "prob": 0.001326259946949602
+    },
+    {
+      "source": "Emin7",
+      "target": "E7",
+      "prob": 0.001095290251916758
+    },
+    {
+      "source": "B7",
+      "target": "F7",
+      "prob": 0.001326259946949602
+    },
+    {
+      "source": "Gmin7",
+      "target": "Emin7",
+      "prob": 0.006276150627615063
+    },
+    {
+      "source": "Fmaj7",
+      "target": "Amin7",
+      "prob": 0.01990049751243781
+    },
+    {
+      "source": "Dmin",
+      "target": "Gbmin7",
+      "prob": 0.0018867924528301887
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Fmaj7",
+      "prob": 0.005376344086021506
+    },
+    {
+      "source": "E7",
+      "target": "Cmaj7",
+      "prob": 0.0017921146953405018
+    },
+    {
+      "source": "Gmaj7",
+      "target": "B7",
+      "prob": 0.006711409395973154
+    },
+    {
+      "source": "Bmaj7",
+      "target": "Gbmin7",
+      "prob": 0.25
+    },
+    {
+      "source": "Emaj7",
+      "target": "Amaj7",
+      "prob": 0.09375
+    },
+    {
+      "source": "Abmin7",
+      "target": "Emaj7",
+      "prob": 0.03636363636363636
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Dbmin",
+      "prob": 0.009202453987730062
+    },
+    {
+      "source": "Abmin7",
+      "target": "Bmaj7",
+      "prob": 0.01818181818181818
+    },
+    {
+      "source": "Gbmaj",
+      "target": "Emaj7",
+      "prob": 0.009202453987730062
+    },
+    {
+      "source": "Emaj7",
+      "target": "Abmin7",
+      "prob": 0.09375
+    },
+    {
+      "source": "Amaj7",
+      "target": "Dbmin7",
+      "prob": 0.045454545454545456
+    },
+    {
+      "source": "Amaj7",
+      "target": "Gbmin7",
+      "prob": 0.07954545454545454
+    },
+    {
+      "source": "Dmaj7",
+      "target": "Db7",
+      "prob": 0.021505376344086023
+    },
+    {
+      "source": "Amaj7",
+      "target": "Gb7",
+      "prob": 0.06818181818181818
+    },
+    {
+      "source": "Gb7",
+      "target": "Dmaj7",
+      "prob": 0.078125
+    },
+    {
+      "source": "Amaj7",
+      "target": "D7",
+      "prob": 0.09090909090909091
+    },
+    {
+      "source": "Emin",
+      "target": "Gb7",
+      "prob": 0.015360983102918587
+    },
+    {
+      "source": "Dbmin7",
+      "target": "D7",
+      "prob": 0.0048543689320388345
+    },
+    {
+      "source": "Gmin7",
+      "target": "Amin",
+      "prob": 0.0020920502092050207
+    },
+    {
+      "source": "Gb7",
+      "target": "Dmaj",
+      "prob": 0.015625
+    },
+    {
+      "source": "G7",
+      "target": "A7",
+      "prob": 0.0013458950201884253
+    },
+    {
+      "source": "Db7",
+      "target": "Dmin",
+      "prob": 0.007874015748031496
+    },
+    {
+      "source": "Gmin7",
+      "target": "Dmaj",
+      "prob": 0.010460251046025104
+    },
+    {
+      "source": "Cmin",
+      "target": "Dbmaj",
+      "prob": 0.006779661016949152
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Dmin",
+      "prob": 0.009009009009009009
+    },
+    {
+      "source": "Cmin",
+      "target": "Gbmaj7",
+      "prob": 0.003389830508474576
+    },
+    {
+      "source": "Gbmaj7",
+      "target": "Fmin7",
+      "prob": 0.14285714285714285
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Abmaj7",
+      "prob": 0.003000750187546887
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Gmin7",
+      "prob": 0.109375
+    },
+    {
+      "source": "Dmaj",
+      "target": "C7",
+      "prob": 0.0008173273395995096
+    },
+    {
+      "source": "C7",
+      "target": "Dmaj",
+      "prob": 0.00425531914893617
+    },
+    {
+      "source": "B7",
+      "target": "Cmaj",
+      "prob": 0.001326259946949602
+    },
+    {
+      "source": "C7",
+      "target": "Emaj",
+      "prob": 0.002127659574468085
+    },
+    {
+      "source": "Abmin7",
+      "target": "Gbmin7",
+      "prob": 0.01818181818181818
+    },
+    {
+      "source": "F7",
+      "target": "Bbmin7",
+      "prob": 0.03125
+    },
+    {
+      "source": "Ab7",
+      "target": "Dbmaj7",
+      "prob": 0.018018018018018018
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Dbmin",
+      "prob": 0.010869565217391304
+    },
+    {
+      "source": "Dbmin",
+      "target": "Cmin7",
+      "prob": 0.023952095808383235
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Dbmin",
+      "prob": 0.07407407407407407
+    },
+    {
+      "source": "Eb7",
+      "target": "Cmin7",
+      "prob": 0.0718954248366013
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Amin7",
+      "prob": 0.015384615384615385
+    },
+    {
+      "source": "Gmin",
+      "target": "Gmin7",
+      "prob": 0.0078125
+    },
+    {
+      "source": "Cmin7",
+      "target": "Cmin",
+      "prob": 0.00641025641025641
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Gmin",
+      "prob": 0.015384615384615385
+    },
+    {
+      "source": "Gmin7",
+      "target": "D7",
+      "prob": 0.008368200836820083
+    },
+    {
+      "source": "Gmin",
+      "target": "Abmaj7",
+      "prob": 0.0078125
+    },
+    {
+      "source": "A7",
+      "target": "Gb7",
+      "prob": 0.0014727540500736377
+    },
+    {
+      "source": "Gb7",
+      "target": "Emaj7",
+      "prob": 0.0078125
+    },
+    {
+      "source": "Emaj7",
+      "target": "Bbmin7",
+      "prob": 0.015625
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Gb7",
+      "prob": 0.005434782608695652
+    },
+    {
+      "source": "Gb7",
+      "target": "Eb7",
+      "prob": 0.0078125
+    },
+    {
+      "source": "Eb7",
+      "target": "Emaj7",
+      "prob": 0.006535947712418301
+    },
+    {
+      "source": "Emaj7",
+      "target": "Bmin7",
+      "prob": 0.015625
+    },
+    {
+      "source": "Bmin7",
+      "target": "Ebmin7",
+      "prob": 0.0012121212121212121
+    },
+    {
+      "source": "Ab7",
+      "target": "Cmin7",
+      "prob": 0.009009009009009009
+    },
+    {
+      "source": "Cmin7",
+      "target": "Emaj7",
+      "prob": 0.003205128205128205
+    },
+    {
+      "source": "Emaj7",
+      "target": "Gbmin7",
+      "prob": 0.015625
+    },
+    {
+      "source": "Emin7",
+      "target": "Abmin7",
+      "prob": 0.001095290251916758
+    },
+    {
+      "source": "Abmin7",
+      "target": "Cmin7",
+      "prob": 0.006060606060606061
+    },
+    {
+      "source": "Cmin7",
+      "target": "Amin7",
+      "prob": 0.003205128205128205
+    },
+    {
+      "source": "Emin7",
+      "target": "Amaj7",
+      "prob": 0.001095290251916758
+    },
+    {
+      "source": "Amaj7",
+      "target": "Fmin7",
+      "prob": 0.011363636363636364
+    },
+    {
+      "source": "Fmin7",
+      "target": "Cmaj",
+      "prob": 0.006756756756756757
+    },
+    {
+      "source": "Bbmaj",
+      "target": "Ab7",
+      "prob": 0.0007501875468867217
+    },
+    {
+      "source": "Abmin7",
+      "target": "Emin7",
+      "prob": 0.006060606060606061
+    },
+    {
+      "source": "Amin7",
+      "target": "Bb7",
+      "prob": 0.001226993865030675
+    },
+    {
+      "source": "Bb7",
+      "target": "Emin7",
+      "prob": 0.0070921985815602835
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Amin7",
+      "prob": 0.0013869625520110957
+    },
+    {
+      "source": "Emin7",
+      "target": "Cmin",
+      "prob": 0.001095290251916758
+    },
+    {
+      "source": "Cmaj",
+      "target": "Abmaj7",
+      "prob": 0.0014689680499449136
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Bb7",
+      "prob": 0.03125
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Bbmaj",
+      "prob": 0.09375
+    },
+    {
+      "source": "F7",
+      "target": "Fmin7",
+      "prob": 0.003472222222222222
+    },
+    {
+      "source": "Eb7",
+      "target": "F7",
+      "prob": 0.006535947712418301
+    },
+    {
+      "source": "Fmin7",
+      "target": "Bbmaj7",
+      "prob": 0.006756756756756757
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Fmin7",
+      "prob": 0.017699115044247787
+    },
+    {
+      "source": "D7",
+      "target": "Fmin7",
+      "prob": 0.002053388090349076
+    },
+    {
+      "source": "Fmaj",
+      "target": "Dbmaj7",
+      "prob": 0.00041407867494824016
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Gmin7",
+      "prob": 0.037037037037037035
+    },
+    {
+      "source": "Dmaj",
+      "target": "Bbmin7",
+      "prob": 0.0004086636697997548
+    },
+    {
+      "source": "Bbmin7",
+      "target": "Dmaj",
+      "prob": 0.005434782608695652
+    },
+    {
+      "source": "Bmaj",
+      "target": "Cmaj",
+      "prob": 0.0011261261261261261
+    },
+    {
+      "source": "Gmaj",
+      "target": "F7",
+      "prob": 0.00030184123151222455
+    },
+    {
+      "source": "C7",
+      "target": "G7",
+      "prob": 0.00425531914893617
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Fmin7",
+      "prob": 0.0013869625520110957
+    },
+    {
+      "source": "E7",
+      "target": "Emin7",
+      "prob": 0.0017921146953405018
+    },
+    {
+      "source": "Gbmin7",
+      "target": "Fmin",
+      "prob": 0.0013869625520110957
+    },
+    {
+      "source": "G7",
+      "target": "Gmaj",
+      "prob": 0.0026917900403768506
+    },
+    {
+      "source": "Dbmin7",
+      "target": "Emaj7",
+      "prob": 0.0048543689320388345
+    },
+    {
+      "source": "Amaj",
+      "target": "Emaj7",
+      "prob": 0.0007645259938837921
+    },
+    {
+      "source": "Emaj7",
+      "target": "Gbmin",
+      "prob": 0.03125
+    },
+    {
+      "source": "Amin",
+      "target": "Gbmin7",
+      "prob": 0.0014144271570014145
+    },
+    {
+      "source": "Gbmin",
+      "target": "Amaj",
+      "prob": 0.010256410256410256
+    },
+    {
+      "source": "Gbmin",
+      "target": "Dmaj7",
+      "prob": 0.02564102564102564
+    },
+    {
+      "source": "Emin",
+      "target": "Dbmin7",
+      "prob": 0.0030721966205837174
+    },
+    {
+      "source": "Abmin7",
+      "target": "Dbmin",
+      "prob": 0.012121212121212121
+    },
+    {
+      "source": "Bmaj",
+      "target": "E7",
+      "prob": 0.0022522522522522522
+    },
+    {
+      "source": "Bmaj7",
+      "target": "Dbmaj",
+      "prob": 0.041666666666666664
+    },
+    {
+      "source": "F7",
+      "target": "Ab7",
+      "prob": 0.003472222222222222
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Abmaj7",
+      "prob": 0.007692307692307693
+    },
+    {
+      "source": "Abmaj7",
+      "target": "Cmin7",
+      "prob": 0.015625
+    },
+    {
+      "source": "Cmin7",
+      "target": "C7",
+      "prob": 0.003205128205128205
+    },
+    {
+      "source": "D7",
+      "target": "Bmaj",
+      "prob": 0.002053388090349076
+    },
+    {
+      "source": "Bmin7",
+      "target": "Gmin7",
+      "prob": 0.0012121212121212121
+    },
+    {
+      "source": "Amaj",
+      "target": "Db7",
+      "prob": 0.0007645259938837921
+    },
+    {
+      "source": "Abmin7",
+      "target": "Gbmin",
+      "prob": 0.006060606060606061
+    },
+    {
+      "source": "Bmin7",
+      "target": "Dbmaj",
+      "prob": 0.0012121212121212121
+    },
+    {
+      "source": "Amaj7",
+      "target": "Dmaj7",
+      "prob": 0.011363636363636364
+    },
+    {
+      "source": "Dmin",
+      "target": "Bbmaj7",
+      "prob": 0.005660377358490566
+    },
+    {
+      "source": "Dbmaj",
+      "target": "C7",
+      "prob": 0.0045045045045045045
+    },
+    {
+      "source": "C7",
+      "target": "Bbmin7",
+      "prob": 0.002127659574468085
+    },
+    {
+      "source": "Dbmaj7",
+      "target": "Fmin",
+      "prob": 0.07407407407407407
+    },
+    {
+      "source": "Cmaj",
+      "target": "Bbmin",
+      "prob": 0.0014689680499449136
+    },
+    {
+      "source": "Dbmaj",
+      "target": "Cmaj",
+      "prob": 0.013513513513513514
+    },
+    {
+      "source": "Cmin7",
+      "target": "Cmaj",
+      "prob": 0.003205128205128205
+    },
+    {
+      "source": "Cmaj",
+      "target": "Dbmaj7",
+      "prob": 0.0003672420124862284
+    },
+    {
+      "source": "Bbmaj7",
+      "target": "Eb7",
+      "prob": 0.008849557522123894
+    },
+    {
+      "source": "Eb7",
+      "target": "Fmaj",
+      "prob": 0.006535947712418301
+    },
+    {
+      "source": "Bbmaj",
+      "target": "A7",
+      "prob": 0.0007501875468867217
+    },
+    {
+      "source": "Fmin7",
+      "target": "Abmaj7",
+      "prob": 0.0045045045045045045
+    },
+    {
+      "source": "Bb7",
+      "target": "D7",
+      "prob": 0.014184397163120567
+    },
+    {
+      "source": "Ab7",
+      "target": "G7",
+      "prob": 0.018018018018018018
+    },
+    {
+      "source": "Abmaj7",
+      "target": "G7",
+      "prob": 0.015625
+    },
+    {
+      "source": "Ebmaj7",
+      "target": "Fmin",
+      "prob": 0.007692307692307693
+    },
+    {
+      "source": "Amin7",
+      "target": "Bmin",
+      "prob": 0.001226993865030675
+    },
+    {
+      "source": "Bmin",
+      "target": "Gb7",
+      "prob": 0.002824858757062147
+    },
+    {
+      "source": "Fmin7",
+      "target": "D7",
+      "prob": 0.0045045045045045045
+    },
+    {
+      "source": "Dbmin",
+      "target": "Eb7",
+      "prob": 0.011976047904191617
+    },
+    {
+      "source": "Eb7",
+      "target": "Abmin",
+      "prob": 0.013071895424836602
+    },
+    {
+      "source": "Abmin",
+      "target": "Emaj",
+      "prob": 0.022222222222222223
+    },
+    {
+      "source": "Emaj",
+      "target": "Eb7",
+      "prob": 0.0005213764337851929
+    },
+    {
+      "source": "Abmin",
+      "target": "Abmaj",
+      "prob": 0.022222222222222223
+    },
+    {
+      "source": "Dbmin",
+      "target": "Ebmaj",
+      "prob": 0.005988023952095809
+    },
+    {
+      "source": "Eb7",
+      "target": "Abmin7",
+      "prob": 0.006535947712418301
+    },
+    {
+      "source": "Cmin7",
+      "target": "Ab7",
+      "prob": 0.003205128205128205
+    },
+    {
+      "source": "Cmin7",
+      "target": "Bb7",
+      "prob": 0.003205128205128205
+    },
+    {
+      "source": "B7",
+      "target": "Bmaj",
+      "prob": 0.002652519893899204
+    },
+    {
+      "source": "A7",
+      "target": "Fmaj7",
+      "prob": 0.0014727540500736377
+    },
+    {
+      "source": "D7",
+      "target": "Fmaj7",
+      "prob": 0.002053388090349076
+    },
+    {
+      "source": "Amin",
+      "target": "Fmin",
+      "prob": 0.0014144271570014145
+    },
+    {
+      "source": "Dmin7",
+      "target": "B7",
+      "prob": 0.0015860428231562252
+    },
+    {
+      "source": "E7",
+      "target": "A7",
+      "prob": 0.0017921146953405018
+    },
+    {
+      "source": "B7",
+      "target": "A7",
+      "prob": 0.001326259946949602
+    },
+    {
+      "source": "Abmin7",
+      "target": "Emin",
+      "prob": 0.012121212121212121
+    },
+    {
+      "source": "Abmin",
+      "target": "Gbmin7",
+      "prob": 0.022222222222222223
+    },
+    {
+      "source": "Abmin7",
+      "target": "Ebmaj",
+      "prob": 0.006060606060606061
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Dbmin7",
+      "prob": 0.05555555555555555
+    },
+    {
+      "source": "Dbmin7",
+      "target": "A7",
+      "prob": 0.0024271844660194173
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Bmaj7",
+      "prob": 0.009259259259259259
+    },
+    {
+      "source": "Ebmin7",
+      "target": "Emaj7",
+      "prob": 0.009259259259259259
+    },
+    {
+      "source": "Dmin",
+      "target": "Bmin",
+      "prob": 0.0018867924528301887
+    },
+    {
+      "source": "Dbmin",
+      "target": "Gbmaj",
+      "prob": 0.005988023952095809
+    }
+  ]
+}

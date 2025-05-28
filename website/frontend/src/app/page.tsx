@@ -28,15 +28,6 @@ const cultures = [
   { id: 'turkey', name: 'Turkey' },
 ];
 
-const chordData = [
-  { chord: 'C',  connections: ['Am','F','G']},
-  { chord: 'Am', connections: ['F','G','C']},
-  { chord: 'F',  connections: ['C','G','Am']},
-  { chord: 'G',  connections: ['Am','C','Em']},
-  { chord: 'Em', connections: ['C','G','D']},
-  { chord: 'D',  connections: ['G','Em']},
-];
-
 const moodData = [
   { emoji:'😢',    percentage:15},
   { emoji:'😡',    percentage:9},
@@ -64,12 +55,19 @@ export default function Home() {
   const [currentMood, setCurrentMood] = useState<{ x: number; y: number } | null>(null);
   const [currentSector, setCurrentSector] = useState(0);
   const [currentAngle, setCurrentAngle] = useState(0);
+  
+  // New state for selected culture
+  const [selectedCulture, setSelectedCulture] = useState(cultures[0]); // Default to first culture
 
   const handleMoodUpdate = (moodData: { x: number; y: number; sector: number; angle: number }) => {
     setCurrentMood({ x: moodData.x, y: moodData.y });
     setCurrentSector(moodData.sector);
     setCurrentAngle(moodData.angle);
     console.log("Page - Current Mood Data:", moodData);
+  };
+
+  const handleCultureSelect = (culture: typeof cultures[0]) => {
+    setSelectedCulture(culture);
   };
 
   return (
@@ -103,26 +101,40 @@ export default function Home() {
 
               <div className={styles.genreBubblesContainer}>
                 {cultures.map(c =>(
-                  <div key={c.id} className={`${styles.bubble} ${styles[c.id]}`}>
+                  <div 
+                    key={c.id} 
+                    className={`${styles.bubble} ${styles[c.id]} ${
+                      selectedCulture.id === c.id ? styles.selectedBubble : ''
+                    }`}
+                    onClick={() => handleCultureSelect(c)}
+                    style={{ cursor: 'pointer' }}
+                  >
                     <span className={styles.genreName}>{c.name}</span>
                   </div>
                 ))}
               </div>
             </section>
 
-            {/* Detail Panel for Pop (static example) */}
+            {/* Detail Panel for Selected Culture */}
             <section className={styles.genreDetailPanel}>
               <h2 className={styles.detailPanelTitle}>
-                Details for:&nbsp;<span className={styles.selectedGenreNameText}>Pop</span>
+                Details for:&nbsp;
+                <span className={styles.selectedGenreNameText}>
+                  {selectedCulture.name}
+                </span>
               </h2>
 
               <div className={styles.chordAndEmojiContainer}>
-                {/* ChordGraph (static) */}
+                {/* ChordGraph (dynamic) */}
                 <div className={styles.chordGraph}>
-                  <ChordNetworkDiagram />
+                  <ChordNetworkDiagram 
+                    cultureId={selectedCulture.id}
+                    width={400}
+                    height={300}
+                  />
                 </div>
 
-                {/* EmojiBoard (static) */}
+                {/* EmojiBoard (static for now) */}
                 <div className={styles.emojiBoard}>
                   <h3 className={styles.panelSubTitle}>Emoji mood board of your selection</h3>
                   <div className={styles.emojiContainer}>
@@ -132,6 +144,31 @@ export default function Home() {
                         <span className={styles.percentage}>{m.percentage}%</span>
                       </div>
                     ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Additional culture info section */}
+              <div className={styles.cultureInfo}>
+                <h3 className={styles.panelSubTitle}>
+                  Musical characteristics of {selectedCulture.name}
+                </h3>
+                <div className={styles.cultureDescription}>
+                  <p>
+                    Explore the unique chord progressions and harmonic patterns that define the musical 
+                    traditions of {selectedCulture.name}. Click on any chord in the network above to 
+                    hear how it sounds and discover the most common progressions used in this culture's music.
+                  </p>
+                  <div className={styles.networkStats}>
+                    <div className={styles.statItem}>
+                      <strong>🎵 Interactive Network:</strong> Click nodes to play chords
+                    </div>
+                    <div className={styles.statItem}>
+                      <strong>📊 Data-Driven:</strong> Based on analysis of popular songs
+                    </div>
+                    <div className={styles.statItem}>
+                      <strong>🔗 Chord Transitions:</strong> Arrow thickness shows probability
+                    </div>
                   </div>
                 </div>
               </div>
