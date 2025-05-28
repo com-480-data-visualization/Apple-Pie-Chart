@@ -375,28 +375,37 @@
 }
 
 .activeButton:hover {
-  background-color: #2980b9;
+  background-color: #3b82f6; /* Darker blue on hover for active */
 }
 
 /* Mood to Harmony Layout Styles */
 .moodToHarmonyLayout {
   display: flex;
-  gap: 1rem; /* Adjust gap as needed */
+  gap: 2rem; /* Spacing between left and right boxes */
+  background-color: white; /* Changed from #EFF6FF to white */
+  border-radius: 8px;
+  padding: 2rem; /* Added padding around the content */
+  align-items: flex-start; /* Align items to the top */
 }
 
 .leftBox {
-  flex: 1; /* Takes up half the space */
-  background-color: #e6f0fa; /* Updated placeholder color */
-  padding: 1rem;
+  flex-shrink: 0; /* Prevent shrinking */
+  width: 400px; /* Match SVG width */
+  height: 400px; /* Match SVG height */
+  /* background-color: #DBEAFE; */ /* Optional: lighter blue for the direct container of the wheel */
   border-radius: 8px;
-  min-height: 400px; /* Example height */
+  /* box-shadow: 0 2px 4px rgba(0,0,0,0.05); */
+  display: flex; /* For centering the SVG if needed */
+  justify-content: center; /* Center SVG horizontally */
+  align-items: center; /* Center SVG vertically */
 }
 
 .rightColumn {
-  flex: 1; /* Takes up the other half */
+  flex-grow: 1; /* Allow right column to take available space */
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Adjust gap as needed */
+  gap: 1.5rem; /* Spacing between top and bottom boxes in right column */
+  min-width: 250px; /* Ensure it has some minimum width */
 }
 
 .rightTopBox {

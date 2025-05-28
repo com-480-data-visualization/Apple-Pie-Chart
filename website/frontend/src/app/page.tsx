@@ -8,7 +8,7 @@ import MoodWheelDiagram from './MoodWheelDiagram';
 
 const prefix = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
-/* ---------- 纯静态数据 ---------- */
+/* ---------- Static Data ---------- */
 const cultures = [
   { id: 'usa-general', name: 'USA (General)' },
   { id: 'france', name: 'France' },
@@ -52,9 +52,25 @@ const songs = [
   { name:'No Woman, No Cry',  image:`${prefix}/images/songs/no_woman_no_cry.jpg`, alt:'No Woman, No Cry'},
 ];
 
-/* ---------- 页面组件（全部静态） ---------- */
+// Updated Sector Labels to match MoodWheelDiagram (derived from image)
+const pageSectorLabels = [
+  'Tenderness', 'Surprise', 'Excited', 'Fear', 
+  'Anger', 'Sadness', 'Tired', 'Relaxed'
+];
+
+/* ---------- Page Component ---------- */
 export default function Home() {
   const [activeView, setActiveView] = useState('cultureToChord');
+  const [currentMood, setCurrentMood] = useState<{ x: number; y: number } | null>(null);
+  const [currentSector, setCurrentSector] = useState(0);
+  const [currentAngle, setCurrentAngle] = useState(0);
+
+  const handleMoodUpdate = (moodData: { x: number; y: number; sector: number; angle: number }) => {
+    setCurrentMood({ x: moodData.x, y: moodData.y });
+    setCurrentSector(moodData.sector);
+    setCurrentAngle(moodData.angle);
+    console.log("Page - Current Mood Data:", moodData);
+  };
 
   return (
     <main className={styles.main}>
@@ -78,10 +94,10 @@ export default function Home() {
 
       {activeView === 'cultureToChord' && (
         <>
-          {/* 整个白色卡片 */}
+          {/* Entire white card for Culture to Chord */}
           <section className={styles.gallery}>
 
-            {/* Genre Explorer 区域 */}
+            {/* Genre Explorer Area */}
             <section className={styles.genreExplorer}>
               <h2 className={styles.genreExplorerTitle}>Choose a culture to explore!</h2>
 
@@ -94,20 +110,19 @@ export default function Home() {
               </div>
             </section>
 
-            {/* 下面直接显示 Pop 的 Detail Panel（纯静态） */}
+            {/* Detail Panel for Pop (static example) */}
             <section className={styles.genreDetailPanel}>
               <h2 className={styles.detailPanelTitle}>
                 Details for:&nbsp;<span className={styles.selectedGenreNameText}>Pop</span>
               </h2>
 
               <div className={styles.chordAndEmojiContainer}>
-                {/* ChordGraph（静态） */}
+                {/* ChordGraph (static) */}
                 <div className={styles.chordGraph}>
-                  {/* <h3 className={styles.panelSubTitle}>Pick a sequence of chords…</h3> */}
                   <ChordNetworkDiagram />
                 </div>
 
-                {/* EmojiBoard（静态） */}
+                {/* EmojiBoard (static) */}
                 <div className={styles.emojiBoard}>
                   <h3 className={styles.panelSubTitle}>Emoji mood board of your selection</h3>
                   <div className={styles.emojiContainer}>
@@ -130,35 +145,54 @@ export default function Home() {
         <>
           {/* Mood to Harmony Section */}
           <section className={`${styles.gallery} ${styles.moodToHarmonyLayout}`}>
-            {/* Left Box */}
+            {/* Left Box for Mood Wheel */}
             <div className={styles.leftBox}>
-              {/* <p>Left Box</p> */}
-              <MoodWheelDiagram />
+              <MoodWheelDiagram onMoodChange={handleMoodUpdate} />
             </div>
-            {/* Right Column */}
+            {/* Right Column for controls and info */}
             <div className={styles.rightColumn}>
-              {/* Right Top Box */}
+              {/* Right Top Box for sliders */}
               <div className={styles.rightTopBox}>
                 <div className={styles.sliderContainer}>
                   <label htmlFor="bpmSlider" className={styles.sliderLabel}>BPM</label>
                   <input type="range" id="bpmSlider" min="60" max="180" defaultValue="120" className={styles.slider} />
-                  {/* Optional: Display BPM value here */}
                 </div>
                 <div className={styles.sliderContainer}>
                   <label htmlFor="gainSlider" className={styles.sliderLabel}>Gain</label>
                   <input type="range" id="gainSlider" min="0" max="100" defaultValue="50" className={styles.slider} />
-                  {/* Optional: Display Gain value here */}
                 </div>
               </div>
-              {/* Right Bottom Box */}
+              {/* Right Bottom Box for mood details */}
               <div className={styles.rightBottomBox}>
-                <p>Right Bottom Box (4/5)</p>
+                <h3 style={{ marginTop: '0', marginBottom: '15px' }}>Current Mood State</h3>
+                {currentMood ? (
+                  <div style={{ fontSize: '14px', lineHeight: '1.8' }}>
+                    <div><strong>Sector:</strong> {pageSectorLabels[currentSector]} (#{currentSector + 1})</div>
+                    <div><strong>Angle:</strong> {currentAngle.toFixed(1)}°</div>
+                    <div><strong>X Coordinate:</strong> {currentMood.x.toFixed(3)}</div>
+                    <div><strong>Y Coordinate:</strong> {currentMood.y.toFixed(3)}</div>
+                    
+                    <div style={{ marginTop: '20px', padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '8px' }}>
+                      <h4>Suggested Music Features:</h4>
+                      {currentSector === 0 && <p>🎵 Tender, warm melodies</p>} 
+                      {currentSector === 1 && <p>🎵 Bright, surprising elements</p>}
+                      {currentSector === 2 && <p>🎵 Fast-paced, high-energy music</p>}
+                      {currentSector === 3 && <p>🎵 Tense, suspenseful sounds</p>} 
+                      {currentSector === 4 && <p>🎵 Intense, fiery music</p>}      
+                      {currentSector === 5 && <p>🎵 Slow, emotionally rich music</p>} 
+                      {currentSector === 6 && <p>🎵 Low-energy, reflective tunes</p>} 
+                      {currentSector === 7 && <p>🎵 Soothing, relaxing rhythms</p>} 
+                    </div>
+                  </div>
+                ) : (
+                  <p>Please drag the button on the circle to select a mood state.</p>
+                )}
               </div>
             </div>
           </section>
         </>
       )}
-      {/* ───────── 联系方式 ───────── */}
+      {/* Contact Information */}
       <footer className={styles.contactSection}>
         <h3 className={styles.contactTitle}>Contact information</h3>
 

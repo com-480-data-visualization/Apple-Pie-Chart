@@ -12,7 +12,7 @@
     },
     "distDir": ".next",
     "cleanDistDir": true,
-    "assetPrefix": "/Apple-Pie-Chart/",
+    "assetPrefix": "",
     "cacheMaxMemorySize": 52428800,
     "configOrigin": "next.config.mjs",
     "useFileSystemPublicRoutes": true,
@@ -46,7 +46,7 @@
         256,
         384
       ],
-      "path": "/Apple-Pie-Chart/_next/image",
+      "path": "/_next/image",
       "loader": "default",
       "loaderFile": "",
       "domains": [],
@@ -69,9 +69,9 @@
       "pagesBufferLength": 5
     },
     "amp": {
-      "canonicalBase": "/Apple-Pie-Chart"
+      "canonicalBase": ""
     },
-    "basePath": "/Apple-Pie-Chart",
+    "basePath": "",
     "sassOptions": {},
     "trailingSlash": false,
     "i18n": null,
