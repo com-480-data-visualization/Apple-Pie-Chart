@@ -1,10 +1,12 @@
+'use client';
+
 import React, { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 
 interface MoodWheelDiagramProps {
   onMoodChange?: (mood: { x: number; y: number; sector: number; angle: number }) => void;
   onSectorHover?: (sector: number | null) => void;
-  highlightedSector?: number;
+  highlightedSector?: number;   // 由父组件控制高亮
 }
 
 interface SectorData {
@@ -15,275 +17,141 @@ interface SectorData {
   color: string;
 }
 
-const MoodWheelDiagram: React.FC<MoodWheelDiagramProps> = ({ 
-  onMoodChange, 
-  onSectorHover, 
-  highlightedSector 
+const MoodWheelDiagram: React.FC<MoodWheelDiagramProps> = ({
+  onMoodChange,
+  onSectorHover,
+  highlightedSector = 0,
 }) => {
   const svgRef = useRef<SVGSVGElement>(null);
-  const [currentSector, setCurrentSector] = useState(0);
-  const svgSize = 400;
-  const center = svgSize / 2;
-  const radius = svgSize / 2 * 0.85;
+  const [selectedSector, setSelectedSector] = useState<number>(highlightedSector);
 
-  const config = {
-    mainAxisStrokeColor: '#E2E8F0',
-    circleStrokeColor: '#64748B',
-    textColor: '#1E293B',
-    sectorColors: [
-      '#FCD34D', // 0: Energetic/Joyful - 温暖金黄
-      '#FB923C', // 1: Excited/Surprised - 活力橙色
-      '#EF4444', // 2: Agitated/Tense - 紧张红色
-      '#B91C1C', // 3: Anxious/Angry - 深红愤怒
-      '#3B82F6', // 4: Sad/Depressed - 忧郁蓝色
-      '#6B7280', // 5: Gloomy/Tired - 灰色疲惫
-      '#10B981', // 6: Calm/Relaxed - 宁静绿色
-      '#A855F7'  // 7: Content/Serene - 紫色宁静
-    ],
-    sectorLabels: [
-      'Energetic/Joyful', 'Excited/Surprised', 'Agitated/Tense', 'Anxious/Angry',
-      'Sad/Depressed', 'Gloomy/Tired', 'Calm/Relaxed', 'Content/Serene'
-    ]
-  };
+  /* ---------- 轮盘配置 ---------- */
+  const svgSize = 340;
+  const center  = svgSize / 2;
+  const radius  = svgSize * 0.38;
 
-  const sectorData: SectorData[] = d3.range(8).map((i: number): SectorData => ({
+  const colors = [
+    '#FCD34D', // Energetic / Joyful
+    '#FB923C', // Excited / Surprised
+    '#EF4444', // Agitated / Angry
+    '#B91C1C', // Heavy/Majestic
+    '#3B82F6', // Dark/Depressed
+    '#6B7280', // Tragic / Yearning
+    '#10B981', // Dreamy / Sentimental
+    '#A855F7', // Calm / Relaxed
+  ];
+
+  const labels = [
+    'Energetic/Joyful',
+    'Excited/Surprised',
+    'Agitated/Angry',
+    'Heavy/Majestic',
+    'Dark/Depressed',
+    'Tragic/Yearning',
+    'Dreamy/Sentimental',
+    'Calm/Relaxed',
+  ];
+
+  const offset =  Math.PI / 2;   // 顺时针再转 90°（= π/2 rad）
+  const CCW = -1;                // 方向：-1 = 逆时针, 1 = 顺时针
+  const sectors: SectorData[] = d3.range(8).map(i => ({
     index: i,
-    startAngle: i * (Math.PI / 4),
-    endAngle: (i + 1) * (Math.PI / 4),
-    label: config.sectorLabels[i],
-    color: config.sectorColors[i]
+    startAngle: offset + i       * CCW * (Math.PI / 4),
+    endAngle:   offset + (i + 1) * CCW * (Math.PI / 4),
+    label : labels[i],
+    color : colors[i],
   }));
 
+  /* ---------- 绘制 ---------- */
   useEffect(() => {
     if (!svgRef.current) return;
 
-    const svg = d3.select(svgRef.current);
-    svg.selectAll("*").remove();
+    const svg = d3.select(svgRef.current).attr('width', svgSize).attr('height', svgSize);
+    svg.selectAll('*').remove();
 
-    // 创建渐变定义
+    /* 渐变 */
     const defs = svg.append('defs');
-    
-    // 为每个扇形创建渐变
-    sectorData.forEach((sector, i) => {
-      const gradient = defs.append('radialGradient')
-        .attr('id', `gradient-${i}`)
-        .attr('cx', '50%')
-        .attr('cy', '50%')
-        .attr('r', '70%');
-      
-      gradient.append('stop')
-        .attr('offset', '0%')
-        .attr('stop-color', sector.color)
-        .attr('stop-opacity', 0.9);
-      
-      gradient.append('stop')
-        .attr('offset', '100%')
-        .attr('stop-color', d3.color(sector.color)?.darker(0.3)?.toString() || sector.color)
-        .attr('stop-opacity', 0.7);
+    sectors.forEach(s => {
+      const g = defs.append('radialGradient')
+        .attr('id', `grad-${s.index}`)
+        .attr('cx', '50%').attr('cy', '50%').attr('r', '70%');
+
+      g.append('stop').attr('offset', '0%')  .attr('stop-color', s.color).attr('stop-opacity', .9);
+      g.append('stop').attr('offset', '100%').attr('stop-color', d3.color(s.color)!.darker(.4).toString()).attr('stop-opacity', .7);
     });
 
-    // 创建阴影滤镜
-    const filter = defs.append('filter')
-      .attr('id', 'drop-shadow')
-      .attr('x', '-50%')
-      .attr('y', '-50%')
-      .attr('width', '200%')
-      .attr('height', '200%');
+    /* 阴影 */
+    defs.append('filter')
+      .attr('id', 'shadow')
+      .append('feDropShadow')
+      .attr('dx', 0).attr('dy', 2).attr('stdDeviation', 4).attr('flood-color', '#000').attr('flood-opacity', .15);
 
-    filter.append('feDropShadow')
-      .attr('dx', 0)
-      .attr('dy', 2)
-      .attr('stdDeviation', 4)
-      .attr('flood-color', '#000000')
-      .attr('flood-opacity', 0.15);
+    const container = svg.append('g').attr('transform', `translate(${center},${center})`);
 
-    const container = svg.append('g').attr('class', 'wheel-container');
-
-    // 创建弧形生成器
-    const arcGenerator = d3.arc<SectorData>()
-      .innerRadius(20) // 内半径，创建环形效果
+    /* 弧生成器 */
+    const arc = d3.arc<SectorData>()
+      .innerRadius(22)
       .outerRadius(radius)
       .startAngle(d => d.startAngle)
-      .endAngle(d => d.endAngle)
-      .cornerRadius(3); // 圆角
+      .endAngle  (d => d.endAngle);
 
-    // 绘制扇形
-    const sectorPaths = container.selectAll<SVGPathElement, SectorData>('.sector')
-      .data(sectorData)
+    /* ---------- 扇形 ---------- */
+    const hoverTimer: {t: NodeJS.Timeout|null} = { t: null };
+
+    const paths = container.selectAll('path')
+      .data(sectors)
       .enter()
       .append('path')
-      .attr('class', 'sector')
-      .attr('d', arcGenerator)
-      .attr('transform', `translate(${center},${center})`)
-      .attr('fill', (d, i) => `url(#gradient-${i})`)
-      .attr('stroke', '#FFFFFF')
+      .attr('d', arc)
+      .attr('fill', d => `url(#grad-${d.index})`)
+      .attr('stroke', '#fff')
       .attr('stroke-width', 2)
-      .attr('opacity', (d, i) => i === currentSector ? 1 : 0.7)
+      .style('pointer-events', 'visibleFill')
+      .attr('opacity', d => d.index === selectedSector ? 1 : .72)
       .style('cursor', 'pointer')
-      .style('transition', 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)')
-      .style('filter', (d, i) => i === currentSector ? 'url(#drop-shadow)' : 'none')
-      .on('mouseenter', function(event, d) {
-        if (d.index !== currentSector) {
-          d3.select(this)
-            .transition()
-            .duration(200)
-            .attr('opacity', 0.9)
-            .style('transform', `translate(${center}px,${center}px) scale(1.05)`);
-          
+      .style('filter', d => d.index === selectedSector ? 'url(#shadow)' : 'none')
+      /* --- Hover: 仅调透明度，不再 scale，防抖 60 ms --- */
+      .on('mouseenter', function (_, d){
+        if (hoverTimer.t) clearTimeout(hoverTimer.t);
+        hoverTimer.t = setTimeout(()=>{
+          d3.select(this).attr('opacity', .9);
           onSectorHover?.(d.index);
-        }
+        }, 60);
       })
-      .on('mouseleave', function(event, d) {
-        if (d.index !== currentSector) {
-          d3.select(this)
-            .transition()
-            .duration(200)
-            .attr('opacity', 0.7)
-            .style('transform', `translate(${center}px,${center}px) scale(1)`);
-          
+      .on('mouseleave', function (_, d){
+        if (hoverTimer.t) clearTimeout(hoverTimer.t);
+        hoverTimer.t = setTimeout(()=>{
+          if (d.index !== selectedSector) d3.select(this).attr('opacity', .72);
           onSectorHover?.(null);
-        }
+        }, 60);
       })
-      .on('click', function(event, d) {
-        event.stopPropagation();
-        setCurrentSector(d.index);
-        
-        // 更新所有扇形样式
-        sectorPaths
-          .transition()
-          .duration(300)
-          .attr('opacity', (_, i) => i === d.index ? 1 : 0.7)
-          .style('filter', (_, i) => i === d.index ? 'url(#drop-shadow)' : 'none')
-          .style('transform', (_, i) => 
-            i === d.index 
-              ? `translate(${center}px,${center}px) scale(1.08)` 
-              : `translate(${center}px,${center}px) scale(1)`
-          );
+      /* --- Click 选中 --- */
+      .on('click', (_, d) => {
+        setSelectedSector(d.index);
+        paths
+          .attr('opacity', p => p.index === d.index ? 1 : .72)
+          .style('filter', p => p.index === d.index ? 'url(#shadow)' : 'none');
 
-        // 通知父组件
-        if (onMoodChange) {
-          const midAngle = d.startAngle + (d.endAngle - d.startAngle) / 2;
-          const x = Math.cos(midAngle);
-          const y = Math.sin(midAngle);
-          onMoodChange({
-            x,
-            y,
-            sector: d.index,
-            angle: midAngle * 180 / Math.PI
-          });
+        /* 通知父组件 */
+        if (onMoodChange){
+          const mid = d.startAngle + (d.endAngle - d.startAngle) / 2;
+          onMoodChange({ x: Math.cos(mid), y: Math.sin(mid), sector: d.index, angle: mid * 180 / Math.PI });
         }
       });
 
-    // 绘制中心圆
-    container.append('circle')
-      .attr('cx', center)
-      .attr('cy', center)
-      .attr('r', 18)
-      .attr('fill', '#FFFFFF')
-      .attr('stroke', config.circleStrokeColor)
-      .attr('stroke-width', 2)
-      .style('filter', 'url(#drop-shadow)');
+    /* 坐标轴 + 中心圆 */
+    container.append('circle').attr('r', radius).attr('fill','none').attr('stroke','#CBD5E1').attr('stroke-width',1.2);
+    container.append('line').attr('x1',-radius).attr('x2', radius).attr('stroke','#CBD5E1');
+    container.append('line').attr('y1',-radius).attr('y2', radius).attr('stroke','#CBD5E1');
+    container.append('circle').attr('r',18).attr('fill','#fff').attr('stroke','#64748B').attr('stroke-width',2).style('filter','url(#shadow)');
+  }, [selectedSector, onMoodChange, onSectorHover]);
 
-    // 绘制坐标轴（更细致）
-    const axisGroup = container.append('g').attr('class', 'axes');
-    
-    // 主轴线
-    axisGroup.append('line')
-      .attr('x1', center - radius + 10)
-      .attr('y1', center)
-      .attr('x2', center + radius - 10)
-      .attr('y2', center)
-      .attr('stroke', config.mainAxisStrokeColor)
-      .attr('stroke-width', 1.5)
-      .attr('opacity', 0.8);
-    
-    axisGroup.append('line')
-      .attr('x1', center)
-      .attr('y1', center - radius + 10)
-      .attr('x2', center)
-      .attr('y2', center + radius - 10)
-      .attr('stroke', config.mainAxisStrokeColor)
-      .attr('stroke-width', 1.5)
-      .attr('opacity', 0.8);
-
-    // 轴标签（更美观的字体）
-    const labelGroup = container.append('g').attr('class', 'labels');
-    
-    labelGroup.append('text')
-      .attr('x', center)
-      .attr('y', center - radius - 15)
-      .attr('text-anchor', 'middle')
-      .attr('font-size', '13px')
-      .attr('font-weight', '600')
-      .attr('fill', config.textColor)
-      .attr('opacity', 0.8)
-      .text('Arousal+');
-    
-    labelGroup.append('text')
-      .attr('x', center)
-      .attr('y', center + radius + 25)
-      .attr('text-anchor', 'middle')
-      .attr('font-size', '13px')
-      .attr('font-weight', '600')
-      .attr('fill', config.textColor)
-      .attr('opacity', 0.8)
-      .text('Arousal-');
-    
-    labelGroup.append('text')
-      .attr('x', center + radius + 15)
-      .attr('y', center + 5)
-      .attr('text-anchor', 'start')
-      .attr('font-size', '13px')
-      .attr('font-weight', '600')
-      .attr('fill', config.textColor)
-      .attr('opacity', 0.8)
-      .text('Valence+');
-    
-    labelGroup.append('text')
-      .attr('x', center - radius - 15)
-      .attr('y', center + 5)
-      .attr('text-anchor', 'end')
-      .attr('font-size', '13px')
-      .attr('font-weight', '600')
-      .attr('fill', config.textColor)
-      .attr('opacity', 0.8)
-      .text('Valence-');
-
-    // 初始化选中状态
-    sectorPaths
-      .filter((_, i) => i === currentSector)
-      .style('filter', 'url(#drop-shadow)')
-      .style('transform', `translate(${center}px,${center}px) scale(1.08)`);
-
-    // 触发初始回调
-    if (onMoodChange) {
-      const initialSector = sectorData[currentSector];
-      const midAngle = initialSector.startAngle + (initialSector.endAngle - initialSector.startAngle) / 2;
-      const x = Math.cos(midAngle);
-      const y = Math.sin(midAngle);
-      onMoodChange({
-        x,
-        y,
-        sector: currentSector,
-        angle: midAngle * 180 / Math.PI
-      });
-    }
-
-    svg.attr('width', svgSize).attr('height', svgSize);
-
-  }, [currentSector, onMoodChange, onSectorHover]);
+  /* 当父组件传入新的 highlightedSector 时同步 */
+  useEffect(()=> setSelectedSector(highlightedSector), [highlightedSector]);
 
   return (
-    <div style={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center',
-      padding: '20px',
-      background: 'linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%)',
-      borderRadius: '20px',
-      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)'
-    }}>
-      <svg ref={svgRef} style={{ borderRadius: '50%' }}></svg>
+    <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+      <svg ref={svgRef}/>
     </div>
   );
 };

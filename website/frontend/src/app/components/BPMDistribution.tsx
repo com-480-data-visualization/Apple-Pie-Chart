@@ -3,9 +3,13 @@
 import React, { useEffect, useRef } from 'react'
 import * as d3 from 'd3'
 
+// 导出常量供外部使用
+export const Y_MAX_BPM = 180
+
 interface BPMDistributionProps {
   data: number[]
   title: string
+  color?: string
   width?: number
   height?: number
 }
@@ -13,6 +17,7 @@ interface BPMDistributionProps {
 const BPMDistribution: React.FC<BPMDistributionProps> = ({ 
   data, 
   title, 
+  color,
   width = 400, 
   height = 300 
 }) => {
@@ -35,25 +40,32 @@ const BPMDistribution: React.FC<BPMDistributionProps> = ({
       .append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`)
 
+    // 使用传入的颜色或默认颜色
+    const barColor = color ?? '#059669'
+    const strokeColor = color ? d3.color(color)?.darker(0.5)?.toString() ?? color : '#047857'
+
     // 计算统计信息
     const mean = d3.mean(data) || 0
     const median = d3.median(data) || 0
-    const extent = d3.extent(data) as [number, number]
+
+    // 固定坐标轴范围
+    const xDomain: [number, number] = [80, 200] // BPM 统一 80 → 200
+    const yDomain: [number, number] = [0, Y_MAX_BPM]  // 固定 y 轴最大值
 
     // 创建直方图数据
     const histogram = d3.histogram()
-      .domain(extent)
+      .domain(xDomain)
       .thresholds(25) // 25个桶（BPM通常范围更大）
 
     const bins = histogram(data)
 
     // 创建比例尺
     const xScale = d3.scaleLinear()
-      .domain(extent)
+      .domain(xDomain)
       .range([0, innerWidth])
 
     const yScale = d3.scaleLinear()
-      .domain([0, d3.max(bins, d => d.length) || 0])
+      .domain(yDomain)
       .range([innerHeight, 0])
 
     // 绘制直方图柱子
@@ -63,18 +75,18 @@ const BPMDistribution: React.FC<BPMDistributionProps> = ({
       .append('rect')
       .attr('class', 'bar')
       .attr('x', d => xScale(d.x0 || 0))
-      .attr('y', d => yScale(d.length))
+      .attr('y', d => yScale(Math.min(d.length, Y_MAX_BPM))) // 限制柱子高度
       .attr('width', d => Math.max(0, xScale(d.x1 || 0) - xScale(d.x0 || 0) - 1))
-      .attr('height', d => innerHeight - yScale(d.length))
-      .attr('fill', '#059669')
+      .attr('height', d => innerHeight - yScale(Math.min(d.length, Y_MAX_BPM))) // 限制柱子高度
+      .attr('fill', barColor)
       .attr('fill-opacity', 0.7)
-      .attr('stroke', '#047857')
+      .attr('stroke', strokeColor)
       .attr('stroke-width', 1)
       .on('mouseover', function(event, d) {
         // 鼠标悬停效果
         d3.select(this).attr('fill-opacity', 0.9)
         
-        // 显示工具提示
+        // 显示工具提示（显示真实数量）
         const tooltip = d3.select('body')
           .append('div')
           .attr('class', 'tooltip')
@@ -88,7 +100,8 @@ const BPMDistribution: React.FC<BPMDistributionProps> = ({
           .style('opacity', 0)
 
         tooltip.transition().duration(200).style('opacity', 1)
-        tooltip.html(`Range: ${Math.round(d.x0 || 0)} - ${Math.round(d.x1 || 0)} BPM<br/>Count: ${d.length}`)
+        const countText = d.length > Y_MAX_BPM ? `${d.length} (exceeds limit)` : `${d.length}`
+        tooltip.html(`Range: ${Math.round(d.x0 || 0)} - ${Math.round(d.x1 || 0)} BPM<br/>Count: ${countText}`)
           .style('left', (event.pageX + 10) + 'px')
           .style('top', (event.pageY - 28) + 'px')
       })
@@ -97,13 +110,25 @@ const BPMDistribution: React.FC<BPMDistributionProps> = ({
         d3.selectAll('.tooltip').remove()
       })
 
+    // 绘制超出提示箭头
+    g.selectAll('.overflow-arrow')
+      .data(bins.filter(d => d.length > Y_MAX_BPM))
+      .enter()
+      .append('path')
+      .attr('class', 'overflow-arrow')
+      .attr('d', 'M-4,-8 L0,0 L4,-8 Z') // 向上的三角形箭头
+      .attr('transform', d => `translate(${xScale((d.x0 || 0) + (d.x1 || 0)) / 2}, ${yScale(Y_MAX_BPM) - 3})`)
+      .attr('fill', '#dc2626')
+      .attr('stroke', '#991b1b')
+      .attr('stroke-width', 1)
+
     // 添加密度曲线
     const kde = kernelDensityEstimator(kernelEpanechnikov(2), xScale.ticks(100))
     const density = kde(data)
 
     const line = d3.line<[number, number]>()
       .x(d => xScale(d[0]))
-      .y(d => yScale(d[1] * data.length * (extent[1] - extent[0]) / 25))
+      .y(d => yScale(d[1] * data.length * (xDomain[1] - xDomain[0]) / 25))
       .curve(d3.curveBasis)
 
     g.append('path')
@@ -141,7 +166,7 @@ const BPMDistribution: React.FC<BPMDistributionProps> = ({
     ]
 
     bpmRanges.forEach(range => {
-      if (range.value >= extent[0] && range.value <= extent[1]) {
+      if (range.value >= xDomain[0] && range.value <= xDomain[1]) {
         g.append('line')
           .attr('x1', xScale(range.value))
           .attr('x2', xScale(range.value))
@@ -220,7 +245,7 @@ const BPMDistribution: React.FC<BPMDistributionProps> = ({
       .attr('font-size', '12px')
       .text(`Median: ${median.toFixed(1)}`)
 
-  }, [data, width, height])
+  }, [data, width, height, color])
 
   // 核密度估计函数
   function kernelDensityEstimator(kernel: (v: number) => number, X: number[]) {

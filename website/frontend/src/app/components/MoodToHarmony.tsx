@@ -28,8 +28,23 @@ import EGCalmRelaxedBpm           from './mood-histograms/bpm/EGCalmRelaxedBpm';
 
 import EGHeavyMajesticGain        from './mood-histograms/gain/EGHeavyMajesticGain';
 import EGHeavyMajesticBpm         from './mood-histograms/bpm/EGHeavyMajesticBpm';
-
-
+// import EGEnergeticJoyfulGain      from './mood-histograms/gain/EGEnergeticJoyfulGain';
+// import EGEnergeticJoyfulBpm       from './mood-histograms/bpm/EGEnergeticJoyfulBpm';
+// import EGExcitedSurprisedGain     from './mood-histograms/gain/EGExcitedSurprisedGain';
+// import EGExcitedSurprisedBpm      from './mood-histograms/bpm/EGExcitedSurprisedBpm';
+// import EGAgitatedAngryGain        from './mood-histograms/gain/EGAgitatedAngryGain';
+// import EGAgitatedAngryBpm         from './mood-histograms/bpm/EGAgitatedAngryBpm';
+// import EGHeavyMajesticGain        from './mood-histograms/gain/EGHeavyMajesticGain';
+// import EGHeavyMajesticBpm         from './mood-histograms/bpm/EGHeavyMajesticBpm';
+// import EGDarkDepressedGain        from './mood-histograms/gain/EGDarkDepressedGain';
+// import EGDarkDepressedBpm         from './mood-histograms/bpm/EGDarkDepressedBpm';
+// import EGTragicYearningGain       from './mood-histograms/gain/EGTragicYearningGain';
+// import EGTragicYearningBpm        from './mood-histograms/bpm/EGTragicYearningBpm';
+// import EGDreamySentimentalGain    from './mood-histograms/gain/EGDreamySentimentalGain';
+// import EGDreamySentimentalBpm     from './mood-histograms/bpm/EGDreamySentimentalBpm';
+// import EGCalmRelaxedGain          from './mood-histograms/gain/EGCalmRelaxedGain';
+// import EGCalmRelaxedBpm           from './mood-histograms/bpm/EGCalmRelaxedBpm';
+  
 const gainComponents = [
     EGEnergeticJoyfulGain,     // 0
     EGExcitedSurprisedGain,    // 1
@@ -54,9 +69,15 @@ const gainComponents = [
 
 /* ---------- sector label / 音乐建议 ---------- */
 const sectorLabels = [
-  'Energetic / Joyful','Excited / Surprised','Agitated / Tense','Anxious / Angry',
-  'Sad / Depressed','Gloomy / Tired','Calm / Relaxed','Content / Serene'
-];
+    'Energetic / Joyful',
+    'Excited / Surprised',
+    'Agitated / Angry',
+    'Heavy / Majestic',
+    'Dark / Depressed',
+    'Tragic / Yearning',
+    'Dreamy / Sentimental',
+    'Calm / Relaxed',
+  ];
 const suggestions = [
   ['🎵 Up-beat rhythms','🎵 Major keys','🎵 Fast tempo 120-140 BPM','🎵 Rich harmonies'],
   ['🎵 Dynamic tempo','🎵 Unexpected chords','🎵 Sparkling timbre','🎵 Syncopation'],

@@ -3,9 +3,13 @@
 import React, { useEffect, useRef } from 'react'
 import * as d3 from 'd3'
 
+// 导出常量供外部使用
+export const Y_MAX_GAIN = 200
+
 interface GainDistributionProps {
   data: number[]
   title: string
+  color?: string
   width?: number
   height?: number
 }
@@ -13,6 +17,7 @@ interface GainDistributionProps {
 const GainDistribution: React.FC<GainDistributionProps> = ({ 
   data, 
   title, 
+  color,
   width = 400, 
   height = 300 
 }) => {
@@ -35,25 +40,32 @@ const GainDistribution: React.FC<GainDistributionProps> = ({
       .append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`)
 
+    // 使用传入的颜色或默认颜色
+    const barColor = color ?? '#3b82f6'
+    const strokeColor = color ? d3.color(color)?.darker(0.5)?.toString() ?? color : '#1e40af'
+
     // 计算统计信息
     const mean = d3.mean(data) || 0
     const median = d3.median(data) || 0
-    const extent = d3.extent(data) as [number, number]
+
+    // 固定坐标轴范围
+    const xDomain: [number, number] = [-25, -4] // Gain 统一 -25 → -4 dB
+    const yDomain: [number, number] = [0, Y_MAX_GAIN]  // 固定 y 轴最大值
 
     // 创建直方图数据
     const histogram = d3.histogram()
-      .domain(extent)
+      .domain(xDomain)
       .thresholds(20) // 20个桶
 
     const bins = histogram(data)
 
     // 创建比例尺
     const xScale = d3.scaleLinear()
-      .domain(extent)
+      .domain(xDomain)
       .range([0, innerWidth])
 
     const yScale = d3.scaleLinear()
-      .domain([0, d3.max(bins, d => d.length) || 0])
+      .domain(yDomain)
       .range([innerHeight, 0])
 
     // 绘制直方图柱子
@@ -63,18 +75,18 @@ const GainDistribution: React.FC<GainDistributionProps> = ({
       .append('rect')
       .attr('class', 'bar')
       .attr('x', d => xScale(d.x0 || 0))
-      .attr('y', d => yScale(d.length))
+      .attr('y', d => yScale(Math.min(d.length, Y_MAX_GAIN))) // 限制柱子高度
       .attr('width', d => Math.max(0, xScale(d.x1 || 0) - xScale(d.x0 || 0) - 1))
-      .attr('height', d => innerHeight - yScale(d.length))
-      .attr('fill', '#3b82f6')
+      .attr('height', d => innerHeight - yScale(Math.min(d.length, Y_MAX_GAIN))) // 限制柱子高度
+      .attr('fill', barColor)
       .attr('fill-opacity', 0.7)
-      .attr('stroke', '#1e40af')
+      .attr('stroke', strokeColor)
       .attr('stroke-width', 1)
       .on('mouseover', function(event, d) {
         // 鼠标悬停效果
         d3.select(this).attr('fill-opacity', 0.9)
         
-        // 显示工具提示
+        // 显示工具提示（显示真实数量）
         const tooltip = d3.select('body')
           .append('div')
           .attr('class', 'tooltip')
@@ -88,7 +100,8 @@ const GainDistribution: React.FC<GainDistributionProps> = ({
           .style('opacity', 0)
 
         tooltip.transition().duration(200).style('opacity', 1)
-        tooltip.html(`Range: ${d.x0?.toFixed(2)} - ${d.x1?.toFixed(2)}<br/>Count: ${d.length}`)
+        const countText = d.length > Y_MAX_GAIN ? `${d.length} (exceeds limit)` : `${d.length}`
+        tooltip.html(`Range: ${d.x0?.toFixed(2)} - ${d.x1?.toFixed(2)}<br/>Count: ${countText}`)
           .style('left', (event.pageX + 10) + 'px')
           .style('top', (event.pageY - 28) + 'px')
       })
@@ -97,13 +110,25 @@ const GainDistribution: React.FC<GainDistributionProps> = ({
         d3.selectAll('.tooltip').remove()
       })
 
+    // 绘制超出提示箭头
+    g.selectAll('.overflow-arrow')
+      .data(bins.filter(d => d.length > Y_MAX_GAIN))
+      .enter()
+      .append('path')
+      .attr('class', 'overflow-arrow')
+      .attr('d', 'M-4,-8 L0,0 L4,-8 Z') // 向上的三角形箭头
+      .attr('transform', d => `translate(${xScale((d.x0 || 0) + (d.x1 || 0)) / 2}, ${yScale(Y_MAX_GAIN) - 3})`)
+      .attr('fill', '#dc2626')
+      .attr('stroke', '#991b1b')
+      .attr('stroke-width', 1)
+
     // 添加密度曲线
     const kde = kernelDensityEstimator(kernelEpanechnikov(0.5), xScale.ticks(100))
     const density = kde(data)
 
     const line = d3.line<[number, number]>()
       .x(d => xScale(d[0]))
-      .y(d => yScale(d[1] * data.length * (extent[1] - extent[0]) / 20))
+      .y(d => yScale(d[1] * data.length * (xDomain[1] - xDomain[0]) / 20))
       .curve(d3.curveBasis)
 
     g.append('path')
@@ -142,7 +167,7 @@ const GainDistribution: React.FC<GainDistributionProps> = ({
       .attr('y', 35)
       .attr('fill', 'black')
       .style('text-anchor', 'middle')
-      .text('Gain')
+      .text('Gain (dB)')
 
     // 添加Y轴
     g.append('g')
@@ -191,7 +216,7 @@ const GainDistribution: React.FC<GainDistributionProps> = ({
       .attr('font-size', '12px')
       .text(`Median: ${median.toFixed(2)}`)
 
-  }, [data, width, height])
+  }, [data, width, height, color])
 
   // 核密度估计函数
   function kernelDensityEstimator(kernel: (v: number) => number, X: number[]) {
