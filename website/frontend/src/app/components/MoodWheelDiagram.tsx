@@ -1,11 +1,12 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 
 interface MoodWheelDiagramProps {
   onMoodChange?: (mood: { x: number; y: number; sector: number; angle: number }) => void;
+  onSectorHover?: (sector: number | null) => void;
+  highlightedSector?: number;
 }
 
-// Define an interface for our sector data structure
 interface SectorData {
   index: number;
   startAngle: number;
@@ -14,59 +15,99 @@ interface SectorData {
   color: string;
 }
 
-const MoodWheelDiagram: React.FC<MoodWheelDiagramProps> = ({ onMoodChange }) => {
+const MoodWheelDiagram: React.FC<MoodWheelDiagramProps> = ({ 
+  onMoodChange, 
+  onSectorHover, 
+  highlightedSector 
+}) => {
   const svgRef = useRef<SVGSVGElement>(null);
+  const [currentSector, setCurrentSector] = useState(0);
   const svgSize = 400;
   const center = svgSize / 2;
-  const radius = svgSize / 2 * 0.8;
-  const buttonRadius = 8;
+  const radius = svgSize / 2 * 0.85;
 
-  // Stable config object - moved outside useEffect, include in deps if it were to change
   const config = {
-    mainAxisStrokeColor: '#B0B0B0',
-    diagonalStrokeColor: '#EAEAEA',
-    circleStrokeColor: '#4A90E2',
-    textColor: '#333',
+    mainAxisStrokeColor: '#E2E8F0',
+    circleStrokeColor: '#64748B',
+    textColor: '#1E293B',
     sectorColors: [
-      '#FFD1DC', '#E1F5FE', '#FFE4B5', '#D8BFD8',
-      '#FFB6C1', '#ADD8E6', '#F5F5DC', '#E6E6FA'
+      '#FCD34D', // 0: Energetic/Joyful - 温暖金黄
+      '#FB923C', // 1: Excited/Surprised - 活力橙色
+      '#EF4444', // 2: Agitated/Tense - 紧张红色
+      '#B91C1C', // 3: Anxious/Angry - 深红愤怒
+      '#3B82F6', // 4: Sad/Depressed - 忧郁蓝色
+      '#6B7280', // 5: Gloomy/Tired - 灰色疲惫
+      '#10B981', // 6: Calm/Relaxed - 宁静绿色
+      '#A855F7'  // 7: Content/Serene - 紫色宁静
     ],
     sectorLabels: [
-      'Energetic/Joyful', 'Excited/Surprised', 'Agitated/Angry', 'Heavy/Majestic',
-      'Dark/Depressed', 'Tragic/Yearning', 'Dreamy/Sentimental', 'Calm/Relaxed'
+      'Energetic/Joyful', 'Excited/Surprised', 'Agitated/Tense', 'Anxious/Angry',
+      'Sad/Depressed', 'Gloomy/Tired', 'Calm/Relaxed', 'Content/Serene'
     ]
   };
 
-  const sectorData: SectorData[] = d3.range(8).map((i: number): SectorData => {
-    return {
-      index: i,
-      startAngle: i * (Math.PI / 4),       // e.g., Sector 0: 0, Sector 1: PI/4
-      endAngle: (i + 1) * (Math.PI / 4),   // e.g., Sector 0: PI/4, Sector 1: PI/2
-      label: config.sectorLabels[i],
-      color: config.sectorColors[i]
-    };
-  });
-
-  // These are effectively states managed by D3 interactions within the useEffect hook.
-  // We use a ref to store them if we need to access their latest value outside D3 callbacks
-  // but for this setup, they are mostly scoped to the D3 logic.
-  const currentAngleRadRef = useRef(Math.PI / 8);
-  const currentSectorIndexRef = useRef(0);
+  const sectorData: SectorData[] = d3.range(8).map((i: number): SectorData => ({
+    index: i,
+    startAngle: i * (Math.PI / 4),
+    endAngle: (i + 1) * (Math.PI / 4),
+    label: config.sectorLabels[i],
+    color: config.sectorColors[i]
+  }));
 
   useEffect(() => {
     if (!svgRef.current) return;
 
     const svg = d3.select(svgRef.current);
-    svg.selectAll("*").remove(); // Clear previous content
+    svg.selectAll("*").remove();
+
+    // 创建渐变定义
+    const defs = svg.append('defs');
+    
+    // 为每个扇形创建渐变
+    sectorData.forEach((sector, i) => {
+      const gradient = defs.append('radialGradient')
+        .attr('id', `gradient-${i}`)
+        .attr('cx', '50%')
+        .attr('cy', '50%')
+        .attr('r', '70%');
+      
+      gradient.append('stop')
+        .attr('offset', '0%')
+        .attr('stop-color', sector.color)
+        .attr('stop-opacity', 0.9);
+      
+      gradient.append('stop')
+        .attr('offset', '100%')
+        .attr('stop-color', d3.color(sector.color)?.darker(0.3)?.toString() || sector.color)
+        .attr('stop-opacity', 0.7);
+    });
+
+    // 创建阴影滤镜
+    const filter = defs.append('filter')
+      .attr('id', 'drop-shadow')
+      .attr('x', '-50%')
+      .attr('y', '-50%')
+      .attr('width', '200%')
+      .attr('height', '200%');
+
+    filter.append('feDropShadow')
+      .attr('dx', 0)
+      .attr('dy', 2)
+      .attr('stdDeviation', 4)
+      .attr('flood-color', '#000000')
+      .attr('flood-opacity', 0.15);
 
     const container = svg.append('g').attr('class', 'wheel-container');
 
+    // 创建弧形生成器
     const arcGenerator = d3.arc<SectorData>()
-      .innerRadius(0)
+      .innerRadius(20) // 内半径，创建环形效果
       .outerRadius(radius)
-      .startAngle((d: SectorData) => d.startAngle)
-      .endAngle((d: SectorData) => d.endAngle);
+      .startAngle(d => d.startAngle)
+      .endAngle(d => d.endAngle)
+      .cornerRadius(3); // 圆角
 
+    // 绘制扇形
     const sectorPaths = container.selectAll<SVGPathElement, SectorData>('.sector')
       .data(sectorData)
       .enter()
@@ -74,106 +115,177 @@ const MoodWheelDiagram: React.FC<MoodWheelDiagramProps> = ({ onMoodChange }) => 
       .attr('class', 'sector')
       .attr('d', arcGenerator)
       .attr('transform', `translate(${center},${center})`)
-      .attr('fill', 'transparent') // Initial fill, updated in updatePosition
-      .attr('stroke', config.diagonalStrokeColor)
-      .attr('stroke-width', 0.5)
-      .attr('opacity', 0.2); // Initial opacity
-
-    // Main axes
-    container.append('line').attr('x1', 20).attr('y1', center).attr('x2', svgSize - 20).attr('y2', center).attr('stroke', config.mainAxisStrokeColor).attr('stroke-width', 1.5);
-    container.append('line').attr('x1', center).attr('y1', 20).attr('x2', center).attr('y2', svgSize - 20).attr('stroke', config.mainAxisStrokeColor).attr('stroke-width', 1.5);
-    container.append('circle').attr('cx', center).attr('cy', center).attr('r', radius).attr('fill', 'none').attr('stroke', config.circleStrokeColor).attr('stroke-width', 2);
-
-    const dragButton = container.append('circle')
-      .attr('class', 'mood-button')
-      .attr('r', buttonRadius)
-      .attr('fill', config.circleStrokeColor)
-      .attr('stroke', 'white')
+      .attr('fill', (d, i) => `url(#gradient-${i})`)
+      .attr('stroke', '#FFFFFF')
       .attr('stroke-width', 2)
-      .style('cursor', 'grab');
-
-    const activeLabelText = container.append('text')
-      .attr('class', 'active-sector-label')
-      .attr('text-anchor', 'middle')
-      .attr('dominant-baseline', 'middle')
-      .attr('font-size', '14px')
-      .attr('font-weight', 'bold')
-      .attr('fill', config.textColor)
-      .style('pointer-events', 'none');
-
-    // Axis labels
-    container.append('text').attr('x', center).attr('y', 15).attr('text-anchor', 'middle').attr('font-size', '13px').attr('font-weight', '600').attr('fill', config.textColor).text('Arousal+');
-    container.append('text').attr('x', center).attr('y', svgSize - 5).attr('text-anchor', 'middle').attr('font-size', '13px').attr('font-weight', '600').attr('fill', config.textColor).text('Arousal-');
-    container.append('text').attr('x', svgSize - 5).attr('y', center + 5).attr('text-anchor', 'end').attr('font-size', '13px').attr('font-weight', '600').attr('fill', config.textColor).text('Valence+');
-    container.append('text').attr('x', 15).attr('y', center + 5).attr('text-anchor', 'start').attr('font-size', '13px').attr('font-weight', '600').attr('fill', config.textColor).text('Valence-');
-
-    function updateVisuals(newAngle: number) {
-      currentAngleRadRef.current = newAngle;
-      currentSectorIndexRef.current = Math.floor(newAngle / (Math.PI / 4)) % 8;
-
-      const buttonX = center + Math.cos(newAngle) * radius;
-      const buttonY = center - Math.sin(newAngle) * radius; // SVG Y is inverted
-      dragButton.attr('cx', buttonX).attr('cy', buttonY);
-
-      sectorPaths
-        .attr('fill', (d: SectorData) => d.index === currentSectorIndexRef.current ? d.color : 'transparent')
-        .attr('opacity', (d: SectorData) => d.index === currentSectorIndexRef.current ? 0.5 : 0.2);
-
-      if (currentSectorIndexRef.current >= 0 && config.sectorLabels[currentSectorIndexRef.current]) {
-        const labelAngle = currentSectorIndexRef.current * (Math.PI / 4) + (Math.PI / 8); // Midpoint of sector
-        const labelX = center + Math.cos(labelAngle) * (radius * 0.65);
-        const labelY = center - Math.sin(labelAngle) * (radius * 0.65); // SVG Y inverted
-        activeLabelText
-          .attr('x', labelX)
-          .attr('y', labelY)
-          .text(config.sectorLabels[currentSectorIndexRef.current]);
-      } else {
-        activeLabelText.text(''); // Clear label if somehow out of bounds
-      }
-
-      if (onMoodChange) {
-        const x = Math.cos(newAngle);
-        const y = Math.sin(newAngle); // Math positive Y is Arousal+
-        onMoodChange({
-          x,
-          y,
-          sector: currentSectorIndexRef.current,
-          angle: newAngle * 180 / Math.PI
-        });
-      }
-    }
-
-    // Type for 'this' in D3 drag event handlers
-    type DraggedElement = SVGCircleElement;
-
-    const dragBehavior = d3.drag<SVGCircleElement, unknown, SVGCircleElement>()
-      .on('start', function (this: DraggedElement, event: d3.D3DragEvent<DraggedElement, unknown, SVGCircleElement>) {
-        d3.select(this).style('cursor', 'grabbing');
+      .attr('opacity', (d, i) => i === currentSector ? 1 : 0.7)
+      .style('cursor', 'pointer')
+      .style('transition', 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)')
+      .style('filter', (d, i) => i === currentSector ? 'url(#drop-shadow)' : 'none')
+      .on('mouseenter', function(event, d) {
+        if (d.index !== currentSector) {
+          d3.select(this)
+            .transition()
+            .duration(200)
+            .attr('opacity', 0.9)
+            .style('transform', `translate(${center}px,${center}px) scale(1.05)`);
+          
+          onSectorHover?.(d.index);
+        }
       })
-      .on('drag', function (this: DraggedElement, event: d3.D3DragEvent<DraggedElement, unknown, SVGCircleElement>) {
-        const ptr = d3.pointer(event, container.node() as SVGGElement);
-        const dx = ptr[0] - center;
-        const dy = ptr[1] - center;
-        let newCalculatedAngle = Math.atan2(-dy, dx);
-        if (newCalculatedAngle < 0) newCalculatedAngle += 2 * Math.PI;
-        updateVisuals(newCalculatedAngle);
+      .on('mouseleave', function(event, d) {
+        if (d.index !== currentSector) {
+          d3.select(this)
+            .transition()
+            .duration(200)
+            .attr('opacity', 0.7)
+            .style('transform', `translate(${center}px,${center}px) scale(1)`);
+          
+          onSectorHover?.(null);
+        }
       })
-      .on('end', function (this: DraggedElement) { // event is not used here, so can be omitted from signature
-        d3.select(this).style('cursor', 'grab');
+      .on('click', function(event, d) {
+        event.stopPropagation();
+        setCurrentSector(d.index);
+        
+        // 更新所有扇形样式
+        sectorPaths
+          .transition()
+          .duration(300)
+          .attr('opacity', (_, i) => i === d.index ? 1 : 0.7)
+          .style('filter', (_, i) => i === d.index ? 'url(#drop-shadow)' : 'none')
+          .style('transform', (_, i) => 
+            i === d.index 
+              ? `translate(${center}px,${center}px) scale(1.08)` 
+              : `translate(${center}px,${center}px) scale(1)`
+          );
+
+        // 通知父组件
+        if (onMoodChange) {
+          const midAngle = d.startAngle + (d.endAngle - d.startAngle) / 2;
+          const x = Math.cos(midAngle);
+          const y = Math.sin(midAngle);
+          onMoodChange({
+            x,
+            y,
+            sector: d.index,
+            angle: midAngle * 180 / Math.PI
+          });
+        }
       });
 
-    dragButton.call(dragBehavior);
+    // 绘制中心圆
+    container.append('circle')
+      .attr('cx', center)
+      .attr('cy', center)
+      .attr('r', 18)
+      .attr('fill', '#FFFFFF')
+      .attr('stroke', config.circleStrokeColor)
+      .attr('stroke-width', 2)
+      .style('filter', 'url(#drop-shadow)');
 
-    // Initial setup
-    updateVisuals(currentAngleRadRef.current);
+    // 绘制坐标轴（更细致）
+    const axisGroup = container.append('g').attr('class', 'axes');
+    
+    // 主轴线
+    axisGroup.append('line')
+      .attr('x1', center - radius + 10)
+      .attr('y1', center)
+      .attr('x2', center + radius - 10)
+      .attr('y2', center)
+      .attr('stroke', config.mainAxisStrokeColor)
+      .attr('stroke-width', 1.5)
+      .attr('opacity', 0.8);
+    
+    axisGroup.append('line')
+      .attr('x1', center)
+      .attr('y1', center - radius + 10)
+      .attr('x2', center)
+      .attr('y2', center + radius - 10)
+      .attr('stroke', config.mainAxisStrokeColor)
+      .attr('stroke-width', 1.5)
+      .attr('opacity', 0.8);
 
-    // SVG attributes
-    svg.attr('width', svgSize).attr('height', svgSize).style('font-family', 'Helvetica, Arial, sans-serif');
+    // 轴标签（更美观的字体）
+    const labelGroup = container.append('g').attr('class', 'labels');
+    
+    labelGroup.append('text')
+      .attr('x', center)
+      .attr('y', center - radius - 15)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '13px')
+      .attr('font-weight', '600')
+      .attr('fill', config.textColor)
+      .attr('opacity', 0.8)
+      .text('Arousal+');
+    
+    labelGroup.append('text')
+      .attr('x', center)
+      .attr('y', center + radius + 25)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '13px')
+      .attr('font-weight', '600')
+      .attr('fill', config.textColor)
+      .attr('opacity', 0.8)
+      .text('Arousal-');
+    
+    labelGroup.append('text')
+      .attr('x', center + radius + 15)
+      .attr('y', center + 5)
+      .attr('text-anchor', 'start')
+      .attr('font-size', '13px')
+      .attr('font-weight', '600')
+      .attr('fill', config.textColor)
+      .attr('opacity', 0.8)
+      .text('Valence+');
+    
+    labelGroup.append('text')
+      .attr('x', center - radius - 15)
+      .attr('y', center + 5)
+      .attr('text-anchor', 'end')
+      .attr('font-size', '13px')
+      .attr('font-weight', '600')
+      .attr('fill', config.textColor)
+      .attr('opacity', 0.8)
+      .text('Valence-');
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onMoodChange, config, sectorData]); // Added config and sectorData to dependency array
+    // 初始化选中状态
+    sectorPaths
+      .filter((_, i) => i === currentSector)
+      .style('filter', 'url(#drop-shadow)')
+      .style('transform', `translate(${center}px,${center}px) scale(1.08)`);
 
-  return <svg ref={svgRef}></svg>;
+    // 触发初始回调
+    if (onMoodChange) {
+      const initialSector = sectorData[currentSector];
+      const midAngle = initialSector.startAngle + (initialSector.endAngle - initialSector.startAngle) / 2;
+      const x = Math.cos(midAngle);
+      const y = Math.sin(midAngle);
+      onMoodChange({
+        x,
+        y,
+        sector: currentSector,
+        angle: midAngle * 180 / Math.PI
+      });
+    }
+
+    svg.attr('width', svgSize).attr('height', svgSize);
+
+  }, [currentSector, onMoodChange, onSectorHover]);
+
+  return (
+    <div style={{ 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center',
+      padding: '20px',
+      background: 'linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%)',
+      borderRadius: '20px',
+      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)'
+    }}>
+      <svg ref={svgRef} style={{ borderRadius: '50%' }}></svg>
+    </div>
+  );
 };
 
-export default MoodWheelDiagram; 
+export default MoodWheelDiagram;

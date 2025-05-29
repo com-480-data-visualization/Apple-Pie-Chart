@@ -478,3 +478,192 @@
   background: #ddd;
   border-radius: 4px;
 }
+
+/* ===== 将以下样式添加到你的 page.module.css 文件中 ===== */
+
+/* 优化 Mood to Harmony 布局样式 */
+.moodToHarmonyLayout {
+  display: flex;
+  gap: 3rem;
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+  border-radius: 20px;
+  padding: 2.5rem;
+  align-items: flex-start;
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.leftBox {
+  flex-shrink: 0;
+  width: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* 美化 Current Mood State 卡片 */
+.moodStateCard {
+  width: 100%;
+  max-width: 440px;
+  padding: 2rem;
+  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.3s ease;
+}
+
+.moodStateCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.moodTitle {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1E293B;
+  text-align: center;
+  letter-spacing: -0.025em;
+}
+
+.moodLabel {
+  margin: 0 0 1rem 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #3B82F6;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.musicFeaturesContainer {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 197, 253, 0.05) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.musicFeaturesTitle {
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1E293B;
+}
+
+.featuresList {
+  line-height: 1.8;
+}
+
+.featureItem {
+  margin-bottom: 0.75rem;
+  color: #475569;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.featureItem:last-child {
+  margin-bottom: 0;
+}
+
+/* 右侧分布图样式优化 */
+.rightColumn {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 300px;
+}
+
+.distributionCard {
+  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.3s ease;
+  min-height: 320px;
+}
+
+.distributionCard:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 10px -2px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.distributionTitle {
+  margin: 0 0 1rem 0;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1E293B;
+  letter-spacing: -0.02em;
+}
+
+.distributionContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+}
+
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  color: #64748B;
+  font-size: 0.9rem;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .moodToHarmonyLayout {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .leftBox {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .rightColumn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .moodToHarmonyLayout {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .moodStateCard {
+    padding: 1.5rem;
+  }
+  
+  .distributionCard {
+    padding: 1rem;
+    min-height: 280px;
+  }
+  
+  .distributionContent {
+    height: 200px;
+  }
+}
