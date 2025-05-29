@@ -180,7 +180,7 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
       .attr("stroke-width", 1)
       .attr("stroke-dasharray", "2,4");
 
-// Draw pitch class labels (once per radial arm at outermost edge)
+    // Draw pitch class labels (once per radial arm at outermost edge)
     svg.append("g")
       .attr("class", "pitch-labels")
       .selectAll("text")
@@ -188,11 +188,11 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
       .enter().append("text")
       .attr("x", d => {
         const angle = angleScale(d) || 0;
-        return centerX + Math.cos(angle - Math.PI / 2) * (maxRadius + 25);
+        return centerX + Math.cos(angle - Math.PI / 2) * (maxRadius + 20);
       })
       .attr("y", d => {
         const angle = angleScale(d) || 0;
-        return centerY + Math.sin(angle - Math.PI / 2) * (maxRadius + 25);
+        return centerY + Math.sin(angle - Math.PI / 2) * (maxRadius + 20);
       })
       .attr("text-anchor", "middle")
       .attr("dy", "0.35em")
@@ -210,18 +210,18 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
       .enter().append("text")
       .attr("x", d => {
         const radius = radiusScale(d) || 0;
-        return centerX + Math.cos(fAngle - Math.PI / 2) * (radius - 15);
+        return centerX + Math.cos(fAngle - Math.PI / 2) * (radius + 12);
       })
       .attr("y", d => {
         const radius = radiusScale(d) || 0;
-        return centerY + Math.sin(fAngle - Math.PI / 2) * (radius - 15);
+        return centerY + Math.sin(fAngle - Math.PI / 2) * (radius + 12);
       })
       .attr("text-anchor", "middle")
       .attr("dy", "0.35em")
       .attr("font-size", "11px")
       .attr("font-weight", "bold")
       .attr("fill", "#000")
-      .attr("background", "rgba(255, 255, 255, 0.8)")
+      .style("background", "rgba(255, 255, 255, 0.9)")
       .text(d => d);
 
     // Draw links
