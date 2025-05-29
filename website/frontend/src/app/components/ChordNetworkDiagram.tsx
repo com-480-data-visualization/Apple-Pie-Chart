@@ -95,11 +95,14 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
     const centerY = height / 2;
     const maxRadius = Math.min(width, height) / 2 - 80;
 
-    // Create scales for angle and radius
-    const angleScale = d3.scalePoint()
-      .domain(rootOrder)
-      .range([0, 2 * Math.PI])
-      .padding(0);
+    // Create a circular angle map with 12 equally spaced angles
+    const rootAngles = new Map(
+      rootOrder.map((note, i) => [note, (2 * Math.PI / 12) * i])
+    );
+
+    const angleScale = (root: string): number => {
+      return rootAngles.get(root) ?? 0;
+    };
 
     const radiusScale = d3.scalePoint()
       .domain(qualityOrder)
