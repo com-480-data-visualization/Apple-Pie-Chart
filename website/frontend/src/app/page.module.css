@@ -640,35 +640,29 @@
 }
 
 /* 更新的 Key Distribution 样式 - 替换之前的 keyDistributionCard 样式 */
+/* 更新的 Key Distribution 样式 - 支持并排显示 */
 .keyDistributionCard {
   width: 100%;
-  max-width: 500px;
-  aspect-ratio: 1;
-  margin: 2rem auto 0 auto;
-  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
-  padding: 1.5rem;
-  border-radius: 16px;
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  transition: all 0.3s ease;
+  background: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
   display: flex;
   flex-direction: column;
+  margin-top: 2rem;
+  min-height: 450px;
 }
 
 .keyDistributionCard:hover {
-  transform: translateY(-1px);
-  box-shadow: 
-    0 6px 10px -2px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: none;
+  box-shadow: none;
 }
 
 .keyDistributionTitle {
-  margin: 0 0 1rem 0;
+  margin: 0 0 1.5rem 0;
   text-align: center;
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 700;
   color: #1E293B;
   letter-spacing: -0.02em;
   flex-shrink: 0;
@@ -682,11 +676,31 @@
   min-height: 0;
 }
 
+/* Individual Distribution Cards - 铺满 */
+.distributionCard {
+  flex: 1 1 0;
+  min-width: 0;
+  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.3s ease;
+  min-height: 380px;
+}
+
+.distributionCard:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 10px -2px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
 /* 响应式调整 */
 @media (max-width: 1200px) {
   .keyDistributionCard {
-    max-width: 500px;
-    aspect-ratio: 1;
     margin: 2rem auto 0 auto;
   }
   
@@ -702,9 +716,8 @@
 
 @media (max-width: 768px) {
   .keyDistributionCard {
-    max-width: 400px;
-    padding: 1rem;
-    min-height: 350px;
+    padding: 0;
+    min-height: 400px;
   }
   
   .keyDistributionTitle {
@@ -718,5 +731,15 @@
   
   .distributionContent {
     height: 200px;
+  }
+  
+  /* 在移动端堆叠显示Key Distribution */
+  .keyDistributionContent > div {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  .keyDistributionContent > div > div {
+    flex: none !important;
   }
 }

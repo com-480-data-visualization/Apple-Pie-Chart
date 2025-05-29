@@ -505,9 +505,8 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
           Radial Layout
         </div>
         <div style={{ color: '#666', lineHeight: '1.3' }}>
-          • 12:00 = F, clockwise<br/>
-          • Distance = quality<br/>
-          • Size = frequency<br/>
+          • Node Size = Chord Frequency<br/>
+          • Edge Width = Transition Frequency<br/>
           • Gray = no connections
         </div>
       </div>

@@ -1,7 +1,7 @@
 // src/app/components/KeyPuzzleDistribution.tsx
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import * as d3 from 'd3'
 
 interface KeyPuzzleProps {
@@ -21,34 +21,18 @@ const ORDER = [
 const COLS = 6   // 6 列 × 4 行 = 24 调
 const ROWS = 4
 
-// 定义不同的可视化模式
-type VisualizationMode = 'hexagon' | 'rose'
-
 const KeyPuzzleDistribution: React.FC<KeyPuzzleProps> = ({
   counts,
   title,
-  width = 640,  // 设置为和两个图表总宽度相近
-  height = 320
+  width = 800,  // 增加宽度以容纳两个图表
+  height = 400
 }) => {
-  const svgRef = useRef<SVGSVGElement>(null)
-  const [mode, setMode] = useState<VisualizationMode>('rose')
+  const hexagonRef = useRef<SVGSVGElement>(null)
+  const roseRef = useRef<SVGSVGElement>(null)
 
   useEffect(() => {
-    const svg = d3.select(svgRef.current)
-    svg.selectAll('*').remove()
-
-    const margin = { top: 10, right: 10, bottom: 35, left: 10 }
-    const innerW = width - margin.left - margin.right
-    const innerH = height - margin.top - margin.bottom
-
     const data = ORDER.map(k => ({ key: k, count: counts[k] ?? 0 }))
     const maxCount = d3.max(data, d => d.count) || 1
-
-    const g = svg
-      .attr('width', width)
-      .attr('height', height)
-      .append('g')
-      .attr('transform', `translate(${margin.left},${margin.top})`)
 
     // 色彩映射：major 调用暖色，minor 调用冷色
     const colorScale = (key: string, count: number) => {
@@ -60,70 +44,120 @@ const KeyPuzzleDistribution: React.FC<KeyPuzzleProps> = ({
       }
     }
 
-    switch (mode) {
-      case 'hexagon':
-        renderHexagonGrid(g, data, innerW, innerH, maxCount, colorScale)
-        break
-      case 'rose':
-        renderRoseDiagram(g, data, innerW, innerH, maxCount, colorScale)
-        break
-    }
-
-    // 不显示标题，节省空间
-    // svg.append('text')
-    //    .attr('x', width / 2)
-    //    .attr('y', 20)
-    //    .attr('text-anchor', 'middle')
-    //    .attr('font-weight', 600)
-    //    .attr('font-size', 14)
-    //    .text(title)
-
-    // 添加模式切换按钮
-    const buttonGroup = svg.append('g')
-      .attr('transform', `translate(10, ${height - 30})`)
-
-    const modes: VisualizationMode[] = ['hexagon', 'rose']
-    const buttonWidth = 60
+    // 渲染Hexagon图表
+    renderHexagonChart(hexagonRef.current, data, maxCount, colorScale)
     
-    modes.forEach((m, i) => {
-      const button = buttonGroup.append('g')
-        .attr('transform', `translate(${i * (buttonWidth + 5)}, 0)`)
-        .style('cursor', 'pointer')
-        .on('click', () => setMode(m))
+    // 渲染Rose图表
+    renderRoseChart(roseRef.current, data, maxCount, colorScale)
 
-      button.append('rect')
-        .attr('width', buttonWidth)
-        .attr('height', 20)
-        .attr('rx', 10)
-        .attr('fill', mode === m ? '#3b82f6' : '#e5e7eb')
-        .attr('stroke', '#d1d5db')
+  }, [counts, width, height, title])
 
-      button.append('text')
-        .attr('x', buttonWidth / 2)
-        .attr('y', 14)
-        .attr('text-anchor', 'middle')
-        .attr('font-size', 10)
-        .attr('fill', mode === m ? 'white' : '#374151')
-        .text(m.charAt(0).toUpperCase() + m.slice(1))
-    })
+  return (
+    <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'stretch' }}>
+      {/* Hexagon Chart */}
+      <div style={{ 
+        flex: '1 1 0', 
+        background: 'linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%)',
+        padding: '1.5rem',
+        borderRadius: '16px',
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        border: '1px solid rgba(226, 232, 240, 0.8)',
+        minWidth: '0',
+        display: 'flex',
+        flexDirection: 'column'
+      }}>
+        <h3 style={{ 
+          margin: '0 0 1rem 0',
+          textAlign: 'center',
+          fontSize: '1.2rem',
+          fontWeight: '600',
+          color: '#1E293B',
+          flexShrink: '0'
+        }}>
+          Hexagon View
+        </h3>
+        <div style={{ 
+          flex: '1',
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center'
+        }}>
+          <svg ref={hexagonRef} />
+        </div>
+      </div>
 
-  }, [counts, width, height, title, mode])
-
-  return <svg ref={svgRef} />
+      {/* Rose Chart */}
+      <div style={{ 
+        flex: '1 1 0', 
+        background: 'linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%)',
+        padding: '1.5rem',
+        borderRadius: '16px',
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        border: '1px solid rgba(226, 232, 240, 0.8)',
+        minWidth: '0',
+        display: 'flex',
+        flexDirection: 'column'
+      }}>
+        <h3 style={{ 
+          margin: '0 0 1rem 0',
+          textAlign: 'center',
+          fontSize: '1.2rem',
+          fontWeight: '600',
+          color: '#1E293B',
+          flexShrink: '0'
+        }}>
+          Rose View
+        </h3>
+        <div style={{ 
+          flex: '1',
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center'
+        }}>
+          <svg ref={roseRef} />
+        </div>
+      </div>
+    </div>
+  )
 }
 
-// 蜂窝网格布局
-function renderHexagonGrid(g: any, data: any[], width: number, height: number, maxCount: number, colorScale: any) {
-  const hexRadius = Math.min(width / 10, height / 6)
+// 渲染Hexagon图表
+function renderHexagonChart(svgElement: SVGSVGElement | null, data: any[], maxCount: number, colorScale: any) {
+  if (!svgElement) return
+
+  const width = 420  // 增加宽度
+  const height = 350 // 增加高度
+  
+  const svg = d3.select(svgElement)
+  svg.selectAll('*').remove()
+
+  const margin = { top: 15, right: 15, bottom: 15, left: 15 }
+  const innerW = width - margin.left - margin.right
+  const innerH = height - margin.top - margin.bottom
+
+  const g = svg
+    .attr('width', width)
+    .attr('height', height)
+    .append('g')
+    .attr('transform', `translate(${margin.left},${margin.top})`)
+
+  const hexRadius = Math.min(innerW / 11, innerH / 7)  // 调整大小比例
   const hexWidth = hexRadius * Math.sqrt(3)
   const hexHeight = hexRadius * 2
+
+  // 计算网格总尺寸以便居中
+  const gridWidth = (COLS - 1) * hexWidth * 0.75 + hexWidth
+  const gridHeight = ROWS * hexHeight * 0.87
+  
+  const offsetX = (innerW - gridWidth) / 2
+  const offsetY = (innerH - gridHeight) / 2
 
   data.forEach((d, i) => {
     const col = i % COLS
     const row = Math.floor(i / COLS)
     
-    const x = col * hexWidth * 0.75 + hexWidth / 2 + width * 0.05
-    const y = row * hexHeight * 0.87 + hexHeight / 2 + (col % 2) * hexHeight * 0.43 + height * 0.05
+    const x = col * hexWidth * 0.75 + hexWidth / 2 + offsetX
+    const y = row * hexHeight * 0.87 + hexHeight / 2 + (col % 2) * hexHeight * 0.43 + offsetY
 
     const size = Math.max(hexRadius * 0.4, hexRadius * Math.sqrt(d.count / maxCount))
     
@@ -157,16 +191,29 @@ function renderHexagonGrid(g: any, data: any[], width: number, height: number, m
   })
 }
 
-// 圆形包装布局已移除
+// 渲染Rose图表
+function renderRoseChart(svgElement: SVGSVGElement | null, data: any[], maxCount: number, colorScale: any) {
+  if (!svgElement) return
 
-// 删除拼图布局函数
-// renderPuzzlePieces function removed
+  const width = 420  // 增加宽度
+  const height = 350 // 增加高度
+  
+  const svg = d3.select(svgElement)
+  svg.selectAll('*').remove()
 
-// 玫瑰图布局 - 铺满整个容器
-function renderRoseDiagram(g: any, data: any[], width: number, height: number, maxCount: number, colorScale: any) {
-  const centerX = width / 2
-  const centerY = height / 2
-  const maxRadius = Math.min(width, height) / 2.5  // 增大半径，更好地利用空间
+  const margin = { top: 15, right: 15, bottom: 15, left: 15 }
+  const innerW = width - margin.left - margin.right
+  const innerH = height - margin.top - margin.bottom
+
+  const g = svg
+    .attr('width', width)
+    .attr('height', height)
+    .append('g')
+    .attr('transform', `translate(${margin.left},${margin.top})`)
+
+  const centerX = innerW / 2
+  const centerY = innerH / 2
+  const maxRadius = Math.min(innerW, innerH) / 2.5  // 增大半径
 
   const angleScale = d3.scaleLinear()
     .domain([0, data.length])
@@ -174,7 +221,7 @@ function renderRoseDiagram(g: any, data: any[], width: number, height: number, m
 
   const radiusScale = d3.scaleLinear()
     .domain([0, maxCount])
-    .range([30, maxRadius])  // 增大内外半径
+    .range([30, maxRadius])  // 增大内外半径范围
 
   data.forEach((d, i) => {
     const angle = angleScale(i)
@@ -182,7 +229,7 @@ function renderRoseDiagram(g: any, data: any[], width: number, height: number, m
     const angleWidth = (2 * Math.PI) / data.length
 
     const arc = d3.arc()
-      .innerRadius(20)  // 稍微增大内半径
+      .innerRadius(20)  // 增大内半径
       .outerRadius(radius)
       .startAngle(angle - angleWidth / 2)
       .endAngle(angle + angleWidth / 2)
@@ -195,8 +242,8 @@ function renderRoseDiagram(g: any, data: any[], width: number, height: number, m
       .attr('stroke-width', 1.5)
       .attr('opacity', 0.85)
 
-    // 标签放在扇形外侧，增加距离以适应更大的图表
-    const labelRadius = radius + 25
+    // 标签放在扇形外侧
+    const labelRadius = radius + 25  // 增加标签距离
     const labelX = centerX + labelRadius * Math.cos(angle - Math.PI / 2)
     const labelY = centerY + labelRadius * Math.sin(angle - Math.PI / 2)
 
@@ -204,7 +251,7 @@ function renderRoseDiagram(g: any, data: any[], width: number, height: number, m
       .attr('x', labelX)
       .attr('y', labelY + 4)
       .attr('text-anchor', 'middle')
-      .attr('font-size', 10)  // 稍微增大字体
+      .attr('font-size', 10)  // 增大字体
       .attr('fill', '#374151')
       .attr('font-weight', 500)
       .text(d.key.replace(' major', '').replace(' minor', 'm'))
