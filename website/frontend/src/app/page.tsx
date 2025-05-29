@@ -120,7 +120,11 @@ export default function Home() {
       )}
 
       {/* ---------- view B: Mood to Harmony ---------- */}
-      {activeView === 'mood' && <MoodToHarmony />}
+      {activeView === 'mood' && (
+        <div className={styles.moodToHarmonyLayout}>
+          <MoodToHarmony />
+        </div>
+      )}
 
       {/* footer */}
       <footer className={styles.contactSection}>

@@ -67,283 +67,6 @@
   z-index: -2;
 }
 
-.gallery {
-  width: 95%;
-  max-width: 1600px;
-  padding: 2rem;
-  background: white;
-  border-radius: 10px;
-  margin: 2rem auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Genre Explorer Styles */
-.genreExplorer {
-  width: 100%;
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-  text-align: center;
-}
-
-.genreExplorerTitle {
-  font-size: 1.8rem;
-  color: #333;
-  margin-bottom: 30px;
-}
-
-/* ---------- 1. Genre Explorer（泡泡）缩小一点高度 ---------- */
-.genreBubblesContainer{
-  position:relative;
-  width:100%;
-  height:400px;       /* 原来 550px，按需要再调 */
-  background:#aacfed80;
-  border-radius:25px;
-  padding:20px;
-  overflow:hidden;
-}
-
-/* 关键：让气泡位于容器之上确保可以点击 */
-.bubble {
-  position: absolute;
-  z-index: 10;     /* 再调高一点也行 */
-  background: linear-gradient(135deg, #ffffff, #c3cfe2);
-  pointer-events: auto;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform .3s, box-shadow .3s;
-}
-
-.bubble:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-}
-
-.genreName {
-  padding: 5px;
-  text-align: center;
-  font-size: 1rem;
-}
-
-/* Culture Bubble Styles */
-/* Row 1 */
-.usa-general { top: 5%; left: 5%; width: 110px; height: 110px; }
-.usa-general .genreName { font-size: 0.7rem; }
-
-.france { top: 5%; left: 25%; width: 100px; height: 100px; }
-.france .genreName { font-size: 0.8rem; }
-
-.usa-south { top: 5%; left: 45%; width: 100px; height: 100px; }
-.usa-south .genreName { font-size: 0.7rem; }
-
-.argentina-latin-america { top: 5%; left: 65%; width: 120px; height: 120px; }
-.argentina-latin-america .genreName { font-size: 0.65rem; }
-
-.caribbean { top: 5%; left: 85%; width: 100px; height: 100px; }
-.caribbean .genreName { font-size: 0.8rem; }
-
-/* Row 2 */
-.brazil { top: 30%; left: 5%; width: 100px; height: 100px; }
-.brazil .genreName { font-size: 0.8rem; }
-
-.uk-scotland-ireland { top: 30%; left: 25%; width: 120px; height: 120px; }
-.uk-scotland-ireland .genreName { font-size: 0.65rem; }
-
-.germany { top: 30%; left: 45%; width: 100px; height: 100px; }
-.germany .genreName { font-size: 0.8rem; }
-
-.uk-england { top: 30%; left: 65%; width: 100px; height: 100px; }
-.uk-england .genreName { font-size: 0.7rem; }
-
-.mexico { top: 30%; left: 85%; width: 100px; height: 100px; }
-.mexico .genreName { font-size: 0.8rem; }
-
-/* Row 3 */
-.spain { top: 55%; left: 5%; width: 100px; height: 100px; }
-.spain .genreName { font-size: 0.8rem; }
-
-.nordic { top: 55%; left: 25%; width: 100px; height: 100px; }
-.nordic .genreName { font-size: 0.8rem; }
-
-.portugal { top: 55%; left: 45%; width: 100px; height: 100px; }
-.portugal .genreName { font-size: 0.8rem; }
-
-.italy { top: 55%; left: 65%; width: 100px; height: 100px; }
-.italy .genreName { font-size: 0.8rem; }
-
-/* Row 4 */
-.japan { top: 75%; left: 5%; width: 100px; height: 100px; }
-.japan .genreName { font-size: 0.8rem; }
-
-.turkey { top: 75%; left: 25%; width: 100px; height: 100px; }
-.turkey .genreName { font-size: 0.8rem; }
-
-
-/* Genre Detail Panel Styles */
-
-.genreDetailPanel {
-  width: 100%;
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #e6f0fa;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  opacity: 1; /* Ensure it's visible */
-  visibility: visible; /* Ensure it's not hidden */
-}
-
-/* ---------- 2. 和弦+Emoji 两列的比例 ---------- */
-.chordAndEmojiContainer{
-  display:flex;
-  gap:24px;
-  justify-content:space-between;
-}
-
-/* 和弦区域占 2 份，Emoji 区占 1 份 */
-.chordGraph{   flex:2;   min-width:0; }
-.emojiBoard{   flex:1;   min-width:0; }
-
-/* 让两侧卡片高度对齐（可选美化） */
-.chordGraph,
-.emojiBoard{
-  background:#fff;
-  padding:20px;
-  border:1px solid #d3d3d3;
-  border-radius:8px;
-  display:flex;
-  flex-direction:column;
-}
-/* ---------- 3. Emoji 项目整体更小巧 ---------- */
-.emojiContainer{ gap:8px; }
-.emojiItem .emoji{ font-size:22px; }
-.emojiItem .percentage{ font-size:14px; }
-
-/* ---------- 4. 和弦气泡排版稍微呼吸感 ---------- */
-.chordContainer{ gap:24px; }      /* 气泡间距 */
-.chordCircle{
-  width:56px;height:56px;         /* 略大一点视觉更平衡 */
-  font-size:14px;
-}
-
-/* ---------- 5. 整个 Detail Panel 边距 ---------- */
-.genreDetailPanel{
-  padding:28px;                   /* 原来 20px */
-  gap:28px;                       /* 与子区块间距 */
-}
-
-/* ---------- 6. SongSelector 使之横向铺满 ---------- */
-.songSelector{
-  padding:18px;
-}
-.songContainer{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-/* ---------- ★可选：标题字号微调 ---------- */
-.genreExplorerTitle{ font-size:1.6rem; }
-.panelSubTitle{      font-size:1.05rem; font-weight:600; }
-.detailPanelTitle{   font-size:1.3rem; }
-
-
-/* 列容器：水平排多列 */
-.chordColumnContainer{
-  display:flex;
-  gap:48px;                /* 列与列水平间距 */
-  padding:10px 0;
-  justify-content:center;
-}
-
-/* 单列：纵向排泡泡 */
-.chordColumn{
-  display:flex;
-  flex-direction:column;
-  gap:24px;                /* 行间距 */
-  align-items:center;
-}
-
-/* 泡泡尺寸 */
-.chordCircle{
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#d3eafd,#a3cffa);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:600;
-  color:#1a365d;
-}
-
-/* 被选中的和弦样式 */
-.chordActive{
-  border:4px solid #f6a76e;   /* 橘色描边 */
-  background:linear-gradient(135deg,#ffe8d6,#ffd0a6);
-}
-
-/* ================= 联系方式区块 ================= */
-.contactSection{
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  margin-top:48px;           /* 与上方内容留出距离 */
-}
-
-.contactTitle{
-  font-weight:600;
-  color:#1a365d;
-  opacity:.7;               /* 灰一点点的标题 */
-  margin-bottom:12px;
-}
-
-.contactBox{
-  max-width:650px;
-  width:90%;
-  background:#d6e7ff;       /* 浅蓝，与页面主色一致 */
-  border:2px solid #9abaff; /* 深一点的描边 */
-  border-radius:18px;
-  padding:28px 40px;
-  text-align:center;
-  box-shadow:0 3px 8px rgba(0,0,0,.08);
-}
-
-.teamName{
-  font-weight:600;
-  margin-bottom:14px;
-}
-
-.memberList{
-  list-style:none;
-  padding:0;
-  margin:0;
-}
-
-.memberList li{
-  margin:6px 0;
-  font-size:15px;
-}
-
-.memberList a{
-  color:#1a365d;
-  text-decoration:underline;
-}
-
-.memberList a:hover{
-  color: #1e6ba3;
-  text-decoration:underline;
-}
-
 /* Button Styles */
 .buttonContainer {
   display: flex;
@@ -375,116 +98,162 @@
 }
 
 .activeButton:hover {
-  background-color: #3b82f6; /* Darker blue on hover for active */
+  background-color: #3b82f6;
+}
+
+/* Culture to Chord View Styles */
+.gallery {
+  width: 95%;
+  max-width: 1600px;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Genre Explorer Styles */
+.genreExplorer {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.genreExplorerTitle {
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.genreBubblesContainer {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: #aacfed80;
+  border-radius: 25px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* Bubble Styles */
+.bubble {
+  position: absolute;
+  z-index: 10;
+  background: linear-gradient(135deg, #ffffff, #c3cfe2);
+  pointer-events: auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
+}
+
+.bubble:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.genreName {
+  padding: 5px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* Culture Bubble Positions */
+.usa-general { top: 5%; left: 5%; width: 110px; height: 110px; }
+.usa-general .genreName { font-size: 0.7rem; }
+
+.france { top: 5%; left: 25%; width: 100px; height: 100px; }
+.france .genreName { font-size: 0.8rem; }
+
+.usa-south { top: 5%; left: 45%; width: 100px; height: 100px; }
+.usa-south .genreName { font-size: 0.7rem; }
+
+.argentina-latin-america { top: 5%; left: 65%; width: 120px; height: 120px; }
+.argentina-latin-america .genreName { font-size: 0.65rem; }
+
+.caribbean { top: 5%; left: 85%; width: 100px; height: 100px; }
+.caribbean .genreName { font-size: 0.8rem; }
+
+.brazil { top: 30%; left: 5%; width: 100px; height: 100px; }
+.brazil .genreName { font-size: 0.8rem; }
+
+.uk-scotland-ireland { top: 30%; left: 25%; width: 120px; height: 120px; }
+.uk-scotland-ireland .genreName { font-size: 0.65rem; }
+
+.germany { top: 30%; left: 45%; width: 100px; height: 100px; }
+.germany .genreName { font-size: 0.8rem; }
+
+.uk-england { top: 30%; left: 65%; width: 100px; height: 100px; }
+.uk-england .genreName { font-size: 0.7rem; }
+
+.mexico { top: 30%; left: 85%; width: 100px; height: 100px; }
+.mexico .genreName { font-size: 0.8rem; }
+
+.spain { top: 55%; left: 5%; width: 100px; height: 100px; }
+.spain .genreName { font-size: 0.8rem; }
+
+.nordic { top: 55%; left: 25%; width: 100px; height: 100px; }
+.nordic .genreName { font-size: 0.8rem; }
+
+.portugal { top: 55%; left: 45%; width: 100px; height: 100px; }
+.portugal .genreName { font-size: 0.8rem; }
+
+.italy { top: 55%; left: 65%; width: 100px; height: 100px; }
+.italy .genreName { font-size: 0.8rem; }
+
+.japan { top: 75%; left: 5%; width: 100px; height: 100px; }
+.japan .genreName { font-size: 0.8rem; }
+
+.turkey { top: 75%; left: 25%; width: 100px; height: 100px; }
+.turkey .genreName { font-size: 0.8rem; }
+
+/* Genre Detail Panel Styles */
+.genreDetailPanel {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 28px;
+  background: #e6f0fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.detailPanelTitle {
+  font-size: 1.3rem;
+}
+
+.panelSubTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+/* Chord visualization */
+.chordGraph {
+  flex: 2;
+  min-width: 0;
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Mood to Harmony Layout Styles */
 .moodToHarmonyLayout {
   display: flex;
-  gap: 2rem; /* Spacing between left and right boxes */
-  background-color: white; /* Changed from #EFF6FF to white */
-  border-radius: 8px;
-  padding: 2rem; /* Added padding around the content */
-  align-items: flex-start; /* Align items to the top */
-}
-
-.leftBox {
-  flex-shrink: 0; /* Prevent shrinking */
-  width: 400px; /* Match SVG width */
-  height: 400px; /* Match SVG height */
-  /* background-color: #DBEAFE; */ /* Optional: lighter blue for the direct container of the wheel */
-  border-radius: 8px;
-  /* box-shadow: 0 2px 4px rgba(0,0,0,0.05); */
-  display: flex; /* For centering the SVG if needed */
-  justify-content: center; /* Center SVG horizontally */
-  align-items: center; /* Center SVG vertically */
-}
-
-.rightColumn {
-  flex-grow: 1; /* Allow right column to take available space */
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem; /* Spacing between top and bottom boxes in right column */
-  min-width: 250px; /* Ensure it has some minimum width */
-}
-
-.rightTopBox {
-  flex: 1; /* Takes 1/5 of the right column's height */
-  background-color: transparent; /* Remove background */
-  padding: 0; /* Remove padding */
-  border-radius: 0; /* Remove border-radius */
-  /* Ensure no border is visible if one was implicitly there */
-  border: none;
-}
-
-.rightBottomBox {
-  flex: 4; /* Takes 4/5 of the right column's height */
-  background-color: #e6f0fa; /* Updated placeholder color */
-  padding: 1rem;
-  border-radius: 8px;
-}
-
-/* Slider Styles */
-.sliderContainer {
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column; /* Stack label on top of slider */
-  align-items: center; /* Center items horizontally */
-}
-
-.sliderLabel {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 0.25rem;
-}
-
-.slider {
-  width: 80%; /* Adjust width as needed */
-  cursor: pointer;
-}
-
-/* Optional: Add specific styling for WebKit (Chrome, Safari) and Mozilla (Firefox) browsers for better appearance */
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  background: #3498db;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  background: #3498db;
-  border-radius: 50%;
-  cursor: pointer;
-  border: none; /* Firefox adds a border by default */
-}
-
-.slider::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 8px;
-  cursor: pointer;
-  background: #ddd;
-  border-radius: 4px;
-}
-
-.slider::-moz-range-track {
-  width: 100%;
-  height: 8px;
-  cursor: pointer;
-  background: #ddd;
-  border-radius: 4px;
-}
-
-/* ===== 将以下样式添加到你的 page.module.css 文件中 ===== */
-
-/* 优化 Mood to Harmony 布局样式 */
-.moodToHarmonyLayout {
-  display: flex;
-  gap: 3rem;
+  gap: 2rem;
   background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
   border-radius: 20px;
   padding: 2.5rem;
@@ -492,97 +261,37 @@
   box-shadow: 
     0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 95%;
+  max-width: 1600px;
 }
 
-.leftBox {
+/* Left Column - Fixed width with sticky positioning */
+.leftColumn {
   flex-shrink: 0;
   width: 460px;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
+  position: sticky;
+  top: 2rem;
+  align-self: flex-start;
 }
 
-/* 美化 Current Mood State 卡片 */
-.moodStateCard {
-  width: 100%;
-  max-width: 440px;
-  padding: 2rem;
-  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
-  border-radius: 16px;
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  transition: all 0.3s ease;
-}
-
-.moodStateCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 8px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-.moodTitle {
-  margin: 0 0 1.5rem 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1E293B;
-  text-align: center;
-  letter-spacing: -0.025em;
-}
-
-.moodLabel {
-  margin: 0 0 1rem 0;
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: #3B82F6;
-  text-align: center;
-  letter-spacing: -0.02em;
-}
-
-.musicFeaturesContainer {
-  padding: 1.5rem;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 197, 253, 0.05) 100%);
-  border-radius: 12px;
-  border: 1px solid rgba(59, 130, 246, 0.1);
-}
-
-.musicFeaturesTitle {
-  margin: 0 0 1rem 0;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #1E293B;
-}
-
-.featuresList {
-  line-height: 1.8;
-}
-
-.featureItem {
-  margin-bottom: 0.75rem;
-  color: #475569;
-  font-size: 0.95rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
-.featureItem:last-child {
-  margin-bottom: 0;
-}
-
-/* 右侧分布图样式优化 */
+/* Right Column - Takes remaining space */
 .rightColumn {
   flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  min-width: 300px;
+  min-width: 0;
 }
 
+/* Distributions Row - Side by side charts */
+.distributionsRow {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Individual Distribution Cards */
 .distributionCard {
+  flex: 1 1 0;
+  min-width: 300px;
   background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
   padding: 1.5rem;
   border-radius: 16px;
@@ -629,22 +338,80 @@
   gap: 0.5rem;
 }
 
-/* 响应式设计 */
+/* Contact Section */
+.contactSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.contactTitle {
+  font-weight: 600;
+  color: #1a365d;
+  opacity: .7;
+  margin-bottom: 12px;
+}
+
+.contactBox {
+  max-width: 650px;
+  width: 90%;
+  background: #d6e7ff;
+  border: 2px solid #9abaff;
+  border-radius: 18px;
+  padding: 28px 40px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,.08);
+}
+
+.teamName {
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.memberList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.memberList li {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+.memberList a {
+  color: #1a365d;
+  text-decoration: underline;
+}
+
+.memberList a:hover {
+  color: #1e6ba3;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
 @media (max-width: 1200px) {
   .moodToHarmonyLayout {
     flex-direction: column;
     gap: 2rem;
-    padding: 2rem;
   }
   
-  .leftBox {
+  .leftColumn {
     width: 100%;
+    position: static;
     max-width: 500px;
     margin: 0 auto;
   }
   
-  .rightColumn {
-    width: 100%;
+  .distributionsRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .distributionCard {
+    min-width: unset;
   }
 }
 
@@ -654,8 +421,8 @@
     gap: 1.5rem;
   }
   
-  .moodStateCard {
-    padding: 1.5rem;
+  .distributionsRow {
+    gap: 1.5rem;
   }
   
   .distributionCard {

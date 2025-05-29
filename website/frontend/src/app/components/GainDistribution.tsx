@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import * as d3 from 'd3'
 
 // 导出常量供外部使用
-export const Y_MAX_GAIN = 200
+export const Y_MAX_GAIN = 280
 
 interface GainDistributionProps {
   data: number[]
