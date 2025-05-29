@@ -25,30 +25,21 @@ interface ChordData {
   links: ChordLink[];
 }
 
-const RadialChordGraph: React.FC = () => {
+interface RadialChordGraphProps {
+  cultureId: string;
+  width?: number;
+  height?: number;
+}
+
+const RadialChordGraph: React.FC<RadialChordGraphProps> = ({ 
+  cultureId,
+  width = 800,
+  height = 600 
+}) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const [data, setData] = useState<ChordData | null>(null);
-  const [currentGenre, setCurrentGenre] = useState('brazil');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  // Available culture files
-  const availableCultures = [
-    'argentina-latin-america',
-    'brazil', 
-    'caribbean',
-    'france',
-    'germany',
-    'italy',
-    'japan',
-    'mexico',
-    'nordic',
-    'portugal',
-    'spain',
-    'uk-england',
-    'uk-scotland-ireland',
-    'usa-south'
-  ];
 
   // Pitch class mapping (enharmonic equivalents merged)
   const pitchClasses = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
@@ -92,8 +83,8 @@ const RadialChordGraph: React.FC = () => {
   };
 
   useEffect(() => {
-    loadData(currentGenre);
-  }, [currentGenre]);
+    loadData(cultureId);
+  }, [cultureId]);
 
   useEffect(() => {
     if (!data || loading) return;
@@ -374,10 +365,10 @@ const RadialChordGraph: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center w-full h-96">
+      <div className="flex items-center justify-center" style={{ width, height }}>
         <div className="text-center">
           <div className="text-2xl mb-2">🎵</div>
-          <div>Loading {currentGenre.replace('-', ' & ')} chord transitions...</div>
+          <div className="text-sm">Loading chord transitions...</div>
         </div>
       </div>
     );
@@ -385,59 +376,85 @@ const RadialChordGraph: React.FC = () => {
 
   if (error) {
     return (
-      <div className="flex items-center justify-center w-full h-96">
+      <div className="flex items-center justify-center" style={{ width, height }}>
         <div className="text-center p-4 bg-red-50 rounded-lg border border-red-200">
-          <div className="text-red-600 mb-2">⚠️ Error Loading Data</div>
-          <div className="text-sm text-red-500">{error}</div>
-          <div className="text-xs text-gray-500 mt-2">
-            Make sure the JSON files are in /public/data_circular/
-          </div>
+          <div className="text-red-600 mb-2 text-sm">⚠️ Error Loading Data</div>
+          <div className="text-xs text-red-500">{error}</div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4">
-      {/* Genre selector */}
-      <div className="mb-4">
-        <div className="mb-2 text-sm font-medium text-gray-700">Select Musical Culture:</div>
-        <div className="flex flex-wrap gap-2">
-          {availableCultures.map(culture => (
-            <button
-              key={culture}
-              onClick={() => setCurrentGenre(culture)}
-              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                currentGenre === culture
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
-            >
-              {culture.replace('-', ' & ').replace(/\b\w/g, l => l.toUpperCase())}
-            </button>
-          ))}
+    <div style={{ width, height, position: 'relative' }}>
+      {/* Info panel */}
+      <div style={{ 
+        position: 'absolute', 
+        top: 8, 
+        left: 8, 
+        background: 'rgba(255, 255, 255, 0.95)', 
+        padding: '8px',
+        borderRadius: '6px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        zIndex: 10,
+        fontSize: '11px'
+      }}>
+        <div style={{ fontWeight: 'bold', marginBottom: '4px', color: '#333' }}>
+          Radial Layout
+        </div>
+        <div style={{ color: '#666', lineHeight: '1.3' }}>
+          • Arms = pitch classes<br/>
+          • Distance = chord quality<br/>
+          • Size = frequency<br/>
+          • Hover for details
         </div>
       </div>
 
-      {/* Info panel */}
-      <div className="mb-4 p-3 bg-gray-50 rounded-lg text-sm text-gray-600">
-        <div className="font-medium mb-1">Radial Chord Transition Graph</div>
-        <div>• Radial arms = pitch classes (C, D♭, D, etc.)</div>
-        <div>• Distance from center = chord quality</div>
-        <div>• Circle size = usage frequency</div>
-        <div>• Edge opacity = transition probability</div>
-        <div className="mt-2 text-xs text-blue-600">
-          Hover over chords and transitions for details
+      {/* Quality legend */}
+      <div style={{ 
+        position: 'absolute', 
+        top: 8, 
+        right: 8, 
+        background: 'rgba(255, 255, 255, 0.95)', 
+        padding: '8px',
+        borderRadius: '6px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        zIndex: 10,
+        fontSize: '10px'
+      }}>
+        <div style={{ fontWeight: 'bold', marginBottom: '4px', color: '#333' }}>
+          Chord Types
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#4A90E2' }}></div>
+            <span style={{ color: '#666' }}>Major</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#E74C3C' }}></div>
+            <span style={{ color: '#666' }}>Minor</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#F39C12' }}></div>
+            <span style={{ color: '#666' }}>7th</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#9B59B6' }}></div>
+            <span style={{ color: '#666' }}>Other</span>
+          </div>
         </div>
       </div>
 
       {/* Main visualization */}
       <svg
         ref={svgRef}
-        width={800}
-        height={600}
-        className="border border-gray-200 rounded-lg bg-white"
-        style={{ maxWidth: '100%', height: 'auto' }}
+        width={width}
+        height={height}
+        style={{ 
+          background: '#fafafa',
+          borderRadius: '8px',
+          border: '1px solid #e9ecef'
+        }}
       />
     </div>
   );
