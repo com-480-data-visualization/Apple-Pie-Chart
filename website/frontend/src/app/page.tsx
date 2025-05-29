@@ -215,8 +215,35 @@ export default function Home() {
     <main className={styles.main}>
       <header className={styles.brand}>Moved&nbsp;to&nbsp;the&nbsp;Core</header>
       <h1 className={styles.title}>
-        Welcome to your exploration of the music-chords world
+        Welcome to the Music-Chords World
       </h1>
+
+      {/* Introduction section */}
+      <div className={styles.introSection}>
+        <h2 className={styles.introSubtitle}>
+          Have you ever wondered why a Turkish melody might give you goosebumps while a Caribbean rhythm instantly makes you dance? Explore Our Website:)
+        </h2>
+        
+        {/* <h3 className={styles.featuresTitle}>Explore Our Website</h3> */}
+        
+        <div className={styles.featureDescription}>
+          {/* <h4 className={styles.featureHeading}>Cultural Chord Patterns</h4> */}
+          <p className={styles.featureText}>
+            🪕 Select any culture to visualize its unique chord progression patterns on our circular grid. See how different societies have developed their own harmonic "signatures" that feel natural to local listeners but might surprise others.
+          </p>
+        </div>
+        
+        <div className={styles.featureDescription}>
+          {/* <h4 className={styles.featureHeading}>Emotion & Musical Elements</h4> */}
+          <p className={styles.featureText}>
+            🎵 Choose any area on our valence-arousal coordinate system to explore how music creates specific emotional responses. Valence shows how positive or negative the emotion feels, while arousal indicates how energetic or calm the emotion feels. Discover how BPM, gain and key are related to emotion.
+          </p>
+        </div>
+        
+        <p className={styles.closingText}>
+          Whether you're a music lover, curious explorer, or someone fascinated by cultural differences, our tools let you see the invisible patterns that make music touch our hearts in such powerful ways. Choose a culture or emotion to begin your exploration!
+        </p>
+      </div>
 
       {/* top-level view switch */}
       <div className={styles.buttonContainer}>
