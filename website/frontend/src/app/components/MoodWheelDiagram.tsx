@@ -28,7 +28,7 @@ const MoodWheelDiagram: React.FC<MoodWheelDiagramProps> = ({
   const [selectedSector, setSelectedSector] = useState<number>(highlightedSector);
 
   /* ---------- 轮盘配置 ---------- */
-  const svgSize = 420;  // 增加SVG尺寸以容纳标签
+  const svgSize = 460;  // 增加SVG尺寸以容纳标签
   const center  = svgSize / 2;
   const radius  = svgSize * 0.32;  // 调整半径比例
 
@@ -68,7 +68,7 @@ const MoodWheelDiagram: React.FC<MoodWheelDiagramProps> = ({
   useEffect(() => {
     if (!svgRef.current) return;
 
-    // const svg = d3.select(svgRef.current).attr('width', svgSize).attr('height', svgSize);
+    const svg = d3.select(svgRef.current).attr('width', svgSize).attr('height', svgSize);
     const margin = 80;  // Allow space for labels and axes
     svg.attr('width', svgSize)
       .attr('height', svgSize)

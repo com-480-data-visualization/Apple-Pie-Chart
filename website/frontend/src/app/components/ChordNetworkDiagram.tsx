@@ -37,10 +37,48 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
   height = 600 
 }) => {
   const svgRef = useRef<SVGSVGElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [data, setData] = useState<ChordData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [maxEdges, setMaxEdges] = useState<number>(50);
+  const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
+
+  // 响应式尺寸检测
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        const screenWidth = window.innerWidth;
+        
+        let newWidth, newHeight;
+        
+        if (screenWidth <= 480) {
+          // 移动端：正方形，较小尺寸
+          newWidth = Math.min(containerWidth - 40, 350);
+          newHeight = newWidth;
+        } else if (screenWidth <= 768) {
+          // 平板端：正方形，中等尺寸  
+          newWidth = Math.min(containerWidth - 60, 450);
+          newHeight = newWidth;
+        } else if (screenWidth <= 1200) {
+          // 中等屏幕：4:3 比例
+          newWidth = Math.min(containerWidth - 80, 600);
+          newHeight = newWidth * 0.75;
+        } else {
+          // 大屏幕：3:2 比例
+          newWidth = Math.min(containerWidth - 100, 800);
+          newHeight = newWidth * 0.67;
+        }
+        
+        setDimensions({ width: newWidth, height: newHeight });
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
 
   // Target design specifications
   const rootOrder = ["F", "C", "G", "D", "A", "E", "B", "F#", "C#", "G#", "D#", "A#"];
@@ -104,9 +142,9 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove();
 
-    const centerX = width / 2;
-    const centerY = height / 2;
-    const maxRadius = Math.min(width, height) / 2 - 80;
+    const centerX = dimensions.width / 2;
+    const centerY = dimensions.height / 2;
+    const maxRadius = Math.min(dimensions.width, dimensions.height) / 2 - 80;
 
     // Create a circular angle map with 12 equally spaced angles
     const rootAngles = new Map(
@@ -152,7 +190,7 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
 
     const nodeSizeScale = d3.scaleSqrt()
       .domain([0, maxCount])
-      .range([4, 12]);
+      .range([3, Math.max(8, Math.min(dimensions.width, dimensions.height) / 80)]); // 响应式节点大小
 
     const maxLinkCount = d3.max(sortedLinks, d => d.count) || 1;
     const linkOpacityScale = d3.scaleLinear()
@@ -161,7 +199,7 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
 
     const linkWidthScale = d3.scaleLinear()
       .domain([0, maxLinkCount])
-      .range([1, 4]);
+      .range([1, Math.max(3, dimensions.width / 300)]); // 响应式线条宽度
 
     // Create tooltip
     const tooltip = d3.select("body").append("div")
@@ -176,6 +214,10 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
       .style("pointer-events", "none")
       .style("z-index", "1000")
       .style("box-shadow", "0 4px 12px rgba(0,0,0,0.3)");
+
+    // 响应式字体大小
+    const labelFontSize = Math.max(10, Math.min(14, dimensions.width / 60));
+    const qualityLabelFontSize = Math.max(9, Math.min(11, dimensions.width / 80));
 
     // Draw radial grid lines (pitch class arms)
     svg.append("g")
@@ -213,7 +255,7 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
       })
       .attr("text-anchor", "middle")
       .attr("dy", "0.35em")
-      .attr("font-size", "14px")
+      .attr("font-size", `${labelFontSize}px`)
       .attr("font-weight", "bold")
       .attr("fill", "#333")
       .text(d => d);
@@ -235,7 +277,7 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
       })
       .attr("text-anchor", "middle")
       .attr("dy", "0.35em")
-      .attr("font-size", "11px")
+      .attr("font-size", `${qualityLabelFontSize}px`)
       .attr("font-weight", "bold")
       .attr("fill", "#000")
       .style("background", "rgba(255, 255, 255, 0.9)")
@@ -380,46 +422,50 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
       });
 
     // Add chord labels for larger nodes
+    const chordLabelFontSize = Math.max(6, Math.min(8, dimensions.width / 120));
     svg.append("g")
       .attr("class", "chord-labels")
       .selectAll("text")
-      .data(nodesWithPosition.filter(d => nodeSizeScale(d.count) > 6))
+      .data(nodesWithPosition.filter(d => nodeSizeScale(d.count) > Math.max(5, dimensions.width / 150)))
       .enter().append("text")
       .attr("x", d => d.x!)
       .attr("y", d => d.y!)
       .attr("text-anchor", "middle")
       .attr("dy", "0.35em")
-      .attr("font-size", "8px")
+      .attr("font-size", `${chordLabelFontSize}px`)
       .attr("font-weight", "bold")
       .attr("fill", "white")
       .attr("pointer-events", "none")
       .text(d => d.id.length > 4 ? d.id.slice(0, 3) : d.id);
 
-    // Quality legend
+    // Quality legend - 响应式位置
+    const legendX = dimensions.width < 500 ? 10 : 20;
+    const legendY = dimensions.height - (dimensions.height < 400 ? 80 : 120);
+    
     const legend = svg.append("g")
       .attr("class", "legend")
-      .attr("transform", `translate(20, ${height - 120})`);
+      .attr("transform", `translate(${legendX}, ${legendY})`);
 
     legend.append("text")
       .attr("x", 0)
       .attr("y", 0)
-      .attr("font-size", "12px")
+      .attr("font-size", `${Math.max(10, Math.min(12, dimensions.width / 80))}px`)
       .attr("font-weight", "bold")
       .attr("fill", "#333")
       .text("Quality Order (outer → inner)");
 
     qualityOrder.forEach((quality, i) => {
       const legendItem = legend.append("g")
-        .attr("transform", `translate(0, ${20 + i * 16})`);
+        .attr("transform", `translate(0, ${20 + i * (dimensions.height < 400 ? 12 : 16)})`);
       
       legendItem.append("circle")
-        .attr("r", 5)
+        .attr("r", Math.max(3, Math.min(5, dimensions.width / 200)))
         .attr("fill", getNodeColor(quality));
       
       legendItem.append("text")
         .attr("x", 12)
         .attr("dy", "0.35em")
-        .attr("font-size", "10px")
+        .attr("font-size", `${Math.max(8, Math.min(10, dimensions.width / 100))}px`)
         .attr("fill", "#666")
         .text(quality);
     });
@@ -428,11 +474,15 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
     return () => {
       tooltip.remove();
     };
-  }, [data, width, height, loading, maxEdges]);
+  }, [data, dimensions, loading, maxEdges]);
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center" style={{ width, height }}>
+      <div 
+        ref={containerRef}
+        className="flex items-center justify-center" 
+        style={{ width: '100%', minHeight: '400px' }}
+      >
         <div className="text-center">
           <div className="text-2xl mb-2">🎵</div>
           <div className="text-sm">Loading chord transitions...</div>
@@ -443,7 +493,11 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
 
   if (error) {
     return (
-      <div className="flex items-center justify-center" style={{ width, height }}>
+      <div 
+        ref={containerRef}
+        className="flex items-center justify-center" 
+        style={{ width: '100%', minHeight: '400px' }}
+      >
         <div className="text-center p-4 bg-red-50 rounded-lg border border-red-200">
           <div className="text-red-600 mb-2 text-sm">⚠️ Error Loading Data</div>
           <div className="text-xs text-red-500">{error}</div>
@@ -453,18 +507,18 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
   }
 
   return (
-    <div style={{ width, height, position: 'relative' }}>
+    <div ref={containerRef} style={{ width: '100%', position: 'relative' }}>
       {/* Edge filter dropdown */}
       <div style={{ 
         position: 'absolute', 
         top: 8, 
         left: 8, 
         background: 'rgba(255, 255, 255, 0.95)', 
-        padding: '8px',
+        padding: '6px',
         borderRadius: '6px',
         boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
         zIndex: 10,
-        fontSize: '12px'
+        fontSize: dimensions.width < 500 ? '11px' : '12px'
       }}>
         <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px', color: '#333' }}>
           Show Top N Transitions:
@@ -474,7 +528,7 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
           onChange={(e) => setMaxEdges(Number(e.target.value))}
           style={{
             padding: '4px 8px',
-            fontSize: '12px',
+            fontSize: dimensions.width < 500 ? '11px' : '12px',
             border: '1px solid #ddd',
             borderRadius: '4px',
             background: 'white'
@@ -495,11 +549,11 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
         top: 8, 
         right: 8, 
         background: 'rgba(255, 255, 255, 0.95)', 
-        padding: '8px',
+        padding: '6px',
         borderRadius: '6px',
         boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
         zIndex: 10,
-        fontSize: '11px'
+        fontSize: dimensions.width < 500 ? '10px' : '11px'
       }}>
         <div style={{ fontWeight: 'bold', marginBottom: '4px', color: '#333' }}>
           Radial Layout
@@ -514,12 +568,13 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
       {/* Main visualization */}
       <svg
         ref={svgRef}
-        width={width}
-        height={height}
+        width={dimensions.width}
+        height={dimensions.height}
         style={{ 
-          background: '#fafafa',
+          background: 'transparent', // 移除背景，让外层CSS控制
           borderRadius: '8px',
-          border: '1px solid #e9ecef'
+          display: 'block',
+          margin: '0 auto'
         }}
       />
     </div>
