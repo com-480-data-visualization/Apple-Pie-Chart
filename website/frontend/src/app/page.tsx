@@ -26,9 +26,9 @@ const cultures = [
 ];
 
 // Culture-specific text content
-const cultureTexts = {
+export const cultureTexts = {
   'france': {
-    description: "French music is characterized by sophisticated harmonic progressions and elegant melodic lines. From chanson to French pop, the musical traditions emphasize subtle chord movements and rich harmonic textures that reflect the country's artistic heritage.",
+    description: "French music is known for sophisticated harmonies and elegant melodies. From chanson to French pop, traditions emphasize subtle progressions and rich textures reflecting France’s artistic refinement.",
     features: [
       "🎵 Sophisticated Harmonies: Complex chord progressions with jazz influences",
       "📊 Chanson Tradition: Story-telling through melodic and harmonic expression",
@@ -46,16 +46,16 @@ const cultureTexts = {
     ]
   },
   'argentina-latin-america': {
-    description: "Argentinian music, particularly tango, features dramatic harmonic shifts and passionate chord progressions. The music often uses minor keys, augmented chords, and sophisticated harmonic movements that reflect the emotional intensity of the dance.",
+    description: "Argentinian music, especially tango, features chromaticism and dramatic harmonic shifts. Often in minor keys, the progressions include secondary dominants and rich voicings reflecting the genre’s emotional intensity.",
     features: [
-      "🎵 Tango Passion: Dramatic minor key progressions with augmented chords",
+      "🎵 Tango Passion: Dramatic minor key progressions with chromatic movement",
       "📊 Bandoneon Harmonies: Unique chord voicings from the signature instrument",
       "🔗 Milonga Rhythms: Syncopated harmonic patterns in 2/4 time",
-      "🎨 Emotional Intensity: Chromatic movements and unexpected harmonic turns"
+      "🎨 Emotional Intensity: Chromatic movements and expressive harmonic turns"
     ]
   },
   'caribbean': {
-    description: "Caribbean music blends African rhythmic traditions with European harmonic structures. Genres like reggae, calypso, and salsa feature distinctive chord progressions that emphasize rhythmic drive and danceable grooves.",
+    description: "Caribbean music fuses African rhythmic traditions with European harmonic elements. Reggae, calypso, and salsa often use repetitive chord loops that emphasize rhythm and danceability.",
     features: [
       "🎵 Reggae Skank: Characteristic off-beat chord emphasis",
       "📊 Calypso Colors: Major key progressions with tropical brightness",
@@ -82,9 +82,9 @@ const cultureTexts = {
     ]
   },
   'germany': {
-    description: "German music traditions range from classical influences to modern electronic music. The harmonic language includes everything from Bach-inspired progressions to industrial and electronic textures, reflecting the country's diverse musical heritage.",
+    description: "German music traditions range from classical counterpoint and Romantic harmony to modern electronic experimentation. The harmonic language reflects the country's deep historical and technological contributions to music.",
     features: [
-      "🎵 Classical Heritage: Bach-influenced counterpoint and harmonic complexity",
+      "🎵 Classical Heritage: From Bach’s counterpoint to Romantic chromaticism",
       "📊 Folk Traditions: Simple major key progressions in traditional songs",
       "🔗 Electronic Innovation: Synthesized harmonies in electronic music",
       "🎨 Industrial Sounds: Unconventional chord structures in experimental music"
@@ -123,11 +123,11 @@ const cultureTexts = {
       "🎵 Atmospheric Harmonies: Open chords evoking natural landscapes",
       "📊 Folk Traditions: Simple progressions supporting traditional melodies",
       "🔗 Modern Nordic Pop: Sophisticated harmonies in contemporary music",
-      "🎨 Minimalist Beauty: Sparse chord arrangements with maximum emotional impact"
+      "🎨 Minimalist Beauty: Sparse chord arrangements with emotional depth"
     ]
   },
   'portugal': {
-    description: "Portuguese music, particularly fado, features melancholic harmonic progressions that express saudade - a deep emotional longing. The chord structures support both traditional folk forms and modern Portuguese popular music.",
+    description: "Portuguese music, particularly fado, features melancholic harmonic progressions that express saudade—a deep emotional longing. The chord structures support both traditional folk forms and modern Portuguese popular music.",
     features: [
       "🎵 Fado Melancholy: Minor key progressions expressing deep emotion",
       "📊 Saudade Expression: Harmonic language of longing and nostalgia",
@@ -145,15 +145,16 @@ const cultureTexts = {
     ]
   },
   'japan': {
-    description: "Japanese music blends traditional pentatonic scales with modern Western harmony. From enka to J-pop, the chord progressions often feature unique scalar approaches and harmonic colors that reflect both ancient traditions and contemporary innovation.",
+    description: "Japanese music blends traditional pentatonic melodies with modern Western harmony. From enka to J-pop, the chord progressions reflect a fusion of modal aesthetics and contemporary pop sophistication.",
     features: [
-      "🎵 Pentatonic Heritage: Traditional five-note scales in harmonic structures",
+      "🎵 Pentatonic Heritage: Traditional five-note scales shaping melodic character",
       "📊 J-Pop Innovation: Modern pop harmonies with Japanese characteristics",
       "🔗 Enka Tradition: Emotional ballad progressions in traditional style",
       "🎨 East-West Fusion: Blend of traditional and Western harmonic approaches"
     ]
   }
 };
+
 
 /* ---------- page component ---------- */
 export default function Home() {
