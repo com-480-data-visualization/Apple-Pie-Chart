@@ -460,4 +460,4 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
   );
 };
 
-export default RadialChordGraph;
+export default ChordNetworkDiagram;

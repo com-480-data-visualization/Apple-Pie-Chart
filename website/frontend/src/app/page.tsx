@@ -4,37 +4,29 @@ import styles from './page.module.css';
 import { useState, useCallback } from 'react';
 
 import ChordNetworkDiagram from './components/ChordNetworkDiagram';
-import MoodToHarmony       from './components/MoodToHarmony';
+import MoodToHarmony from './components/MoodToHarmony';
 
 /* ---------- static data ---------- */
 const cultures = [
-  { id: 'france',               name: 'France' },
-  { id: 'usa-south',            name: 'USA (South)' },
+  { id: 'france', name: 'France' },
+  { id: 'usa-south', name: 'USA (South)' },
   { id: 'argentina-latin-america', name: 'Argentina / Latin-America' },
-  { id: 'caribbean',            name: 'Caribbean' },
-  { id: 'brazil',               name: 'Brazil' },
-  { id: 'uk-scotland-ireland',  name: 'UK (Scotland/Ireland)' },
-  { id: 'germany',              name: 'Germany' },
-  { id: 'uk-england',           name: 'UK (England)' },
-  { id: 'mexico',               name: 'Mexico' },
-  { id: 'spain',                name: 'Spain' },
-  { id: 'nordic',               name: 'Nordic' },
-  { id: 'portugal',             name: 'Portugal' },
-  { id: 'italy',                name: 'Italy' },
-  { id: 'japan',                name: 'Japan' },
-];
-
-const moodBoard = [
-  { emoji: '😢',    percentage: 15 },
-  { emoji: '😡',    percentage: 9  },
-  { emoji: '😊❤️', percentage: 55 },
-  { emoji: '😊',    percentage: 4  },
-  { emoji: '😴',    percentage: 15 },
+  { id: 'caribbean', name: 'Caribbean' },
+  { id: 'brazil', name: 'Brazil' },
+  { id: 'uk-scotland-ireland', name: 'UK (Scotland/Ireland)' },
+  { id: 'germany', name: 'Germany' },
+  { id: 'uk-england', name: 'UK (England)' },
+  { id: 'mexico', name: 'Mexico' },
+  { id: 'spain', name: 'Spain' },
+  { id: 'nordic', name: 'Nordic' },
+  { id: 'portugal', name: 'Portugal' },
+  { id: 'italy', name: 'Italy' },
+  { id: 'japan', name: 'Japan' },
 ];
 
 /* ---------- page component ---------- */
 export default function Home() {
-  const [activeView, setActiveView]   = useState<'culture' | 'mood'>('culture');
+  const [activeView, setActiveView] = useState<'culture' | 'mood'>('culture');
   const [selectedCulture, setCulture] = useState(cultures[0]);
 
   /* handlers */
@@ -95,27 +87,14 @@ export default function Home() {
               <span className={styles.selectedGenreNameText}>{selectedCulture.name}</span>
             </h2>
 
-            <div className={styles.chordAndEmojiContainer}>
-              {/* chord network */}
+            {/* chord visualization */}
+            <div className={styles.chordVisualizationContainer}>
               <div className={styles.chordGraph}>
                 <ChordNetworkDiagram
                   cultureId={selectedCulture.id}
-                  width={400}
-                  height={300}
+                  width={800}
+                  height={500}
                 />
-              </div>
-
-              {/* emoji mood board */}
-              <div className={styles.emojiBoard}>
-                <h3 className={styles.panelSubTitle}>Emoji mood board of your selection</h3>
-                <div className={styles.emojiContainer}>
-                  {moodBoard.map((m, i) => (
-                    <div key={i} className={styles.emojiItem}>
-                      <span className={styles.emoji}>{m.emoji}</span>
-                      <span className={styles.percentage}>{m.percentage}%</span>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
 
@@ -125,13 +104,15 @@ export default function Home() {
               </h3>
               <p>
                 Explore the unique chord progressions and harmonic patterns that define the
-                musical traditions of {selectedCulture.name}. Click any node in the network
-                above to hear how it sounds and discover common transitions.
+                musical traditions of {selectedCulture.name}. The radial layout shows pitch 
+                classes as arms radiating from the center, with chord qualities positioned 
+                along each arm based on their harmonic function.
               </p>
               <ul className={styles.networkStats}>
-                <li><strong>🎵 Interactive Network:</strong> click nodes to play chords</li>
-                <li><strong>📊 Data-Driven:</strong> based on analysis of popular songs</li>
-                <li><strong>🔗 Chord Transitions:</strong> arrow thickness denotes probability</li>
+                <li><strong>🎵 Interactive Visualization:</strong> hover over chords to see connections and details</li>
+                <li><strong>📊 Data-Driven:</strong> based on analysis of popular songs from {selectedCulture.name}</li>
+                <li><strong>🔗 Chord Transitions:</strong> curved lines show transition probabilities between chords</li>
+                <li><strong>🎨 Visual Encoding:</strong> distance from center = chord quality, size = frequency, opacity = usage</li>
               </ul>
             </div>
           </section>
@@ -147,7 +128,7 @@ export default function Home() {
         <div className={styles.contactBox}>
           <p className={styles.teamName}>Team Apple-Pie-Chart</p>
           <ul className={styles.memberList}>
-            <li>Yiwei Liu：<a href="yiw.liu@epfl.ch">yiw.liu@epfl.ch</a></li>
+            <li>Yiwei Liu：<a href="mailto:yiw.liu@epfl.ch">yiw.liu@epfl.ch</a></li>
             <li>Tianhao Dai：<a href="mailto:tianhao.dai@epfl.ch">tianhao.dai@epfl.ch</a></li>
             <li>Ewan Golfier：<a href="mailto:ewan.golfier@epfl.ch">ewan.golfier@epfl.ch</a></li>
           </ul>
