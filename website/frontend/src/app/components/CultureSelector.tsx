@@ -1,8 +1,25 @@
 import React from 'react';
 import styles from './CultureSelector.module.css';
 
+/* ---------- types ---------- */
+type CultureId = 
+  | 'france' 
+  | 'usa-south' 
+  | 'argentina-latin-america' 
+  | 'caribbean' 
+  | 'brazil' 
+  | 'uk-scotland-ireland' 
+  | 'germany' 
+  | 'uk-england' 
+  | 'mexico' 
+  | 'spain' 
+  | 'nordic' 
+  | 'portugal' 
+  | 'italy' 
+  | 'japan';
+
 interface Culture {
-  id: string;
+  id: CultureId;
   name: string;
   flag: string;
 }

@@ -7,8 +7,36 @@ import ChordNetworkDiagram from './components/ChordNetworkDiagram';
 import MoodToHarmony from './components/MoodToHarmony';
 import CultureSelector from './components/CultureSelector';
 
+/* ---------- types ---------- */
+type CultureId = 
+  | 'france' 
+  | 'usa-south' 
+  | 'argentina-latin-america' 
+  | 'caribbean' 
+  | 'brazil' 
+  | 'uk-scotland-ireland' 
+  | 'germany' 
+  | 'uk-england' 
+  | 'mexico' 
+  | 'spain' 
+  | 'nordic' 
+  | 'portugal' 
+  | 'italy' 
+  | 'japan';
+
+interface Culture {
+  id: CultureId;
+  name: string;
+  flag: string;
+}
+
+interface CultureText {
+  description: string;
+  features: string[];
+}
+
 /* ---------- static data ---------- */
-const cultures = [
+const cultures: Culture[] = [
   { id: 'france', name: 'France', flag: '🇫🇷' },
   { id: 'usa-south', name: 'USA (South)', flag: '🇺🇸' },
   { id: 'argentina-latin-america', name: 'Argentina', flag: '🇦🇷' },
@@ -23,12 +51,12 @@ const cultures = [
   { id: 'portugal', name: 'Portugal', flag: '🇵🇹' },
   { id: 'italy', name: 'Italy', flag: '🇮🇹' },
   { id: 'japan', name: 'Japan', flag: '🇯🇵' },
-];
+] as const;
 
-// Culture-specific text content
-export const cultureTexts = {
+// Culture-specific text content with proper typing
+const cultureTexts: Record<CultureId, CultureText> = {
   'france': {
-    description: "French music is known for sophisticated harmonies and elegant melodies. From chanson to French pop, traditions emphasize subtle progressions and rich textures reflecting France’s artistic refinement.",
+    description: "French music is known for sophisticated harmonies and elegant melodies. From chanson to French pop, traditions emphasize subtle progressions and rich textures reflecting France's artistic refinement.",
     features: [
       "🎵 Sophisticated Harmonies: Complex chord progressions with jazz influences",
       "📊 Chanson Tradition: Story-telling through melodic and harmonic expression",
@@ -46,7 +74,7 @@ export const cultureTexts = {
     ]
   },
   'argentina-latin-america': {
-    description: "Argentinian music, especially tango, features chromaticism and dramatic harmonic shifts. Often in minor keys, the progressions include secondary dominants and rich voicings reflecting the genre’s emotional intensity.",
+    description: "Argentinian music, especially tango, features chromaticism and dramatic harmonic shifts. Often in minor keys, the progressions include secondary dominants and rich voicings reflecting the genre's emotional intensity.",
     features: [
       "🎵 Tango Passion: Dramatic minor key progressions with chromatic movement",
       "📊 Bandoneon Harmonies: Unique chord voicings from the signature instrument",
@@ -84,7 +112,7 @@ export const cultureTexts = {
   'germany': {
     description: "German music traditions range from classical counterpoint and Romantic harmony to modern electronic experimentation. The harmonic language reflects the country's deep historical and technological contributions to music.",
     features: [
-      "🎵 Classical Heritage: From Bach’s counterpoint to Romantic chromaticism",
+      "🎵 Classical Heritage: From Bach's counterpoint to Romantic chromaticism",
       "📊 Folk Traditions: Simple major key progressions in traditional songs",
       "🔗 Electronic Innovation: Synthesized harmonies in electronic music",
       "🎨 Industrial Sounds: Unconventional chord structures in experimental music"
@@ -155,27 +183,33 @@ export const cultureTexts = {
   }
 };
 
+// Default fallback text
+const defaultCultureText: CultureText = {
+  description: "Explore the unique chord progressions and harmonic patterns that define the musical traditions of this region.",
+  features: [
+    "🎵 Interactive Visualization: hover over chords to see connections and details",
+    "📊 Data-Driven: based on analysis of popular songs from this region", 
+    "🔗 Chord Transitions: curved lines show transition probabilities between chords",
+    "🎨 Visual Encoding: distance from center = chord quality, size = frequency, opacity = usage"
+  ]
+};
 
 /* ---------- page component ---------- */
 export default function Home() {
   const [activeView, setActiveView] = useState<'culture' | 'mood'>('culture');
-  const [selectedCulture, setCulture] = useState(cultures[0]);
+  const [selectedCulture, setCulture] = useState<Culture>(cultures[0]);
 
   /* handlers */
-  const handleCultureSelect = useCallback((c: typeof cultures[number]) => {
-    setCulture(c);
+  const handleCultureSelect = useCallback((culture: Culture) => {
+    setCulture(culture);
   }, []);
 
-  // Get the current culture's text content
-  const currentCultureText = cultureTexts[selectedCulture.id] || {
-    description: "Explore the unique chord progressions and harmonic patterns that define the musical traditions of this region.",
-    features: [
-      "🎵 Interactive Visualization: hover over chords to see connections and details",
-      "📊 Data-Driven: based on analysis of popular songs from this region", 
-      "🔗 Chord Transitions: curved lines show transition probabilities between chords",
-      "🎨 Visual Encoding: distance from center = chord quality, size = frequency, opacity = usage"
-    ]
+  // Get the current culture's text content with proper type safety
+  const getCurrentCultureText = (cultureId: CultureId): CultureText => {
+    return cultureTexts[cultureId] || defaultCultureText;
   };
+
+  const currentCultureText = getCurrentCultureText(selectedCulture.id);
 
   return (
     <main className={styles.main}>

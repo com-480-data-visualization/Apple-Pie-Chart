@@ -73,7 +73,7 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
     setError(null);
     
     try {
-      const response = await fetch(`/data/${culture}.json`);
+      const response = await fetch(`./data/${culture}.json`);
       if (!response.ok) {
         throw new Error(`Failed to load data for ${culture}. Status: ${response.status}`);
       }
