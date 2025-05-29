@@ -1,109 +1,322 @@
 /* MoodWheelDiagram 专用样式 */
 
 .moodWheelContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  overflow: visible;
+  aspect-ratio: 1 / 1; /* 添加固定比例 */
+  max-width: 600px; /* 限制最大尺寸 */
+  margin: 0 auto; /* 居中显示 */
+}
+
+.moodWheelSvg {
+  overflow: visible;
+  max-width: 500px;
+  max-height: 500px;
+  width: 100%; /* 响应式宽度 */
+  height: auto; /* 保持比例 */
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+/* 确保轮盘完全显示的容器 */
+.wheelWrapper {
+  min-width: 800px;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  aspect-ratio: 1 / 1; /* 保持正方形 */
+}
+
+/* 轮盘扇形的自定义样式类 */
+.sectorPath {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.sectorPath:hover {
+  filter: brightness(1.1);
+  stroke-width: 2; /* 增加描边宽度 */
+  stroke: rgba(255, 255, 255, 0.8);
+}
+
+.sectorPathSelected {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+  stroke-width: 3; /* 选中时加粗描边 */
+  stroke: rgba(255, 255, 255, 1);
+}
+
+/* 坐标轴标签样式 */
+.axisLabel {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+  font-size: clamp(9px, 2vw, 12px); /* 响应式字体 */
+  fill: #1E293B;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  transition: font-size 0.3s ease; /* 平滑字体变化 */
+}
+
+.axisLabelBox {
+  fill: rgba(255, 255, 255, 0.95); /* 提高不透明度 */
+  stroke: rgba(0, 0, 0, 0.1);
+  stroke-width: 1;
+  rx: 4;
+  transition: all 0.3s ease;
+}
+
+.axisLabelBox:hover {
+  fill: rgba(255, 255, 255, 1);
+  stroke: rgba(0, 0, 0, 0.2);
+}
+
+/* 中心圆样式 */
+.centerCircle {
+  fill: #ffffff;
+  stroke: #64748B;
+  stroke-width: 2;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+}
+
+.centerCircle:hover {
+  stroke: #475569;
+  stroke-width: 3;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+/* 坐标轴线样式 */
+.axisLine {
+  stroke: #94A3B8;
+  stroke-width: 2;
+  stroke-dasharray: 5,5;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.outerCircle {
+  fill: none;
+  stroke: #CBD5E1;
+  stroke-width: 1.2;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+/* 响应式设计 - 改进版 */
+@media (max-width: 1200px) {
+  .moodWheelContainer {
+    max-width: 500px;
+    padding: 0.875rem;
+  }
+  
+  .wheelWrapper {
+    min-width: 450px;
+    min-height: 450px;
+  }
+  
+  .moodWheelSvg {
+    max-width: 450px;
+    max-height: 450px;
+  }
+  
+  .axisLabel {
+    font-size: clamp(8px, 2vw, 11px);
+  }
+}
+
+@media (max-width: 768px) {
+  .moodWheelContainer {
+    min-height: 400px; /* 调整最小高度 */
+    max-width: 400px;
+    padding: 0.75rem;
+    overflow: visible;  /* 确保不裁剪内容 */
+  }
+  
+  .wheelWrapper {
+    min-width: 350px;
+    min-height: 350px;
     overflow: visible;
   }
   
   .moodWheelSvg {
-    overflow: visible;
-    max-width: 500px;
-    max-height: 500px;
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    max-width: 350px;
+    max-height: 350px;
   }
   
-  /* 确保轮盘完全显示的容器 */
-  .wheelWrapper {
-    min-width: 500px;
-    min-height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-  
-  /* 轮盘扇形的自定义样式类 */
-  .sectorPath {
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .sectorPath:hover {
-    filter: brightness(1.1);
-  }
-  
-  .sectorPathSelected {
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
-  }
-  
-  /* 坐标轴标签样式 */
   .axisLabel {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    fill: #1E293B;
-    text-anchor: middle;
-    dominant-baseline: middle;
+    font-size: clamp(7px, 2.5vw, 10px);
+  }
+  
+  .centerCircle {
+    stroke-width: 1.5; /* 减小描边 */
+  }
+  
+  .axisLine {
+    stroke-width: 1.5;
+  }
+  
+  .outerCircle {
+    stroke-width: 1;
+  }
+  
+  /* 减少移动端的悬停效果强度 */
+  .sectorPath:hover {
+    filter: brightness(1.05);
+    stroke-width: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .moodWheelContainer {
+    min-height: 320px;
+    max-width: 320px;
+    padding: 0.5rem;
+  }
+  
+  .wheelWrapper {
+    min-width: 280px;
+    min-height: 280px;
+  }
+  
+  .moodWheelSvg {
+    max-width: 280px;
+    max-height: 280px;
+  }
+  
+  .axisLabel {
+    font-size: clamp(6px, 3vw, 9px);
+    font-weight: 700; /* 增加字重以提高可读性 */
   }
   
   .axisLabelBox {
-    fill: rgba(255, 255, 255, 0.9);
-    stroke: rgba(0, 0, 0, 0.1);
-    stroke-width: 1;
-    rx: 4;
+    stroke-width: 0.8;
+    rx: 3; /* 减小圆角 */
   }
   
-  /* 中心圆样式 */
   .centerCircle {
-    fill: #ffffff;
+    stroke-width: 1.2;
+  }
+  
+  .axisLine {
+    stroke-width: 1.2;
+    stroke-dasharray: 3,3; /* 调整虚线样式 */
+  }
+  
+  .outerCircle {
+    stroke-width: 0.8;
+  }
+  
+  .sectorPath:hover {
+    filter: brightness(1.03); /* 进一步减少效果 */
+    stroke-width: 1.2;
+  }
+}
+
+@media (max-width: 360px) {
+  .moodWheelContainer {
+    min-height: 280px;
+    max-width: 280px;
+    padding: 0.25rem;
+  }
+  
+  .wheelWrapper {
+    min-width: 250px;
+    min-height: 250px;
+  }
+  
+  .moodWheelSvg {
+    max-width: 250px;
+    max-height: 250px;
+  }
+  
+  .axisLabel {
+    font-size: clamp(5px, 3.5vw, 8px);
+  }
+}
+
+/* 高分辨率屏幕优化 */
+@media (min-width: 1400px) {
+  .moodWheelContainer {
+    max-width: 700px;
+    padding: 1.5rem;
+  }
+  
+  .wheelWrapper {
+    min-width: 600px;
+    min-height: 600px;
+  }
+  
+  .moodWheelSvg {
+    max-width: 600px;
+    max-height: 600px;
+  }
+  
+  .axisLabel {
+    font-size: 14px;
+  }
+  
+  .centerCircle {
+    stroke-width: 3;
+  }
+  
+  .axisLine {
+    stroke-width: 2.5;
+  }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+  .sectorPath:hover {
+    filter: none; /* 移除悬停效果 */
+    stroke-width: initial;
+  }
+  
+  .sectorPath:active {
+    filter: brightness(0.95); /* 添加点击反馈 */
+  }
+  
+  .centerCircle:hover {
     stroke: #64748B;
     stroke-width: 2;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   }
   
-  /* 坐标轴线样式 */
-  .axisLine {
-    stroke: #94A3B8;
-    stroke-width: 2;
-    stroke-dasharray: 5,5;
-    opacity: 0.7;
+  .axisLabelBox:hover {
+    fill: rgba(255, 255, 255, 0.95);
+    stroke: rgba(0, 0, 0, 0.1);
   }
-  
+}
+
+/* 减少动画效果偏好设置 */
+@media (prefers-reduced-motion: reduce) {
+  .sectorPath,
+  .axisLabel,
+  .axisLabelBox,
+  .centerCircle,
+  .axisLine,
   .outerCircle {
-    fill: none;
-    stroke: #CBD5E1;
-    stroke-width: 1.2;
-    opacity: 0.8;
+    transition: none;
+  }
+}
+
+/* 打印样式优化 */
+@media print {
+  .moodWheelContainer {
+    break-inside: avoid;
+    max-width: 100%;
   }
   
-  /* 响应式设计 */
-  @media (max-width: 768px) {
-    .moodWheelContainer {
-      min-height: 600px; /* 增加最小高度 */
-      overflow: visible;  /* 确保不裁剪内容 */
-    }
-    
-    .wheelWrapper {
-        overflow: visible;
-    }
-    
-    .axisLabel {
-      font-size: 10px;
-    }
+  .moodWheelSvg {
+    filter: none; /* 移除阴影以节省墨水 */
   }
   
-  @media (max-width: 480px) {
-    .wheelWrapper {
-      min-width: 350px;
-      min-height: 350px;
-    }
-    
-    .axisLabel {
-      font-size: 9px;
-    }
+  .sectorPath:hover,
+  .centerCircle:hover {
+    filter: none;
   }
+}

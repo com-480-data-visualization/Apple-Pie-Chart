@@ -8,6 +8,8 @@
   align-items: center;
   gap: 2rem;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  max-width: 1600px; /* 添加最大宽度 */
+  margin: 0 auto; /* 居中显示 */
 }
 
 .brand {
@@ -29,7 +31,7 @@
 
 .title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem); /* 响应式字体大小 */
   font-weight: 700;
   text-align: center;
   margin: 2rem 0;
@@ -72,6 +74,8 @@
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
+  flex-wrap: wrap; /* 允许换行 */
+  justify-content: center; /* 居中对齐 */
 }
 
 .button {
@@ -84,6 +88,7 @@
   color: #333;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  white-space: nowrap; /* 防止文字换行 */
 }
 
 .button:hover {
@@ -135,6 +140,8 @@
   border-radius: 25px;
   padding: 20px;
   overflow: hidden;
+  aspect-ratio: 2.2 / 1; /* 固定比例 */
+  max-height: 500px; /* 限制最大高度 */
 }
 
 /* Bubble Styles */
@@ -164,7 +171,7 @@
   font-size: 1rem;
 }
 
-/* Culture Bubble Positions */
+/* Culture Bubble Positions - 保持原有的定位 */
 .usa-general { top: 5%; left: 5%; width: 110px; height: 110px; }
 .usa-general .genreName { font-size: 0.7rem; }
 
@@ -238,7 +245,7 @@
   font-weight: 600;
 }
 
-/* Chord visualization */
+/* Chord visualization - 添加固定比例 */
 .chordGraph {
   flex: 2;
   min-width: 0;
@@ -248,6 +255,8 @@
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  aspect-ratio: 3 / 2; /* 固定 3:2 比例 */
+  max-height: 600px; /* 限制最大高度 */
 }
 
 /* Mood to Harmony Layout Styles */
@@ -377,6 +386,7 @@
   border: 1px solid rgba(226, 232, 240, 0.8);
   transition: all 0.3s ease;
   min-height: 380px;
+  aspect-ratio: 1 / 1.2; /* 添加固定比例 */
 }
 
 .distributionCard:hover {
@@ -400,6 +410,7 @@
   justify-content: center;
   align-items: center;
   height: 280px;
+  flex: 1; /* 占用剩余空间 */
 }
 
 .loadingState {
@@ -467,50 +478,6 @@
   text-decoration: underline;
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .moodToHarmonyLayout {
-    flex-direction: column;
-    gap: 2rem;
-  }
-  
-  .leftColumn {
-    width: 100%;
-    position: static;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  
-  .distributionsRow {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .distributionCard {
-    min-width: unset;
-  }
-}
-
-@media (max-width: 768px) {
-  .moodToHarmonyLayout {
-    padding: 1.5rem;
-    gap: 1.5rem;
-  }
-  
-  .distributionsRow {
-    gap: 1.5rem;
-  }
-  
-  .distributionCard {
-    padding: 1rem;
-    min-height: 280px;
-  }
-  
-  .distributionContent {
-    height: 200px;
-  }
-}
-
 /* Culture to Chord Layout - 左右分栏 */
 .cultureChordLayout {
   display: flex;
@@ -553,6 +520,10 @@
 
 .chordVisualizationContainer {
   margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px; /* 确保最小高度 */
 }
 
 .chordGraph {
@@ -563,6 +534,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 900px;
+  aspect-ratio: 3 / 2; /* 固定比例 */
 }
 
 .cultureInfo {
@@ -602,44 +576,6 @@
   margin-bottom: 0;
 }
 
-/* 响应式设计 */
-@media (max-width: 1200px) {
-  .cultureChordLayout {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .cultureLeftColumn {
-    width: 100%;
-    position: static;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .chordPanel {
-    padding: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .cultureChordLayout {
-    gap: 1rem;
-  }
-  
-  .chordPanel {
-    padding: 15px;
-  }
-  
-  .chordPanelTitle {
-    font-size: 1.2rem;
-  }
-  
-  .cultureInfo {
-    padding: 1rem;
-  }
-}
-
-/* 更新的 Key Distribution 样式 - 替换之前的 keyDistributionCard 样式 */
 /* 更新的 Key Distribution 样式 - 支持并排显示 */
 .keyDistributionCard {
   width: 100%;
@@ -676,45 +612,162 @@
   min-height: 0;
 }
 
-/* Individual Distribution Cards - 铺满 */
-.distributionCard {
-  flex: 1 1 0;
-  min-width: 0;
-  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
-  padding: 1.5rem;
-  border-radius: 16px;
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  transition: all 0.3s ease;
-  min-height: 380px;
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .main {
+    padding: 1.5rem;
+  }
+  
+  .gallery {
+    padding: 1.5rem;
+  }
 }
 
-.distributionCard:hover {
-  transform: translateY(-1px);
-  box-shadow: 
-    0 6px 10px -2px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-/* 响应式调整 */
 @media (max-width: 1200px) {
-  .keyDistributionCard {
-    margin: 2rem auto 0 auto;
+  .moodToHarmonyLayout {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .leftColumn {
+    width: 100%;
+    position: static;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .distributionsRow {
+    flex-direction: column;
+    align-items: stretch;
   }
   
   .distributionCard {
-    min-width: 300px;
-    min-height: 320px;
+    min-width: unset;
+    max-width: none;
+    aspect-ratio: 1.5 / 1; /* 调整比例 */
   }
   
-  .distributionContent {
-    height: 250px;
+  .cultureChordLayout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .cultureLeftColumn {
+    width: 100%;
+    position: static;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .chordPanel {
+    padding: 20px;
+  }
+  
+  .chordGraph {
+    aspect-ratio: 4 / 3; /* 在中等屏幕上调整比例 */
+  }
+  
+  .genreBubblesContainer {
+    height: 350px;
+    aspect-ratio: 2 / 1;
   }
 }
 
 @media (max-width: 768px) {
+  .main {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+  
+  .title {
+    margin: 1rem 0;
+  }
+  
+  .buttonContainer {
+    gap: 0.5rem;
+  }
+  
+  .button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .moodToHarmonyLayout {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .distributionsRow {
+    gap: 1.5rem;
+  }
+  
+  .distributionCard {
+    padding: 1rem;
+    min-height: 280px;
+    aspect-ratio: 1 / 1; /* 移动端使用正方形 */
+  }
+  
+  .distributionContent {
+    height: 200px;
+  }
+  
+  .cultureChordLayout {
+    gap: 1rem;
+  }
+  
+  .chordPanel {
+    padding: 15px;
+  }
+  
+  .chordPanelTitle {
+    font-size: 1.2rem;
+  }
+  
+  .cultureInfo {
+    padding: 1rem;
+  }
+  
+  .chordGraph {
+    aspect-ratio: 1 / 1; /* 移动端使用正方形 */
+    padding: 10px;
+  }
+  
+  .chordVisualizationContainer {
+    min-height: 300px;
+  }
+  
+  .genreBubblesContainer {
+    height: 280px;
+    aspect-ratio: 1.5 / 1;
+    padding: 15px;
+  }
+  
+  /* 调整泡泡大小 */
+  .bubble {
+    transform: scale(0.8);
+  }
+  
+  .bubble:hover {
+    transform: scale(0.85);
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 0.5rem;
+  }
+  
+  .brand {
+    position: static;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+  
   .keyDistributionCard {
     padding: 0;
     min-height: 400px;
@@ -725,12 +778,8 @@
   }
   
   .distributionCard {
-    padding: 1rem;
-    min-height: 280px;
-  }
-  
-  .distributionContent {
-    height: 200px;
+    padding: 0.75rem;
+    min-height: 250px;
   }
   
   /* 在移动端堆叠显示Key Distribution */
@@ -741,5 +790,23 @@
   
   .keyDistributionContent > div > div {
     flex: none !important;
+  }
+  
+  .contactBox {
+    padding: 20px;
+    margin: 0 0.5rem;
+  }
+  
+  .genreBubblesContainer {
+    height: 250px;
+    aspect-ratio: 1.2 / 1;
+  }
+  
+  .bubble {
+    transform: scale(0.7);
+  }
+  
+  .bubble:hover {
+    transform: scale(0.75);
   }
 }

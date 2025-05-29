@@ -4,7 +4,7 @@
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 3vw, 1.5rem); /* 响应式字体 */
   color: #333;
   margin-bottom: 25px;
   text-align: center;
@@ -13,7 +13,7 @@
 
 .flagGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* 保持你原来的2列布局 */
   gap: 1rem;
   padding: 20px;
   background: #e6f0fa;
@@ -29,14 +29,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.2rem 0.8rem;
+  padding: 0.8rem 0.6rem; /* 减少内边距 */
   background: linear-gradient(135deg, #ffffff, #f8fafc);
   border: 2px solid transparent;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  min-height: 110px;
+  min-height: 85px; /* 从110px减少到85px */
+  aspect-ratio: 1 / 0.9; /* 调整比例，更扁一些 */
+  position: relative; /* 为了更好的悬停效果 */
 }
 
 .flagButton:hover {
@@ -58,18 +60,23 @@
 }
 
 .flagEmoji {
-  font-size: 2.8rem;
-  margin-bottom: 0.6rem;
+  font-size: 2.2rem; /* 从2.8rem减小到2.2rem */
+  margin-bottom: 0.4rem; /* 从0.6rem减小到0.4rem */
   line-height: 1;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+
+.flagButton:hover .flagEmoji {
+  transform: scale(1.05); /* 悬停时轻微放大 */
 }
 
 .cultureName {
-  font-size: 0.85rem;
+  font-size: 0.8rem; /* 从0.85rem减小到0.8rem */
   font-weight: 700;
   color: #2c3e50;
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.2; /* 减小行高节省空间 */
   letter-spacing: 0.02em;
 }
 
@@ -78,38 +85,175 @@
   font-weight: 800;
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
+/* 响应式设计 - 修正版，保持你原来的布局 */
+@media (max-width: 1200px) {
+  .cultureSelector {
+    max-width: 600px; /* 限制最大宽度 */
+    margin: 0 auto; /* 居中显示 */
+  }
+  
   .flagGrid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* 保持2列布局 */
+    gap: 0.875rem;
+    padding: 18px;
+  }
+  
+  .flagButton {
+    min-height: 80px; /* 从100px减小到80px */
+    padding: 0.8rem 0.6rem; /* 减少内边距 */
+  }
+  
+  .flagEmoji {
+    font-size: 2rem; /* 从2.5rem减小到2rem */
+  }
+  
+  .cultureName {
+    font-size: 0.78rem; /* 从0.82rem减小 */
+  }
+}
+
+@media (max-width: 768px) {
+  .cultureSelector {
+    padding: 15px;
+  }
+  
+  .title {
+    margin-bottom: 20px;
+  }
+  
+  .flagGrid {
+    grid-template-columns: repeat(2, 1fr); /* 保持2列布局 */
     gap: 0.8rem;
     padding: 15px;
   }
   
   .flagButton {
-    padding: 0.8rem;
-    min-height: 80px;
+    padding: 0.6rem; /* 减少内边距 */
+    min-height: 70px; /* 从80px减小到70px */
+    aspect-ratio: 1 / 0.85; /* 调整移动端比例，更扁 */
   }
   
   .flagEmoji {
-    font-size: 2rem;
+    font-size: 1.7rem; /* 从2rem减小到1.7rem */
+    margin-bottom: 0.3rem; /* 从0.4rem减小 */
   }
   
   .cultureName {
-    font-size: 0.8rem;
+    font-size: 0.75rem; /* 从0.8rem减小 */
   }
 }
 
 @media (max-width: 480px) {
+  .cultureSelector {
+    padding: 12px;
+  }
+  
+  .title {
+    margin-bottom: 18px;
+  }
+  
   .flagGrid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* 保持2列布局 */
+    gap: 0.6rem;
+    padding: 12px;
+  }
+  
+  .flagButton {
+    padding: 0.5rem 0.3rem; /* 进一步减少内边距 */
+    min-height: 60px; /* 从70px减小到60px */
+    border-radius: 10px; /* 稍微减小圆角 */
   }
   
   .flagEmoji {
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* 从1.8rem减小到1.5rem */
+    margin-bottom: 0.25rem; /* 从0.3rem减小 */
   }
   
   .cultureName {
-    font-size: 0.75rem;
+    font-size: 0.7rem; /* 从0.75rem减小 */
+    line-height: 1.1; /* 进一步减小行高 */
+  }
+  
+  /* 在小屏幕上减少变换效果，避免性能问题 */
+  .flagButton:hover {
+    transform: translateY(-1px);
+  }
+  
+  .flagButton.selected:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 360px) {
+  .flagGrid {
+    grid-template-columns: repeat(2, 1fr); /* 强制两列布局 */
+    gap: 0.5rem;
+  }
+  
+  .flagButton {
+    min-height: 55px; /* 从65px减小到55px */
+    padding: 0.4rem 0.25rem; /* 进一步减少内边距 */
+  }
+  
+  .flagEmoji {
+    font-size: 1.3rem; /* 从1.6rem减小到1.3rem */
+  }
+  
+  .cultureName {
+    font-size: 0.65rem; /* 从0.7rem减小 */
+  }
+}
+
+/* 高分辨率屏幕优化 */
+@media (min-width: 1400px) {
+  .flagGrid {
+    grid-template-columns: repeat(2, 1fr); /* 保持2列布局 */
+    gap: 1.2rem;
+    padding: 24px;
+  }
+  
+  .flagButton {
+    min-height: 95px; /* 从120px减小到95px */
+    padding: 1.1rem 0.8rem; /* 减少内边距 */
+  }
+  
+  .flagEmoji {
+    font-size: 2.4rem; /* 从3rem减小到2.4rem */
+  }
+  
+  .cultureName {
+    font-size: 0.85rem; /* 从0.9rem减小 */
+  }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+  .flagButton {
+    min-height: 88px; /* 增加触摸目标大小 */
+  }
+  
+  .flagButton:hover {
+    transform: none; /* 移除悬停效果 */
+    background: linear-gradient(135deg, #ffffff, #f8fafc);
+  }
+  
+  .flagButton:active {
+    transform: scale(0.98); /* 添加点击反馈 */
+  }
+}
+
+/* 减少动画效果偏好设置 */
+@media (prefers-reduced-motion: reduce) {
+  .flagButton,
+  .flagEmoji {
+    transition: none;
+  }
+  
+  .flagButton:hover {
+    transform: none;
+  }
+  
+  .flagButton.selected:hover {
+    transform: none;
   }
 }
