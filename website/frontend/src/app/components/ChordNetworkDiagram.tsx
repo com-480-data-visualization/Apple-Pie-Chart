@@ -55,6 +55,19 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
     return enharmonicMap[root] || root;
   };
 
+  // Normalize chord ID to use consistent pitch class names
+  const normalizeChordId = (chordId: string): string => {
+    // Extract the root note from the chord ID (everything before the first lowercase letter or number)
+    const match = chordId.match(/^([A-G][#b]?)/);
+    if (!match) return chordId;
+    
+    const originalRoot = match[1];
+    const normalizedRoot = normalizePitchClass(originalRoot);
+    
+    // Replace the original root with the normalized one
+    return chordId.replace(originalRoot, normalizedRoot);
+  };
+
   const loadData = async (culture: string) => {
     setLoading(true);
     setError(null);
@@ -106,7 +119,7 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
 
     const radiusScale = d3.scalePoint()
       .domain(qualityOrder)
-      .range([maxRadius * 0.8, maxRadius * 0.2]); // outermost to innermost
+      .range([maxRadius, maxRadius * 0.3]); // outermost at tip, innermost well-spaced
 
     // Position all nodes (even those without connections)
     const nodesWithPosition = data.nodes.map(node => {
@@ -116,6 +129,7 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
 
       return {
         ...node,
+        id: normalizeChordId(node.id), // Normalize the chord ID for display
         angle,
         radius,
         x: centerX + Math.cos(angle - Math.PI / 2) * radius, // -PI/2 to start at 12:00
@@ -226,6 +240,20 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
       .attr("fill", "#000")
       .style("background", "rgba(255, 255, 255, 0.9)")
       .text(d => d);
+
+    // Draw quality rings as reference
+    svg.append("g")
+      .attr("class", "quality-rings")
+      .selectAll("circle")
+      .data(qualityOrder)
+      .enter().append("circle")
+      .attr("cx", centerX)
+      .attr("cy", centerY)
+      .attr("r", d => radiusScale(d) || 0)
+      .attr("fill", "none")
+      .attr("stroke", "#f0f0f0")
+      .attr("stroke-width", 1)
+      .attr("stroke-dasharray", "1,3");
 
     // Draw links
     const linkElements = svg.append("g")
