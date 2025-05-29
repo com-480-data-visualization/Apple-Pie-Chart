@@ -40,21 +40,20 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
   const [data, setData] = useState<ChordData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [maxEdges, setMaxEdges] = useState<number>(50);
 
-  // Pitch class mapping (enharmonic equivalents merged)
-  const pitchClasses = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
-  
-  // Normalize enharmonic equivalents
+  // Target design specifications
+  const rootOrder = ["F", "C", "G", "D", "A", "E", "B", "F#", "C#", "G#", "D#", "A#"];
+  const qualityOrder = ["min7", "maj7", "min", "maj", "7"]; // outermost to innermost
+
+  // Normalize enharmonic equivalents to match root order
   const normalizePitchClass = (root: string): string => {
     const enharmonicMap: Record<string, string> = {
-      'C#': 'Db', 'D#': 'Eb', 'F#': 'Gb', 'G#': 'Ab', 'A#': 'Bb',
-      'Cs': 'Db', 'Ds': 'Eb', 'Fs': 'Gb', 'Gs': 'Ab', 'As': 'Bb'
+      'Gb': 'F#', 'Ab': 'G#', 'Bb': 'A#', 'Db': 'C#', 'Eb': 'D#',
+      'Fs': 'F#', 'Gs': 'G#', 'As': 'A#', 'Cs': 'C#', 'Ds': 'D#'
     };
     return enharmonicMap[root] || root;
   };
-
-  // Quality ordering for radial distance
-  const qualityOrder = ['maj', 'min', '7', 'maj7', 'min7', '6', 'dim', 'aug', 'sus4', 'sus2'];
 
   const loadData = async (culture: string) => {
     setLoading(true);
