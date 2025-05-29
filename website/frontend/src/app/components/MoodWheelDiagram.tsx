@@ -68,7 +68,12 @@ const MoodWheelDiagram: React.FC<MoodWheelDiagramProps> = ({
   useEffect(() => {
     if (!svgRef.current) return;
 
-    const svg = d3.select(svgRef.current).attr('width', svgSize).attr('height', svgSize);
+    // const svg = d3.select(svgRef.current).attr('width', svgSize).attr('height', svgSize);
+    const margin = 80;  // Allow space for labels and axes
+    svg.attr('width', svgSize)
+      .attr('height', svgSize)
+      .attr('viewBox', `${-margin} ${-margin} ${svgSize + margin * 2} ${svgSize + margin * 2}`)
+      .attr('preserveAspectRatio', 'xMidYMid meet');
     svg.selectAll('*').remove();
 
     /* 渐变 */
@@ -88,7 +93,8 @@ const MoodWheelDiagram: React.FC<MoodWheelDiagramProps> = ({
       .append('feDropShadow')
       .attr('dx', 0).attr('dy', 2).attr('stdDeviation', 4).attr('flood-color', '#000').attr('flood-opacity', .15);
 
-    const container = svg.append('g').attr('transform', `translate(${center},${center})`);
+    // const container = svg.append('g').attr('transform', `translate(${center},${center})`);
+    const container = svg.append('g').attr('transform', `translate(${svgSize / 2},${svgSize / 2})`);
 
     /* 弧生成器 */
     const arc = d3.arc<SectorData>()
