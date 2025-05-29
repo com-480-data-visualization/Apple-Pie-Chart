@@ -58,7 +58,6 @@ yarn build
 # serve the generated static files in "out"
 npx serve out        # http://localhost:3000
 ```
-
 ---
 
 ## 3 – Build & export for production (GitHub Pages)
