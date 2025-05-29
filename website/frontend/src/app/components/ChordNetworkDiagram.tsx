@@ -30,107 +30,25 @@ const RadialChordGraph: React.FC = () => {
   const [data, setData] = useState<ChordData | null>(null);
   const [currentGenre, setCurrentGenre] = useState('brazil');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  // Mock data for demonstration
-  const mockData: Record<string, ChordData> = {
-    brazil: {
-      nodes: [
-        { id: "Cmaj", root: "C", quality: "maj", count: 450 },
-        { id: "C7", root: "C", quality: "7", count: 320 },
-        { id: "Cmaj7", root: "C", quality: "maj7", count: 280 },
-        { id: "Fmaj", root: "F", quality: "maj", count: 380 },
-        { id: "F7", root: "F", quality: "7", count: 220 },
-        { id: "Gmaj", root: "G", quality: "maj", count: 340 },
-        { id: "G7", root: "G", quality: "7", count: 290 },
-        { id: "Am", root: "A", quality: "min", count: 250 },
-        { id: "Am7", root: "A", quality: "min7", count: 180 },
-        { id: "Dm", root: "D", quality: "min", count: 210 },
-        { id: "Em", root: "E", quality: "min", count: 190 },
-        { id: "Bbmaj", root: "Bb", quality: "maj", count: 160 },
-        { id: "Dbmaj", root: "Db", quality: "maj", count: 140 },
-        { id: "Fmin7", root: "F", quality: "min7", count: 130 },
-        { id: "Ebmaj", root: "Eb", quality: "maj", count: 120 }
-      ],
-      links: [
-        { source: "Cmaj", target: "Fmaj", count: 45, prob: 0.12 },
-        { source: "Cmaj", target: "G7", count: 38, prob: 0.10 },
-        { source: "Cmaj", target: "Am", count: 32, prob: 0.085 },
-        { source: "Fmaj", target: "Cmaj", count: 42, prob: 0.11 },
-        { source: "Fmaj", target: "G7", count: 28, prob: 0.074 },
-        { source: "G7", target: "Cmaj", count: 55, prob: 0.19 },
-        { source: "G7", target: "Am", count: 22, prob: 0.076 },
-        { source: "Am", target: "Dm", count: 25, prob: 0.10 },
-        { source: "Am", target: "F7", count: 18, prob: 0.072 },
-        { source: "C7", target: "Fmaj", count: 48, prob: 0.15 },
-        { source: "Dm", target: "G7", count: 30, prob: 0.14 },
-        { source: "Em", target: "Am", count: 20, prob: 0.105 },
-        { source: "Bbmaj", target: "Ebmaj", count: 15, prob: 0.094 },
-        { source: "Dbmaj", target: "Fmin7", count: 12, prob: 0.086 }
-      ]
-    },
-    jazz: {
-      nodes: [
-        { id: "Cmaj7", root: "C", quality: "maj7", count: 520 },
-        { id: "C7", root: "C", quality: "7", count: 480 },
-        { id: "Cm7", root: "C", quality: "min7", count: 380 },
-        { id: "Fmaj7", root: "F", quality: "maj7", count: 450 },
-        { id: "F7", root: "F", quality: "7", count: 420 },
-        { id: "Fm7", root: "F", quality: "min7", count: 350 },
-        { id: "G7", root: "G", quality: "7", count: 580 },
-        { id: "Gm7", root: "G", quality: "min7", count: 320 },
-        { id: "Am7", root: "A", quality: "min7", count: 400 },
-        { id: "A7", root: "A", quality: "7", count: 360 },
-        { id: "Dm7", root: "D", quality: "min7", count: 380 },
-        { id: "D7", root: "D", quality: "7", count: 340 },
-        { id: "Em7", root: "E", quality: "min7", count: 290 },
-        { id: "E7", root: "E", quality: "7", count: 310 },
-        { id: "Bbmaj7", root: "Bb", quality: "maj7", count: 260 }
-      ],
-      links: [
-        { source: "Cmaj7", target: "Am7", count: 65, prob: 0.125 },
-        { source: "Am7", target: "Dm7", count: 58, prob: 0.145 },
-        { source: "Dm7", target: "G7", count: 62, prob: 0.163 },
-        { source: "G7", target: "Cmaj7", count: 78, prob: 0.134 },
-        { source: "C7", target: "Fmaj7", count: 72, prob: 0.15 },
-        { source: "Fmaj7", target: "Em7", count: 45, prob: 0.10 },
-        { source: "Em7", target: "A7", count: 48, prob: 0.165 },
-        { source: "A7", target: "Dm7", count: 52, prob: 0.144 },
-        { source: "Fm7", target: "Bbmaj7", count: 38, prob: 0.109 },
-        { source: "Gm7", target: "C7", count: 42, prob: 0.131 }
-      ]
-    },
-    classical: {
-      nodes: [
-        { id: "Cmaj", root: "C", quality: "maj", count: 680 },
-        { id: "Fmaj", root: "F", quality: "maj", count: 520 },
-        { id: "Gmaj", root: "G", quality: "maj", count: 580 },
-        { id: "Am", root: "A", quality: "min", count: 450 },
-        { id: "Dm", root: "D", quality: "min", count: 420 },
-        { id: "Em", root: "E", quality: "min", count: 380 },
-        { id: "G7", root: "G", quality: "7", count: 340 },
-        { id: "D7", root: "D", quality: "7", count: 290 },
-        { id: "A7", root: "A", quality: "7", count: 260 },
-        { id: "E7", root: "E", quality: "7", count: 240 },
-        { id: "Bbmaj", root: "Bb", quality: "maj", count: 180 },
-        { id: "Ebmaj", root: "Eb", quality: "maj", count: 160 }
-      ],
-      links: [
-        { source: "Cmaj", target: "Fmaj", count: 85, prob: 0.125 },
-        { source: "Cmaj", target: "Am", count: 78, prob: 0.115 },
-        { source: "Cmaj", target: "G7", count: 72, prob: 0.106 },
-        { source: "Fmaj", target: "Cmaj", count: 68, prob: 0.131 },
-        { source: "Fmaj", target: "Dm", count: 55, prob: 0.106 },
-        { source: "Gmaj", target: "Cmaj", count: 82, prob: 0.141 },
-        { source: "G7", target: "Cmaj", count: 95, prob: 0.279 },
-        { source: "Am", target: "Dm", count: 48, prob: 0.107 },
-        { source: "Am", target: "Fmaj", count: 42, prob: 0.093 },
-        { source: "Dm", target: "G7", count: 58, prob: 0.138 },
-        { source: "D7", target: "Gmaj", count: 52, prob: 0.179 },
-        { source: "A7", target: "Dm", count: 38, prob: 0.146 },
-        { source: "E7", target: "Am", count: 35, prob: 0.146 }
-      ]
-    }
-  };
+  // Available culture files
+  const availableCultures = [
+    'argentina-latin-america',
+    'brazil', 
+    'caribbean',
+    'france',
+    'germany',
+    'italy',
+    'japan',
+    'mexico',
+    'nordic',
+    'portugal',
+    'spain',
+    'uk-england',
+    'uk-scotland-ireland',
+    'usa-south'
+  ];
 
   // Pitch class mapping (enharmonic equivalents merged)
   const pitchClasses = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
@@ -147,13 +65,30 @@ const RadialChordGraph: React.FC = () => {
   // Quality ordering for radial distance
   const qualityOrder = ['maj', 'min', '7', 'maj7', 'min7', '6', 'dim', 'aug', 'sus4', 'sus2'];
 
-  const loadData = (genre: string) => {
+  const loadData = async (culture: string) => {
     setLoading(true);
-    // Simulate async loading
-    setTimeout(() => {
-      setData(mockData[genre] || mockData.brazil);
+    setError(null);
+    
+    try {
+      const response = await fetch(`/data_circular/${culture}.json`);
+      if (!response.ok) {
+        throw new Error(`Failed to load data for ${culture}. Status: ${response.status}`);
+      }
+      
+      const jsonData: ChordData = await response.json();
+      setData(jsonData);
+    } catch (err) {
+      console.error('Error fetching or parsing data:', err);
+      setError(`Failed to load data for ${culture}. ${err instanceof Error ? err.message : 'Unknown error'}`);
+      
+      // Provide fallback empty data
+      setData({ 
+        nodes: [{ id: "No Data", root: "C", quality: "maj", count: 1 }], 
+        links: [] 
+      });
+    } finally {
       setLoading(false);
-    }, 300);
+    }
   };
 
   useEffect(() => {
@@ -442,7 +377,21 @@ const RadialChordGraph: React.FC = () => {
       <div className="flex items-center justify-center w-full h-96">
         <div className="text-center">
           <div className="text-2xl mb-2">🎵</div>
-          <div>Loading chord transitions...</div>
+          <div>Loading {currentGenre.replace('-', ' & ')} chord transitions...</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center w-full h-96">
+        <div className="text-center p-4 bg-red-50 rounded-lg border border-red-200">
+          <div className="text-red-600 mb-2">⚠️ Error Loading Data</div>
+          <div className="text-sm text-red-500">{error}</div>
+          <div className="text-xs text-gray-500 mt-2">
+            Make sure the JSON files are in /public/data_circular/
+          </div>
         </div>
       </div>
     );
@@ -451,20 +400,23 @@ const RadialChordGraph: React.FC = () => {
   return (
     <div className="w-full max-w-4xl mx-auto p-4">
       {/* Genre selector */}
-      <div className="mb-4 flex gap-2">
-        {Object.keys(mockData).map(genre => (
-          <button
-            key={genre}
-            onClick={() => setCurrentGenre(genre)}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-              currentGenre === genre
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-            }`}
-          >
-            {genre.charAt(0).toUpperCase() + genre.slice(1)}
-          </button>
-        ))}
+      <div className="mb-4">
+        <div className="mb-2 text-sm font-medium text-gray-700">Select Musical Culture:</div>
+        <div className="flex flex-wrap gap-2">
+          {availableCultures.map(culture => (
+            <button
+              key={culture}
+              onClick={() => setCurrentGenre(culture)}
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                currentGenre === culture
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }`}
+            >
+              {culture.replace('-', ' & ').replace(/\b\w/g, l => l.toUpperCase())}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Info panel */}
@@ -491,4 +443,4 @@ const RadialChordGraph: React.FC = () => {
   );
 };
 
-export default ChordNetworkDiagram;
+export default RadialChordGraph;
