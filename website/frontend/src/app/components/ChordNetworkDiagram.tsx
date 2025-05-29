@@ -91,50 +91,60 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove();
 
-    const width = 800;
-    const height = 600;
     const centerX = width / 2;
     const centerY = height / 2;
     const maxRadius = Math.min(width, height) / 2 - 80;
 
-    // Position nodes in radial layout
+    // Create scales for angle and radius
+    const angleScale = d3.scalePoint()
+      .domain(rootOrder)
+      .range([0, 2 * Math.PI])
+      .padding(0);
+
+    const radiusScale = d3.scalePoint()
+      .domain(qualityOrder)
+      .range([maxRadius * 0.8, maxRadius * 0.2]); // outermost to innermost
+
+    // Position all nodes (even those without connections)
     const nodesWithPosition = data.nodes.map(node => {
       const normalizedRoot = normalizePitchClass(node.root);
-      const pitchIndex = pitchClasses.indexOf(normalizedRoot);
-      const angle = (pitchIndex / pitchClasses.length) * 2 * Math.PI - Math.PI / 2;
-      
-      const qualityIndex = qualityOrder.indexOf(node.quality);
-      const qualityRadius = qualityIndex >= 0 ? 
-        (qualityIndex + 1) / qualityOrder.length * maxRadius * 0.8 + maxRadius * 0.2 :
-        maxRadius * 0.9;
+      const angle = angleScale(normalizedRoot) || 0;
+      const radius = radiusScale(node.quality) || maxRadius * 0.5;
 
       return {
         ...node,
         angle,
-        radius: qualityRadius,
-        x: centerX + Math.cos(angle) * qualityRadius,
-        y: centerY + Math.sin(angle) * qualityRadius
+        radius,
+        x: centerX + Math.cos(angle - Math.PI / 2) * radius, // -PI/2 to start at 12:00
+        y: centerY + Math.sin(angle - Math.PI / 2) * radius
       };
     });
 
+    // Filter and sort links by count for top N
+    const sortedLinks = [...data.links]
+      .sort((a, b) => b.count - a.count)
+      .slice(0, maxEdges);
+
     // Scales for visual encoding
     const maxCount = d3.max(data.nodes, d => d.count) || 1;
-    const radiusScale = d3.scaleSqrt()
-      .domain([0, maxCount])
-      .range([3, 15]);
+    const minCount = d3.min(data.nodes, d => d.count) || 1;
+    
+    const nodeOpacityScale = d3.scaleLinear()
+      .domain([minCount, maxCount])
+      .range([0.2, 1]);
 
-    const opacityScale = d3.scaleLinear()
+    const nodeSizeScale = d3.scaleSqrt()
       .domain([0, maxCount])
-      .range([0.3, 1]);
+      .range([4, 12]);
 
-    const maxProb = d3.max(data.links, d => d.prob) || 1;
+    const maxLinkCount = d3.max(sortedLinks, d => d.count) || 1;
     const linkOpacityScale = d3.scaleLinear()
-      .domain([0, maxProb])
-      .range([0.1, 0.8]);
+      .domain([0, maxLinkCount])
+      .range([0.2, 0.8]);
 
     const linkWidthScale = d3.scaleLinear()
-      .domain([0, maxProb])
-      .range([0.5, 4]);
+      .domain([0, maxLinkCount])
+      .range([1, 4]);
 
     // Create tooltip
     const tooltip = d3.select("body").append("div")
@@ -154,39 +164,39 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
     svg.append("g")
       .attr("class", "pitch-arms")
       .selectAll("line")
-      .data(pitchClasses)
+      .data(rootOrder)
       .enter().append("line")
       .attr("x1", centerX)
       .attr("y1", centerY)
-      .attr("x2", (d, i) => {
-        const angle = (i / pitchClasses.length) * 2 * Math.PI - Math.PI / 2;
-        return centerX + Math.cos(angle) * maxRadius;
+      .attr("x2", d => {
+        const angle = angleScale(d) || 0;
+        return centerX + Math.cos(angle - Math.PI / 2) * maxRadius;
       })
-      .attr("y2", (d, i) => {
-        const angle = (i / pitchClasses.length) * 2 * Math.PI - Math.PI / 2;
-        return centerY + Math.sin(angle) * maxRadius;
+      .attr("y2", d => {
+        const angle = angleScale(d) || 0;
+        return centerY + Math.sin(angle - Math.PI / 2) * maxRadius;
       })
       .attr("stroke", "#e0e0e0")
       .attr("stroke-width", 1)
-      .attr("stroke-dasharray", "2,2");
+      .attr("stroke-dasharray", "2,4");
 
     // Draw pitch class labels
     svg.append("g")
       .attr("class", "pitch-labels")
       .selectAll("text")
-      .data(pitchClasses)
+      .data(rootOrder)
       .enter().append("text")
-      .attr("x", (d, i) => {
-        const angle = (i / pitchClasses.length) * 2 * Math.PI - Math.PI / 2;
-        return centerX + Math.cos(angle) * (maxRadius + 25);
+      .attr("x", d => {
+        const angle = angleScale(d) || 0;
+        return centerX + Math.cos(angle - Math.PI / 2) * (maxRadius + 25);
       })
-      .attr("y", (d, i) => {
-        const angle = (i / pitchClasses.length) * 2 * Math.PI - Math.PI / 2;
-        return centerY + Math.sin(angle) * (maxRadius + 25);
+      .attr("y", d => {
+        const angle = angleScale(d) || 0;
+        return centerY + Math.sin(angle - Math.PI / 2) * (maxRadius + 25);
       })
       .attr("text-anchor", "middle")
       .attr("dy", "0.35em")
-      .attr("font-size", "16px")
+      .attr("font-size", "14px")
       .attr("font-weight", "bold")
       .attr("fill", "#333")
       .text(d => d);
@@ -195,11 +205,11 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
     svg.append("g")
       .attr("class", "quality-rings")
       .selectAll("circle")
-      .data(qualityOrder.slice(0, 5))
+      .data(qualityOrder)
       .enter().append("circle")
       .attr("cx", centerX)
       .attr("cy", centerY)
-      .attr("r", (d, i) => (i + 1) / 5 * maxRadius * 0.8 + maxRadius * 0.2)
+      .attr("r", d => radiusScale(d) || 0)
       .attr("fill", "none")
       .attr("stroke", "#f0f0f0")
       .attr("stroke-width", 1)
@@ -209,7 +219,7 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
     const linkElements = svg.append("g")
       .attr("class", "links")
       .selectAll("path")
-      .data(data.links)
+      .data(sortedLinks)
       .enter().append("path")
       .attr("d", d => {
         const sourceNode = nodesWithPosition.find(n => n.id === d.source);
@@ -225,15 +235,15 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
         return `M${sourceNode.x},${sourceNode.y}A${dr},${dr} 0 0,1 ${targetNode.x},${targetNode.y}`;
       })
       .attr("stroke", "#4A90E2")
-      .attr("stroke-width", d => linkWidthScale(d.prob))
-      .attr("stroke-opacity", d => linkOpacityScale(d.prob))
+      .attr("stroke-width", d => linkWidthScale(d.count))
+      .attr("stroke-opacity", d => linkOpacityScale(d.count))
       .attr("fill", "none")
       .attr("marker-end", "url(#arrowhead)")
       .on("mouseover", (event, d) => {
         tooltip.style("visibility", "visible")
           .html(`<strong>${d.source} → ${d.target}</strong><br/>
-                 ${(d.prob * 100).toFixed(1)}% of transitions<br/>
-                 Count: ${d.count}`);
+                 Count: ${d.count}<br/>
+                 Probability: ${(d.prob * 100).toFixed(1)}%`);
       })
       .on("mousemove", (event: MouseEvent) => {
         tooltip
@@ -257,7 +267,18 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
       .attr("d", "M0,-5L10,0L0,5")
       .attr("fill", "#4A90E2");
 
-    // Draw nodes
+    // Color function based on quality
+    const getNodeColor = (quality: string): string => {
+      const qualityIndex = qualityOrder.indexOf(quality);
+      if (qualityIndex === -1) return "#6B7280"; // gray for unknown qualities
+      
+      // Vary saturation/lightness by quality
+      const saturation = 60 + (qualityIndex * 8); // 60-92%
+      const lightness = 45 + (qualityIndex * 5);  // 45-65%
+      return `hsl(210, ${saturation}%, ${lightness}%)`;
+    };
+
+    // Draw nodes (all chords, even those without connections)
     const nodeElements = svg.append("g")
       .attr("class", "nodes")
       .selectAll("circle")
@@ -265,39 +286,43 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
       .enter().append("circle")
       .attr("cx", d => d.x!)
       .attr("cy", d => d.y!)
-      .attr("r", d => radiusScale(d.count))
+      .attr("r", d => nodeSizeScale(d.count))
       .attr("fill", d => {
-        if (d.quality.includes('min')) return '#E74C3C';
-        if (d.quality.includes('7')) return '#F39C12';
-        if (d.quality === 'maj') return '#4A90E2';
-        return '#9B59B6';
+        // Check if this node participates in any filtered links
+        const hasConnections = sortedLinks.some(l => l.source === d.id || l.target === d.id);
+        return hasConnections ? getNodeColor(d.quality) : "#9CA3AF"; // gray if no connections
       })
       .attr("stroke", "#fff")
-      .attr("stroke-width", 2)
-      .attr("opacity", d => opacityScale(d.count))
+      .attr("stroke-width", 1.5)
+      .attr("opacity", d => {
+        // Check if this node participates in any filtered links
+        const hasConnections = sortedLinks.some(l => l.source === d.id || l.target === d.id);
+        return hasConnections ? nodeOpacityScale(d.count) : 0.3; // faint if no connections
+      })
       .style("cursor", "pointer")
       .on("mouseover", (event, d) => {
-        tooltip.style("visibility", "visible")
-          .html(`<strong>Chord: ${d.id}</strong><br/>
-                 Played ${d.count} times<br/>
-                 Root: ${d.root} | Quality: ${d.quality}`);
-
-        // Highlight connected elements
-        const connectedLinks = data.links.filter(l => 
+        const connectedLinks = sortedLinks.filter(l => 
           l.source === d.id || l.target === d.id
         );
         
+        tooltip.style("visibility", "visible")
+          .html(`<strong>Chord: ${d.id}</strong><br/>
+                 Root: ${d.root} | Quality: ${d.quality}<br/>
+                 Count: ${d.count}<br/>
+                 Connections: ${connectedLinks.length}`);
+
+        // Highlight connected elements
         nodeElements.style("opacity", (n: ChordNode) => {
           if (n === d) return 1;
           if (connectedLinks.some(l => l.source === n.id || l.target === n.id)) {
-            return opacityScale(n.count);
+            return nodeOpacityScale(n.count);
           }
-          return 0.2;
+          return 0.15;
         });
         
         linkElements.style("opacity", (l: ChordLink) => 
           l.source === d.id || l.target === d.id ? 
-            Math.max(0.6, linkOpacityScale(l.prob)) : 0.1
+            Math.max(0.8, linkOpacityScale(l.count)) : 0.1
         );
       })
       .on("mousemove", (event: MouseEvent) => {
@@ -307,60 +332,63 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
       })
       .on("mouseout", () => {
         tooltip.style("visibility", "hidden");
-        nodeElements.style("opacity", d => opacityScale(d.count));
-        linkElements.style("opacity", d => linkOpacityScale(d.prob));
+        nodeElements.style("opacity", d => {
+          const hasConnections = sortedLinks.some(l => l.source === d.id || l.target === d.id);
+          return hasConnections ? nodeOpacityScale(d.count) : 0.3;
+        });
+        linkElements.style("opacity", d => linkOpacityScale(d.count));
       });
 
-    // Add chord labels
+    // Add chord labels for larger nodes
     svg.append("g")
       .attr("class", "chord-labels")
       .selectAll("text")
-      .data(nodesWithPosition)
+      .data(nodesWithPosition.filter(d => nodeSizeScale(d.count) > 6))
       .enter().append("text")
       .attr("x", d => d.x!)
       .attr("y", d => d.y!)
       .attr("text-anchor", "middle")
       .attr("dy", "0.35em")
-      .attr("font-size", "9px")
+      .attr("font-size", "8px")
       .attr("font-weight", "bold")
       .attr("fill", "white")
       .attr("pointer-events", "none")
-      .text(d => d.id.length > 5 ? d.id.slice(0, 4) + '...' : d.id);
+      .text(d => d.id.length > 4 ? d.id.slice(0, 3) : d.id);
 
     // Quality legend
     const legend = svg.append("g")
       .attr("class", "legend")
-      .attr("transform", `translate(20, 20)`);
+      .attr("transform", `translate(20, ${height - 120})`);
 
-    const legendData = [
-      { quality: 'Major', color: '#4A90E2' },
-      { quality: 'Minor', color: '#E74C3C' },
-      { quality: '7th', color: '#F39C12' },
-      { quality: 'Other', color: '#9B59B6' }
-    ];
+    legend.append("text")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("font-size", "12px")
+      .attr("font-weight", "bold")
+      .attr("fill", "#333")
+      .text("Quality Order (outer → inner)");
 
-    legend.selectAll("g")
-      .data(legendData)
-      .enter().append("g")
-      .attr("transform", (d, i) => `translate(0, ${i * 20})`)
-      .each(function(d) {
-        const g = d3.select(this);
-        g.append("circle")
-          .attr("r", 6)
-          .attr("fill", d.color);
-        g.append("text")
-          .attr("x", 15)
-          .attr("dy", "0.35em")
-          .attr("font-size", "12px")
-          .attr("fill", "#333")
-          .text(d.quality);
-      });
+    qualityOrder.forEach((quality, i) => {
+      const legendItem = legend.append("g")
+        .attr("transform", `translate(0, ${20 + i * 16})`);
+      
+      legendItem.append("circle")
+        .attr("r", 5)
+        .attr("fill", getNodeColor(quality));
+      
+      legendItem.append("text")
+        .attr("x", 12)
+        .attr("dy", "0.35em")
+        .attr("font-size", "10px")
+        .attr("fill", "#666")
+        .text(quality);
+    });
 
     // Cleanup function
     return () => {
       tooltip.remove();
     };
-  }, [data, loading]);
+  }, [data, width, height, loading, maxEdges]);
 
   if (loading) {
     return (
@@ -386,11 +414,46 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
 
   return (
     <div style={{ width, height, position: 'relative' }}>
-      {/* Info panel */}
+      {/* Edge filter dropdown */}
       <div style={{ 
         position: 'absolute', 
         top: 8, 
         left: 8, 
+        background: 'rgba(255, 255, 255, 0.95)', 
+        padding: '8px',
+        borderRadius: '6px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        zIndex: 10,
+        fontSize: '12px'
+      }}>
+        <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '4px', color: '#333' }}>
+          Show Top N Transitions:
+        </label>
+        <select
+          value={maxEdges}
+          onChange={(e) => setMaxEdges(Number(e.target.value))}
+          style={{
+            padding: '4px 8px',
+            fontSize: '12px',
+            border: '1px solid #ddd',
+            borderRadius: '4px',
+            background: 'white'
+          }}
+        >
+          <option value={25}>25</option>
+          <option value={50}>50</option>
+          <option value={75}>75</option>
+          <option value={100}>100</option>
+          <option value={150}>150</option>
+          <option value={200}>200</option>
+        </select>
+      </div>
+
+      {/* Info panel */}
+      <div style={{ 
+        position: 'absolute', 
+        top: 8, 
+        right: 8, 
         background: 'rgba(255, 255, 255, 0.95)', 
         padding: '8px',
         borderRadius: '6px',
@@ -402,45 +465,10 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
           Radial Layout
         </div>
         <div style={{ color: '#666', lineHeight: '1.3' }}>
-          • Arms = pitch classes<br/>
-          • Distance = chord quality<br/>
+          • 12:00 = F, clockwise<br/>
+          • Distance = quality<br/>
           • Size = frequency<br/>
-          • Hover for details
-        </div>
-      </div>
-
-      {/* Quality legend */}
-      <div style={{ 
-        position: 'absolute', 
-        top: 8, 
-        right: 8, 
-        background: 'rgba(255, 255, 255, 0.95)', 
-        padding: '8px',
-        borderRadius: '6px',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-        zIndex: 10,
-        fontSize: '10px'
-      }}>
-        <div style={{ fontWeight: 'bold', marginBottom: '4px', color: '#333' }}>
-          Chord Types
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#4A90E2' }}></div>
-            <span style={{ color: '#666' }}>Major</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#E74C3C' }}></div>
-            <span style={{ color: '#666' }}>Minor</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#F39C12' }}></div>
-            <span style={{ color: '#666' }}>7th</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#9B59B6' }}></div>
-            <span style={{ color: '#666' }}>Other</span>
-          </div>
+          • Gray = no connections
         </div>
       </div>
 
