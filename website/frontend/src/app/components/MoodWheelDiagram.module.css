@@ -1,0 +1,109 @@
+/* MoodWheelDiagram 专用样式 */
+
+.moodWheelContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    overflow: visible;
+  }
+  
+  .moodWheelSvg {
+    overflow: visible;
+    max-width: 500px;
+    max-height: 500px;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  }
+  
+  /* 确保轮盘完全显示的容器 */
+  .wheelWrapper {
+    min-width: 500px;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  /* 轮盘扇形的自定义样式类 */
+  .sectorPath {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .sectorPath:hover {
+    filter: brightness(1.1);
+  }
+  
+  .sectorPathSelected {
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+  }
+  
+  /* 坐标轴标签样式 */
+  .axisLabel {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    fill: #1E293B;
+    text-anchor: middle;
+    dominant-baseline: middle;
+  }
+  
+  .axisLabelBox {
+    fill: rgba(255, 255, 255, 0.9);
+    stroke: rgba(0, 0, 0, 0.1);
+    stroke-width: 1;
+    rx: 4;
+  }
+  
+  /* 中心圆样式 */
+  .centerCircle {
+    fill: #ffffff;
+    stroke: #64748B;
+    stroke-width: 2;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+  
+  /* 坐标轴线样式 */
+  .axisLine {
+    stroke: #94A3B8;
+    stroke-width: 2;
+    stroke-dasharray: 5,5;
+    opacity: 0.7;
+  }
+  
+  .outerCircle {
+    fill: none;
+    stroke: #CBD5E1;
+    stroke-width: 1.2;
+    opacity: 0.8;
+  }
+  
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .moodWheelContainer {
+      min-height: 600px; /* 增加最小高度 */
+      overflow: visible;  /* 确保不裁剪内容 */
+    }
+    
+    .wheelWrapper {
+        overflow: visible;
+    }
+    
+    .axisLabel {
+      font-size: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .wheelWrapper {
+      min-width: 350px;
+      min-height: 350px;
+    }
+    
+    .axisLabel {
+      font-size: 9px;
+    }
+  }

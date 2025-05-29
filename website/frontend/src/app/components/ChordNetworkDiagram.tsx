@@ -205,11 +205,11 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
       .enter().append("text")
       .attr("x", d => {
         const angle = angleScale(d) || 0;
-        return centerX + Math.cos(angle - Math.PI / 2) * (maxRadius + 20);
+        return centerX + Math.cos(angle - Math.PI / 2) * (maxRadius + 30);
       })
       .attr("y", d => {
         const angle = angleScale(d) || 0;
-        return centerY + Math.sin(angle - Math.PI / 2) * (maxRadius + 20);
+        return centerY + Math.sin(angle - Math.PI / 2) * (maxRadius + 30);
       })
       .attr("text-anchor", "middle")
       .attr("dy", "0.35em")

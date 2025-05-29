@@ -103,8 +103,8 @@
 
 /* Culture to Chord View Styles */
 .gallery {
-  width: 95%;
-  max-width: 1600px;
+  width: 98%;
+  max-width: 1800px;
   padding: 2rem;
   background: white;
   border-radius: 10px;
@@ -261,17 +261,92 @@
   box-shadow: 
     0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  width: 95%;
-  max-width: 1600px;
+  width: 98%;
+  max-width: 1800px;
 }
 
 /* Left Column - Fixed width with sticky positioning */
 .leftColumn {
   flex-shrink: 0;
-  width: 460px;
+  width: 450px;
   position: sticky;
   top: 2rem;
   align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* 美化 Current Mood State 卡片 */
+.moodStateCard {
+  width: 100%;
+  max-width: 400px;
+  padding: 1.5rem;
+  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.3s ease;
+}
+
+.moodStateCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.moodTitle {
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1E293B;
+  text-align: center;
+  letter-spacing: -0.025em;
+}
+
+.moodLabel {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #3B82F6;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.musicFeaturesContainer {
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 197, 253, 0.05) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.musicFeaturesTitle {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1E293B;
+  text-align: center;
+}
+
+.featuresList {
+  line-height: 1.6;
+}
+
+.featureItem {
+  margin-bottom: 0.5rem;
+  color: #475569;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.featureItem:last-child {
+  margin-bottom: 0;
 }
 
 /* Right Column - Takes remaining space */
@@ -291,7 +366,8 @@
 /* Individual Distribution Cards */
 .distributionCard {
   flex: 1 1 0;
-  min-width: 300px;
+  min-width: 350px;
+  max-width: 450px;
   background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
   padding: 1.5rem;
   border-radius: 16px;
@@ -300,7 +376,7 @@
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(226, 232, 240, 0.8);
   transition: all 0.3s ease;
-  min-height: 320px;
+  min-height: 380px;
 }
 
 .distributionCard:hover {
@@ -323,7 +399,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 250px;
+  height: 280px;
 }
 
 .loadingState {
@@ -423,6 +499,216 @@
   
   .distributionsRow {
     gap: 1.5rem;
+  }
+  
+  .distributionCard {
+    padding: 1rem;
+    min-height: 280px;
+  }
+  
+  .distributionContent {
+    height: 200px;
+  }
+}
+
+/* Culture to Chord Layout - 左右分栏 */
+.cultureChordLayout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* 左侧列 - 国旗选择器 */
+.cultureLeftColumn {
+  flex-shrink: 0;
+  width: 350px;
+  position: sticky;
+  top: 2rem;
+  align-self: flex-start;
+}
+
+/* 右侧列 - Chord可视化 */
+.cultureRightColumn {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.chordPanel {
+  background: #e6f0fa;
+  padding: 28px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.chordPanelTitle {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.selectedCultureName {
+  color: #3498db;
+  font-weight: 600;
+}
+
+.chordVisualizationContainer {
+  margin-bottom: 2rem;
+}
+
+.chordGraph {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cultureInfo {
+  background: rgba(52, 152, 219, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(52, 152, 219, 0.2);
+}
+
+.cultureInfo h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.cultureInfo p {
+  margin-bottom: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.networkStats {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.networkStats li {
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.networkStats li:last-child {
+  margin-bottom: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .cultureChordLayout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .cultureLeftColumn {
+    width: 100%;
+    position: static;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .chordPanel {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cultureChordLayout {
+    gap: 1rem;
+  }
+  
+  .chordPanel {
+    padding: 15px;
+  }
+  
+  .chordPanelTitle {
+    font-size: 1.2rem;
+  }
+  
+  .cultureInfo {
+    padding: 1rem;
+  }
+}
+
+/* 更新的 Key Distribution 样式 - 替换之前的 keyDistributionCard 样式 */
+.keyDistributionCard {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1;
+  margin: 2rem auto 0 auto;
+  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.keyDistributionCard:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 10px -2px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.keyDistributionTitle {
+  margin: 0 0 1rem 0;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1E293B;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.keyDistributionContent {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+}
+
+/* 响应式调整 */
+@media (max-width: 1200px) {
+  .keyDistributionCard {
+    max-width: 500px;
+    aspect-ratio: 1;
+    margin: 2rem auto 0 auto;
+  }
+  
+  .distributionCard {
+    min-width: 300px;
+    min-height: 320px;
+  }
+  
+  .distributionContent {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .keyDistributionCard {
+    max-width: 400px;
+    padding: 1rem;
+    min-height: 350px;
+  }
+  
+  .keyDistributionTitle {
+    font-size: 1.2rem;
   }
   
   .distributionCard {
