@@ -60,7 +60,7 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
     setError(null);
     
     try {
-      const response = await fetch(`/data_circular/${culture}.json`);
+      const response = await fetch(`/data/${culture}.json`);
       if (!response.ok) {
         throw new Error(`Failed to load data for ${culture}. Status: ${response.status}`);
       }
@@ -213,11 +213,11 @@ const RadialChordGraph: React.FC<RadialChordGraphProps> = ({
       .enter().append("text")
       .attr("x", d => {
         const radius = radiusScale(d) || 0;
-        return centerX + Math.cos(fAngle - Math.PI / 2) * (radius + 20);
+        return centerX + Math.cos(fAngle - Math.PI / 2) * (radius + 12);
       })
       .attr("y", d => {
         const radius = radiusScale(d) || 0;
-        return centerY + Math.sin(fAngle - Math.PI / 2) * (radius + 20);
+        return centerY + Math.sin(fAngle - Math.PI / 2) * (radius + 12);
       })
       .attr("text-anchor", "middle")
       .attr("dy", "0.35em")
