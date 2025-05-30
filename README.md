@@ -135,7 +135,7 @@ The deliverables for milestone 2 can be found here:
 
 ## Milestone 3 (30th May, 5pm)
 
-The deliverables for milestone 2 can be found here:
+The deliverables for milestone 3 can be found here:
 - [Process Book](https://github.com/com-480-data-visualization/Apple-Pie-Chart/blob/master/ProcessBook.pdf)
 - [Screencast](https://drive.google.com/file/d/1uXJCgkcZa7fZZYR3eqUvYwFKUbnUp6IA/view?usp=sharing)
 - [Website](https://com-480-data-visualization.github.io/Apple-Pie-Chart/) : code is on the "web" branch of this repository
