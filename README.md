@@ -1,6 +1,6 @@
 # Project of Data Visualization (COM-480)
 
-Website available: [Moved to the Core](https://com-480-data-visualization.github.io/Apple-Pie-Chart/)
+Website available at [Moved to the Core](https://com-480-data-visualization.github.io/Apple-Pie-Chart/).
 
 | Student's name | SCIPER |
 | -------------- | ------ |
